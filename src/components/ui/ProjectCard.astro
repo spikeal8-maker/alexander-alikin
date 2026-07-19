@@ -1,0 +1,39 @@
+---
+import ButtonLink from "./ButtonLink.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  href: string;
+  role: string;
+  period: string;
+  projectStatus: string;
+  result: string;
+  limitations?: string;
+  evidenceLevel?: string;
+  status?: string;
+}
+
+const { title, description, href, role, period, projectStatus, evidenceLevel, status } =
+  Astro.props;
+---
+
+<article class="card">
+  <div class="card-meta">
+    <span class="badge badge-published">{status || projectStatus}</span>
+    {
+      evidenceLevel && (
+        <span class="evidence-badge" data-level={evidenceLevel}>
+          {evidenceLevel}
+        </span>
+      )
+    }
+  </div>
+  <h3 class="card-title"><a href={href}>{title}</a></h3>
+  <p class="card-description">{description}</p>
+  <div class="card-footer">
+    <span class="text-sm text-muted">{period} · {role}</span>
+    <ButtonLink href={href} variant="secondary" size="compact">Подробнее</ButtonLink>
+  </div>
+</article>

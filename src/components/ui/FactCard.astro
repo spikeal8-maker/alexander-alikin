@@ -1,0 +1,18 @@
+---
+interface Props {
+  statement: string;
+  period?: string;
+  evidenceLevel: string;
+  sourceUrl?: string;
+}
+
+const { statement, period, evidenceLevel } = Astro.props;
+---
+
+<article class="card fact-card">
+  <p class="fact-statement">{statement}</p>
+  <div class="card-footer fact-footer">
+    {period && <span class="text-sm text-muted">{period}</span>}
+    <span class="evidence-badge" data-level={evidenceLevel}>{evidenceLevel}</span>
+  </div>
+</article>

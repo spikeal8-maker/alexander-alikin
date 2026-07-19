@@ -3,6 +3,9 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import StatusBadge from "@components/foundation/StatusBadge.astro";
 import EvidenceBadge from "@components/foundation/EvidenceBadge.astro";
+import ButtonLink from "@components/ui/ButtonLink.astro";
+import EditorialCallout from "@components/ui/EditorialCallout.astro";
+import { buildUrl } from "@config/site";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects", (p) => p.data.status === "published");
@@ -14,7 +17,6 @@ const project = (await getCollection("projects", (p) => p.data.status === "publi
   (p) => p.data.slug === slug,
 );
 if (!project) return Astro.redirect("/404");
-
 const { data } = project;
 ---
 
@@ -24,30 +26,61 @@ const { data } = project;
   currentPath="/projects/"
   breadcrumbs={[{ label: "Проекты", href: "/projects/" }, { label: data.title }]}
 >
-  <div class="container">
-    <div class="route-shell">
-      <div
-        style="display:flex;gap:var(--space-sm);align-items:center;margin-bottom:var(--space-md);flex-wrap:wrap;"
-      >
-        <StatusBadge status={data.status} />
-        <EvidenceBadge level={data.evidenceLevel} />
+  <div class="container container-main">
+    <div
+      style="display:flex;gap:var(--space-3);align-items:center;margin-bottom:var(--space-6);flex-wrap:wrap;"
+    >
+      <StatusBadge status={data.status} />
+      <EvidenceBadge level={data.evidenceLevel} />
+      <span class="text-sm text-muted">{data.period}</span>
+    </div>
+
+    <h1>{data.title}</h1>
+    <p class="text-lg" style="color:var(--color-text-secondary);margin-bottom:var(--space-8);">
+      {data.description}
+    </p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:var(--space-8);margin-bottom:var(--space-8);">
+      <div>
+        <div class="text-sm text-muted">Роль</div>
+        <div><strong>{data.role}</strong></div>
       </div>
-      <h1>{data.title}</h1>
-      <p class="description">{data.description}</p>
-      <div class="content-body">
-        <p><strong>Роль:</strong> {data.role}</p>
-        <p><strong>Период:</strong> {data.period}</p>
-        <p><strong>Статус проекта:</strong> {data.projectStatus}</p>
-        <p><strong>Результат:</strong> {data.result}</p>
-        {
-          data.limitations && (
-            <p>
-              <em>{data.limitations}</em>
-            </p>
-          )
-        }
-        {project.body && <Fragment set:html={project.body} />}
+      <div>
+        <div class="text-sm text-muted">Период</div>
+        <div><strong>{data.period}</strong></div>
+      </div>
+      <div>
+        <div class="text-sm text-muted">Статус проекта</div>
+        <div><strong>{data.projectStatus}</strong></div>
       </div>
     </div>
+
+    <EditorialCallout title="Результат">
+      <p>{data.result}</p>
+    </EditorialCallout>
+
+    <h2>Описание</h2>
+    <p>{data.result}</p>
+    <p>
+      Это синтетическая тестовая страница, демонстрирующая дизайн-систему. Реальный контент будет
+      добавлен после утверждения материалов.
+    </p>
+
+    {
+      data.limitations && (
+        <>
+          <h2>Ограничения</h2>
+          <p>
+            <em>{data.limitations}</em>
+          </p>
+        </>
+      )
+    }
+
+    <hr />
+
+    <ButtonLink href={buildUrl("/collaboration/")} variant="primary">
+      Обсудить похожую задачу
+    </ButtonLink>
   </div>
 </BaseLayout>

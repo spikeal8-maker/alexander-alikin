@@ -1,6 +1,11 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import EvidenceBadge from "@components/foundation/EvidenceBadge.astro";
+import ButtonLink from "@components/ui/ButtonLink.astro";
+import EditorialQuote from "@components/ui/EditorialQuote.astro";
+import EditorialCallout from "@components/ui/EditorialCallout.astro";
+import { buildUrl } from "@config/site";
 
 export async function getStaticPaths() {
   const entries = await getCollection("articles", (s) => s.data.status === "published");
@@ -24,11 +29,90 @@ if (!entry) return Astro.redirect("/404");
     { label: entry.data.title },
   ]}
 >
-  <div class="container">
-    <div class="route-shell">
+  <div class="container container-reading">
+    <header style="margin-bottom:var(--space-8);">
+      <div
+        style="display:flex;gap:var(--space-3);align-items:center;margin-bottom:var(--space-4);flex-wrap:wrap;"
+      >
+        <span class="text-sm text-muted">{entry.data.publishedAt.toLocaleDateString("ru")}</span>
+        <EvidenceBadge level={entry.data.evidenceLevel} />
+        <span class="badge badge-published">Статья</span>
+      </div>
       <h1>{entry.data.title}</h1>
-      <p class="description">{entry.data.description}</p>
-      <div class="content-body"><Fragment set:html={entry.body} /></div>
+      <p class="text-lg" style="color:var(--color-text-secondary);">{entry.data.description}</p>
+    </header>
+
+    <div class="content-body">
+      <p>
+        Эта синтетическая тестовая статья демонстрирует типографику чтения, редакционные элементы и
+        компоненты дизайн-системы. Реальный контент будет добавлен после утверждения материалов.
+      </p>
+
+      <h2>Структура и аргументация</h2>
+      <p>
+        Каждая системная статья на этой платформе должна иметь чёткую структуру: контекст, аргумент,
+        доказательства, ограничения и следующий смысловой маршрут. Это не просто заметка — это
+        материал, к которому читатель может вернуться через поиск или смысловую связь.
+      </p>
+
+      <h2>Почему это важно</h2>
+      <p>
+        Авторское медиа отличается от ленты социальной сети тем, что материал остаётся актуальным,
+        проверяемым и связанным с конкретным проектом или кейсом. Текст не исчезает через неделю —
+        он становится частью цифрового следа.
+      </p>
+
+      <EditorialQuote
+        text="Сильное письмо не в сложности слов, а в ясности мысли. Инженер пишет так же, как проектирует: видит структуру, убирает лишнее, оставляет работающее."
+      />
+
+      <h2>Списки и структуры</h2>
+      <ul>
+        <li>Каждая публикация проходит редакционный шлюз</li>
+        <li>Факты проверяются: источник, период, уровень доказательности</li>
+        <li>Материал связывается с проектом, кейсом или другим текстом</li>
+      </ul>
+
+      <h3>Технические ограничения</h3>
+      <p>Следующий блок демонстрирует таблицу:</p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>Параметр</th><th>Значение</th><th>Статус</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Сборка</td><td>1.0s</td><td>PASS</td></tr>
+            <tr><td>Коллекции</td><td>10</td><td>PASS</td></tr>
+            <tr><td>Маршруты</td><td>25</td><td>PASS</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <EditorialCallout title="Как это связано с проектами">
+        <p>
+          Каждая статья на этой платформе соединена с проектом. Это не отдельный блог — это часть
+          системы доказательств.
+        </p>
+      </EditorialCallout>
+
+      <h2>Ограничения и источники</h2>
+      <p>
+        Утверждения в этой статье имеют уровень доказательности <strong>author_statement</strong> — подтверждены
+        автором как личный опыт. Независимые источники будут добавлены после проверки.
+      </p>
+
+      <p>
+        Следующий материал: <a href={buildUrl("/journal/stories/test-story/")}
+          >Чему меня научили дети, создававшие роботов</a
+        >
+      </p>
     </div>
+
+    <hr />
+
+    <ButtonLink href={buildUrl("/projects/test-platform/")} variant="secondary">
+      Посмотреть связанный проект
+    </ButtonLink>
   </div>
 </BaseLayout>

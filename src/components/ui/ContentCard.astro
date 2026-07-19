@@ -1,0 +1,31 @@
+---
+import ButtonLink from "./ButtonLink.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  type: string;
+  date: string;
+  topics?: string[];
+}
+
+const { title, description, href, type, date, topics = [] } = Astro.props;
+---
+
+<article class="card">
+  <div class="card-meta">
+    <span class="text-sm text-muted">{type} · {date}</span>
+  </div>
+  <h3 class="card-title"><a href={href}>{title}</a></h3>
+  <p class="card-description">{description}</p>
+  {
+    topics.length > 0 && (
+      <div class="card-footer">
+        <ButtonLink href={href} variant="tertiary" size="compact">
+          Читать
+        </ButtonLink>
+      </div>
+    )
+  }
+</article>

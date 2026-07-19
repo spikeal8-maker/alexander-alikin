@@ -1,12 +1,10 @@
 ---
-import type { PublicationStatus } from "@config/site";
-
 interface Props {
-  status: PublicationStatus;
+  status: "draft" | "review" | "ready" | "published" | "blocked" | "archived";
 }
 
 const { status } = Astro.props;
-const labels: Record<PublicationStatus, string> = {
+const labels = {
   draft: "Черновик",
   review: "На проверке",
   ready: "Готово",
@@ -16,6 +14,6 @@ const labels: Record<PublicationStatus, string> = {
 };
 ---
 
-<span class={`status-badge ${status}`} aria-label={`Статус: ${labels[status]}`}>
+<span class={`badge badge-${status}`} aria-label={`Статус публикации: ${labels[status]}`}>
   {labels[status]}
 </span>

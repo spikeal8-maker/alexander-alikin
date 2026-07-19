@@ -1,0 +1,31 @@
+---
+interface Props {
+  href: string;
+  variant?: "primary" | "secondary" | "tertiary" | "accent";
+  size?: "standard" | "compact";
+  disabled?: boolean;
+  loading?: boolean;
+}
+
+const {
+  href,
+  variant = "primary",
+  size = "standard",
+  disabled = false,
+  loading = false,
+} = Astro.props;
+
+const classes = [
+  "btn",
+  `btn-${variant}`,
+  size === "compact" ? "btn-compact" : "",
+  loading ? "btn-loading" : "",
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<a href={disabled ? undefined : href} class={classes} aria-disabled={disabled ? "true" : undefined}>
+  {loading && <span aria-hidden="true">⟳</span>}
+  <slot />
+</a>

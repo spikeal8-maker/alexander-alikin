@@ -1,0 +1,16 @@
+---
+import ButtonLink from "./ButtonLink.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  href: string;
+  buttonLabel: string;
+}
+---
+
+<section class="cta-section">
+  <h2 class="cta-section-title">{Astro.props.title}</h2>
+  {Astro.props.description && <p class="cta-section-text">{Astro.props.description}</p>}
+  <ButtonLink href={Astro.props.href} variant="accent">{Astro.props.buttonLabel}</ButtonLink>
+</section>

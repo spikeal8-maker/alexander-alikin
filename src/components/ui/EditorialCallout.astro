@@ -1,0 +1,10 @@
+---
+interface Props {
+  title?: string;
+}
+---
+
+<div class="editorial-callout">
+  {Astro.props.title && <div class="editorial-callout-title">{Astro.props.title}</div>}
+  <slot />
+</div>

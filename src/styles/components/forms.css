@@ -1,0 +1,107 @@
+.form-group {
+  margin-bottom: var(--space-6);
+}
+
+.form-label {
+  display: block;
+  font-weight: var(--fw-medium);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--motion-fast);
+  min-height: var(--target-size);
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.form-input:disabled,
+.form-textarea:disabled,
+.form-select:disabled {
+  opacity: 0.6;
+  background: color-mix(in srgb, var(--color-muted) 5%, var(--color-surface));
+  cursor: not-allowed;
+}
+
+.form-input.error,
+.form-textarea.error {
+  border-color: var(--color-danger);
+}
+
+.form-hint {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+}
+
+.form-error {
+  font-size: var(--text-xs);
+  color: var(--color-danger);
+  margin-top: var(--space-1);
+  font-weight: var(--fw-medium);
+}
+
+.form-required::after {
+  content: " *";
+  color: var(--color-danger);
+}
+
+.state-loading,
+.state-empty,
+.state-error,
+.state-unavailable,
+.state-expired,
+.state-success {
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  max-width: var(--container-reading);
+  margin: var(--space-6) 0;
+}
+
+.state-loading {
+  background: color-mix(in srgb, var(--color-muted) 8%, transparent);
+  color: var(--color-text-secondary);
+}
+
+.state-empty {
+  background: color-mix(in srgb, var(--color-muted) 8%, transparent);
+  border: var(--border-width) dashed var(--color-border);
+}
+
+.state-error {
+  background: color-mix(in srgb, var(--color-danger) 8%, transparent);
+  border: var(--border-width) solid color-mix(in srgb, var(--color-danger) 20%, transparent);
+  color: var(--color-danger);
+}
+
+.state-success {
+  background: color-mix(in srgb, var(--color-success) 8%, transparent);
+  border: var(--border-width) solid color-mix(in srgb, var(--color-success) 20%, transparent);
+  color: var(--color-success);
+}
+
+.state-expired,
+.state-unavailable {
+  background: color-mix(in srgb, var(--color-warning) 8%, transparent);
+  border: var(--border-width) solid color-mix(in srgb, var(--color-warning) 20%, transparent);
+  color: var(--color-warning);
+}

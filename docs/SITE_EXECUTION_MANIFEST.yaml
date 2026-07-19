@@ -1,5 +1,6 @@
-version: 1
+version: 2
 updated_at: "2026-07-19"
+
 project:
   id: "alexander-alikin-personal-platform"
   title: "Александр Аликин — персональная цифровая платформа"
@@ -9,6 +10,21 @@ project:
   foundation_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/1"
   production_branch: "main"
   publication_rule: "main соответствует опубликованной версии; private vault не подключается к production"
+
+current_state:
+  strategy: "in_review"
+  foundation_pr: "draft_merge_blocked"
+  blocker_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/18"
+  bootstrap_payload_expanded: false
+  package_json_present: false
+  astro_source_present_as_regular_files: false
+  workflow_run_recorded_for_current_head: false
+  build_quality_verified: false
+  required_before_merge:
+    - "развернуть или удалить bootstrap payload"
+    - "сделать обычные файлы доступными в PR diff"
+    - "фактически выполнить npm run quality"
+    - "оставить PR Draft до owner review"
 
 objective:
   primary: "Создавать качественные предметные разговоры через проверяемую цифровую личность Александра"
@@ -26,34 +42,20 @@ positioning:
 
 navigation:
   primary:
-    - label: "Обо мне"
-      path: "/about/"
-    - label: "Проекты"
-      path: "/projects/"
-    - label: "Бизнесу"
-      path: "/business/"
-    - label: "Образованию"
-      path: "/education/"
-    - label: "Журнал"
-      path: "/journal/"
-    - label: "Обсудить задачу"
-      path: "/collaboration/"
-      kind: "primary_cta"
+    - { label: "Обо мне", path: "/about/" }
+    - { label: "Проекты", path: "/projects/" }
+    - { label: "Бизнесу", path: "/business/" }
+    - { label: "Образованию", path: "/education/" }
+    - { label: "Журнал", path: "/journal/" }
+    - { label: "Обсудить задачу", path: "/collaboration/", kind: "primary_cta" }
   utility:
-    - label: "Сейчас"
-      path: "/now/"
-    - label: "Как я мыслю"
-      path: "/second-brain/"
-    - label: "Факты и источники"
-      path: "/facts/"
-    - label: "Для СМИ"
-      path: "/press/"
-    - label: "Контакты"
-      path: "/contacts/"
-    - label: "Поиск"
-      path: "/search/"
-    - label: "Конфиденциальность"
-      path: "/privacy/"
+    - { label: "Сейчас", path: "/now/" }
+    - { label: "Как я мыслю", path: "/second-brain/" }
+    - { label: "Факты и источники", path: "/facts/" }
+    - { label: "Для СМИ", path: "/press/" }
+    - { label: "Контакты", path: "/contacts/" }
+    - { label: "Поиск", path: "/search/" }
+    - { label: "Конфиденциальность", path: "/privacy/" }
 
 routes:
   - path: "/"
@@ -135,10 +137,8 @@ design:
     - "unsupported_metric_counters"
 
 content_launch_package:
-  bios:
-    - "50_words"
-    - "150_words"
-    - "800_to_1200_words"
+  task_url: "https://github.com/spikeal8-maker/alexander-alikin-vault/issues/5"
+  bios: ["50_words", "150_words", "800_to_1200_words"]
   projects_minimum: 6
   proof_cases_minimum: 3
   journal:
@@ -147,18 +147,20 @@ content_launch_package:
     articles_minimum: 3
     factual_news_minimum: 3
     curated_videos_minimum: 2
-  content_task_url: "https://github.com/spikeal8-maker/alexander-alikin-vault/issues/5"
-  evidence_levels:
-    - "author_statement"
-    - "public_source"
-    - "document_verified"
+  evidence_levels: ["author_statement", "public_source", "document_verified"]
 
 implementation_tasks:
+  - id: "FOUNDATION-EXPAND"
+    issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/18"
+    branch: "agent/foundation-architecture"
+    status: "merge_blocker"
+    depends_on: []
+    blocks: ["SITE-STRATEGY-001", "SITE-PLATFORM-001"]
   - id: "SITE-STRATEGY-001"
     issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/6"
     branch: "agent/foundation-architecture"
-    status: "in_review"
-    depends_on: []
+    status: "in_review_merge_blocked"
+    depends_on: ["FOUNDATION-EXPAND"]
     blocks: ["SITE-PLATFORM-001"]
   - id: "SITE-CONTENT-001"
     issue_url: "https://github.com/spikeal8-maker/alexander-alikin-vault/issues/5"

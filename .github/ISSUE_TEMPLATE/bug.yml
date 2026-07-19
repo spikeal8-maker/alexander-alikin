@@ -1,0 +1,25 @@
+name: Ошибка сайта
+description: Сообщить о технической или визуальной проблеме
+title: "[Bug] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Что произошло
+      description: Опишите фактическое поведение.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Ожидаемое поведение
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Страница
+  - type: textarea
+    id: context
+    attributes:
+      label: Дополнительный контекст

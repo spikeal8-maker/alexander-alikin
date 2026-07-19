@@ -13,6 +13,7 @@
 7. [План контента и доказательств](CONTENT_AND_EVIDENCE_PLAN.md)
 8. [План реализации](IMPLEMENTATION_ROADMAP.md)
 9. [SEO, аналитика и эксплуатация](SEO_ANALYTICS_AND_OPERATIONS.md)
+10. [Machine-readable execution manifest](SITE_EXECUTION_MANIFEST.yaml)
 
 ## Назначение и работа
 
@@ -48,6 +49,8 @@
 - [Дорожная карта foundation-версии](ROADMAP.md)
 - [Объём foundation-версии](FOUNDATION_SCOPE.md)
 - [Статус реализации](../IMPLEMENTATION_STATUS.md)
+- [Epic версии 1.0](https://github.com/spikeal8-maker/alexander-alikin/issues/5)
+- [Приватный публичный контентный пакет](https://github.com/spikeal8-maker/alexander-alikin-vault/issues/5)
 
 ## Правило приоритета
 
@@ -57,6 +60,7 @@
 2. `CANONICAL_SITE_STRATEGY.md`;
 3. `PAGE_SPECIFICATIONS.md`;
 4. `IMPLEMENTATION_ROADMAP.md`;
-5. остальные supporting-документы.
+5. `SITE_EXECUTION_MANIFEST.yaml` для статусов, зависимостей и issue URL;
+6. остальные supporting-документы.
 
 Изменение основной аудитории, позиционирования, главной навигации, основного CTA или визуального направления требует отдельного решения, а не скрытого изменения компонента.

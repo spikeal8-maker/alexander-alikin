@@ -2,11 +2,27 @@
 
 ## Текущий этап
 
-`SITE-STRATEGY-001 — in_review`
+`SITE-STRATEGY-001 — in_review / merge_blocked`
 
 Канонический продуктовый план персональной цифровой платформы подготовлен в ветке `agent/foundation-architecture` и находится в Draft PR №1.
 
-Реализовано на уровне спецификации:
+## Технический merge-blocker
+
+Issue №18: <https://github.com/spikeal8-maker/alexander-alikin/issues/18>
+
+В текущем дереве ветки непосредственно присутствуют документация, `.bootstrap/part-*.b64` и одноразовый workflow расширения. `package.json`, `src/` и развёрнутый Astro-код пока не доступны как обычные файлы, а workflow run/status для текущего head не зафиксирован.
+
+До merge необходимо:
+
+1. развернуть bootstrap-пакет либо удалить его из foundation PR;
+2. сделать полный код доступным в обычном PR diff;
+3. фактически выполнить `npm run quality`;
+4. приложить результат проверки;
+5. оставить PR Draft до owner review.
+
+Наличие сжатого payload не считается реализованным сайтом.
+
+## Реализовано на уровне стратегии и спецификации
 
 - цель сайта и критерии успеха;
 - приоритеты целевых аудиторий;
@@ -25,11 +41,12 @@
 - Draft PR: <https://github.com/spikeal8-maker/alexander-alikin/pull/1>
 - Epic V1: <https://github.com/spikeal8-maker/alexander-alikin/issues/5>
 - Strategy task: <https://github.com/spikeal8-maker/alexander-alikin/issues/6>
+- Bootstrap blocker: <https://github.com/spikeal8-maker/alexander-alikin/issues/18>
 - Private content task: <https://github.com/spikeal8-maker/alexander-alikin-vault/issues/5>
 
 ## Следующая допустимая задача
 
-После owner review и merge foundation PR:
+После выполнения Issue №18, owner review и merge foundation PR:
 
 `SITE-PLATFORM-001 — Astro-каркас, content collections и нормативный quality gate`
 
@@ -52,6 +69,7 @@ Issue: <https://github.com/spikeal8-maker/alexander-alikin/issues/7>
 
 ## Что ещё не реализовано
 
+- развёрнутый и проверенный Astro-код;
 - production-код канонических страниц;
 - финальная дизайн-система в CSS и компонентах;
 - реальные фотографии;

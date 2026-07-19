@@ -2,84 +2,75 @@
 
 ## Текущий этап
 
-`SITE-PLATFORM-001 — ready / current task`
+`SITE-PLATFORM-001 — remediation_required / merge_blocked`
 
 Стратегический foundation принят и merged в `main` commit `5feccb8c39364e8d785b0d06691b718f55bdb165`.
 
-Текущая работа ведётся отдельно:
+Текущая работа:
 
 ```text
 Issue: https://github.com/spikeal8-maker/alexander-alikin/issues/7
 Branch: agent/site-platform
 Draft PR: https://github.com/spikeal8-maker/alexander-alikin/pull/20
+Audited HEAD: 38829aac7a7782ca3a7fad68fa151001683e8eeb
+Failed Actions run: https://github.com/spikeal8-maker/alexander-alikin/actions/runs/29705514096
 ```
 
-## Текущий пользовательский результат
+## Результат независимого review
 
-Создать воспроизводимый технический каркас, в котором:
+Локальный отчёт `12/12 PASS` не является exit gate. GitHub Actions на чистом Ubuntu checkout завершился failure на шаге `npm run quality`; dependency audit был skipped.
 
-- все канонические маршруты существуют;
-- утверждённый Markdown проходит строгую схему;
-- draft, blocked и приватные материалы не попадают в generated output;
-- sitemap, RSS, robots, canonical URL и search index согласованы;
-- одна команда `npm run quality` проверяет обязательный контракт;
-- основной HTML читается без client JavaScript;
-- production deploy отсутствует до launch-задачи.
+Обнаружены merge-блокеры:
 
-## Канонические документы задачи
+- generated-output test запускается до build и проходит локально только при старом `dist/`;
+- serialized dates не загружаются существующими `z.date()` schemas;
+- negative fixtures проверяются на наличие, а не отклоняются общими schemas;
+- route gate проверяет route files, а не generated dynamic URLs;
+- link gate не проверяет существование targets и anchors;
+- mobile menu изменяет атрибут не на том DOM-элементе и остаётся скрытым;
+- foundation CSS не импортирован в layout;
+- canonical/base-path, RSS и search URLs не доказаны generated tests;
+- robots всегда блокирует crawling, а prelaunch robots указывает на отсутствующий sitemap;
+- GitHub Actions красный.
+
+## Канонический remediation-контракт
 
 - `docs/agent-tasks/CURRENT_TASK.yaml`;
+- `docs/agent-tasks/TASK-SITE-PLATFORM-REMEDIATION.md`;
 - `docs/agent-tasks/TASK-SITE-PLATFORM.md`;
 - `docs/testing/SITE-PLATFORM-QUALITY.md`;
-- `docs/SITE_EXECUTION_MANIFEST.yaml`;
 - Issue №7.
 
-## Разрешённый scope
+## Требуемый пользовательский результат
 
-- Node.js 24 LTS, npm и lockfile;
-- Astro + TypeScript strict;
-- route shells;
-- content collections и schemas;
-- URL/base-path configuration;
-- минимальные foundation layouts/components;
-- SEO foundation;
-- sitemap, RSS, robots, 404 и search index;
-- validators, tests и read-only quality workflow.
+Получить воспроизводимый технический каркас, который проходит из чистого checkout:
 
-## Запрещено в этой задаче
+```text
+clean checkout
+→ npm ci
+→ npm run quality
+→ generated published routes существуют
+→ draft/blocked routes отсутствуют
+→ links/canonical/RSS/search/sitemap согласованы
+→ mobile navigation работает
+→ GitHub Actions success
+→ npm audit фактически выполнен
+```
 
-- финальный визуальный дизайн;
-- полноценная главная страница;
-- реальные биографии, фотографии и кейсы;
-- контактная форма;
-- аналитический поставщик;
-- публичный граф знаний;
-- GitHub Pages deploy;
-- домен;
-- подключение приватного vault;
-- merge;
-- начало Issue №8.
+## Запрещено до remediation PASS
 
-## История старого scaffold
+- merge PR №20;
+- перевод PR в Ready for review;
+- начало Issue №8;
+- ослабление Test IDs;
+- `continue-on-error`;
+- отключение CI;
+- production deploy;
+- импорт приватного vault;
+- добавление реального контента или финального дизайна.
 
-Commit `8ff507d` содержит ранний технический scaffold, созданный до принятия канонической информационной архитектуры. Его нельзя cherry-pick-ить целиком. Допустимо изучать отдельные идеи только после проверки на соответствие текущим контрактам.
+## Следующий допустимый шаг
 
-## Gate
+Только выполнение remediation в существующей ветке и Draft PR. После зелёного локального и GitHub Actions gate — owner review PR №20.
 
-Перед owner review Draft PR №20 обязательны:
-
-- `npm ci`;
-- все Test IDs из `docs/testing/SITE-PLATFORM-QUALITY.md`;
-- `npm run quality`;
-- `npm audit --audit-level=high`;
-- `git diff --check`;
-- фактический отчёт с HEAD, командами и ограничениями;
-- отсутствие deploy workflow и приватных данных.
-
-## Следующая допустимая задача
-
-Только после owner review и merge PR №20:
-
-`SITE-DESIGN-001 — Issue №8`
-
-Coding-агент после отчёта по Issue №7 останавливается и не начинает дизайн в той же сессии.
+`SITE-DESIGN-001 / Issue №8` разрешается только после owner approval и merge PR №20.

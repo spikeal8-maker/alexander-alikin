@@ -1,6 +1,7 @@
 name: Expand foundation package
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - agent/foundation-architecture
@@ -10,6 +11,10 @@ on:
 
 permissions:
   contents: write
+
+concurrency:
+  group: foundation-expand-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   expand:
@@ -30,6 +35,10 @@ jobs:
           cat .bootstrap/part-*.b64 | base64 --decode > /tmp/alexander-alikin-foundation.tar.gz
           tar -tzf /tmp/alexander-alikin-foundation.tar.gz > /tmp/package-files.txt
           test -s /tmp/package-files.txt
+          if grep -Eq '(^|/)\.git(/|$)' /tmp/package-files.txt; then
+            echo 'Package must not contain .git paths.' >&2
+            exit 1
+          fi
 
       - name: Expand repository foundation
         shell: bash

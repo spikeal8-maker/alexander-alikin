@@ -2,13 +2,14 @@ version: 1
 updated_at: "2026-07-20"
 repository: "spikeal8-maker/alexander-alikin"
 current_task:
-  id: "SITE-PLATFORM-001-REMEDIATION"
+  id: "SITE-PLATFORM-001-REMEDIATION-2"
   parent_task: "SITE-PLATFORM-001"
-  title: "Устранить ложноположительные quality gates и получить воспроизводимый platform PASS"
-  status: "remediation_required"
+  title: "Закрыть оставшиеся ложноположительные schema, anchor и mobile behavior gates"
+  status: "required"
   severity: "merge-blocker"
   issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/7"
-  task_document: "docs/agent-tasks/TASK-SITE-PLATFORM-REMEDIATION.md"
+  task_document: "docs/agent-tasks/TASK-SITE-PLATFORM-REMEDIATION-2.md"
+  original_remediation_document: "docs/agent-tasks/TASK-SITE-PLATFORM-REMEDIATION.md"
   original_task_document: "docs/agent-tasks/TASK-SITE-PLATFORM.md"
   quality_document: "docs/testing/SITE-PLATFORM-QUALITY.md"
   rules_document: "AGENTS.md"
@@ -16,9 +17,8 @@ current_task:
   pull_request_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/20"
   base_branch: "main"
   base_commit: "5feccb8c39364e8d785b0d06691b718f55bdb165"
-  audited_head: "38829aac7a7782ca3a7fad68fa151001683e8eeb"
-  failed_ci_run: "https://github.com/spikeal8-maker/alexander-alikin/actions/runs/29705514096"
-  failed_ci_job_id: 88241704683
+  audited_head: "3f2dbfed265d6a8b91be63ccdbbf081a730949dd"
+  successful_ci_run: "https://github.com/spikeal8-maker/alexander-alikin/actions/runs/29706261254"
   execution_mode: "local_git_node24_npm_plus_github_actions"
   github_actions_required: true
   production_deploy_allowed: false
@@ -26,19 +26,15 @@ current_task:
   force_push_allowed: false
   next_task_start_allowed: false
   remediation_requires:
-    - "quality passes from clean checkout without pre-existing dist"
-    - "GitHub Actions quality run succeeds and audit executes"
-    - "serialized dates load in all content collections"
-    - "negative fixtures are rejected by shared schemas"
-    - "generated dynamic routes are asserted in dist"
-    - "broken route and anchor checks fail"
-    - "mobile navigation behavior works"
-    - "foundation CSS is imported"
-    - "canonical and base path are correct exactly once"
-    - "prelaunch and production mode contracts pass"
-    - "RSS, search and production sitemap contain published fixtures only"
+    - "positive and negative fixtures use the same exported schemas"
+    - "document_verified and URL refinements are enforced by schemas"
+    - "Fact period or periodNotApplicable refinement is enforced"
+    - "broken route and broken anchor fail independently"
+    - "mobile navigation has actual keyboard behavior proof or native contract"
+    - "all previous quality gates remain green"
+    - "new GitHub Actions run succeeds and audit executes"
   next_allowed_action:
     after_pass: "owner review of Draft PR 20"
     task_after_merge_only: "SITE-DESIGN-001"
     issue_after_merge_only: "https://github.com/spikeal8-maker/alexander-alikin/issues/8"
-stop_rule: "После remediation-отчёта остановиться. Merge и SITE-DESIGN-001 запрещены до owner review."
+stop_rule: "После remediation-2 отчёта остановиться. Merge и SITE-DESIGN-001 запрещены до owner review."

@@ -49,4 +49,37 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log("Accessibility smoke: PASS");
+
+// Native mobile contract check
+const mobileErrors = [];
+const headerHtmls = walk(distDir).filter((f) => !f.includes("404.html") && !f.includes("search"));
+for (const html of headerHtmls) {
+  const content = fs.readFileSync(html, "utf8");
+
+  const hasDetails = content.includes("<details");
+  if (hasDetails) {
+    const detailsMatch = content.match(/<details[^>]*>([\s\S]*?)<\/details>/m);
+    if (detailsMatch) {
+      const detailsContent = detailsMatch[1];
+      if (!detailsContent.includes("<summary")) {
+        mobileErrors.push(`${html}: <details> missing <summary>`);
+      }
+      if (!detailsContent.includes("<nav")) {
+        mobileErrors.push(`${html}: mobile nav not inside <details>`);
+      }
+    }
+  } else {
+    mobileErrors.push(`${html}: missing <details> for mobile nav`);
+  }
+
+  if (/tabindex\s*=\s*"-1"/.test(content)) {
+    mobileErrors.push(`${html}: found tabindex="-1" — tabIndex should not be disabled`);
+  }
+}
+
+if (mobileErrors.length) {
+  console.error("MOBILE CONTRACT ERRORS:");
+  console.error(mobileErrors.join("\n"));
+  process.exit(1);
+}
+console.log("Accessibility smoke: PASS (mobile details/summary contract verified)");

@@ -6,20 +6,22 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true});require('fs').rmSync('.astro',{recursive:true,force:true})\"",
     "preview": "astro preview",
     "format:check": "prettier --check \"src/**/*.{astro,ts,mjs,css}\" \"scripts/**/*.mjs\"",
     "format:write": "prettier --write \"src/**/*.{astro,ts,mjs,css}\" \"scripts/**/*.mjs\"",
     "lint": "eslint \"src/**/*.{astro,ts}\" \"scripts/**/*.mjs\"",
     "typecheck": "astro check",
     "test:content": "node scripts/validate-content.mjs",
-    "test:routes": "node scripts/validate-routes.mjs",
+    "test:source-routes": "node scripts/validate-source-routes.mjs",
+    "test:secrets": "node scripts/validate-secrets.mjs",
+    "test:generated-routes": "node scripts/validate-generated-routes.mjs",
     "test:links": "node scripts/validate-links.mjs",
     "test:leaks": "node scripts/validate-leaks.mjs",
-    "test:secrets": "node scripts/validate-secrets.mjs",
     "test:dist": "node scripts/validate-dist.mjs",
     "test:a11y": "node scripts/validate-a11y.mjs",
     "test:file-size": "node scripts/validate-file-size.mjs",
-    "quality": "npm run format:check && npm run lint && npm run typecheck && npm run test:content && npm run test:routes && npm run test:links && npm run test:secrets && npm run build && npm run test:leaks && npm run test:dist && npm run test:a11y && npm run test:file-size"
+    "quality": "npm run clean && npm run format:check && npm run lint && npm run typecheck && npm run test:content && npm run test:source-routes && npm run test:secrets && npm run build && npm run test:generated-routes && npm run test:links && npm run test:leaks && npm run test:dist && npm run test:a11y && npm run test:file-size"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

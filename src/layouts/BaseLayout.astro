@@ -3,6 +3,7 @@ import { site, buildUrl, siteUrl } from "@config/site";
 import Header from "@components/foundation/Header.astro";
 import Footer from "@components/foundation/Footer.astro";
 import Breadcrumbs from "@components/foundation/Breadcrumbs.astro";
+import "@src/styles/foundation.css";
 ---
 
 <!doctype html>
@@ -13,7 +14,7 @@ import Breadcrumbs from "@components/foundation/Breadcrumbs.astro";
     <title>{Astro.props.title}</title>
     <meta name="description" content={Astro.props.description} />
     {site.prelaunch && <meta name="robots" content="noindex, nofollow" />}
-    <link rel="canonical" href={siteUrl(Astro.url.pathname)} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, site.url).href} />
     <link rel="icon" type="image/svg+xml" href={buildUrl("/favicon.svg")} />
     <link
       rel="alternate"
@@ -59,10 +60,10 @@ import Breadcrumbs from "@components/foundation/Breadcrumbs.astro";
 <script>
   document.querySelector(".mobile-nav-toggle")?.addEventListener("click", () => {
     const btn = document.querySelector(".mobile-nav-toggle") as HTMLButtonElement | null;
-    const nav = document.getElementById("primary-nav");
-    if (!btn || !nav) return;
-    const visible = nav.dataset.visible === "true";
-    nav.dataset.visible = visible ? "false" : "true";
+    const list = document.querySelector(".nav-list") as HTMLElement | null;
+    if (!btn || !list) return;
+    const visible = list.dataset.visible === "true";
+    list.dataset.visible = visible ? "false" : "true";
     btn.setAttribute("aria-expanded", String(!visible));
   });
 </script>

@@ -85,6 +85,10 @@
   background: var(--color-accent);
 }
 
+.mobile-nav-wrapper {
+  display: none;
+}
+
 .mobile-nav-toggle {
   display: none;
   background: none;
@@ -94,9 +98,14 @@
   cursor: pointer;
   font-size: 1.25rem;
   line-height: 1;
+  list-style: none;
 }
 
-.mobile-nav-toggle[aria-expanded="true"] {
+.mobile-nav-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-nav-wrapper[open] .mobile-nav-toggle {
   border-color: var(--color-primary);
 }
 
@@ -143,6 +152,9 @@ main {
 }
 
 @media (max-width: 768px) {
+  .mobile-nav-wrapper {
+    display: block;
+  }
   .mobile-nav-toggle {
     display: block;
   }
@@ -154,7 +166,7 @@ main {
     gap: 0;
   }
 
-  .nav-list[data-visible="true"] {
+  .mobile-nav-wrapper[open] .nav-list {
     display: flex;
   }
 

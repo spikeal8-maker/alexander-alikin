@@ -53,11 +53,24 @@ for (const file of allFiles) {
 
     const relPath = href.slice(BASE_PATH.length);
     if (relPath.includes("#")) {
-      const [page] = relPath.split("#");
-      if (page) {
-        const targetPath = path.join(distDir, page.replace(/^\//, ""), "index.html");
-        if (!fs.existsSync(targetPath)) {
-          errors.push(`${file}: broken link ${href} → page not found at ${targetPath}`);
+      const [page, anchor] = relPath.split("#");
+      const targetPath = page ? path.join(distDir, page.replace(/^\//, ""), "index.html") : file;
+
+      if (page && !fs.existsSync(targetPath)) {
+        errors.push(`${file}: broken link ${href} → page not found`);
+        continue;
+      }
+
+      if (anchor) {
+        const decodedAnchor = decodeURIComponent(anchor);
+        const targetFile = page ? targetPath : file;
+        const targetContent = fs.readFileSync(targetFile, "utf8");
+        const idPattern = new RegExp(
+          `id=["']${decodedAnchor.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`,
+          "i",
+        );
+        if (!idPattern.test(targetContent)) {
+          errors.push(`${file}: broken anchor ${href} → #${decodedAnchor} not found in target`);
         }
       }
     } else {

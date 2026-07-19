@@ -56,14 +56,3 @@ import "@src/styles/foundation.css";
     <Footer />
   </body>
 </html>
-
-<script>
-  document.querySelector(".mobile-nav-toggle")?.addEventListener("click", () => {
-    const btn = document.querySelector(".mobile-nav-toggle") as HTMLButtonElement | null;
-    const list = document.querySelector(".nav-list") as HTMLElement | null;
-    if (!btn || !list) return;
-    const visible = list.dataset.visible === "true";
-    list.dataset.visible = visible ? "false" : "true";
-    btn.setAttribute("aria-expanded", String(!visible));
-  });
-</script>

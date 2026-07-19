@@ -1,0 +1,29 @@
+name: Исправление факта или текста
+description: Предложить исправление публичного материала
+title: "[Content] "
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Страница или материал
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Текущая формулировка
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Предлагаемое исправление
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Источник или основание
+      description: Ссылка, документ или пояснение.
+    validations:
+      required: true

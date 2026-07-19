@@ -1,0 +1,33 @@
+name: Новый материал
+description: Предложить статью, историю, мысль, новость или проект
+title: "[Material] "
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Тип
+      options:
+        - История
+        - Статья
+        - Мысль
+        - Новость
+        - Проект
+        - Биография
+    validations:
+      required: true
+  - type: input
+    id: working-title
+    attributes:
+      label: Рабочий заголовок
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Главная идея
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Источники и доказательства

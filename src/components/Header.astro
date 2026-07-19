@@ -1,0 +1,22 @@
+---
+import { site } from '../data/site';
+import { pagePath } from '../lib/url';
+---
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href={pagePath('/')}>
+      <span class="brand-mark" aria-hidden="true">АА</span>
+      <span>
+        <strong>Александр Аликин</strong>
+        <small>Проекты · системы · мысли</small>
+      </span>
+    </a>
+    <nav aria-label="Основная навигация">
+      <ul>
+        {site.nav.map((item) => <li><a href={pagePath(item.href)}>{item.label}</a></li>)}
+      </ul>
+    </nav>
+    <a class="header-search" href={pagePath('/search/')}>Поиск</a>
+  </div>
+</header>

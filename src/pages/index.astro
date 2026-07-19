@@ -1,0 +1,165 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ContentCard from '../components/ContentCard.astro';
+import { byNewest, isPublished } from '../lib/content';
+import { pagePath } from '../lib/url';
+
+const projects = (await getCollection('projects', isPublished))
+  .sort((a, b) => a.data.order - b.data.order).slice(0, 4);
+const stories = (await getCollection('stories', isPublished)).sort(byNewest).slice(0, 3);
+const thoughts = (await getCollection('thoughts', isPublished)).sort(byNewest).slice(0, 4);
+const news = (await getCollection('news', isPublished)).sort(byNewest).slice(0, 3);
+const nowItems = (await getCollection('now', isPublished))
+  .filter((item) => item.data.expiresAt >= new Date())
+  .sort((a, b) => a.data.priority - b.data.priority).slice(0, 4);
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="shell hero-grid">
+      <div>
+        <p class="eyebrow">Персональная цифровая платформа</p>
+        <h1>Александр Аликин</h1>
+        <p class="hero-title">Инженер, педагог и предприниматель.</p>
+        <p class="hero-copy">
+          Создаю технологические продукты, образовательные системы и решения
+          на основе искусственного интеллекта. Исследую сложные конструкции,
+          запускаю проекты и рассказываю о результатах, ошибках и выводах.
+        </p>
+        <div class="button-row">
+          <a class="button button-primary" href={pagePath('/about/')}>Познакомиться</a>
+          <a class="button button-secondary" href={pagePath('/collaboration/')}>Обсудить проект</a>
+        </div>
+        <blockquote>
+          «Я мыслю как инженер, объясняю как педагог и действую как предприниматель».
+        </blockquote>
+      </div>
+      <div class="portrait-placeholder" aria-label="Место для настоящего портрета Александра">
+        <span class="portrait-monogram">АА</span>
+        <p>Настоящий портрет будет добавлен после отбора фотографий.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-accent">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Сейчас"
+        title="Над чем я работаю"
+        description="Живой срез текущих задач. Этот раздел пересматривается каждый месяц."
+      />
+      <div class="now-grid">
+        {nowItems.map((item) => (
+          <article><h3>{item.data.title}</h3><p>{item.data.description}</p></article>
+        ))}
+      </div>
+      <a class="text-link" href={pagePath('/now/')}>Все текущие направления →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Практика"
+        title="Избранные проекты"
+        description="Не перечень технологий, а задачи, роли, состояние и полученные выводы."
+      />
+      <div class="card-grid card-grid-two">
+        {projects.map((project) => (
+          <ProjectCard
+            href={pagePath(`/projects/${project.id}/`)}
+            title={project.data.title}
+            description={project.data.description}
+            status={project.data.status}
+            role={project.data.role}
+            topics={project.data.topics}
+            evidenceStatus={project.data.evidenceStatus}
+          />
+        ))}
+      </div>
+      <a class="text-link" href={pagePath('/projects/')}>Каталог проектов →</a>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Человек"
+        title="Истории, через которые понятен путь"
+        description="Проекты, решения, ошибки и смена масштаба — без героической легенды."
+      />
+      <div class="card-grid card-grid-three">
+        {stories.map((story) => (
+          <ContentCard
+            href={pagePath(`/stories/${story.id}/`)}
+            eyebrow="История"
+            title={story.data.title}
+            description={story.data.description}
+            date={story.data.publishedAt}
+            topics={story.data.topics}
+            evidenceStatus={story.data.evidenceStatus}
+          />
+        ))}
+      </div>
+      <a class="text-link" href={pagePath('/stories/')}>Все истории →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Авторская позиция"
+        title="Мысли"
+        description="Короткие формулы, за которыми стоят практика, контекст и отдельные разборы."
+      />
+      <div class="thought-grid">
+        {thoughts.map((thought) => (
+          <a class="thought-card" href={pagePath(`/thoughts/${thought.id}/`)}>
+            <span>“</span>
+            <strong>{thought.data.statement}</strong>
+            <small>{thought.data.title}</small>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="shell split-callout">
+      <div>
+        <p class="eyebrow">Сотрудничество</p>
+        <h2>Сначала понять задачу. Потом выбирать технологию.</h2>
+      </div>
+      <div>
+        <p>
+          Подход начинается с контекста, процесса, ограничений и критерия результата.
+          Возможные форматы: аудит, прототип, образовательная программа,
+          партнёрская разработка или экспертный разбор.
+        </p>
+        <a class="button button-light" href={pagePath('/collaboration/')}>Как можно работать вместе</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="Обновления" title="Последние новости" />
+      <div class="card-grid card-grid-three">
+        {news.map((item) => (
+          <ContentCard
+            href={pagePath(`/news/${item.id}/`)}
+            eyebrow="Новость"
+            title={item.data.title}
+            description={item.data.description}
+            date={item.data.publishedAt}
+            topics={item.data.topics}
+            evidenceStatus={item.data.evidenceStatus}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

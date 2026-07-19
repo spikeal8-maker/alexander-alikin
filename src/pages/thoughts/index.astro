@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContentCard from '../../components/ContentCard.astro';
+import { byNewest, isPublished } from '../../lib/content';
+import { pagePath } from '../../lib/url';
+
+const entries = (await getCollection('thoughts', isPublished)).sort(byNewest);
+---
+<BaseLayout title="Мысли" description="Короткие формулы с контекстом и связями с практикой.">
+  <section class="page-hero"><div class="shell narrow">
+    <p class="eyebrow">Авторская позиция</p><h1>Мысли</h1><p class="lead">Короткие формулы с контекстом и связями с практикой.</p>
+  </div></section>
+  <section class="section"><div class="shell card-grid card-grid-three">
+    {entries.map((entry) => (
+      <ContentCard
+        href={pagePath(`/thoughts/${entry.id}/`)}
+        eyebrow="Мысль"
+        title={entry.data.title}
+        description={entry.data.description}
+        date={entry.data.publishedAt}
+        topics={entry.data.topics}
+        evidenceStatus={entry.data.evidenceStatus}
+      />
+    ))}
+  </div></section>
+</BaseLayout>

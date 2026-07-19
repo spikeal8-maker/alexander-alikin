@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContentCard from '../../components/ContentCard.astro';
+import { byNewest, isPublished } from '../../lib/content';
+import { pagePath } from '../../lib/url';
+
+const entries = (await getCollection('stories', isPublished)).sort(byNewest);
+---
+<BaseLayout title="Истории" description="События, решения, ошибки и выводы, через которые понятен человек.">
+  <section class="page-hero"><div class="shell narrow">
+    <p class="eyebrow">Личный и профессиональный путь</p><h1>Истории</h1><p class="lead">События, решения, ошибки и выводы, через которые понятен человек.</p>
+  </div></section>
+  <section class="section"><div class="shell card-grid card-grid-three">
+    {entries.map((entry) => (
+      <ContentCard
+        href={pagePath(`/stories/${entry.id}/`)}
+        eyebrow="История"
+        title={entry.data.title}
+        description={entry.data.description}
+        date={entry.data.publishedAt}
+        topics={entry.data.topics}
+        evidenceStatus={entry.data.evidenceStatus}
+      />
+    ))}
+  </div></section>
+</BaseLayout>

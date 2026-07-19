@@ -1,0 +1,278 @@
+version: 1
+updated_at: "2026-07-19"
+project:
+  id: "alexander-alikin-personal-platform"
+  title: "Александр Аликин — персональная цифровая платформа"
+  public_repository: "spikeal8-maker/alexander-alikin"
+  private_repository: "spikeal8-maker/alexander-alikin-vault"
+  epic_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/5"
+  foundation_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/1"
+  production_branch: "main"
+  publication_rule: "main соответствует опубликованной версии; private vault не подключается к production"
+
+objective:
+  primary: "Создавать качественные предметные разговоры через проверяемую цифровую личность Александра"
+  identity_result: "Человек из поиска понимает, кто такой Александр, чем занимается сейчас и почему ему можно доверять"
+  commercial_result: "Владелец бизнеса или руководитель образования находит релевантное доказательство и начинает контекстный разговор"
+  media_result: "Читатель находит самостоятельные мысли, истории и проекты и получает причину возвращаться"
+
+positioning:
+  professional: "Александр Аликин — предприниматель-практик и инженер-педагог, который проектирует и запускает технологические, ИИ- и образовательные системы"
+  human: "Разбираю сложные задачи, собираю работающие конструкции, проверяю их практикой и объясняю людям, как ими пользоваться"
+  differentiation:
+    - "инженерная ответственность: архитектура, ограничения, проверка"
+    - "педагогическая ответственность: объяснение, обучение, воспроизводимость"
+    - "предпринимательская ответственность: спрос, экономика, команда, последствия"
+
+navigation:
+  primary:
+    - label: "Обо мне"
+      path: "/about/"
+    - label: "Проекты"
+      path: "/projects/"
+    - label: "Бизнесу"
+      path: "/business/"
+    - label: "Образованию"
+      path: "/education/"
+    - label: "Журнал"
+      path: "/journal/"
+    - label: "Обсудить задачу"
+      path: "/collaboration/"
+      kind: "primary_cta"
+  utility:
+    - label: "Сейчас"
+      path: "/now/"
+    - label: "Как я мыслю"
+      path: "/second-brain/"
+    - label: "Факты и источники"
+      path: "/facts/"
+    - label: "Для СМИ"
+      path: "/press/"
+    - label: "Контакты"
+      path: "/contacts/"
+    - label: "Поиск"
+      path: "/search/"
+    - label: "Конфиденциальность"
+      path: "/privacy/"
+
+routes:
+  - path: "/"
+    audience: "all_new_visitors"
+    question: "Кто такой Александр и куда перейти дальше?"
+    primary_cta: "Обсудить задачу"
+    success_event: "home_route_select_or_primary_cta"
+  - path: "/about/"
+    audience: "identity_search"
+    question: "Как связаны роли и этапы Александра?"
+    primary_cta: "Посмотреть проекты"
+    success_event: "identity_to_project"
+  - path: "/business/"
+    audience: "business_owner"
+    question: "Можно ли разобрать мой процесс и создать измеримый пилот?"
+    primary_cta: "Описать процесс для разбора"
+    success_event: "business_brief_submit"
+  - path: "/education/"
+    audience: "education_leader"
+    question: "Можно ли внедрить программу или лабораторию с видимым результатом?"
+    primary_cta: "Обсудить программу или лабораторию"
+    success_event: "education_brief_submit"
+  - path: "/projects/"
+    audience: "proof_and_partnership"
+    question: "Что Александр реально создавал и какую роль выполнял?"
+    primary_cta: "Открыть релевантный проект"
+    success_event: "project_open"
+  - path: "/journal/"
+    audience: "reader"
+    question: "Есть ли здесь самостоятельные мысли и материалы?"
+    primary_cta: "Читать связанный материал"
+    success_event: "second_content_view"
+  - path: "/press/"
+    audience: "press_and_events"
+    question: "Можно ли быстро проверить факты и получить материалы?"
+    primary_cta: "Запросить комментарий или выступление"
+    success_event: "press_request_submit"
+
+homepage_order:
+  - "header"
+  - "hero_identity_and_portrait"
+  - "intent_router_business_education_about"
+  - "trust_signals"
+  - "now"
+  - "featured_projects"
+  - "method"
+  - "featured_case"
+  - "stories_thoughts_articles"
+  - "short_timeline"
+  - "collaboration_formats"
+  - "final_contextual_cta"
+  - "footer"
+
+design:
+  concept: "Интеллектуальный редакционный журнал + инженерная мастерская"
+  colors:
+    background: "#F6F2EA"
+    surface: "#FFFEFB"
+    text: "#1C252D"
+    primary: "#173B57"
+    accent: "#A8582D"
+    muted: "#5D6B75"
+    border: "#D8D0C4"
+    verified: "#2F6B57"
+    warning: "#8B5A20"
+    danger: "#8A3D3D"
+  required_media:
+    - "real_vertical_portrait"
+    - "real_working_portrait"
+    - "project_photo"
+    - "teaching_or_speaking_photo"
+    - "approved_archive_photos"
+  forbidden_primary_patterns:
+    - "generated_face"
+    - "neon_ai_agency"
+    - "robot_stock_image"
+    - "obsidian_graph_in_hero"
+    - "autoplay_background_video"
+    - "unsupported_metric_counters"
+
+content_launch_package:
+  bios:
+    - "50_words"
+    - "150_words"
+    - "800_to_1200_words"
+  projects_minimum: 6
+  proof_cases_minimum: 3
+  journal:
+    stories_minimum: 5
+    thoughts_minimum: 8
+    articles_minimum: 3
+    factual_news_minimum: 3
+    curated_videos_minimum: 2
+  content_task_url: "https://github.com/spikeal8-maker/alexander-alikin-vault/issues/5"
+  evidence_levels:
+    - "author_statement"
+    - "public_source"
+    - "document_verified"
+
+implementation_tasks:
+  - id: "SITE-STRATEGY-001"
+    issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/6"
+    branch: "agent/foundation-architecture"
+    status: "in_review"
+    depends_on: []
+    blocks: ["SITE-PLATFORM-001"]
+  - id: "SITE-CONTENT-001"
+    issue_url: "https://github.com/spikeal8-maker/alexander-alikin-vault/issues/5"
+    repository: "spikeal8-maker/alexander-alikin-vault"
+    status: "blocked"
+    depends_on: ["vault-foundation", "vault-media", "vault-evidence", "vault-biographies"]
+    blocks: ["SITE-HOME-001", "SITE-IDENTITY-001", "SITE-BUSINESS-001", "SITE-EDUCATION-001", "SITE-PROJECTS-001", "SITE-JOURNAL-001"]
+  - id: "SITE-PLATFORM-001"
+    issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/7"
+    branch: "agent/site-platform"
+    status: "blocked"
+    depends_on: ["SITE-STRATEGY-001"]
+    blocks: ["SITE-DESIGN-001"]
+  - id: "SITE-DESIGN-001"
+    issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/8"
+    branch: "agent/site-design-system"
+    status: "blocked"
+    depends_on: ["SITE-PLATFORM-001"]
+    blocks: ["SITE-HOME-001"]
+  - id: "SITE-HOME-001"
+    issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/9"
+    branch: "agent/site-home"
+    status: "blocked"
+    depends_on: ["SITE-DESIGN-001", "SITE-CONTENT-001"]
+    blocks: ["SITE-IDENTITY-001"]
+  - id: "SITE-IDENTITY-001"
+    issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/10"
+    branch: "agent/site-identity"
+    status: "blocked"
+    depends_on: ["SITE-HOME-001", "SITE-CONTENT-001"]
+    blocks: ["SITE-BUSINESS-001"]
+  - id: "SITE-BUSINESS-001"
+    issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/11"
+    branch: "agent/site-business"
+    status: "blocked"
+    depends_on: ["SITE-IDENTITY-001", "SITE-CONTENT-001"]
+    blocks: ["SITE-EDUCATION-001"]
+  - id: "SITE-EDUCATION-001"
+    issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/12"
+    branch: "agent/site-education"
+    status: "blocked"
+    depends_on: ["SITE-BUSINESS-001", "SITE-CONTENT-001"]
+    blocks: ["SITE-PROJECTS-001"]
+  - id: "SITE-PROJECTS-001"
+    issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/13"
+    branch: "agent/site-projects"
+    status: "blocked"
+    depends_on: ["SITE-EDUCATION-001", "SITE-CONTENT-001"]
+    blocks: ["SITE-JOURNAL-001"]
+  - id: "SITE-JOURNAL-001"
+    issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/14"
+    branch: "agent/site-journal"
+    status: "blocked"
+    depends_on: ["SITE-PROJECTS-001", "SITE-CONTENT-001"]
+    blocks: ["SITE-DISCOVERY-001"]
+  - id: "SITE-DISCOVERY-001"
+    issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/15"
+    branch: "agent/site-discovery"
+    status: "blocked"
+    depends_on: ["SITE-JOURNAL-001"]
+    blocks: ["SITE-CONTACT-001"]
+  - id: "SITE-CONTACT-001"
+    issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/16"
+    branch: "agent/site-contact"
+    status: "blocked"
+    depends_on: ["SITE-DISCOVERY-001", "SITE-BUSINESS-001", "SITE-EDUCATION-001"]
+    blocks: ["SITE-LAUNCH-001"]
+  - id: "SITE-LAUNCH-001"
+    issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/17"
+    branch: "agent/site-launch"
+    status: "blocked"
+    depends_on: ["SITE-CONTACT-001", "public_issue_2_photos", "public_issue_3_cases", "public_issue_4_pages_domain"]
+    blocks: []
+
+quality_command: "npm run quality"
+quality_required:
+  - "format"
+  - "lint"
+  - "typecheck"
+  - "content_schema"
+  - "internal_links"
+  - "external_link_report"
+  - "build"
+  - "sitemap_rss"
+  - "draft_private_leak"
+  - "secret_scan"
+  - "accessibility_smoke"
+  - "browser_navigation_smoke"
+  - "mobile_screenshot"
+  - "structured_data"
+  - "canonical_noindex_audit"
+
+launch_gates:
+  - "approved_hero_copy"
+  - "real_portraits_and_work_photos"
+  - "approved_bios_50_150_800"
+  - "proof_cases_at_least_3"
+  - "business_page_complete"
+  - "education_page_complete"
+  - "projects_at_least_6"
+  - "journal_launch_package_complete"
+  - "now_current_and_dated"
+  - "contact_flow_operational"
+  - "no_blocked_public_claims"
+  - "mobile_accessibility_seo_pass"
+  - "domain_https_canonical_pass"
+  - "scenario_tests_at_least_5_pass"
+
+non_goals_v1:
+  - "dark_mode"
+  - "comments"
+  - "multilingual"
+  - "automatic_obsidian_publication"
+  - "public_private_vault_graph"
+  - "full_crm"
+  - "automatic_news_aggregation"
+  - "public_ai_double"

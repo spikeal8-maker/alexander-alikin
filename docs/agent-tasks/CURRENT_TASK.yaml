@@ -2,29 +2,29 @@ version: 1
 updated_at: "2026-07-19"
 repository: "spikeal8-maker/alexander-alikin"
 current_task:
-  id: "TASK-FOUNDATION-EXPAND-001"
-  title: "Развернуть и проверить foundation без зависимости от GitHub Actions"
+  id: "TASK-FOUNDATION-CONSOLIDATE-001"
+  title: "Очистить PR №1 до канонического стратегического фундамента"
   status: "ready"
   severity: "merge-blocker"
-  issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/18"
-  task_document: "docs/agent-tasks/TASK-FOUNDATION-EXPAND.md"
+  issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/19"
+  task_document: "docs/agent-tasks/TASK-FOUNDATION-CONSOLIDATE.md"
   rules_document: "AGENTS.md"
   branch: "agent/foundation-architecture"
   pull_request_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/1"
   base_branch: "main"
-  execution_mode: "local_git_node_python"
+  execution_mode: "local_git"
   github_actions_required: false
   merge_allowed: false
   force_push_allowed: false
   next_task_start_allowed: false
   completion_requires:
-    - "bootstrap payload removed"
-    - "ordinary source and configuration files committed"
-    - "newer canonical documentation preserved"
-    - "quality command passed"
-    - "production build passed"
-    - "secret and private-material checks passed"
-    - "factual report posted to Issue 18 and PR 1"
+    - "technical Astro scaffold removed from final PR diff"
+    - "automatic deploy workflow removed"
+    - "canonical strategy and ADR 0001-0005 preserved"
+    - "duplicate and conflicting documentation removed"
+    - "README and implementation status made factual"
+    - "git diff check passed"
+    - "factual report posted to Issue 19 and PR 1"
 next_allowed_action:
   after_pass: "owner review of Draft PR 1"
   task_after_merge_only: "SITE-PLATFORM-001"

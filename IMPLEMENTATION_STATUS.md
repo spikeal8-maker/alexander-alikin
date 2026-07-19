@@ -2,100 +2,75 @@
 
 ## Текущий этап
 
-`FOUNDATION-CONSOLIDATE-001 — completed / awaiting_owner_review`
+`SITE-PLATFORM-001 — remediation_required / merge_blocked`
 
-Канонический стратегический, редакционный и governance-фундамент подготовлен в ветке `agent/foundation-architecture`. Draft PR №1 содержит стратегию, backlog, архитектурные решения и supporting-документацию. Технический scaffold исключён из конечного diff и сохранён в истории commit `8ff507d` только как reference.
+Стратегический foundation принят и merged в `main` commit `5feccb8c39364e8d785b0d06691b718f55bdb165`.
 
-После независимого review устранено последнее обнаруженное противоречие: `CONTENT_MODEL.md` приведён к каноническим уровням доказательности `author_statement`, `public_source`, `document_verified`.
+Текущая работа:
 
-## Текущий gate
+```text
+Issue: https://github.com/spikeal8-maker/alexander-alikin/issues/7
+Branch: agent/site-platform
+Draft PR: https://github.com/spikeal8-maker/alexander-alikin/pull/20
+Audited HEAD: 38829aac7a7782ca3a7fad68fa151001683e8eeb
+Failed Actions run: https://github.com/spikeal8-maker/alexander-alikin/actions/runs/29705514096
+```
 
-Issue №19 завершена по техническому scope. Следующее действие — только owner review Draft PR №1.
+## Результат независимого review
 
-До решения владельца:
+Локальный отчёт `12/12 PASS` не является exit gate. GitHub Actions на чистом Ubuntu checkout завершился failure на шаге `npm run quality`; dependency audit был skipped.
 
-- merge запрещён;
-- Issue №7 не начинается;
-- технический сайт не реализуется в этой ветке;
-- утверждённые аудитории, навигация, CTA и палитра не меняются скрыто.
+Обнаружены merge-блокеры:
 
-## Что входит в PR №1
+- generated-output test запускается до build и проходит локально только при старом `dist/`;
+- serialized dates не загружаются существующими `z.date()` schemas;
+- negative fixtures проверяются на наличие, а не отклоняются общими schemas;
+- route gate проверяет route files, а не generated dynamic URLs;
+- link gate не проверяет существование targets и anchors;
+- mobile menu изменяет атрибут не на том DOM-элементе и остаётся скрытым;
+- foundation CSS не импортирован в layout;
+- canonical/base-path, RSS и search URLs не доказаны generated tests;
+- robots всегда блокирует crawling, а prelaunch robots указывает на отсутствующий sitemap;
+- GitHub Actions красный.
 
-- каноническая стратегия сайта;
-- модель целевых аудиторий;
-- спецификации страниц;
-- blueprint главной страницы;
-- пользовательские маршруты и CTA;
-- визуальная система;
-- план контента и доказательств;
-- программа реализации;
-- SEO, аналитика и эксплуатационная модель;
-- governance и редакционные политики;
-- архитектурные решения ADR 0001–0005;
-- правила работы coding-агентов;
-- machine-readable execution manifest;
-- backlog и критерии запуска.
+## Канонический remediation-контракт
 
-## Что не входит в PR №1
+- `docs/agent-tasks/CURRENT_TASK.yaml`;
+- `docs/agent-tasks/TASK-SITE-PLATFORM-REMEDIATION.md`;
+- `docs/agent-tasks/TASK-SITE-PLATFORM.md`;
+- `docs/testing/SITE-PLATFORM-QUALITY.md`;
+- Issue №7.
 
-- Astro-код, компоненты, страницы и стили;
-- `package.json` и зависимости;
-- CI/CD и production deploy;
-- настоящие фотографии;
-- утверждённые биографии;
-- доказательные кейсы;
-- публичный контент запуска.
+## Требуемый пользовательский результат
 
-## Реализовано на уровне стратегии и спецификации
+Получить воспроизводимый технический каркас, который проходит из чистого checkout:
 
-- цель сайта и критерии успеха;
-- приоритеты аудиторий;
-- отдельные маршруты личности, бизнеса, образования, проектов, журнала и СМИ;
-- назначение, доказательства, CTA и аналитика каждой ключевой страницы;
-- редакционно-инженерная визуальная система;
-- контентная модель и канонические уровни доказательности;
-- поэтапная программа разработки;
-- условия публичного запуска;
-- Epic и задачи реализации в GitHub Issues.
+```text
+clean checkout
+→ npm ci
+→ npm run quality
+→ generated published routes существуют
+→ draft/blocked routes отсутствуют
+→ links/canonical/RSS/search/sitemap согласованы
+→ mobile navigation работает
+→ GitHub Actions success
+→ npm audit фактически выполнен
+```
 
-## Канонические ссылки
+## Запрещено до remediation PASS
 
-- Draft PR: <https://github.com/spikeal8-maker/alexander-alikin/pull/1>
-- Epic V1: <https://github.com/spikeal8-maker/alexander-alikin/issues/5>
-- Strategy task: <https://github.com/spikeal8-maker/alexander-alikin/issues/6>
-- Consolidation task: <https://github.com/spikeal8-maker/alexander-alikin/issues/19>
-- Private content task: <https://github.com/spikeal8-maker/alexander-alikin-vault/issues/5>
+- merge PR №20;
+- перевод PR в Ready for review;
+- начало Issue №8;
+- ослабление Test IDs;
+- `continue-on-error`;
+- отключение CI;
+- production deploy;
+- импорт приватного vault;
+- добавление реального контента или финального дизайна.
 
-## Следующая допустимая задача
+## Следующий допустимый шаг
 
-Только после owner approval и merge PR №1:
+Только выполнение remediation в существующей ветке и Draft PR. После зелёного локального и GitHub Actions gate — owner review PR №20.
 
-`SITE-PLATFORM-001 — Astro-каркас, content collections и нормативный quality gate`
-
-Issue: <https://github.com/spikeal8-maker/alexander-alikin/issues/7>
-
-Контентный трек может подготавливаться в приватном vault, но публичные страницы не считаются готовыми до утверждения реальных материалов, фактов и прав.
-
-## Контрольные принципы
-
-- публичный репозиторий содержит только утверждённый открытый контент;
-- приватный vault не подключается к production;
-- бизнес и образование имеют отдельные посадочные страницы;
-- главная представляет человека и маршрутизирует намерение;
-- сильные факты используют канонические уровни доказательности;
-- одна Issue соответствует одному проверяемому результату и отдельному Draft PR;
-- `main` соответствует опубликованной или принятой базовой версии;
-- следующий Task не запускается автоматически до merge и owner review зависимости.
-
-## Что ещё не реализовано
-
-- техническая Astro-платформа;
-- дизайн-система в коде;
-- production-код канонических страниц;
-- реальные фотографии;
-- утверждённые биографии;
-- три доказательных кейса;
-- рабочий контекстный контакт;
-- GitHub Pages, домен и публичный запуск.
-
-Стратегия и backlog подготовлены, но сайт версии 1.0 ещё не реализован и не опубликован.
+`SITE-DESIGN-001 / Issue №8` разрешается только после owner approval и merge PR №20.

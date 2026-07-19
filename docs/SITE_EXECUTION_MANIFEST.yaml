@@ -1,5 +1,5 @@
-version: 2
-updated_at: "2026-07-19"
+version: 3
+updated_at: "2026-07-20"
 
 project:
   id: "alexander-alikin-personal-platform"
@@ -7,24 +7,26 @@ project:
   public_repository: "spikeal8-maker/alexander-alikin"
   private_repository: "spikeal8-maker/alexander-alikin-vault"
   epic_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/5"
-  foundation_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/1"
   production_branch: "main"
-  publication_rule: "main соответствует опубликованной версии; private vault не подключается к production"
+  foundation_commit: "5feccb8c39364e8d785b0d06691b718f55bdb165"
+  publication_rule: "main соответствует принятой базовой или опубликованной версии; private vault не подключается к production"
 
 current_state:
-  strategy: "in_review"
-  foundation_pr: "draft_merge_blocked"
-  blocker_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/18"
-  bootstrap_payload_expanded: false
-  package_json_present: false
-  astro_source_present_as_regular_files: false
-  workflow_run_recorded_for_current_head: false
-  build_quality_verified: false
-  required_before_merge:
-    - "развернуть или удалить bootstrap payload"
-    - "сделать обычные файлы доступными в PR diff"
-    - "фактически выполнить npm run quality"
-    - "оставить PR Draft до owner review"
+  strategy: "done"
+  foundation_pr: "merged"
+  current_task: "SITE-PLATFORM-001"
+  current_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/7"
+  current_branch: "agent/site-platform"
+  current_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/20"
+  current_status: "ready"
+  production_deploy_allowed: false
+  next_task_start_allowed: false
+  required_before_owner_review:
+    - "all site-platform Test IDs pass"
+    - "npm ci and npm run quality pass"
+    - "dependency audit has no high or critical findings"
+    - "Draft PR contains factual report"
+    - "SITE-DESIGN-001 is not started"
 
 objective:
   primary: "Создавать качественные предметные разговоры через проверяемую цифровую личность Александра"
@@ -58,41 +60,30 @@ navigation:
     - { label: "Конфиденциальность", path: "/privacy/" }
 
 routes:
-  - path: "/"
-    audience: "all_new_visitors"
-    question: "Кто такой Александр и куда перейти дальше?"
-    primary_cta: "Обсудить задачу"
-    success_event: "home_route_select_or_primary_cta"
-  - path: "/about/"
-    audience: "identity_search"
-    question: "Как связаны роли и этапы Александра?"
-    primary_cta: "Посмотреть проекты"
-    success_event: "identity_to_project"
-  - path: "/business/"
-    audience: "business_owner"
-    question: "Можно ли разобрать мой процесс и создать измеримый пилот?"
-    primary_cta: "Описать процесс для разбора"
-    success_event: "business_brief_submit"
-  - path: "/education/"
-    audience: "education_leader"
-    question: "Можно ли внедрить программу или лабораторию с видимым результатом?"
-    primary_cta: "Обсудить программу или лабораторию"
-    success_event: "education_brief_submit"
-  - path: "/projects/"
-    audience: "proof_and_partnership"
-    question: "Что Александр реально создавал и какую роль выполнял?"
-    primary_cta: "Открыть релевантный проект"
-    success_event: "project_open"
-  - path: "/journal/"
-    audience: "reader"
-    question: "Есть ли здесь самостоятельные мысли и материалы?"
-    primary_cta: "Читать связанный материал"
-    success_event: "second_content_view"
-  - path: "/press/"
-    audience: "press_and_events"
-    question: "Можно ли быстро проверить факты и получить материалы?"
-    primary_cta: "Запросить комментарий или выступление"
-    success_event: "press_request_submit"
+  - { path: "/", audience: "all_new_visitors", primary_cta: "Обсудить задачу" }
+  - { path: "/about/", audience: "identity_search", primary_cta: "Посмотреть проекты" }
+  - { path: "/projects/", audience: "proof_and_partnership", primary_cta: "Открыть релевантный проект" }
+  - { path: "/projects/[slug]/", audience: "proof_and_partnership", dynamic: true }
+  - { path: "/business/", audience: "business_owner", primary_cta: "Описать процесс для разбора" }
+  - { path: "/education/", audience: "education_leader", primary_cta: "Обсудить программу или лабораторию" }
+  - { path: "/journal/", audience: "reader", primary_cta: "Читать связанный материал" }
+  - { path: "/journal/stories/", audience: "reader" }
+  - { path: "/journal/stories/[slug]/", audience: "reader", dynamic: true }
+  - { path: "/journal/thoughts/", audience: "reader" }
+  - { path: "/journal/thoughts/[slug]/", audience: "reader", dynamic: true }
+  - { path: "/journal/articles/", audience: "reader" }
+  - { path: "/journal/articles/[slug]/", audience: "reader", dynamic: true }
+  - { path: "/journal/news/", audience: "reader" }
+  - { path: "/journal/news/[slug]/", audience: "reader", dynamic: true }
+  - { path: "/journal/video/", audience: "reader" }
+  - { path: "/now/", audience: "identity_search" }
+  - { path: "/facts/", audience: "identity_search" }
+  - { path: "/press/", audience: "press_and_events", primary_cta: "Запросить комментарий или выступление" }
+  - { path: "/second-brain/", audience: "reader" }
+  - { path: "/collaboration/", audience: "all_qualified_contacts" }
+  - { path: "/contacts/", audience: "all_visitors" }
+  - { path: "/search/", audience: "all_visitors" }
+  - { path: "/privacy/", audience: "all_visitors" }
 
 homepage_order:
   - "header"
@@ -122,12 +113,6 @@ design:
     verified: "#2F6B57"
     warning: "#8B5A20"
     danger: "#8A3D3D"
-  required_media:
-    - "real_vertical_portrait"
-    - "real_working_portrait"
-    - "project_photo"
-    - "teaching_or_speaking_photo"
-    - "approved_archive_photos"
   forbidden_primary_patterns:
     - "generated_face"
     - "neon_ai_agency"
@@ -136,8 +121,35 @@ design:
     - "autoplay_background_video"
     - "unsupported_metric_counters"
 
+content_contract:
+  collections:
+    - "profile"
+    - "projects"
+    - "cases"
+    - "stories"
+    - "thoughts"
+    - "articles"
+    - "news"
+    - "now"
+    - "facts"
+    - "media"
+  publication_statuses:
+    - "draft"
+    - "review"
+    - "ready"
+    - "published"
+    - "blocked"
+    - "archived"
+  evidence_levels:
+    - "author_statement"
+    - "public_source"
+    - "document_verified"
+  public_output_rule: "только publicationStatus=published"
+  private_status_supported_in_public_repo: false
+
 content_launch_package:
   task_url: "https://github.com/spikeal8-maker/alexander-alikin-vault/issues/5"
+  status: "blocked"
   bios: ["50_words", "150_words", "800_to_1200_words"]
   projects_minimum: 6
   proof_cases_minimum: 3
@@ -147,21 +159,19 @@ content_launch_package:
     articles_minimum: 3
     factual_news_minimum: 3
     curated_videos_minimum: 2
-  evidence_levels: ["author_statement", "public_source", "document_verified"]
 
 implementation_tasks:
   - id: "FOUNDATION-EXPAND"
     issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/18"
+    status: "done"
     branch: "agent/foundation-architecture"
-    status: "merge_blocker"
-    depends_on: []
-    blocks: ["SITE-STRATEGY-001", "SITE-PLATFORM-001"]
+    blocks: []
   - id: "SITE-STRATEGY-001"
     issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/6"
+    status: "done"
     branch: "agent/foundation-architecture"
-    status: "in_review_merge_blocked"
-    depends_on: ["FOUNDATION-EXPAND"]
-    blocks: ["SITE-PLATFORM-001"]
+    depends_on: []
+    blocks: []
   - id: "SITE-CONTENT-001"
     issue_url: "https://github.com/spikeal8-maker/alexander-alikin-vault/issues/5"
     repository: "spikeal8-maker/alexander-alikin-vault"
@@ -171,7 +181,8 @@ implementation_tasks:
   - id: "SITE-PLATFORM-001"
     issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/7"
     branch: "agent/site-platform"
-    status: "blocked"
+    pull_request_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/20"
+    status: "ready"
     depends_on: ["SITE-STRATEGY-001"]
     blocks: ["SITE-DESIGN-001"]
   - id: "SITE-DESIGN-001"
@@ -236,22 +247,29 @@ implementation_tasks:
     blocks: []
 
 quality_command: "npm run quality"
-quality_required:
-  - "format"
-  - "lint"
-  - "typecheck"
-  - "content_schema"
-  - "internal_links"
-  - "external_link_report"
-  - "build"
-  - "sitemap_rss"
-  - "draft_private_leak"
-  - "secret_scan"
-  - "accessibility_smoke"
-  - "browser_navigation_smoke"
-  - "mobile_screenshot"
-  - "structured_data"
-  - "canonical_noindex_audit"
+quality_profiles:
+  site_platform:
+    contract: "docs/testing/SITE-PLATFORM-QUALITY.md"
+    test_ids:
+      - "TST-PLATFORM-FORMAT-001"
+      - "TST-PLATFORM-LINT-001"
+      - "TST-PLATFORM-TYPE-001"
+      - "TST-PLATFORM-CONTENT-001"
+      - "TST-PLATFORM-ROUTES-001"
+      - "TST-PLATFORM-LINKS-001"
+      - "TST-PLATFORM-LEAK-001"
+      - "TST-PLATFORM-SECRET-001"
+      - "TST-PLATFORM-BUILD-001"
+      - "TST-PLATFORM-DIST-001"
+      - "TST-PLATFORM-A11Y-001"
+      - "TST-PLATFORM-SIZE-001"
+  release:
+    additional_requirements:
+      - "browser_navigation_smoke"
+      - "mobile_screenshots"
+      - "structured_data_validation"
+      - "performance_audit"
+      - "canonical_and_noindex_audit"
 
 launch_gates:
   - "approved_hero_copy"

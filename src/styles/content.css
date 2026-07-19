@@ -1,0 +1,122 @@
+.route-shell {
+  max-width: 42rem;
+}
+
+.route-shell h1 {
+  font-size: 1.75rem;
+}
+
+.route-shell .description {
+  font-size: 1.125rem;
+  color: var(--color-muted);
+  margin-bottom: var(--space-xl);
+}
+
+.breadcrumbs {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.breadcrumbs a {
+  color: var(--color-muted);
+}
+
+.breadcrumbs .separator {
+  margin: 0 var(--space-xs);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-badge.published {
+  background: color-mix(in srgb, var(--color-verified) 15%, transparent);
+  color: var(--color-verified);
+}
+
+.status-badge.draft {
+  background: color-mix(in srgb, var(--color-warning) 15%, transparent);
+  color: var(--color-warning);
+}
+
+.status-badge.blocked {
+  background: color-mix(in srgb, var(--color-danger) 15%, transparent);
+  color: var(--color-danger);
+}
+
+.status-badge.archived {
+  background: color-mix(in srgb, var(--color-muted) 15%, transparent);
+  color: var(--color-muted);
+}
+
+.evidence-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+.evidence-badge::before {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.evidence-badge.author_statement::before {
+  background: var(--color-muted);
+}
+
+.evidence-badge.public_source::before {
+  background: var(--color-primary);
+}
+
+.evidence-badge.document_verified::before {
+  background: var(--color-verified);
+}
+
+.content-body {
+  max-width: 42rem;
+  line-height: 1.7;
+}
+
+.content-body p,
+.content-body ul,
+.content-body ol {
+  margin-bottom: var(--space-md);
+}
+
+.content-body h2,
+.content-body h3 {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-md);
+}
+
+.content-body ul,
+.content-body ol {
+  padding-left: var(--space-lg);
+}
+
+.content-body blockquote {
+  border-left: 3px solid var(--color-border);
+  padding-left: var(--space-md);
+  color: var(--color-muted);
+  margin: var(--space-lg) 0;
+}
+
+.content-body code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: color-mix(in srgb, var(--color-muted) 10%, transparent);
+  padding: 0.125em 0.375em;
+  border-radius: var(--radius);
+}

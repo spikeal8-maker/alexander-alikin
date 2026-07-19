@@ -1,0 +1,57 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { buildUrl } from "@config/site";
+---
+
+<BaseLayout
+  title="Сотрудничество — Александр Аликин"
+  description="Выберите контекст: бизнес-задача, образовательная программа, партнёрство, выступление или другой вопрос."
+  currentPath="/collaboration/"
+  breadcrumbs={[{ label: "Сотрудничество" }]}
+>
+  <div class="container">
+    <div class="route-shell">
+      <h1>Сотрудничество</h1>
+      <p class="description">
+        Выберите контекст обращения. Это поможет мне быстрее понять вашу задачу.
+      </p>
+      <ul style="list-style:none;padding:0;margin-top:var(--space-xl);">
+        <li style="margin-bottom:var(--space-md);">
+          <a
+            href={buildUrl("/business/")}
+            style="display:block;padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;font-weight:600;"
+            >Бизнес-процесс или ИИ-пилот</a
+          >
+        </li>
+        <li style="margin-bottom:var(--space-md);">
+          <a
+            href={buildUrl("/education/")}
+            style="display:block;padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;font-weight:600;"
+            >Образовательная программа или лаборатория</a
+          >
+        </li>
+        <li style="margin-bottom:var(--space-md);">
+          <a
+            href={buildUrl("/contacts/")}
+            style="display:block;padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;font-weight:600;"
+            >Партнёрство по проекту</a
+          >
+        </li>
+        <li style="margin-bottom:var(--space-md);">
+          <a
+            href={buildUrl("/press/")}
+            style="display:block;padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;font-weight:600;"
+            >Выступление или СМИ</a
+          >
+        </li>
+        <li style="margin-bottom:var(--space-md);">
+          <a
+            href={buildUrl("/contacts/")}
+            style="display:block;padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;font-weight:600;"
+            >Другой предметный вопрос</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>

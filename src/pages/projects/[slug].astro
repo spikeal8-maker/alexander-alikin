@@ -1,0 +1,53 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import StatusBadge from "@components/foundation/StatusBadge.astro";
+import EvidenceBadge from "@components/foundation/EvidenceBadge.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects", (p) => p.data.status === "published");
+  return projects.map((p) => ({ params: { slug: p.data.slug } }));
+}
+
+const { slug } = Astro.params;
+const project = (await getCollection("projects", (p) => p.data.status === "published")).find(
+  (p) => p.data.slug === slug,
+);
+if (!project) return Astro.redirect("/404");
+
+const { data } = project;
+---
+
+<BaseLayout
+  title={`${data.title} — Александр Аликин`}
+  description={data.description}
+  currentPath="/projects/"
+  breadcrumbs={[{ label: "Проекты", href: "/projects/" }, { label: data.title }]}
+>
+  <div class="container">
+    <div class="route-shell">
+      <div
+        style="display:flex;gap:var(--space-sm);align-items:center;margin-bottom:var(--space-md);flex-wrap:wrap;"
+      >
+        <StatusBadge status={data.status} />
+        <EvidenceBadge level={data.evidenceLevel} />
+      </div>
+      <h1>{data.title}</h1>
+      <p class="description">{data.description}</p>
+      <div class="content-body">
+        <p><strong>Роль:</strong> {data.role}</p>
+        <p><strong>Период:</strong> {data.period}</p>
+        <p><strong>Статус проекта:</strong> {data.projectStatus}</p>
+        <p><strong>Результат:</strong> {data.result}</p>
+        {
+          data.limitations && (
+            <p>
+              <em>{data.limitations}</em>
+            </p>
+          )
+        }
+        {project.body && <Fragment set:html={project.body} />}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

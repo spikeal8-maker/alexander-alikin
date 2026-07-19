@@ -1,0 +1,41 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { buildUrl } from "@config/site";
+
+const entries = await getCollection("news", (s) => s.data.status === "published");
+---
+
+<BaseLayout
+  title="Новости — Александр Аликин"
+  description="Фактические обновления: запуски, публикации, события и изменения проектов."
+  currentPath="/journal/"
+  breadcrumbs={[{ label: "Журнал", href: "/journal/" }, { label: "Новости" }]}
+>
+  <div class="container">
+    <div class="route-shell">
+      <h1>Новости</h1>
+      <p class="description">Фактические обновления деятельности.</p>
+      {
+        entries.map((s) => (
+          <article style="margin-bottom:var(--space-lg);padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);">
+            <a
+              href={buildUrl(`/journal/news/${s.data.slug}/`)}
+              style="font-weight:600;font-size:1.125rem;"
+            >
+              {s.data.title}
+            </a>
+            <p style="color:var(--color-muted);margin-top:var(--space-xs);">{s.data.description}</p>
+            <time
+              style="font-size:0.8125rem;color:var(--color-muted);"
+              datetime={s.data.publishedAt.toISOString()}
+            >
+              {s.data.publishedAt.toLocaleDateString("ru")}
+            </time>
+          </article>
+        ))
+      }
+      {entries.length === 0 && <p>Новости появятся при реальных событиях.</p>}
+    </div>
+  </div>
+</BaseLayout>

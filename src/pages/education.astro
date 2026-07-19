@@ -1,0 +1,32 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { buildUrl } from "@config/site";
+---
+
+<BaseLayout
+  title="Образованию — Александр Аликин"
+  description="Проектирую инженерные и ИИ-программы, лаборатории и методические системы с воспроизводимым результатом."
+  currentPath="/education/"
+  breadcrumbs={[{ label: "Образованию" }]}
+>
+  <div class="container">
+    <div class="route-shell">
+      <h1>Образованию</h1>
+      <p class="description">
+        Проектирую инженерные и ИИ-программы, лаборатории и методические системы, в которых ученик
+        создаёт и защищает работающий результат, а педагог получает воспроизводимый процесс.
+      </p>
+      <p>
+        Форматы сотрудничества, методика и образовательные проекты будут опубликованы после
+        утверждения материалов.
+      </p>
+      <p style="margin-top:var(--space-lg);">
+        <a
+          href={buildUrl("/collaboration/")}
+          style="display:inline-block;padding:var(--space-md) var(--space-xl);background:var(--color-primary);color:var(--color-surface);text-decoration:none;border-radius:var(--radius);font-weight:600;"
+          >Обсудить программу или лабораторию</a
+        >
+      </p>
+    </div>
+  </div>
+</BaseLayout>

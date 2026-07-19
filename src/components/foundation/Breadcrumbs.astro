@@ -1,0 +1,37 @@
+---
+import { buildUrl } from "@config/site";
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+---
+
+<nav class="breadcrumbs" aria-label="Хлебные крошки">
+  <ol style="list-style:none;display:flex;flex-wrap:wrap;gap:0.25rem;padding:0;">
+    <li>
+      <a href={buildUrl("/")}>Главная</a>
+      <span class="separator" aria-hidden="true">/</span>
+    </li>
+    {
+      Astro.props.items.map((item, i) => (
+        <li>
+          {item.href && i < Astro.props.items.length - 1 ? (
+            <a href={buildUrl(item.href)}>{item.label}</a>
+          ) : (
+            <span aria-current="page">{item.label}</span>
+          )}
+          {i < Astro.props.items.length - 1 && (
+            <span class="separator" aria-hidden="true">
+              /
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>

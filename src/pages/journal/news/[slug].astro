@@ -1,0 +1,39 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("news", (s) => s.data.status === "published");
+  return entries.map((s) => ({ params: { slug: s.data.slug } }));
+}
+
+const { slug } = Astro.params;
+const entry = (await getCollection("news", (s) => s.data.status === "published")).find(
+  (s) => s.data.slug === slug,
+);
+if (!entry) return Astro.redirect("/404");
+---
+
+<BaseLayout
+  title={`${entry.data.title} — Александр Аликин`}
+  description={entry.data.description}
+  currentPath="/journal/"
+  breadcrumbs={[
+    { label: "Журнал", href: "/journal/" },
+    { label: "Новости", href: "/journal/news/" },
+    { label: entry.data.title },
+  ]}
+>
+  <div class="container">
+    <div class="route-shell">
+      <h1>{entry.data.title}</h1>
+      <p class="description">{entry.data.description}</p>
+      <time
+        style="font-size:0.875rem;color:var(--color-muted);"
+        datetime={entry.data.publishedAt.toISOString()}
+        >{entry.data.publishedAt.toLocaleDateString("ru")}</time
+      >
+      <div class="content-body"><Fragment set:html={entry.body} /></div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Статьи — Александр Аликин"
+  description="Системные материалы с аргументом, структурой, источниками и следующим смысловым маршрутом."
+  currentPath="/journal/"
+  breadcrumbs={[{ label: "Журнал", href: "/journal/" }, { label: "Статьи" }]}
+>
+  <div class="container">
+    <div class="route-shell">
+      <h1>Статьи</h1>
+      <p class="description">
+        Системные материалы с аргументацией, источниками и смысловыми связями.
+      </p>
+      <p>Статьи будут опубликованы после утверждения материалов.</p>
+    </div>
+  </div>
+</BaseLayout>

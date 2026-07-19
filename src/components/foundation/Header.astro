@@ -1,0 +1,42 @@
+---
+import { site, navigation, buildUrl } from "@config/site";
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="container">
+    <a class="site-logo" href={buildUrl("/")} aria-label="Главная">
+      {site.name}
+    </a>
+    <button
+      class="mobile-nav-toggle"
+      aria-expanded="false"
+      aria-controls="primary-nav"
+      aria-label="Меню"
+    >
+      ☰
+    </button>
+    <nav id="primary-nav">
+      <ul class="nav-list" data-visible="false">
+        {
+          navigation.primary.map((item) => (
+            <li>
+              <a
+                href={buildUrl(item.href)}
+                class={"cta" in item && item.cta ? "cta" : ""}
+                aria-current={currentPath === item.href ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

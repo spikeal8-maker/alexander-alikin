@@ -1,0 +1,32 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { buildUrl } from "@config/site";
+---
+
+<BaseLayout
+  title="Бизнесу — Александр Аликин"
+  description="Помогаю превратить ручной, разрозненный или перегруженный процесс в понятную систему с измеримым результатом."
+  currentPath="/business/"
+  breadcrumbs={[{ label: "Бизнесу" }]}
+>
+  <div class="container">
+    <div class="route-shell">
+      <h1>Бизнесу</h1>
+      <p class="description">
+        Помогаю превратить ручной, разрозненный или перегруженный процесс в понятную систему:
+        диагностировать потерю, собрать узкий пилот, измерить результат и передать решение команде.
+      </p>
+      <p>
+        Подробное описание метода, кейсы и форматы сотрудничества будут опубликованы после
+        утверждения материалов.
+      </p>
+      <p style="margin-top:var(--space-lg);">
+        <a
+          href={buildUrl("/collaboration/")}
+          style="display:inline-block;padding:var(--space-md) var(--space-xl);background:var(--color-primary);color:var(--color-surface);text-decoration:none;border-radius:var(--radius);font-weight:600;"
+          >Описать процесс для разбора</a
+        >
+      </p>
+    </div>
+  </div>
+</BaseLayout>

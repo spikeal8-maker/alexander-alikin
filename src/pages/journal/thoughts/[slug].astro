@@ -1,0 +1,34 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("thoughts", (s) => s.data.status === "published");
+  return entries.map((s) => ({ params: { slug: s.data.slug } }));
+}
+
+const { slug } = Astro.params;
+const entry = (await getCollection("thoughts", (s) => s.data.status === "published")).find(
+  (s) => s.data.slug === slug,
+);
+if (!entry) return Astro.redirect("/404");
+---
+
+<BaseLayout
+  title={`${entry.data.title} — Александр Аликин`}
+  description={entry.data.description}
+  currentPath="/journal/"
+  breadcrumbs={[
+    { label: "Журнал", href: "/journal/" },
+    { label: "Мысли", href: "/journal/thoughts/" },
+    { label: entry.data.title },
+  ]}
+>
+  <div class="container">
+    <div class="route-shell">
+      <h1>{entry.data.title}</h1>
+      <p class="description">{entry.data.description}</p>
+      <div class="content-body"><Fragment set:html={entry.body} /></div>
+    </div>
+  </div>
+</BaseLayout>

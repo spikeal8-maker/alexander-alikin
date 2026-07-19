@@ -1,0 +1,32 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const nowEntries = await getCollection("now", (n) => n.data.status === "published");
+---
+
+<BaseLayout
+  title="Сейчас — Александр Аликин"
+  description="Текущая деятельность, проекты и фокус Александра Аликина."
+  currentPath="/now/"
+  breadcrumbs={[{ label: "Сейчас" }]}
+>
+  <div class="container">
+    <div class="route-shell">
+      <h1>Сейчас</h1>
+      <p class="description">Чем я занимаюсь прямо сейчас.</p>
+      {
+        nowEntries.map((n) => (
+          <article style="margin-bottom:var(--space-lg);padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);">
+            <h2 style="font-size:1.125rem;">{n.data.title}</h2>
+            <p>{n.data.focus}</p>
+            <div class="content-body">
+              <Fragment set:html={n.body} />
+            </div>
+          </article>
+        ))
+      }
+      {nowEntries.length === 0 && <p>Информация появится после утверждения.</p>}
+    </div>
+  </div>
+</BaseLayout>

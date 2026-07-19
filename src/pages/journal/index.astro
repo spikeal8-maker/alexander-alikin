@@ -1,0 +1,62 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { buildUrl } from "@config/site";
+---
+
+<BaseLayout
+  title="Журнал — Александр Аликин"
+  description="Мысли, истории, статьи, новости и видео. Авторское медиа о сложных системах, образовании и инженерии."
+  currentPath="/journal/"
+  breadcrumbs={[{ label: "Журнал" }]}
+>
+  <div class="container">
+    <div class="route-shell">
+      <h1>Журнал</h1>
+      <p class="description">Авторское медиа: истории, мысли, статьи, разборы, новости и видео.</p>
+      <nav aria-label="Рубрики журнала">
+        <ul
+          style="list-style:none;display:flex;flex-wrap:wrap;gap:var(--space-md);padding:0;margin-top:var(--space-lg);"
+        >
+          <li>
+            <a
+              href={buildUrl("/journal/stories/")}
+              style="padding:var(--space-sm) var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;display:inline-block;"
+              >Истории</a
+            >
+          </li>
+          <li>
+            <a
+              href={buildUrl("/journal/thoughts/")}
+              style="padding:var(--space-sm) var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;display:inline-block;"
+              >Мысли</a
+            >
+          </li>
+          <li>
+            <a
+              href={buildUrl("/journal/articles/")}
+              style="padding:var(--space-sm) var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;display:inline-block;"
+              >Статьи</a
+            >
+          </li>
+          <li>
+            <a
+              href={buildUrl("/journal/news/")}
+              style="padding:var(--space-sm) var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;display:inline-block;"
+              >Новости</a
+            >
+          </li>
+          <li>
+            <a
+              href={buildUrl("/journal/video/")}
+              style="padding:var(--space-sm) var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;display:inline-block;"
+              >Видео</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <p style="margin-top:var(--space-xl);">
+        Материалы будут публиковаться после утверждения контента.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

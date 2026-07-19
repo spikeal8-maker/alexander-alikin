@@ -1,0 +1,13 @@
+{
+  "title": "Тестовое изображение",
+  "slug": "test-image",
+  "status": "published",
+  "owner": "Александр Аликин",
+  "updatedAt": "2026-07-19",
+  "rightsHolder": "Александр Аликин",
+  "allowedUses": ["web", "social"],
+  "alt": "Тестовое изображение для проверки media collection",
+  "caption": "Тестовое изображение",
+  "src": "/images/placeholder.svg",
+  "type": "photo"
+}

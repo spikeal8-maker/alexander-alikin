@@ -1,0 +1,63 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Поиск — Александр Аликин"
+  description="Поиск по проектам, темам, материалам и годам."
+  currentPath="/search/"
+  breadcrumbs={[{ label: "Поиск" }]}
+>
+  <div class="container">
+    <div class="route-shell">
+      <h1>Поиск</h1>
+      <p class="description">Поиск по проектам, темам, материалам и годам.</p>
+      <noscript>
+        <p>
+          Для поиска включите JavaScript. Без JavaScript доступна навигация через меню и карту
+          сайта.
+        </p>
+      </noscript>
+      <div id="search-app" style="margin-top:var(--space-lg);">
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Введите запрос..."
+          style="width:100%;padding:var(--space-md);font-size:1rem;border:1px solid var(--color-border);border-radius:var(--radius);"
+        />
+        <ul id="search-results" style="list-style:none;padding:0;margin-top:var(--space-md);"></ul>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const input = document.getElementById("search-input") as HTMLInputElement;
+  const results = document.getElementById("search-results") as HTMLUListElement;
+  let idx: { title: string; description: string; href: string }[] = [];
+
+  fetch(`${import.meta.env.BASE_URL}search-index.json`)
+    .then((r) => r.json())
+    .then((data) => {
+      idx = data;
+    });
+
+  input?.addEventListener("input", () => {
+    const q = input.value.toLowerCase().trim();
+    results.innerHTML = "";
+    if (!q || !idx.length) return;
+    idx
+      .filter(
+        (item) =>
+          item.title.toLowerCase().includes(q) || item.description.toLowerCase().includes(q),
+      )
+      .slice(0, 20)
+      .forEach((item) => {
+        const li = document.createElement("li");
+        li.style.cssText =
+          "margin-bottom:var(--space-md);padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);";
+        li.innerHTML = `<a href="${item.href}" style="font-weight:600;">${item.title}</a><p style="color:var(--color-muted);margin-top:var(--space-xs);">${item.description}</p>`;
+        results.appendChild(li);
+      });
+  });
+</script>

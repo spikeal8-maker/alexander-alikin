@@ -1,0 +1,68 @@
+---
+import { site, buildUrl, siteUrl } from "@config/site";
+import Header from "@components/foundation/Header.astro";
+import Footer from "@components/foundation/Footer.astro";
+import Breadcrumbs from "@components/foundation/Breadcrumbs.astro";
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{Astro.props.title}</title>
+    <meta name="description" content={Astro.props.description} />
+    {site.prelaunch && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={siteUrl(Astro.url.pathname)} />
+    <link rel="icon" type="image/svg+xml" href={buildUrl("/favicon.svg")} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={site.title}
+      href={buildUrl("/rss.xml")}
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: site.title,
+        url: siteUrl("/"),
+        description: site.description,
+        inLanguage: site.lang,
+      })}
+    />
+    {
+      Astro.props.structuredData && (
+        <script type="application/ld+json" set:html={JSON.stringify(Astro.props.structuredData)} />
+      )
+    }
+    {Astro.props.head?.map((item: string) => <Fragment set:html={item} />)}
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Перейти к содержимому</a>
+    <Header currentPath={Astro.props.currentPath} />
+    <main id="main-content">
+      {
+        Astro.props.breadcrumbs && (
+          <div class="container">
+            <Breadcrumbs items={Astro.props.breadcrumbs} />
+          </div>
+        )
+      }
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<script>
+  document.querySelector(".mobile-nav-toggle")?.addEventListener("click", () => {
+    const btn = document.querySelector(".mobile-nav-toggle") as HTMLButtonElement | null;
+    const nav = document.getElementById("primary-nav");
+    if (!btn || !nav) return;
+    const visible = nav.dataset.visible === "true";
+    nav.dataset.visible = visible ? "false" : "true";
+    btn.setAttribute("aria-expanded", String(!visible));
+  });
+</script>

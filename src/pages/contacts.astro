@@ -1,0 +1,29 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Контакты — Александр Аликин"
+  description="Официальные каналы связи: Telegram, GitHub, VK, RUTUBE и другие площадки."
+  currentPath="/contacts/"
+  breadcrumbs={[{ label: "Контакты" }]}
+>
+  <div class="container">
+    <div class="route-shell">
+      <h1>Контакты</h1>
+      <p class="description">Официальные каналы связи.</p>
+      <ul style="list-style:none;padding:0;margin-top:var(--space-lg);">
+        <li style="margin-bottom:var(--space-md);">
+          <strong>Telegram</strong> — основной прямой контакт
+        </li>
+        <li style="margin-bottom:var(--space-md);">
+          <strong>GitHub</strong> — <a href="https://github.com/spikeal8-maker">spikeal8-maker</a>
+        </li>
+        <li style="margin-bottom:var(--space-md);"><strong>VK</strong> — профиль и архив</li>
+      </ul>
+      <p style="margin-top:var(--space-lg);">
+        Полный список каналов с описанием назначения каждого будет опубликован после утверждения.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

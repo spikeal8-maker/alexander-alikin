@@ -1,0 +1,46 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { buildUrl } from "@config/site";
+---
+
+<BaseLayout
+  title="Александр Аликин — проекты, системы и мысли"
+  description="Инженер. Педагог. Предприниматель. Исследую сложные системы, создаю работающие проекты и рассказываю, чему они меня научили."
+  currentPath="/"
+>
+  <div class="container">
+    <h1>Александр Аликин</h1>
+    <p class="description">
+      Инженер. Педагог. Предприниматель. Создаю системы, продукты и образовательные проекты.
+    </p>
+    <p class="description">
+      Исследую сложные системы, создаю работающие проекты и рассказываю, чему они меня научили.
+    </p>
+    <nav aria-label="Маршруты посетителя" style="margin-top:var(--space-2xl);">
+      <ul style="list-style:none;display:flex;flex-wrap:wrap;gap:var(--space-md);padding:0;">
+        <li>
+          <a
+            class="cta"
+            href={buildUrl("/business/")}
+            style="display:inline-block;padding:var(--space-md) var(--space-xl);background:var(--color-primary);color:var(--color-surface);text-decoration:none;border-radius:var(--radius);font-weight:600;"
+            >Бизнесу</a
+          >
+        </li>
+        <li>
+          <a
+            href={buildUrl("/education/")}
+            style="display:inline-block;padding:var(--space-md) var(--space-xl);border:2px solid var(--color-primary);color:var(--color-primary);text-decoration:none;border-radius:var(--radius);font-weight:600;"
+            >Образованию</a
+          >
+        </li>
+        <li>
+          <a
+            href={buildUrl("/about/")}
+            style="display:inline-block;padding:var(--space-md) var(--space-xl);border:2px solid var(--color-border);color:var(--color-text);text-decoration:none;border-radius:var(--radius);font-weight:600;"
+            >Познакомиться</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</BaseLayout>

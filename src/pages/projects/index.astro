@@ -1,0 +1,45 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { buildUrl } from "@config/site";
+
+const projects = await getCollection("projects", (p) => p.data.status === "published");
+---
+
+<BaseLayout
+  title="Проекты — Александр Аликин"
+  description="Продукты, проекты и доказательные кейсы Александра Аликина."
+  currentPath="/projects/"
+  breadcrumbs={[{ label: "Проекты" }]}
+>
+  <div class="container">
+    <div class="route-shell">
+      <h1>Проекты</h1>
+      <p class="description">
+        Карта практики: продукты, образовательные программы, исследования и предпринимательские
+        инициативы.
+      </p>
+      {
+        projects.length === 0 ? (
+          <p>Проекты будут опубликованы после утверждения материалов.</p>
+        ) : (
+          <ul style="list-style:none;padding:0;">
+            {projects.map((p) => (
+              <li style="margin-bottom:var(--space-md);padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);">
+                <a
+                  href={buildUrl(`/projects/${p.data.slug}/`)}
+                  style="font-weight:600;font-size:1.125rem;"
+                >
+                  {p.data.title}
+                </a>
+                <p style="color:var(--color-muted);margin-top:var(--space-xs);">
+                  {p.data.description}
+                </p>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </div>
+</BaseLayout>

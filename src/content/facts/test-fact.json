@@ -1,0 +1,14 @@
+{
+  "statement": "Платформа собрана на Astro 7 с TypeScript strict.",
+  "period": "2026-07",
+  "periodNotApplicable": false,
+  "status": "published",
+  "owner": "Александр Аликин",
+  "updatedAt": "2026-07-19",
+  "lastVerifiedAt": "2026-07-19",
+  "reviewAt": "2026-08-19",
+  "evidenceLevel": "author_statement",
+  "sourceUrls": ["https://github.com/spikeal8-maker/alexander-alikin"],
+  "topics": ["продуктовая разработка"],
+  "limitations": "Тестовый факт, не является независимым утверждением."
+}

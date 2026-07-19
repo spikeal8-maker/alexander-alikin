@@ -1,0 +1,20 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { buildUrl } from "@config/site";
+---
+
+<BaseLayout
+  title="Страница не найдена — Александр Аликин"
+  description="Запрошенная страница не существует. Воспользуйтесь навигацией или поиском."
+>
+  <div class="container">
+    <div class="route-shell">
+      <h1>404</h1>
+      <p class="description">Страница не найдена.</p>
+      <p>
+        Запрошенный адрес не существует. Воспользуйтесь <a href={buildUrl("/search/")}>поиском</a> или
+        перейдите на <a href={buildUrl("/")}>главную</a>.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

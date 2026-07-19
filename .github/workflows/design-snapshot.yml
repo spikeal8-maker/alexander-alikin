@@ -1,0 +1,31 @@
+name: Design source snapshot
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run format:write
+      - name: Prepare snapshot
+        run: |
+          mkdir -p .work/design-snapshot
+          git show -s --format=%T HEAD > .work/design-snapshot/tree-sha.txt
+          git rev-parse HEAD > .work/design-snapshot/commit-sha.txt
+          tar --exclude=.git --exclude=node_modules --exclude=dist --exclude=.astro --exclude=.work -czf .work/design-snapshot/source.tar.gz .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: design-source-snapshot
+          path: .work/design-snapshot/
+          retention-days: 1

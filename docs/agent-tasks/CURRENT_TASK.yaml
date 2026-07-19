@@ -4,8 +4,8 @@ repository: "spikeal8-maker/alexander-alikin"
 current_task:
   id: "TASK-FOUNDATION-CONSOLIDATE-001"
   title: "Очистить PR №1 до канонического стратегического фундамента"
-  status: "in_progress"
-  severity: "merge-blocker"
+  status: "completed_pending_owner_review"
+  severity: "review-gate"
   issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/19"
   task_document: "docs/agent-tasks/TASK-FOUNDATION-CONSOLIDATE.md"
   rules_document: "AGENTS.md"
@@ -17,19 +17,16 @@ current_task:
   merge_allowed: false
   force_push_allowed: false
   next_task_start_allowed: false
-  completion_requires:
-    - "technical scaffold removed from final diff"
-    - "duplicate ADR removed"
-    - "contradicting and placeholder docs removed"
-    - "canonical documentation preserved"
-    - "supporting docs verified for unique role"
-    - "README and IMPLEMENTATION_STATUS truthful"
-    - "docs/README.md references only existing files"
-    - "git diff --check passed"
-    - "PR remains Draft"
-    - "factual report posted to Issue 19 and PR 1"
+  completion_evidence:
+    head: "cd20c48df3722a4c3ce604899544318e4e35abe4"
+    technical_scaffold_removed: true
+    duplicate_adr_removed: true
+    canonical_docs_preserved: true
+    content_model_aligned: true
+    report_posted: true
 next_allowed_action:
-  after_pass: "owner review of Draft PR 1"
+  before_owner_approval: "review Draft PR 1 only"
+  after_owner_approval: "merge Draft PR 1"
   task_after_merge_only: "SITE-PLATFORM-001"
   issue_after_merge_only: "https://github.com/spikeal8-maker/alexander-alikin/issues/7"
-stop_rule: "После итогового отчёта остановиться и не начинать следующую задачу."
+stop_rule: "Coding-агентам запрещено начинать следующую задачу до owner approval и merge PR №1."

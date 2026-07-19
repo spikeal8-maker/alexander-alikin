@@ -17,37 +17,40 @@
 
 ## Назначение и работа
 
-- [Проект](PROJECT.md)
-- [Архитектура](ARCHITECTURE.md)
-- [Как работает сайт](SITE_RUNTIME.md)
-- [Операционная модель](OPERATING_MODEL.md)
-- [Управление](GOVERNANCE.md)
-- [Карта репозитория](REPOSITORY_MAP.md)
+- [Архитектура репозиториев](REPOSITORY_ARCHITECTURE.md) — модель двух репозиториев и поток данных
+- [Карта репозитория](REPOSITORY_MAP.md) — структура публичного репозитория
+- [Операционная модель](OPERATING_MODEL.md) — источники истины и процесс принятия решений
+- [Управление](GOVERNANCE.md) — роли, правила и контроль изменений
+- [Как работает сайт](SITE_RUNTIME.md) — runtime-модель статической генерации
+- [Поток данных](DATA_FLOW.md) — маршруты движения контента
+- [Критерии успеха](SUCCESS_CRITERIA.md) — метрики foundation-версии
 
 ## Контент и публикация
 
-- [Модель контента](CONTENT_MODEL.md)
-- [Редакционная политика](EDITORIAL_POLICY.md)
-- [Конвейер публикации](CONTENT_PIPELINE.md)
-- [Стандарт качества](CONTENT_QUALITY.md)
-- [План накопления материалов](MATERIALS_PLAN.md)
-- [Редакционный ритм](CONTENT_CALENDAR.md)
+- [Модель контента](CONTENT_MODEL.md) — типы материалов и метаданные
+- [Редакционный процесс](EDITORIAL_WORKFLOW.md) — от заметки до публикации
+- [Конвейер публикации](PUBLICATION_FLOW.md) — этапы выпуска материала
+- [Стандарт качества](CONTENT_QUALITY.md) — требования к публичному контенту
+- [Бэклог контента](CONTENT_BACKLOG.md) — накопление и приоритизация материалов
+- [План накопления](MATERIALS_PLAN.md) — стратегия накопления материалов
+- [Редакционный ритм](CONTENT_CALENDAR.md) — периодичность публикаций
+- [Политика доказательности](EVIDENCE_POLICY.md) — иерархия источников и правила
 
 ## Контроль и выпуск
 
-- [Границы репозиториев](REPOSITORY_BOUNDARIES.md)
-- [Конфиденциальность и безопасность](PRIVACY_AND_SAFETY.md)
+- [Конфиденциальность и безопасность](PRIVACY_AND_SECURITY.md)
 - [Реестр рисков](RISK_REGISTER.md)
-- [Условия запуска](LAUNCH_GATES.md)
+- [Условия запуска](LAUNCH_GATES.md) — gates для публичного запуска
 - [Чек-лист выпуска](RELEASE_CHECKLIST.md)
 - [Метрики](MEASUREMENT.md)
 - [Недостающие входные данные](NEXT_INPUTS.md)
+- [Руководство владельца](OWNER_GUIDE.md)
+- [Настройки GitHub после слияния](GITHUB_SETTINGS_CHECKLIST.md)
 - [Архитектурные и продуктовые решения](DECISIONS/README.md)
 
 ## Развитие
 
-- [Дорожная карта foundation-версии](ROADMAP.md)
-- [Объём foundation-версии](FOUNDATION_SCOPE.md)
+- [Дорожная карта](ROADMAP.md) — high-level этапы развития
 - [Статус реализации](../IMPLEMENTATION_STATUS.md)
 - [Epic версии 1.0](https://github.com/spikeal8-maker/alexander-alikin/issues/5)
 - [Приватный публичный контентный пакет](https://github.com/spikeal8-maker/alexander-alikin-vault/issues/5)

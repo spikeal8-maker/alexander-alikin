@@ -1,9 +1,0 @@
----
-interface Props { topics?: string[] }
-const { topics = [] } = Astro.props;
----
-{topics.length > 0 && (
-  <ul class="topic-list" aria-label="Темы">
-    {topics.map((topic) => <li>{topic}</li>)}
-  </ul>
-)}

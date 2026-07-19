@@ -1,1 +1,0 @@
-The foundation branch is ready for a draft Pull Request after final validation.

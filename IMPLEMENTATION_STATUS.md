@@ -2,25 +2,40 @@
 
 ## Текущий этап
 
-`SITE-STRATEGY-001 — in_review / merge_blocked`
+`FOUNDATION-CONSOLIDATE-001 — in_progress`
 
-Канонический продуктовый план персональной цифровой платформы подготовлен в ветке `agent/foundation-architecture` и находится в Draft PR №1.
+Канонический стратегический, редакционный и governance-фундамент подготовлен в ветке
+`agent/foundation-architecture`. Draft PR №1 содержит только утверждённую стратегию,
+backlog и supporting-документацию.
+
+От старого bootstrap-пакета осталось только reference-значение в истории коммита
+`8ff507d`; технический scaffold удалён из конечного diff и будет реализован отдельно.
 
 ## Технический merge-blocker
 
-Issue №18: <https://github.com/spikeal8-maker/alexander-alikin/issues/18>
+Issue №19: <https://github.com/spikeal8-maker/alexander-alikin/issues/19>
 
-В текущем дереве ветки непосредственно присутствуют документация, `.bootstrap/part-*.b64` и одноразовый workflow расширения. `package.json`, `src/` и развёрнутый Astro-код пока не доступны как обычные файлы, а workflow run/status для текущего head не зафиксирован.
+Технический scaffold (Astro, src/, workflows, package files) исключён из PR.
+Он будет реализован по Issue №7 после owner review и merge foundation PR.
 
-До merge необходимо:
+## Что входит в PR №1
 
-1. развернуть bootstrap-пакет либо удалить его из foundation PR;
-2. сделать полный код доступным в обычном PR diff;
-3. фактически выполнить `npm run quality`;
-4. приложить результат проверки;
-5. оставить PR Draft до owner review.
+- каноническая продуктовая спецификация: стратегия, аудитории, страницы, homepage, визуальная система, контент и доказательства, roadmap;
+- governance и операционные документы;
+- supporting-документация (контентная модель, редакция, политики, чек-листы, риски);
+- архитектурные решения (ADR 0001–0005);
+- правила для coding-агентов (AGENTS.md);
+- machine-readable execution manifest;
+- backlog и статусы задач.
 
-Наличие сжатого payload не считается реализованным сайтом.
+## Что не входит в PR №1
+
+- Astro-код, компоненты, страницы, стили;
+- CI/CD workflow;
+- package.json и зависимости;
+- реальные фотографии и контент.
+
+Технический scaffold из commit `8ff507d` сохранён в истории только как reference.
 
 ## Реализовано на уровне стратегии и спецификации
 
@@ -41,12 +56,12 @@ Issue №18: <https://github.com/spikeal8-maker/alexander-alikin/issues/18>
 - Draft PR: <https://github.com/spikeal8-maker/alexander-alikin/pull/1>
 - Epic V1: <https://github.com/spikeal8-maker/alexander-alikin/issues/5>
 - Strategy task: <https://github.com/spikeal8-maker/alexander-alikin/issues/6>
-- Bootstrap blocker: <https://github.com/spikeal8-maker/alexander-alikin/issues/18>
+- Consolidation task: <https://github.com/spikeal8-maker/alexander-alikin/issues/19>
 - Private content task: <https://github.com/spikeal8-maker/alexander-alikin-vault/issues/5>
 
 ## Следующая допустимая задача
 
-После выполнения Issue №18, owner review и merge foundation PR:
+После owner review и merge foundation PR:
 
 `SITE-PLATFORM-001 — Astro-каркас, content collections и нормативный quality gate`
 

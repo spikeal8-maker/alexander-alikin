@@ -14,70 +14,38 @@
 - какие идеи и истории стоит прочитать;
 - как предложить сотрудничество.
 
-## Что находится в этом репозитории
+## Текущее состояние
 
-- код сайта на Astro;
-- публичные тексты и карточки проектов;
-- редакционные правила;
-- модель доказательности;
-- SEO- и публикационная инфраструктура;
-- GitHub Actions для проверки и публикации на GitHub Pages.
+Стратегия, продуктовый контракт и backlog утверждены. Канонические документы
+находятся в `docs/`. Техническая реализация сайта (Astro, content collections,
+CI/CD) будет выполнена отдельным Pull Request после принятия стратегического
+foundation.
 
-Закрытые заметки, исходные документы, неопубликованные материалы и доказательства
-хранятся в приватном репозитории `alexander-alikin-vault`.
+Закрытые заметки, исходные документы и доказательства хранятся в приватном
+репозитории `alexander-alikin-vault`.
 
-## Локальный запуск
+## Канонические документы
 
-```bash
-npm install
-npm run dev
-```
+- [Стратегия сайта](docs/CANONICAL_SITE_STRATEGY.md)
+- [Модель аудиторий](docs/AUDIENCE_MODEL.md)
+- [Спецификации страниц](docs/PAGE_SPECIFICATIONS.md)
+- [Blueprint главной](docs/HOMEPAGE_BLUEPRINT.md)
+- [Маршруты и CTA](docs/USER_JOURNEYS_AND_CTA.md)
+- [Визуальная система](docs/VISUAL_SYSTEM.md)
+- [Контент и доказательства](docs/CONTENT_AND_EVIDENCE_PLAN.md)
+- [План реализации](docs/IMPLEMENTATION_ROADMAP.md)
+- [SEO и эксплуатация](docs/SEO_ANALYTICS_AND_OPERATIONS.md)
+- [Полный индекс документации](docs/README.md)
 
-Проверка перед публикацией:
+## Управление
 
-```bash
-npm run check
-npm run build
-```
-
-## Публикация
-
-1. Изменение создаётся в отдельной ветке.
-2. Открывается Pull Request.
-3. CI проверяет типы, метаданные и сборку.
-4. После слияния в `main` workflow `deploy.yml` публикует сайт на GitHub Pages.
-5. До подключения собственного домена проект работает с базовым путём
-   `/alexander-alikin`.
-
-## Система контента
-
-Материалы находятся в `src/content/` и проходят проверку схемой
-`src/content.config.ts`.
-
-Основные коллекции:
-
-- `projects` — проекты и направления практики;
-- `stories` — длинные человеческие истории;
-- `thoughts` — короткие авторские идеи;
-- `news` — фактические обновления;
-- `now` — актуальные направления работы.
-
-Каждый материал содержит статус доказательности. Непроверенные крупные цифры не
-должны публиковаться как установленные факты.
-
-## Ключевые документы
-
-- [Устав проекта](docs/PROJECT_CHARTER.md)
 - [Архитектура репозиториев](docs/REPOSITORY_ARCHITECTURE.md)
-- [Контентная модель](docs/CONTENT_MODEL.md)
-- [Редакционный процесс](docs/EDITORIAL_WORKFLOW.md)
-- [Доказательность](docs/EVIDENCE_POLICY.md)
-- [SEO](docs/SEO_AND_DISCOVERABILITY.md)
-- [Приватность](docs/PRIVACY_AND_SECURITY.md)
-- [Дорожная карта](docs/ROADMAP.md)
-- [Настройки GitHub](docs/GITHUB_SETTINGS_CHECKLIST.md)
+- [Операционная модель](docs/OPERATING_MODEL.md)
+- [Управление](docs/GOVERNANCE.md)
+- [Правила для coding-агентов](AGENTS.md)
+- [Статус реализации](IMPLEMENTATION_STATUS.md)
 
-## Текущий статус
+## Следующий шаг
 
-Версия `0.1.0`: архитектурный фундамент, начальный дизайн, публичная структура,
-поиск, RSS, SEO-разметка и стартовый набор материалов.
+После owner review и merge foundation PR — Issue #7 `SITE-PLATFORM-001`:
+технический каркас Astro, content collections и quality gate.

@@ -1,7 +1,7 @@
 ---
 title: "ИЗО АСА"
 description: "Образовательная платформа для виртуальных лабораторий, управления классами и учебных проектов."
-slug: "test-platform"
+slug: "izo-asa"
 status: "published"
 owner: "Александр Аликин"
 publishedAt: "2026-07-19"

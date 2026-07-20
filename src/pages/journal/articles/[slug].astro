@@ -1,10 +1,8 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
+import { getEntry, getCollection, render } from "astro:content";
 import EvidenceBadge from "@components/foundation/EvidenceBadge.astro";
 import ButtonLink from "@components/ui/ButtonLink.astro";
-import EditorialQuote from "@components/ui/EditorialQuote.astro";
-import EditorialCallout from "@components/ui/EditorialCallout.astro";
 import { buildUrl } from "@config/site";
 
 export async function getStaticPaths() {
@@ -12,10 +10,9 @@ export async function getStaticPaths() {
   return entries.map((s) => ({ params: { slug: s.data.slug } }));
 }
 const { slug } = Astro.params;
-const entry = (await getCollection("articles", (s) => s.data.status === "published")).find(
-  (s) => s.data.slug === slug,
-);
-if (!entry) return Astro.redirect("/404");
+const entry = await getEntry("articles", slug);
+if (!entry || entry.data.status !== "published") return Astro.redirect("/404");
+const { Content } = await render(entry);
 ---
 
 <BaseLayout
@@ -39,44 +36,9 @@ if (!entry) return Astro.redirect("/404");
       <p class="article-lead">{entry.data.description}</p>
     </header>
     <div class="content-body">
-      <p>
-        Эта статья демонстрирует типографику чтения, редакционные элементы и компоненты
-        дизайн-системы. Реальный контент будет добавлен после утверждения материалов.
-      </p>
-      <h2>Структура и аргументация</h2>
-      <p>
-        Каждая системная статья на этой платформе имеет чёткую структуру: контекст, аргумент,
-        доказательства, ограничения и следующий смысловой маршрут.
-      </p>
-      <EditorialQuote
-        text="Сильное письмо не в сложности слов, а в ясности мысли. Инженер пишет так же, как проектирует: видит структуру, убирает лишнее, оставляет работающее."
-      />
-      <h2>Списки и структуры</h2>
-      <ul>
-        <li>Каждая публикация проходит редакционный шлюз</li>
-        <li>Факты проверяются: источник, период, уровень доказательности</li>
-        <li>Материал связывается с проектом, кейсом или другим текстом</li>
-      </ul>
-      <EditorialCallout title="Как это связано с проектами">
-        <p>
-          Каждая статья на этой платформе соединена с проектом. Это не отдельный блог — это часть
-          системы доказательств.
-        </p>
-      </EditorialCallout>
-      <p>
-        Утверждения в этой статье имеют уровень доказательности <strong
-          >«подтверждено автором»</strong
-        > — подтверждены как личный опыт.
-      </p>
-      <p>
-        Следующий материал: <a href={buildUrl("/journal/stories/test-story/")}
-          >Чему меня научили дети, создававшие роботов</a
-        >
-      </p>
+      <Content />
     </div>
     <hr />
-    <ButtonLink href={buildUrl("/projects/test-platform/")} variant="secondary"
-      >Посмотреть связанный проект</ButtonLink
-    >
+    <ButtonLink href={buildUrl("/collaboration/")} variant="secondary">Обсудить задачу</ButtonLink>
   </div>
 </BaseLayout>

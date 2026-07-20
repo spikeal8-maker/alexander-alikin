@@ -1,5 +1,10 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import ContentCard from "@components/ui/ContentCard.astro";
+import { buildUrl } from "@config/site";
+
+const articles = await getCollection("articles", (s) => s.data.status === "published");
 ---
 
 <BaseLayout
@@ -9,12 +14,22 @@ import BaseLayout from "@layouts/BaseLayout.astro";
   breadcrumbs={[{ label: "Журнал", href: "/journal/" }, { label: "Статьи" }]}
 >
   <div class="container">
-    <div class="route-shell">
-      <h1>Статьи</h1>
-      <p class="description">
-        Системные материалы с аргументацией, источниками и смысловыми связями.
-      </p>
-      <p>Статьи будут опубликованы после утверждения материалов.</p>
+    <h1>Статьи</h1>
+    <p class="text-lg muted-text">
+      Системные материалы с аргументацией, источниками и смысловыми связями.
+    </p>
+    <div class="card-grid mt-8">
+      {
+        articles.map((a) => (
+          <ContentCard
+            title={a.data.title}
+            description={a.data.description}
+            href={buildUrl(`/journal/articles/${a.data.slug}/`)}
+            type="Статья"
+            date={a.data.publishedAt.toLocaleDateString("ru")}
+          />
+        ))
+      }
     </div>
   </div>
 </BaseLayout>

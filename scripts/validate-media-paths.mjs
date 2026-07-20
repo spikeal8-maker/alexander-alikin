@@ -40,13 +40,13 @@ for (const f of srcFiles) {
   for (const m of matches) srcPaths.add(m[0]);
 }
 
-  for (const p of srcPaths) {
-    const pubFullPath = path.join(ROOT, "public", p.replace(/^\//, ""));
-    if (!fs.existsSync(pubFullPath)) {
-      errors.push(`${p}: referenced in src but not found in public/`);
-    }
-    count++;
+for (const p of srcPaths) {
+  const pubFullPath = path.join(ROOT, "public", p.replace(/^\//, ""));
+  if (!fs.existsSync(pubFullPath)) {
+    errors.push(`${p}: referenced in src but not found in public/`);
   }
+  count++;
+}
 
 if (errors.length) {
   console.error("MEDIA ERRORS:");

@@ -9,7 +9,6 @@ export async function getStaticPaths() {
   const projects = await getCollection("projects", (p) => p.data.status === "published");
   return projects.map((p) => ({ params: { slug: p.data.slug } }));
 }
-
 const { slug } = Astro.params;
 const project = (await getCollection("projects", (p) => p.data.status === "published")).find(
   (p) => p.data.slug === slug,
@@ -31,9 +30,7 @@ const statusLabels = {
   breadcrumbs={[{ label: "Проекты", href: "/projects/" }, { label: data.title }]}
 >
   <div class="container container-main">
-    <div
-      style="display:flex;gap:var(--space-3);align-items:center;margin-bottom:var(--space-6);flex-wrap:wrap;"
-    >
+    <div class="project-meta">
       <span class="badge badge-published"
         >{statusLabels[data.projectStatus] || data.projectStatus}</span
       >
@@ -42,8 +39,7 @@ const statusLabels = {
     </div>
     <h1>{data.title}</h1>
     <p class="text-lg muted-text">{data.description}</p>
-
-    <div style="display:flex;flex-wrap:wrap;gap:var(--space-8);margin:var(--space-8) 0;">
+    <div class="project-details">
       <div><div class="text-sm muted-text">Роль</div><div><strong>{data.role}</strong></div></div>
       <div>
         <div class="text-sm muted-text">Период</div><div><strong>{data.period}</strong></div>
@@ -54,7 +50,6 @@ const statusLabels = {
         </div>
       </div>
     </div>
-
     <h2>Результат</h2>
     <p>{data.result}</p>
     {
@@ -69,7 +64,6 @@ const statusLabels = {
         </>
       )
     }
-
     <hr />
     <ButtonLink href={buildUrl("/collaboration/")} variant="primary"
       >Обсудить похожую задачу</ButtonLink

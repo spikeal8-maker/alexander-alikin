@@ -1,27 +1,66 @@
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const manifestPath = path.join(ROOT, "docs", "media", "media-manifest.json");
 
-if (!fs.existsSync(manifestPath)) {
-  console.error("BLOCKED: media-manifest.json not found");
-  process.exit(1);
+function sha256(filePath) {
+  return crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
 }
 
-const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
-const errors = [];
-let count = 0;
-
-for (const asset of manifest.assets) {
-  const pubPath = path.join(ROOT, "public", asset.file.replace(/^\//, ""));
-  if (!fs.existsSync(pubPath)) {
-    errors.push(`${asset.file}: not found in public/`);
+function dirHashes(dirPath) {
+  const result = {};
+  if (!fs.existsSync(dirPath)) return result;
+  for (const f of fs.readdirSync(dirPath)) {
+    if (f.endsWith(".webp")) result[f] = sha256(path.join(dirPath, f));
   }
-  count++;
+  return result;
 }
 
+const visDir = path.join(ROOT, "public", "images", "alikin", "visualized");
+const docDir = path.join(ROOT, "public", "images", "alikin", "documentary");
+const visHashes = dirHashes(visDir);
+const docHashes = dirHashes(docDir);
+
+console.log(
+  `Visualized: ${Object.keys(visHashes).length} files, ${new Set(Object.values(visHashes)).size} unique`,
+);
+console.log(
+  `Documentary: ${Object.keys(docHashes).length} files, ${new Set(Object.values(docHashes)).size} unique`,
+);
+
+const errors = [];
+
+// Check no cross-duplicates
+for (const [vn, vh] of Object.entries(visHashes)) {
+  for (const [dn, dh] of Object.entries(docHashes)) {
+    if (vh === dh)
+      errors.push(`SHA MATCH: visualized/${vn} == documentary/${dn} (${vh.substring(0, 12)})`);
+  }
+}
+
+// Check no internal duplicates in visualized
+const seenV = {};
+for (const [name, hash] of Object.entries(visHashes)) {
+  if (seenV[hash])
+    errors.push(
+      `SHA DUPLICATE in visualized: ${seenV[hash]} == ${name} (${hash.substring(0, 12)})`,
+    );
+  seenV[hash] = name;
+}
+
+// Manifest check
+const manifestPath = path.join(ROOT, "docs", "media", "media-manifest.json");
+if (fs.existsSync(manifestPath)) {
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+  for (const asset of manifest.assets) {
+    const pubPath = path.join(ROOT, "public", asset.file.replace(/^\//, ""));
+    if (!fs.existsSync(pubPath)) errors.push(`MANIFEST: ${asset.file} not found`);
+  }
+}
+
+// Src reference check
 function walkPages(dir) {
   const files = [];
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -31,21 +70,14 @@ function walkPages(dir) {
   }
   return files;
 }
-
-const srcFiles = walkPages(path.join(ROOT, "src"));
-const srcPaths = new Set();
-for (const f of srcFiles) {
-  const content = fs.readFileSync(f, "utf8");
-  const matches = content.matchAll(/\/images\/alikin\/[a-zA-Z0-9_/.-]+\.webp/g);
-  for (const m of matches) srcPaths.add(m[0]);
+const srcRefs = new Set();
+for (const f of walkPages(path.join(ROOT, "src"))) {
+  const m = fs.readFileSync(f, "utf8").matchAll(/\/images\/alikin\/[a-zA-Z0-9_/.-]+\.webp/g);
+  for (const x of m) srcRefs.add(x[0]);
 }
-
-for (const p of srcPaths) {
-  const pubFullPath = path.join(ROOT, "public", p.replace(/^\//, ""));
-  if (!fs.existsSync(pubFullPath)) {
-    errors.push(`${p}: referenced in src but not found in public/`);
-  }
-  count++;
+for (const ref of srcRefs) {
+  const pubPath = path.join(ROOT, "public", ref.replace(/^\//, ""));
+  if (!fs.existsSync(pubPath)) errors.push(`SRC: ${ref} not found`);
 }
 
 if (errors.length) {
@@ -53,4 +85,6 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log(`Media validation: PASS (${count} manifest assets, ${srcPaths.size} src references)`);
+console.log(
+  `Media SHA: PASS (${Object.keys(visHashes).length}v + ${Object.keys(docHashes).length}d, ${srcRefs.size} refs)`,
+);

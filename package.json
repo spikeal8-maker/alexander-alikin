@@ -30,7 +30,8 @@
     "design:static": "npm run design:tokens && npm run design:raw-color && npm run design:inline && npm run design:contrast && npm run design:components",
     "design:browser": "node scripts/validate-design-browser.mjs",
     "design:check": "npm run design:static && npm run design:browser",
-    "quality": "npm run clean && npm run format:check && npm run lint && npm run typecheck && npm run test:content && npm run test:source-routes && npm run test:secrets && npm run build && npm run test:generated-routes && npm run test:links && npm run test:leaks && npm run test:dist && npm run test:a11y && npm run test:file-size"
+    "quality": "npm run clean && npm run format:check && npm run lint && npm run typecheck && npm run test:content && npm run test:source-routes && npm run test:secrets && npm run build && npm run test:generated-routes && npm run test:links && npm run test:leaks && npm run test:dist && npm run test:a11y && npm run test:file-size",
+    "verify:site": "npm run quality && npm run design:static && npm run test:media"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

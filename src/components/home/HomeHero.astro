@@ -1,0 +1,32 @@
+---
+import ButtonLink from "@components/ui/ButtonLink.astro";
+import { buildUrl } from "@config/site";
+---
+
+<section class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-name">Александр Аликин</h1>
+    <p class="hero-positioning">
+      Предприниматель-практик и инженер-педагог.<br />
+      Проектирую и запускаю технологические, ИИ- и образовательные системы.
+    </p>
+    <p class="hero-subtitle">
+      Разбираю сложные задачи, собираю работающие конструкции, проверяю их практикой и объясняю
+      людям, как ими пользоваться.
+    </p>
+    <div class="hero-actions">
+      <ButtonLink href={buildUrl("/collaboration/")} variant="accent">Обсудить задачу</ButtonLink>
+      <ButtonLink href={buildUrl("/projects/")} variant="secondary">Посмотреть проекты</ButtonLink>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img
+      src={buildUrl("/images/alikin/visualized/hero-main-business.webp")}
+      alt="Александр Аликин — портрет"
+      width="560"
+      height="700"
+      loading="eager"
+      class="hero-img"
+    />
+  </div>
+</section>

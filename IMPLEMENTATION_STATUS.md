@@ -2,75 +2,105 @@
 
 ## Текущий этап
 
-`SITE-PLATFORM-001 — remediation_required / merge_blocked`
+`SITE-DESIGN-001 — ready / current task`
 
-Стратегический foundation принят и merged в `main` commit `5feccb8c39364e8d785b0d06691b718f55bdb165`.
-
-Текущая работа:
+Каноническая стратегия и техническая Astro-платформа приняты и находятся в `main`.
 
 ```text
-Issue: https://github.com/spikeal8-maker/alexander-alikin/issues/7
-Branch: agent/site-platform
-Draft PR: https://github.com/spikeal8-maker/alexander-alikin/pull/20
-Audited HEAD: 38829aac7a7782ca3a7fad68fa151001683e8eeb
-Failed Actions run: https://github.com/spikeal8-maker/alexander-alikin/actions/runs/29705514096
+Strategy commit: 5feccb8c39364e8d785b0d06691b718f55bdb165
+Platform commit: 96ea8269ff71c79f05defa429f2542a74a03a648
+Current Issue: https://github.com/spikeal8-maker/alexander-alikin/issues/8
+Current Branch: agent/site-design-system
+Current Draft PR: https://github.com/spikeal8-maker/alexander-alikin/pull/21
 ```
 
-## Результат независимого review
+## Что уже принято
 
-Локальный отчёт `12/12 PASS` не является exit gate. GitHub Actions на чистом Ubuntu checkout завершился failure на шаге `npm run quality`; dependency audit был skipped.
+- каноническое позиционирование и аудитории;
+- информационная архитектура и маршруты;
+- Astro + TypeScript strict;
+- десять content collections;
+- единые Zod schema factories;
+- prelaunch/production URL contracts;
+- RSS, search, robots, sitemap и canonical foundation;
+- keyboard-accessible native mobile navigation;
+- read-only GitHub Actions quality workflow;
+- platform quality и dependency audit.
 
-Обнаружены merge-блокеры:
+## Пользовательский результат текущего этапа
 
-- generated-output test запускается до build и проходит локально только при старом `dist/`;
-- serialized dates не загружаются существующими `z.date()` schemas;
-- negative fixtures проверяются на наличие, а не отклоняются общими schemas;
-- route gate проверяет route files, а не generated dynamic URLs;
-- link gate не проверяет существование targets и anchors;
-- mobile menu изменяет атрибут не на том DOM-элементе и остаётся скрытым;
-- foundation CSS не импортирован в layout;
-- canonical/base-path, RSS и search URLs не доказаны generated tests;
-- robots всегда блокирует crawling, а prelaunch robots указывает на отсутствующий sitemap;
-- GitHub Actions красный.
-
-## Канонический remediation-контракт
-
-- `docs/agent-tasks/CURRENT_TASK.yaml`;
-- `docs/agent-tasks/TASK-SITE-PLATFORM-REMEDIATION.md`;
-- `docs/agent-tasks/TASK-SITE-PLATFORM.md`;
-- `docs/testing/SITE-PLATFORM-QUALITY.md`;
-- Issue №7.
-
-## Требуемый пользовательский результат
-
-Получить воспроизводимый технический каркас, который проходит из чистого checkout:
+Создать единую визуальную систему, в которой главная оболочка, проект и длинная статья выглядят как части одного персонального продукта:
 
 ```text
-clean checkout
-→ npm ci
-→ npm run quality
-→ generated published routes существуют
-→ draft/blocked routes отсутствуют
-→ links/canonical/RSS/search/sitemap согласованы
-→ mobile navigation работает
-→ GitHub Actions success
-→ npm audit фактически выполнен
+интеллектуальный редакционный журнал
++ инженерная мастерская
++ тёплая светлая среда
++ глубокий синий
++ редкий медный акцент
++ ясная доказательность
 ```
 
-## Запрещено до remediation PASS
+## Контрольные маршруты
 
-- merge PR №20;
-- перевод PR в Ready for review;
-- начало Issue №8;
-- ослабление Test IDs;
-- `continue-on-error`;
-- отключение CI;
-- production deploy;
+```text
+/
+/projects/test-platform/
+/journal/articles/test-article/
+```
+
+Они используют только синтетический foundation-контент. Полная главная и реальные материалы относятся к следующим задачам.
+
+## Разрешённый scope
+
+- semantic design tokens;
+- типографическая шкала с кириллицей;
+- responsive containers/grid;
+- Header, native mobile navigation, Footer и Breadcrumbs;
+- button/link variants;
+- ProjectCard, ContentCard, FactCard;
+- EvidenceBadge и StatusBadge;
+- Timeline, Quote, Callout и CTA;
+- form presentation и interface states;
+- neutral image placeholder;
+- social-card baseline;
+- browser accessibility, keyboard, responsive и screenshot review.
+
+## Запрещено в этой задаче
+
+- полная реализация Homepage Blueprint;
+- реальные фотографии и биографии;
+- production business/education pages;
+- контактная форма и backend;
+- analytics provider;
+- public knowledge graph;
+- dark mode;
+- production deploy и домен;
 - импорт приватного vault;
-- добавление реального контента или финального дизайна.
+- начало Issue №9;
+- merge без owner review.
 
-## Следующий допустимый шаг
+## Quality gate
 
-Только выполнение remediation в существующей ветке и Draft PR. После зелёного локального и GitHub Actions gate — owner review PR №20.
+Обязательны:
 
-`SITE-DESIGN-001 / Issue №8` разрешается только после owner approval и merge PR №20.
+```text
+npm ci
+npm run quality
+npm run design:check
+npm audit --audit-level=high
+git diff --check
+```
+
+GitHub Actions должен сохранить:
+
+- platform quality success;
+- design review success;
+- artifact `design-review-screenshots` с шестью изображениями.
+
+## Следующая допустимая задача
+
+Только после owner review и merge Draft PR №21:
+
+`SITE-HOME-001 — Issue №9`
+
+Coding-agent после отчёта по Issue №8 останавливается и не начинает главную в той же сессии.

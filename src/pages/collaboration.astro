@@ -1,57 +1,61 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import ButtonLink from "@components/ui/ButtonLink.astro";
 import { buildUrl } from "@config/site";
 ---
 
 <BaseLayout
   title="Сотрудничество — Александр Аликин"
-  description="Выберите контекст: бизнес-задача, образовательная программа, партнёрство, выступление или другой вопрос."
+  description="Выберите контекст обращения: бизнес-задача, образовательная программа, партнёрство, выступление или другой вопрос."
   currentPath="/collaboration/"
   breadcrumbs={[{ label: "Сотрудничество" }]}
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Сотрудничество</h1>
-      <p class="description">
-        Выберите контекст обращения. Это поможет мне быстрее понять вашу задачу.
-      </p>
-      <ul style="list-style:none;padding:0;margin-top:var(--space-xl);">
-        <li style="margin-bottom:var(--space-md);">
-          <a
-            href={buildUrl("/business/")}
-            style="display:block;padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;font-weight:600;"
-            >Бизнес-процесс или ИИ-пилот</a
-          >
-        </li>
-        <li style="margin-bottom:var(--space-md);">
-          <a
-            href={buildUrl("/education/")}
-            style="display:block;padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;font-weight:600;"
-            >Образовательная программа или лаборатория</a
-          >
-        </li>
-        <li style="margin-bottom:var(--space-md);">
-          <a
-            href={buildUrl("/contacts/")}
-            style="display:block;padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;font-weight:600;"
-            >Партнёрство по проекту</a
-          >
-        </li>
-        <li style="margin-bottom:var(--space-md);">
-          <a
-            href={buildUrl("/press/")}
-            style="display:block;padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;font-weight:600;"
-            >Выступление или СМИ</a
-          >
-        </li>
-        <li style="margin-bottom:var(--space-md);">
-          <a
-            href={buildUrl("/contacts/")}
-            style="display:block;padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;font-weight:600;"
-            >Другой предметный вопрос</a
-          >
-        </li>
-      </ul>
+  <div class="container container-main">
+    <h1>Сотрудничество</h1>
+    <p class="text-lg muted-text">
+      Выберите контекст обращения. Это поможет быстрее понять вашу задачу и предложить подходящий
+      формат.
+    </p>
+    <div class="card-grid mt-8">
+      <div class="card">
+        <h3>Бизнес-процесс или ИИ-пилот</h3>
+        <p class="card-description">
+          У вас есть ручной или разрозненный процесс, который нужно превратить в систему с измеримым
+          результатом.
+        </p>
+        <ButtonLink href={buildUrl("/business/")} variant="secondary" size="compact"
+          >Подробнее</ButtonLink
+        >
+      </div>
+      <div class="card">
+        <h3>Образовательная программа или лаборатория</h3>
+        <p class="card-description">
+          Вы представляете школу, центр или EdTech-проект и хотите создать инженерную или
+          ИИ-программу.
+        </p>
+        <ButtonLink href={buildUrl("/education/")} variant="secondary" size="compact"
+          >Подробнее</ButtonLink
+        >
+      </div>
+      <div class="card">
+        <h3>Партнёрство по проекту</h3>
+        <p class="card-description">
+          У вас есть идея или проект, где нужна инженерная, педагогическая или предпринимательская
+          экспертиза.
+        </p>
+        <ButtonLink href={buildUrl("/contacts/")} variant="secondary" size="compact"
+          >Связаться</ButtonLink
+        >
+      </div>
+      <div class="card">
+        <h3>Выступление или СМИ</h3>
+        <p class="card-description">
+          Вы организуете мероприятие или готовите материал и хотите пригласить Александра.
+        </p>
+        <ButtonLink href={buildUrl("/press/")} variant="secondary" size="compact"
+          >Пресс-пакет</ButtonLink
+        >
+      </div>
     </div>
   </div>
 </BaseLayout>

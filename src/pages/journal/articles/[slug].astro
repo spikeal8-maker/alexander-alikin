@@ -1,17 +1,18 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
+import { getEntry, getCollection, render } from "astro:content";
+import EvidenceBadge from "@components/foundation/EvidenceBadge.astro";
+import ButtonLink from "@components/ui/ButtonLink.astro";
+import { buildUrl } from "@config/site";
 
 export async function getStaticPaths() {
   const entries = await getCollection("articles", (s) => s.data.status === "published");
   return entries.map((s) => ({ params: { slug: s.data.slug } }));
 }
-
 const { slug } = Astro.params;
-const entry = (await getCollection("articles", (s) => s.data.status === "published")).find(
-  (s) => s.data.slug === slug,
-);
-if (!entry) return Astro.redirect("/404");
+const entry = await getEntry("articles", slug);
+if (!entry || entry.data.status !== "published") return Astro.redirect("/404");
+const { Content } = await render(entry);
 ---
 
 <BaseLayout
@@ -24,11 +25,20 @@ if (!entry) return Astro.redirect("/404");
     { label: entry.data.title },
   ]}
 >
-  <div class="container">
-    <div class="route-shell">
+  <div class="container container-reading">
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="text-sm muted-text">{entry.data.publishedAt.toLocaleDateString("ru")}</span>
+        <EvidenceBadge level={entry.data.evidenceLevel} />
+        <span class="badge badge-published">Статья</span>
+      </div>
       <h1>{entry.data.title}</h1>
-      <p class="description">{entry.data.description}</p>
-      <div class="content-body"><Fragment set:html={entry.body} /></div>
+      <p class="article-lead">{entry.data.description}</p>
+    </header>
+    <div class="content-body">
+      <Content />
     </div>
+    <hr />
+    <ButtonLink href={buildUrl("/collaboration/")} variant="secondary">Обсудить задачу</ButtonLink>
   </div>
 </BaseLayout>

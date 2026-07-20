@@ -1,0 +1,11 @@
+---
+interface Props {
+  text: string;
+  attribution?: string;
+}
+---
+
+<blockquote class="editorial-quote">
+  <p>{Astro.props.text}</p>
+  {Astro.props.attribution && <cite class="text-sm text-muted">— {Astro.props.attribution}</cite>}
+</blockquote>

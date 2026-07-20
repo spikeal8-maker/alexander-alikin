@@ -1,4 +1,4 @@
-version: 3
+version: 4
 updated_at: "2026-07-20"
 
 project:
@@ -9,24 +9,27 @@ project:
   epic_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/5"
   production_branch: "main"
   foundation_commit: "5feccb8c39364e8d785b0d06691b718f55bdb165"
+  platform_commit: "96ea8269ff71c79f05defa429f2542a74a03a648"
   publication_rule: "main соответствует принятой базовой или опубликованной версии; private vault не подключается к production"
 
 current_state:
   strategy: "done"
-  foundation_pr: "merged"
-  current_task: "SITE-PLATFORM-001"
-  current_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/7"
-  current_branch: "agent/site-platform"
-  current_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/20"
+  platform: "done"
+  current_task: "SITE-DESIGN-001"
+  current_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/8"
+  current_branch: "agent/site-design-system"
+  current_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/21"
   current_status: "ready"
   production_deploy_allowed: false
   next_task_start_allowed: false
   required_before_owner_review:
-    - "all site-platform Test IDs pass"
-    - "npm ci and npm run quality pass"
+    - "all platform Test IDs remain pass"
+    - "all design Test IDs pass"
+    - "npm ci, npm run quality and npm run design:check pass"
     - "dependency audit has no high or critical findings"
+    - "desktop and mobile screenshot artifact exists"
     - "Draft PR contains factual report"
-    - "SITE-DESIGN-001 is not started"
+    - "SITE-HOME-001 is not started"
 
 objective:
   primary: "Создавать качественные предметные разговоры через проверяемую цифровую личность Александра"
@@ -113,6 +116,10 @@ design:
     verified: "#2F6B57"
     warning: "#8B5A20"
     danger: "#8A3D3D"
+  control_routes:
+    - "/"
+    - "/projects/test-platform/"
+    - "/journal/articles/test-article/"
   forbidden_primary_patterns:
     - "generated_face"
     - "neon_ai_agency"
@@ -182,13 +189,15 @@ implementation_tasks:
     issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/7"
     branch: "agent/site-platform"
     pull_request_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/20"
-    status: "ready"
+    merge_commit: "96ea8269ff71c79f05defa429f2542a74a03a648"
+    status: "done"
     depends_on: ["SITE-STRATEGY-001"]
-    blocks: ["SITE-DESIGN-001"]
+    blocks: []
   - id: "SITE-DESIGN-001"
     issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/8"
     branch: "agent/site-design-system"
-    status: "blocked"
+    pull_request_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/21"
+    status: "ready"
     depends_on: ["SITE-PLATFORM-001"]
     blocks: ["SITE-HOME-001"]
   - id: "SITE-HOME-001"
@@ -263,6 +272,23 @@ quality_profiles:
       - "TST-PLATFORM-DIST-001"
       - "TST-PLATFORM-A11Y-001"
       - "TST-PLATFORM-SIZE-001"
+  site_design:
+    contract: "docs/testing/SITE-DESIGN-QUALITY.md"
+    command: "npm run design:check"
+    screenshot_artifact: "design-review-screenshots"
+    test_ids:
+      - "TST-DESIGN-TOKENS-001"
+      - "TST-DESIGN-RAW-COLOR-001"
+      - "TST-DESIGN-INLINE-001"
+      - "TST-DESIGN-CONTRAST-001"
+      - "TST-DESIGN-COMPONENTS-001"
+      - "TST-DESIGN-VIEWPORT-001"
+      - "TST-DESIGN-ZOOM-001"
+      - "TST-DESIGN-KEYBOARD-001"
+      - "TST-DESIGN-NOJS-001"
+      - "TST-DESIGN-MOTION-001"
+      - "TST-DESIGN-AXE-001"
+      - "TST-DESIGN-SCREENSHOT-001"
   release:
     additional_requirements:
       - "browser_navigation_smoke"

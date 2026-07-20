@@ -21,7 +21,17 @@
     "test:dist": "node scripts/validate-dist.mjs",
     "test:a11y": "node scripts/validate-a11y.mjs",
     "test:file-size": "node scripts/validate-file-size.mjs",
-    "quality": "npm run clean && npm run format:check && npm run lint && npm run typecheck && npm run test:content && npm run test:source-routes && npm run test:secrets && npm run build && npm run test:generated-routes && npm run test:links && npm run test:leaks && npm run test:dist && npm run test:a11y && npm run test:file-size"
+    "design:tokens": "node scripts/validate-design-tokens.mjs",
+    "design:raw-color": "node scripts/validate-design-raw-color.mjs",
+    "design:inline": "node scripts/validate-design-inline.mjs",
+    "design:contrast": "node scripts/validate-design-contrast.mjs",
+    "design:components": "node scripts/validate-design-components.mjs",
+    "test:media": "node scripts/validate-media-paths.mjs",
+    "design:static": "npm run design:tokens && npm run design:raw-color && npm run design:inline && npm run design:contrast && npm run design:components",
+    "design:browser": "node scripts/validate-design-browser.mjs",
+    "design:check": "npm run design:static && npm run design:browser",
+    "quality": "npm run clean && npm run format:check && npm run lint && npm run typecheck && npm run test:content && npm run test:source-routes && npm run test:secrets && npm run build && npm run test:generated-routes && npm run test:links && npm run test:leaks && npm run test:dist && npm run test:a11y && npm run test:file-size",
+    "verify:site": "npm run quality && npm run design:static && npm run test:media"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
@@ -30,7 +40,9 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "@axe-core/playwright": "^4.12.1",
     "@eslint/js": "^9.39.2",
+    "@playwright/test": "^1.61.1",
     "@types/node": "^26.1.1",
     "eslint": "^9.39.2",
     "eslint-plugin-astro": "^1.5.1",

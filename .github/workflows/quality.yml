@@ -16,5 +16,30 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - run: npx playwright install --with-deps chromium
       - run: npm run quality
+      - run: npm run design:static
+      - run: npm run test:media
+      - name: Start Astro dev server
+        run: |
+          npm run dev -- --host 0.0.0.0 --port 4321 &
+          SERVER_PID=$!
+          echo "SERVER_PID=$SERVER_PID" >> "$GITHUB_ENV"
+          for i in $(seq 1 30); do
+            if curl -s -o /dev/null http://localhost:4321/alexander-alikin/; then
+              echo "Server ready after ${i}s"
+              break
+            fi
+            sleep 1
+          done
+      - run: npm run design:browser
       - run: npm audit --audit-level=high
+      - name: Stop server
+        if: always()
+        run: kill $SERVER_PID 2>/dev/null || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: site-review-screenshots
+          path: .work/screenshots/
+          retention-days: 7

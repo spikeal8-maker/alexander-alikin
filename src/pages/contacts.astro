@@ -1,29 +1,39 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { buildUrl } from "@config/site";
 ---
 
 <BaseLayout
   title="Контакты — Александр Аликин"
-  description="Официальные каналы связи: Telegram, GitHub, VK, RUTUBE и другие площадки."
+  description="Официальные каналы связи."
   currentPath="/contacts/"
   breadcrumbs={[{ label: "Контакты" }]}
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Контакты</h1>
-      <p class="description">Официальные каналы связи.</p>
-      <ul style="list-style:none;padding:0;margin-top:var(--space-lg);">
-        <li style="margin-bottom:var(--space-md);">
-          <strong>Telegram</strong> — основной прямой контакт
-        </li>
-        <li style="margin-bottom:var(--space-md);">
-          <strong>GitHub</strong> — <a href="https://github.com/spikeal8-maker">spikeal8-maker</a>
-        </li>
-        <li style="margin-bottom:var(--space-md);"><strong>VK</strong> — профиль и архив</li>
-      </ul>
-      <p style="margin-top:var(--space-lg);">
-        Полный список каналов с описанием назначения каждого будет опубликован после утверждения.
-      </p>
+  <div class="container container-main">
+    <h1>Контакты</h1>
+    <p class="text-lg muted-text">Официальные каналы связи. Выберите подходящий способ.</p>
+    <div class="card-grid mt-8">
+      <div class="card">
+        <h3>Telegram</h3>
+        <p class="card-description">Основной канал для прямого общения и оперативных вопросов.</p>
+      </div>
+      <div class="card">
+        <h3>GitHub</h3>
+        <p class="card-description">
+          Публичная техническая деятельность: <a href="https://github.com/spikeal8-maker"
+            >spikeal8-maker</a
+          >
+        </p>
+      </div>
+      <div class="card">
+        <h3>VK</h3>
+        <p class="card-description">Профиль и архив публикаций.</p>
+      </div>
     </div>
+    <p class="mt-8">
+      Для предметного обсуждения задачи перейдите на страницу <a href={buildUrl("/collaboration/")}
+        >сотрудничества</a
+      >.
+    </p>
   </div>
 </BaseLayout>

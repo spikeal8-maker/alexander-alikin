@@ -1,46 +1,59 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import HomeHero from "@components/home/HomeHero.astro";
+import IntentRouter from "@components/home/IntentRouter.astro";
+import NowSection from "@components/home/NowSection.astro";
+import FeaturedProjects from "@components/home/FeaturedProjects.astro";
+import MethodSection from "@components/home/MethodSection.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import Timeline from "@components/ui/Timeline.astro";
+import CTASection from "@components/ui/CTASection.astro";
 import { buildUrl } from "@config/site";
 ---
 
 <BaseLayout
   title="Александр Аликин — проекты, системы и мысли"
-  description="Инженер. Педагог. Предприниматель. Исследую сложные системы, создаю работающие проекты и рассказываю, чему они меня научили."
+  description="Предприниматель-практик и инженер-педагог. Проектирую и запускаю технологические, ИИ- и образовательные системы."
   currentPath="/"
 >
+  <HomeHero />
+  <div class="container"><IntentRouter /></div>
+  <div class="container mt-12"><NowSection /></div>
+  <div class="container mt-12"><FeaturedProjects /></div>
+  <div class="container mt-12 container-main"><MethodSection /></div>
+  <div class="container mt-12 container-main">
+    <SectionHeader label="Путь" title="Ключевые этапы" />
+    <Timeline
+      items={[
+        {
+          date: "2010-е",
+          title: "Инженерия и техника",
+          description: "Первые проекты, электроника, понимание систем.",
+        },
+        {
+          date: "2015+",
+          title: "Педагогика и робототехника",
+          description: "Обучение, соревнования, методика.",
+        },
+        {
+          date: "2018+",
+          title: "Предпринимательство",
+          description: "Лига роботов, Laser Love, бизнес-проекты.",
+        },
+        {
+          date: "2024+",
+          title: "ИИ и автоматизация",
+          description: "Системы знаний, n8n, ИИ-ассистенты.",
+        },
+      ]}
+    />
+  </div>
   <div class="container">
-    <h1>Александр Аликин</h1>
-    <p class="description">
-      Инженер. Педагог. Предприниматель. Создаю системы, продукты и образовательные проекты.
-    </p>
-    <p class="description">
-      Исследую сложные системы, создаю работающие проекты и рассказываю, чему они меня научили.
-    </p>
-    <nav aria-label="Маршруты посетителя" style="margin-top:var(--space-2xl);">
-      <ul style="list-style:none;display:flex;flex-wrap:wrap;gap:var(--space-md);padding:0;">
-        <li>
-          <a
-            class="cta"
-            href={buildUrl("/business/")}
-            style="display:inline-block;padding:var(--space-md) var(--space-xl);background:var(--color-primary);color:var(--color-surface);text-decoration:none;border-radius:var(--radius);font-weight:600;"
-            >Бизнесу</a
-          >
-        </li>
-        <li>
-          <a
-            href={buildUrl("/education/")}
-            style="display:inline-block;padding:var(--space-md) var(--space-xl);border:2px solid var(--color-primary);color:var(--color-primary);text-decoration:none;border-radius:var(--radius);font-weight:600;"
-            >Образованию</a
-          >
-        </li>
-        <li>
-          <a
-            href={buildUrl("/about/")}
-            style="display:inline-block;padding:var(--space-md) var(--space-xl);border:2px solid var(--color-border);color:var(--color-text);text-decoration:none;border-radius:var(--radius);font-weight:600;"
-            >Познакомиться</a
-          >
-        </li>
-      </ul>
-    </nav>
+    <CTASection
+      title="Готовы обсудить задачу?"
+      description="Если у вас есть процесс, который требует системы, или программа, которая должна давать измеримый результат — напишите."
+      href={buildUrl("/collaboration/")}
+      buttonLabel="Обсудить задачу"
+    />
   </div>
 </BaseLayout>

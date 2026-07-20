@@ -1,18 +1,20 @@
 ---
-import type { EvidenceLevel } from "@config/site";
-
 interface Props {
-  level: EvidenceLevel;
+  level: "author_statement" | "public_source" | "document_verified";
 }
 
 const { level } = Astro.props;
-const labels: Record<EvidenceLevel, string> = {
+const labels = {
   author_statement: "Подтверждено автором",
   public_source: "Открытый источник",
   document_verified: "Проверено по документам",
 };
 ---
 
-<span class={`evidence-badge ${level}`} aria-label={`Уровень доказательности: ${labels[level]}`}>
+<span
+  class="evidence-badge"
+  data-level={level}
+  aria-label={`Уровень доказательности: ${labels[level]}`}
+>
   {labels[level]}
 </span>

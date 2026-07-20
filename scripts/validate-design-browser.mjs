@@ -74,8 +74,17 @@ try {
       });
       if (mainText < 20)
         errors.push(`${route.name} @${vp.name}: main content too short (${mainText})`);
-      const overflow = await page.evaluate(() => document.body.scrollWidth > window.innerWidth);
-      if (overflow) errors.push(`${route.name} @${vp.name}: horizontal overflow`);
+      const overflow = await page.evaluate(() => {
+        const body = document.body;
+        const maxScroll = body.scrollWidth;
+        const viewW = window.innerWidth;
+        // Allow <=2px overflow (subpixel rounding)
+        return maxScroll > viewW + 2;
+      });
+      if (overflow)
+        errors.push(
+          `${route.name} @${vp.name}: horizontal overflow (${await page.evaluate(() => document.body.scrollWidth)} vs ${vp.width})`,
+        );
       const images = await page.evaluate(() =>
         [...document.images].map((img) => ({
           complete: img.complete,
@@ -149,11 +158,19 @@ try {
 
   // 200% zoom
   await page.goto(`${SITE}${BASE}/about/`, { waitUntil: "networkidle" });
-  const zoomOk = await page.evaluate(() => {
+  let zoomOk = await page.evaluate(() => {
     document.body.style.zoom = "200%";
-    return document.body.scrollWidth <= window.innerWidth * 1.1;
+    return document.body.scrollWidth <= window.innerWidth + 10;
   });
   if (!zoomOk) errors.push("Zoom 200%: horizontal overflow detected");
+
+  // 200% text size
+  await page.goto(`${SITE}${BASE}/about/`, { waitUntil: "networkidle" });
+  const textZoomOk = await page.evaluate(() => {
+    document.documentElement.style.fontSize = "200%";
+    return document.body.scrollWidth <= window.innerWidth + 10;
+  });
+  if (!textZoomOk) errors.push("Text zoom 200%: horizontal overflow");
 
   // Axe scan
   try {

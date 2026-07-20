@@ -30,19 +30,13 @@ const controlRoutes = [
 
 for (const file of [...walk(componentsDir), ...controlRoutes]) {
   const content = fs.readFileSync(file, "utf8");
-  if (
-    /style="[^"]*(?:#[0-9a-fA-F]{3,8}|[0-9]+px|rgba?\(|margin|padding|font-size|color:)\s*[^"]*"/.test(
-      content,
-    )
-  ) {
+  const styleMatches = [...content.matchAll(/style="([^"]*)"/g)];
+  for (const m of styleMatches) {
+    const val = m[1];
     const rel = path.relative(ROOT, file);
-    const matches = [...content.matchAll(/style="([^"]*)"/g)].map((m) => m[1]);
-    const badStyles = matches.filter(
-      (s) => /#[0-9a-fA-F]{3,8}|([0-9]+px)|rgba?\(/.test(s) && !/var\(--/.test(s),
-    );
-    if (badStyles.length) {
-      errors.push(`${rel}: hardcoded styles: ${badStyles.join("; ")}`);
-    }
+    // Allow ONLY object-fit/object-position on img tags (presentation-critical)
+    if (/object-fit|object-position/.test(val) && content.includes("<img")) continue;
+    errors.push(`${rel}: inline style="${val}"`);
   }
 }
 

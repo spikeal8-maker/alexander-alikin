@@ -1,94 +1,27 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import ButtonLink from "@components/ui/ButtonLink.astro";
+import HomeHero from "@components/home/HomeHero.astro";
+import IntentRouter from "@components/home/IntentRouter.astro";
+import NowSection from "@components/home/NowSection.astro";
+import FeaturedProjects from "@components/home/FeaturedProjects.astro";
+import MethodSection from "@components/home/MethodSection.astro";
 import SectionHeader from "@components/ui/SectionHeader.astro";
-import ProjectCard from "@components/ui/ProjectCard.astro";
-import ContentCard from "@components/ui/ContentCard.astro";
-import FactCard from "@components/ui/FactCard.astro";
 import Timeline from "@components/ui/Timeline.astro";
-import EditorialQuote from "@components/ui/EditorialQuote.astro";
 import CTASection from "@components/ui/CTASection.astro";
 import { buildUrl } from "@config/site";
 ---
 
 <BaseLayout
   title="Александр Аликин — проекты, системы и мысли"
-  description="Инженер. Педагог. Предприниматель. Исследую сложные системы, создаю работающие проекты и рассказываю, чему они меня научили."
+  description="Предприниматель-практик и инженер-педагог. Проектирую и запускаю технологические, ИИ- и образовательные системы."
   currentPath="/"
 >
-  <div class="container container-main">
-    <h1>Александр Аликин</h1>
-    <p class="text-lg" style="color:var(--color-text-secondary);margin-bottom:var(--space-8);">
-      Инженер. Педагог. Предприниматель. Исследую сложные системы, создаю работающие проекты и
-      рассказываю, чему они меня научили.
-    </p>
-    <nav
-      aria-label="Маршруты посетителя"
-      style="margin-bottom:var(--space-8);display:flex;flex-wrap:wrap;gap:var(--space-3);"
-    >
-      <ButtonLink href={buildUrl("/business/")} variant="secondary">Бизнесу</ButtonLink>
-      <ButtonLink href={buildUrl("/education/")} variant="secondary">Образованию</ButtonLink>
-      <ButtonLink href={buildUrl("/about/")} variant="secondary">Познакомиться</ButtonLink>
-    </nav>
-  </div>
-
-  <div class="container" style="margin-top:var(--space-10);">
-    <SectionHeader
-      label="Практика"
-      title="Проекты"
-      description="Продукты, образовательные программы и технические инициативы."
-    />
-    <div class="card-grid">
-      <ProjectCard
-        title="Тестовый проект — Платформа"
-        description="Тестовый проект для верификации content collections. Платформа собирается статически."
-        slug="test-platform"
-        href={buildUrl("/projects/test-platform/")}
-        role="Автор и разработчик"
-        period="2026-07"
-        projectStatus="active"
-        result="Платформа собирается статически, все маршруты генерируются."
-        evidenceLevel="author_statement"
-      />
-      <ProjectCard
-        title="ИЗО АСА"
-        description="Образовательная платформа для виртуальных лабораторий, управления классами и учебных проектов."
-        slug="izo-asa"
-        href={buildUrl("/projects/test-platform/")}
-        role="Автор архитектуры"
-        period="2025–2026"
-        projectStatus="active"
-        result="Проектирование и разработка ядра платформы."
-        evidenceLevel="author_statement"
-      />
-    </div>
-  </div>
-
-  <div class="container" style="margin-top:var(--space-12);">
-    <SectionHeader
-      label="Мысли"
-      title="Что я думаю"
-      description="Короткие тезисы о сложных системах, образовании и инженерии."
-    />
-    <div class="card-grid">
-      <ContentCard
-        title="Почему проекты важнее сухой теории"
-        description="Обучение происходит через действие и ошибку. Реальный проект нельзя имитировать."
-        href={buildUrl("/journal/thoughts/test-thought/")}
-        type="Мысль"
-        date="2026-07"
-      />
-      <ContentCard
-        title="Выручка без системы — хаос"
-        description="Рост выручки не гарантирует здоровый бизнес. Система должна работать без героических усилий."
-        href={buildUrl("/journal/stories/test-story/")}
-        type="История"
-        date="2026-07"
-      />
-    </div>
-  </div>
-
-  <div class="container container-main" style="margin-top:var(--space-12);">
+  <HomeHero />
+  <div class="container"><IntentRouter /></div>
+  <div class="container mt-12"><NowSection /></div>
+  <div class="container mt-12"><FeaturedProjects /></div>
+  <div class="container mt-12 container-main"><MethodSection /></div>
+  <div class="container mt-12 container-main">
     <SectionHeader label="Путь" title="Ключевые этапы" />
     <Timeline
       items={[
@@ -105,7 +38,7 @@ import { buildUrl } from "@config/site";
         {
           date: "2018+",
           title: "Предпринимательство",
-          description: "Бизнес, проекты, масштабирование.",
+          description: "Лига роботов, Laser Love, бизнес-проекты.",
         },
         {
           date: "2024+",
@@ -115,22 +48,6 @@ import { buildUrl } from "@config/site";
       ]}
     />
   </div>
-
-  <div class="container" style="margin-top:var(--space-12);">
-    <SectionHeader label="Факты" title="Проверяемые утверждения" />
-    <FactCard
-      statement="Платформа собрана на Astro 7 с TypeScript strict и 10 content collections."
-      period="2026-07"
-      evidenceLevel="author_statement"
-    />
-  </div>
-
-  <div class="container container-main" style="margin-top:var(--space-10);">
-    <EditorialQuote
-      text="Инженерное мышление — это умение видеть систему, а не детали. Ошибка становится материалом для вывода, а не поводом для стыда."
-    />
-  </div>
-
   <div class="container">
     <CTASection
       title="Готовы обсудить задачу?"

@@ -1,0 +1,31 @@
+---
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import ProjectCard from "@components/ui/ProjectCard.astro";
+import { buildUrl } from "@config/site";
+---
+
+<SectionHeader
+  label="Практика"
+  title="Проекты"
+  description="Продукты, программы и технические инициативы."
+/>
+<div class="card-grid">
+  <ProjectCard
+    title="ИЗО АСА"
+    description="Образовательная платформа для виртуальных лабораторий, управления классами и учебных проектов."
+    href={buildUrl("/projects/test-platform/")}
+    role="Автор архитектуры и разработчик"
+    period="2025–2026"
+    projectStatus="active"
+    evidenceLevel="author_statement"
+  />
+  <ProjectCard
+    title="Инженерное образование и робототехника"
+    description="Образовательные программы по информатике, технологии и робототехнике."
+    href={buildUrl("/projects/test-platform/")}
+    role="Педагог, методист, руководитель проектов"
+    period="2015–2026"
+    projectStatus="active"
+    evidenceLevel="author_statement"
+  />
+</div>

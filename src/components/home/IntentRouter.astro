@@ -1,0 +1,18 @@
+---
+import { buildUrl } from "@config/site";
+---
+
+<nav class="intent-router" aria-label="Маршруты посетителя">
+  <a href={buildUrl("/business/")} class="intent-card">
+    <span class="intent-label">Бизнесу</span>
+    <span class="intent-desc">ИИ, автоматизация, процессы</span>
+  </a>
+  <a href={buildUrl("/education/")} class="intent-card">
+    <span class="intent-label">Образованию</span>
+    <span class="intent-desc">Программы, лаборатории, методика</span>
+  </a>
+  <a href={buildUrl("/about/")} class="intent-card">
+    <span class="intent-label">Обо мне</span>
+    <span class="intent-desc">Путь, принципы, факты</span>
+  </a>
+</nav>

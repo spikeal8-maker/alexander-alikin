@@ -26,6 +26,7 @@
     "design:inline": "node scripts/validate-design-inline.mjs",
     "design:contrast": "node scripts/validate-design-contrast.mjs",
     "design:components": "node scripts/validate-design-components.mjs",
+    "test:media": "node scripts/validate-media-paths.mjs",
     "design:static": "npm run design:tokens && npm run design:raw-color && npm run design:inline && npm run design:contrast && npm run design:components",
     "design:browser": "node scripts/validate-design-browser.mjs",
     "design:check": "npm run design:static && npm run design:browser",

@@ -3,8 +3,6 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 import fs from "node:fs";
 
-/* global document, window */
-
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = "http://localhost:4321";
 const BASE = "/alexander-alikin";

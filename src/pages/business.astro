@@ -1,32 +1,110 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import ButtonLink from "@components/ui/ButtonLink.astro";
 import { buildUrl } from "@config/site";
 ---
 
 <BaseLayout
   title="Бизнесу — Александр Аликин"
-  description="Помогаю превратить ручной, разрозненный или перегруженный процесс в понятную систему с измеримым результатом."
+  description="Помогаю превратить ручной, разрозненный процесс в понятную систему с измеримым результатом."
   currentPath="/business/"
   breadcrumbs={[{ label: "Бизнесу" }]}
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Бизнесу</h1>
-      <p class="description">
-        Помогаю превратить ручной, разрозненный или перегруженный процесс в понятную систему:
-        диагностировать потерю, собрать узкий пилот, измерить результат и передать решение команде.
-      </p>
-      <p>
-        Подробное описание метода, кейсы и форматы сотрудничества будут опубликованы после
-        утверждения материалов.
-      </p>
-      <p style="margin-top:var(--space-lg);">
-        <a
-          href={buildUrl("/collaboration/")}
-          style="display:inline-block;padding:var(--space-md) var(--space-xl);background:var(--color-primary);color:var(--color-surface);text-decoration:none;border-radius:var(--radius);font-weight:600;"
-          >Описать процесс для разбора</a
-        >
-      </p>
+  <div class="container container-main">
+    <h1>Бизнесу</h1>
+    <p class="text-lg muted-text">
+      Помогаю превратить ручной, разрозненный или перегруженный процесс в понятную систему:
+      диагностировать потерю, собрать узкий пилот, измерить результат и передать решение команде.
+    </p>
+    <img
+      src={buildUrl("/images/alikin/visualized/06-business-portrait-4x5.webp")}
+      alt="Александр Аликин в деловом контексте"
+      width="480"
+      height="320"
+      loading="lazy"
+      style="border-radius:var(--radius-lg);margin:var(--space-6) 0;width:100%;max-width:480px;object-fit:cover;height:auto;"
+    />
+
+    <h2>Когда стоит обращаться</h2>
+    <ul>
+      <li>Ручные процессы отнимают время, которое можно автоматизировать.</li>
+      <li>Данные разрознены между таблицами, чатами и системами.</li>
+      <li>Нужен ограниченный пилот, а не «разработка всего сразу».</li>
+      <li>Команде нужен воспроизводимый процесс, а не героический ручной труд.</li>
+    </ul>
+
+    <h2>Метод</h2>
+    <div class="method-steps">
+      <div class="method-step">
+        <div class="method-num">1</div><div>
+          <strong>Диагностика</strong><p>Понимание текущего процесса, ограничений и зон потерь.</p>
+        </div>
+      </div>
+      <div class="method-step">
+        <div class="method-num">2</div><div>
+          <strong>Карта процесса и данных</strong><p>
+            Что движется, где узкое место, какие системы задействованы.
+          </p>
+        </div>
+      </div>
+      <div class="method-step">
+        <div class="method-num">3</div><div>
+          <strong>Ограниченный пилот</strong><p>
+            Работающий прототип с измеримым результатом на узком участке.
+          </p>
+        </div>
+      </div>
+      <div class="method-step">
+        <div class="method-num">4</div><div>
+          <strong>Внедрение и обучение</strong><p>
+            Передача решения команде, документирование процесса.
+          </p>
+        </div>
+      </div>
+      <div class="method-step">
+        <div class="method-num">5</div><div>
+          <strong>Сопровождение</strong><p>Мониторинг, доработка под меняющиеся условия.</p>
+        </div>
+      </div>
     </div>
+
+    <h2>Что я не автоматизирую</h2>
+    <ul>
+      <li>Хаос без владельца процесса.</li>
+      <li>Критичные действия без контроля человека.</li>
+      <li>Задачи, где нет измеримой метрики успеха.</li>
+    </ul>
+
+    <hr />
+    <ButtonLink href={buildUrl("/collaboration/")} variant="primary"
+      >Описать процесс для разбора</ButtonLink
+    >
   </div>
 </BaseLayout>
+
+<style>
+  .method-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin: var(--space-4) 0;
+  }
+  .method-step {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+  .method-num {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--fw-bold);
+    font-size: var(--text-xs);
+  }
+</style>

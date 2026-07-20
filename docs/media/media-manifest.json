@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "owner": "Александр Аликин",
+  "generated_media_disclosure": "visualized assets are AI-generated from user-supplied reference photographs",
+  "assets": [
+    {
+      "file": "/images/alikin/visualized/hero-main-business.webp",
+      "source_file": "портрет_в_деловом_стиле.png",
+      "width": 1122,
+      "height": 1402,
+      "role": "Главная: основной hero; «Обо мне»; сотрудничество",
+      "alt": "Александр Аликин — деловой портрет",
+      "caption": "Визуализированный портрет на основе фотографий Александра Аликина.",
+      "media_type": "visualized_portrait",
+      "evidence_policy": "Не использовать как документальное доказательство события."
+    },
+    {
+      "file": "/images/alikin/visualized/hero-wide-office.webp",
+      "source_file": "портрет_в_современном_офисе.png",
+      "width": 1536,
+      "height": 1024,
+      "role": "Главная: широкий hero; страница «Бизнесу»",
+      "alt": "Александр Аликин в современном рабочем пространстве",
+      "caption": "Визуализированный портрет на основе фотографий Александра Аликина.",
+      "media_type": "visualized_portrait",
+      "evidence_policy": "Не использовать как документальное доказательство события."
+    },
+    {
+      "file": "/images/alikin/visualized/about-portrait-relaxed.webp",
+      "source_file": "портрет_в_расслабленной_офисной_обстановке.png",
+      "width": 1122,
+      "height": 1402,
+      "role": "Страница «Обо мне»; авторские материалы",
+      "alt": "Александр Аликин в рабочем пространстве",
+      "caption": "Визуализированный портрет на основе фотографий Александра Аликина.",
+      "media_type": "visualized_portrait",
+      "evidence_policy": "Не использовать как документальное доказательство события."
+    },
+    {
+      "file": "/images/alikin/visualized/business-ai-workflow.webp",
+      "source_file": "офисный_рабочий_процесс_с_диаграммой_ai.png",
+      "width": 1536,
+      "height": 1024,
+      "role": "Страница «Бизнесу»; ИИ и автоматизация",
+      "alt": "Александр Аликин за рабочим столом рядом со схемой ИИ-системы",
+      "caption": "Иллюстративная визуализация рабочего контекста.",
+      "media_type": "visualized_scene",
+      "evidence_policy": "Не использовать как документальное доказательство события."
+    },
+    {
+      "file": "/images/alikin/visualized/education-presentation.webp",
+      "source_file": "презентация_в_современном_классе.png",
+      "width": 1536,
+      "height": 1024,
+      "role": "Страница «Образованию»; методика и обучение",
+      "alt": "Александр Аликин объясняет материал у доски",
+      "caption": "Иллюстративная визуализация образовательного контекста.",
+      "media_type": "visualized_scene",
+      "evidence_policy": "Не использовать как документальное доказательство события."
+    },
+    {
+      "file": "/images/alikin/visualized/robotics-lab.webp",
+      "source_file": "инженер_в_робототехнической_лаборатории.png",
+      "width": 1122,
+      "height": 1402,
+      "role": "Проекты; образование; робототехника",
+      "alt": "Александр Аликин в робототехнической лаборатории",
+      "caption": "Иллюстративная визуализация технологического контекста.",
+      "media_type": "visualized_scene",
+      "evidence_policy": "Не использовать как документальное доказательство события."
+    },
+    {
+      "file": "/images/alikin/visualized/journal-cafe.webp",
+      "source_file": "уютное_кафе_с_видом_на_улицу.png",
+      "width": 1672,
+      "height": 941,
+      "role": "Журнал; «Сейчас»; авторские истории",
+      "alt": "Александр Аликин с чашкой в кафе",
+      "caption": "Визуализированный редакционный образ.",
+      "media_type": "visualized_scene",
+      "evidence_policy": "Не использовать как документальное доказательство события."
+    },
+    {
+      "file": "/images/alikin/visualized/contact-exterior.webp",
+      "source_file": "портрет_на_фоне_современного_здания.png",
+      "width": 1536,
+      "height": 1024,
+      "role": "Контакты; сотрудничество; финальный CTA",
+      "alt": "Александр Аликин у современного здания",
+      "caption": "Визуализированный портрет на основе фотографий Александра Аликина.",
+      "media_type": "visualized_scene",
+      "evidence_policy": "Не использовать как документальное доказательство события."
+    },
+    {
+      "file": "/images/alikin/visualized/author-avatar.webp",
+      "source_file": "портрет_в_расслабленной_офисной_обстановке.png",
+      "width": 800,
+      "height": 800,
+      "role": "Аватар автора, карточки статей, пресс-блок",
+      "alt": "Александр Аликин — портрет автора",
+      "caption": "Визуализированный портрет на основе фотографий Александра Аликина.",
+      "media_type": "visualized_portrait",
+      "evidence_policy": "Допустим как портрет, не как доказательство события."
+    },
+    {
+      "file": "/images/alikin/visualized/social-card-base.webp",
+      "source_file": "портрет_в_современном_офисе.png",
+      "width": 1200,
+      "height": 630,
+      "role": "Open Graph / social card baseline",
+      "alt": "Александр Аликин в рабочем пространстве",
+      "caption": "Визуализированный портрет на основе фотографий Александра Аликина.",
+      "media_type": "visualized_portrait",
+      "evidence_policy": "Использовать только как брендовый портрет."
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import ButtonLink from "@components/ui/ButtonLink.astro";
 import { buildUrl } from "@config/site";
 ---
 
@@ -9,24 +10,50 @@ import { buildUrl } from "@config/site";
   currentPath="/education/"
   breadcrumbs={[{ label: "Образованию" }]}
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Образованию</h1>
-      <p class="description">
-        Проектирую инженерные и ИИ-программы, лаборатории и методические системы, в которых ученик
-        создаёт и защищает работающий результат, а педагог получает воспроизводимый процесс.
-      </p>
-      <p>
-        Форматы сотрудничества, методика и образовательные проекты будут опубликованы после
-        утверждения материалов.
-      </p>
-      <p style="margin-top:var(--space-lg);">
-        <a
-          href={buildUrl("/collaboration/")}
-          style="display:inline-block;padding:var(--space-md) var(--space-xl);background:var(--color-primary);color:var(--color-surface);text-decoration:none;border-radius:var(--radius);font-weight:600;"
-          >Обсудить программу или лабораторию</a
-        >
-      </p>
-    </div>
+  <div class="container container-main">
+    <h1>Образованию</h1>
+    <p class="text-lg muted-text">
+      Проектирую инженерные и ИИ-программы, лаборатории и методические системы, в которых ученик
+      создаёт и защищает работающий результат, а педагог получает воспроизводимый процесс.
+    </p>
+    <img
+      src={buildUrl("/images/alikin/visualized/07-education-robotics-square.webp")}
+      alt="Александр Аликин в образовательном контексте"
+      width="480"
+      height="320"
+      loading="lazy"
+      style="border-radius:var(--radius-lg);margin:var(--space-6) 0;width:100%;max-width:480px;object-fit:cover;height:auto;"
+    />
+
+    <h2>Метод: действие — ошибка — объяснение — доработка — защита</h2>
+    <p>
+      Ученик не повторяет инструкцию, а создаёт собственный проект. Это развивает инженерное
+      мышление, самостоятельность и ответственность за результат.
+    </p>
+
+    <h2>Форматы сотрудничества</h2>
+    <ul>
+      <li>
+        <strong>Аудит программы</strong> — анализ текущей образовательной программы и рекомендации.
+      </li>
+      <li>
+        <strong>Практикум для педагогов</strong> — обучение методике проектного и инженерного образования.
+      </li>
+      <li><strong>Проектная лаборатория</strong> — создание лаборатории робототехники или ИИ.</li>
+      <li><strong>Модуль по ИИ</strong> — безопасное применение ИИ в образовании.</li>
+      <li><strong>Инженерный интенсив</strong> — короткая программа с измеримым результатом.</li>
+      <li><strong>Методические материалы</strong> — разработка программ и учебных планов.</li>
+    </ul>
+
+    <h2>Требования и безопасность</h2>
+    <p>
+      Программы адаптируются под возраст, уровень подготовки и доступное оборудование. Безопасность,
+      авторство ученика и защита данных — обязательные условия.
+    </p>
+
+    <hr />
+    <ButtonLink href={buildUrl("/collaboration/")} variant="primary"
+      >Обсудить программу или лабораторию</ButtonLink
+    >
   </div>
 </BaseLayout>

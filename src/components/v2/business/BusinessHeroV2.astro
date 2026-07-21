@@ -5,16 +5,21 @@ import { buildUrl } from "@config/site";
 <section class="v2-section">
   <div class="v2-container v2-bh-grid">
     <div class="v2-bh-text">
-      <h1 class="v2-page-title">Бизнесу</h1>
+      <p class="v2-accent-label">Бизнесу</p>
+      <h1 class="v2-page-title">От хаотичного процесса к проверяемой системе</h1>
       <p class="v2-page-lead">
-        ИИ, автоматизация, процессы. Превращаю разрозненные операции в измеримые системы с измеримым
-        результатом.
+        Работа начинается не с выбора ИИ-сервиса, а с разбора процесса: где теряются данные, какие
+        решения принимаются вручную и что должно измениться в измеримом результате.
+      </p>
+      <p class="v2-bh-note">
+        Эта страница описывает подход и ситуации, для которых предлагается проверить соответствие
+        опыта. Она не выдаёт рыночные сценарии за завершённые клиентские кейсы.
       </p>
     </div>
     <div class="v2-bh-media">
       <img
         src={buildUrl("/images/alikin/visualized/business-ai-workflow.webp")}
-        alt="AI-автоматизация бизнес-процессов"
+        alt="Иллюстрация анализа и автоматизации бизнес-процесса"
         width="640"
         height="480"
         loading="eager"
@@ -31,12 +36,16 @@ import { buildUrl } from "@config/site";
     gap: var(--space-12);
     align-items: center;
   }
-  .v2-bh-text {
-    min-width: 0;
-    overflow-wrap: break-word;
-  }
+  .v2-bh-text,
   .v2-bh-media {
     min-width: 0;
+  }
+  .v2-bh-note {
+    max-width: 42rem;
+    margin: var(--space-6) 0 0;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
   }
   .v2-bh-media img {
     max-height: 440px;

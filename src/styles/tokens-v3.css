@@ -1,0 +1,120 @@
+:root {
+  --v3-paper: #f3f0e8;
+  --v3-paper-deep: #e7e0d3;
+  --v3-ink: #111318;
+  --v3-ink-soft: #30343b;
+  --v3-muted: #6b6a66;
+  --v3-line: rgba(17, 19, 24, 0.16);
+  --v3-line-light: rgba(255, 255, 255, 0.2);
+  --v3-cobalt: #1647d9;
+  --v3-cobalt-dark: #0e2f9c;
+  --v3-white: #fffdf7;
+  --v3-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --v3-sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --v3-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --v3-max: 92rem;
+  --v3-gutter: clamp(1.25rem, 4vw, 5rem);
+  --v3-section: clamp(5rem, 10vw, 10rem);
+  --v3-radius: 0.35rem;
+  --v3-shadow: 0 2rem 6rem rgba(17, 19, 24, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--v3-paper);
+  color: var(--v3-ink);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--v3-paper);
+  color: var(--v3-ink);
+  font-family: var(--v3-sans);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--v3-cobalt);
+  color: var(--v3-white);
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.v3-shell {
+  width: min(100%, var(--v3-max));
+  margin: 0 auto;
+  padding-inline: var(--v3-gutter);
+}
+
+.v3-section {
+  padding-block: var(--v3-section);
+}
+
+.v3-kicker {
+  margin: 0 0 1rem;
+  color: var(--v3-cobalt);
+  font-family: var(--v3-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.v3-display {
+  margin: 0;
+  font-family: var(--v3-serif);
+  font-size: clamp(3.8rem, 8vw, 9rem);
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 0.88;
+}
+
+.v3-title {
+  margin: 0;
+  font-family: var(--v3-serif);
+  font-size: clamp(2.8rem, 5vw, 5.6rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+}
+
+.v3-link {
+  display: inline-flex;
+  gap: 0.65rem;
+  align-items: center;
+  color: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.v3-link::after {
+  content: "↗";
+  color: var(--v3-cobalt);
+}
+
+.v3-link:hover,
+.v3-link:focus-visible {
+  color: var(--v3-cobalt);
+}
+
+@media (max-width: 720px) {
+  :root {
+    --v3-section: 4.5rem;
+  }
+
+  .v3-display {
+    font-size: clamp(3.25rem, 18vw, 5.8rem);
+  }
+}

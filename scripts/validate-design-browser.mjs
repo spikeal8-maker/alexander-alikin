@@ -45,7 +45,7 @@ const FORBIDDEN = [
 ];
 
 const errors = [];
-
+fs.mkdirSync(SCREENSHOT_DIR, { recursive: true });
 const browser = await chromium.launch({ headless: true });
 
 try {
@@ -114,7 +114,11 @@ try {
           errors.push(`  └─ ${o.selector}: left=${o.left} right=${o.right} width=${o.width}`);
       }
 
-      if (["home", "business", "projects", "izo-asa", "collaboration"].includes(route.name)) {
+      if (
+        ["home", "about", "business", "education", "projects", "izo-asa", "collaboration"].includes(
+          route.name,
+        )
+      ) {
         const designIssues = await checkV2Design(page, route.name, vp.width);
         for (const i of designIssues) errors.push(`${route.name} @${vp.name}: ${i}`);
       }
@@ -134,7 +138,6 @@ try {
     }
   }
 
-  // Screenshots (desktop 1440, mobile 390)
   const screenshotRoutes = ROUTES.filter((r) =>
     [
       "home",
@@ -149,7 +152,6 @@ try {
       "contacts",
     ].includes(r.name),
   );
-  fs.mkdirSync(SCREENSHOT_DIR, { recursive: true });
 
   for (const route of screenshotRoutes) {
     await page.setViewportSize({ width: 1440, height: 900 });
@@ -167,7 +169,6 @@ try {
     });
   }
 
-  // No-JS context
   const noJsCtx = await browser.newContext({ javaScriptEnabled: false, reducedMotion: "reduce" });
   const noJsPage = await noJsCtx.newPage();
   await noJsPage.setViewportSize({ width: 1440, height: 900 });
@@ -184,30 +185,32 @@ try {
   }
   await noJsCtx.close();
 
-  // Keyboard + focus
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(`${SITE}${BASE}/`, { waitUntil: "networkidle" });
   await page.keyboard.press("Tab");
   const focused = await page.evaluate(() => document.activeElement?.tagName || "NONE");
   if (focused === "BODY" || focused === "NONE") errors.push("Keyboard: Tab did not focus element");
 
-  // 200% zoom
   await page.goto(`${SITE}${BASE}/about/`, { waitUntil: "networkidle" });
-  let zoomOk = await page.evaluate(() => {
+  const zoomResult = await page.evaluate(() => {
     document.body.style.zoom = "200%";
-    return document.body.scrollWidth <= window.innerWidth + 10;
+    return { scrollWidth: document.body.scrollWidth, viewport: window.innerWidth };
   });
-  if (!zoomOk) errors.push("Zoom 200%: horizontal overflow detected");
+  if (zoomResult.scrollWidth > zoomResult.viewport + 10)
+    errors.push(
+      `Zoom 200%: horizontal overflow (${zoomResult.scrollWidth} vs ${zoomResult.viewport})`,
+    );
 
-  // 200% text size
   await page.goto(`${SITE}${BASE}/about/`, { waitUntil: "networkidle" });
-  const textZoomOk = await page.evaluate(() => {
+  const textZoomResult = await page.evaluate(() => {
     document.documentElement.style.fontSize = "200%";
-    return document.body.scrollWidth <= window.innerWidth + 10;
+    return { scrollWidth: document.body.scrollWidth, viewport: window.innerWidth };
   });
-  if (!textZoomOk) errors.push("Text zoom 200%: horizontal overflow");
+  if (textZoomResult.scrollWidth > textZoomResult.viewport + 10)
+    errors.push(
+      `Text zoom 200%: horizontal overflow (${textZoomResult.scrollWidth} vs ${textZoomResult.viewport})`,
+    );
 
-  // Axe scan
   try {
     await page.goto(`${SITE}${BASE}/`, { waitUntil: "networkidle" });
     const axeCore = await import("@axe-core/playwright");
@@ -234,8 +237,13 @@ console.log(
 );
 
 if (errors.length) {
+  const report = `${errors.join("\n")}\n`;
+  fs.writeFileSync(path.join(SCREENSHOT_DIR, "browser-errors.txt"), report, "utf8");
   console.error("BROWSER ERRORS:");
-  console.error(errors.join("\n"));
+  console.error(report);
   process.exit(1);
 }
+
+const errorReportPath = path.join(SCREENSHOT_DIR, "browser-errors.txt");
+if (fs.existsSync(errorReportPath)) fs.rmSync(errorReportPath);
 console.log("Browser check: PASS");

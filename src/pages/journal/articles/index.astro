@@ -1,35 +1,21 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import ContentCard from "@components/ui/ContentCard.astro";
-import { buildUrl } from "@config/site";
+import JournalListingV2 from "@components/v2/journal/JournalListingV2.astro";
 
-const articles = await getCollection("articles", (s) => s.data.status === "published");
+const articles = (await getCollection("articles", (entry) => entry.data.status === "published"))
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .map((entry) => ({
+    title: entry.data.title,
+    description: entry.data.description,
+    href: `/journal/articles/${entry.data.slug}/`,
+    kind: "Статья",
+    date: entry.data.publishedAt.toLocaleDateString("ru"),
+  }));
 ---
 
-<BaseLayout
-  title="Статьи — Александр Аликин"
-  description="Системные материалы с аргументом, структурой, источниками и следующим смысловым маршрутом."
-  currentPath="/journal/"
-  breadcrumbs={[{ label: "Журнал", href: "/journal/" }, { label: "Статьи" }]}
->
-  <div class="container">
-    <h1>Статьи</h1>
-    <p class="text-lg muted-text">
-      Системные материалы с аргументацией, источниками и смысловыми связями.
-    </p>
-    <div class="card-grid mt-8">
-      {
-        articles.map((a) => (
-          <ContentCard
-            title={a.data.title}
-            description={a.data.description}
-            href={buildUrl(`/journal/articles/${a.data.slug}/`)}
-            type="Статья"
-            date={a.data.publishedAt.toLocaleDateString("ru")}
-          />
-        ))
-      }
-    </div>
-  </div>
-</BaseLayout>
+<JournalListingV2
+  title="Статьи"
+  eyebrow="Развёрнутые материалы"
+  description="Системные тексты, где тезис проходит через аргумент, структуру, ограничения и практический вывод."
+  entries={articles}
+/>

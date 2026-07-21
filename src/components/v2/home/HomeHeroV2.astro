@@ -6,14 +6,19 @@ import { buildUrl } from "@config/site";
   <div class="v2-container">
     <div class="v2-hero-grid">
       <div class="v2-hero-text">
+        <p class="v2-hero-kicker">Инженерия · образование · ИИ</p>
         <h1 class="v2-hero-name">Александр Аликин</h1>
         <p class="v2-hero-role">
-          Предприниматель-практик и инженер-педагог. Проектирую и запускаю технологические, ИИ- и
-          образовательные системы.
+          Предприниматель-практик и инженер-педагог. Разбираю сложные задачи, собираю работающие
+          конструкции, проверяю их практикой и объясняю людям, как ими пользоваться.
+        </p>
+        <p class="v2-hero-scope">
+          На сайте — текущие проекты, подход к автоматизации и инженерному образованию, а также
+          честно обозначенные границы работы.
         </p>
         <div class="v2-hero-actions">
           <a href={buildUrl("/collaboration/")} class="v2-btn v2-btn-accent">Обсудить задачу</a>
-          <a href={buildUrl("/projects/")} class="v2-hero-link">Проекты &rarr;</a>
+          <a href={buildUrl("/projects/")} class="v2-hero-link">Посмотреть проекты &rarr;</a>
         </div>
       </div>
       <div class="v2-hero-media">
@@ -41,6 +46,14 @@ import { buildUrl } from "@config/site";
     gap: var(--space-12);
     align-items: center;
   }
+  .v2-hero-kicker {
+    margin: 0 0 var(--space-4);
+    color: var(--color-accent-text);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
   .v2-hero-name {
     font-size: var(--text-6xl);
     font-weight: var(--fw-bold);
@@ -49,12 +62,19 @@ import { buildUrl } from "@config/site";
     line-height: 1.05;
     margin: 0 0 var(--space-6);
   }
+  .v2-hero-role,
+  .v2-hero-scope {
+    color: rgba(255, 255, 255, 0.72);
+    line-height: var(--leading-normal);
+    max-width: 36rem;
+  }
   .v2-hero-role {
     font-size: var(--text-lg);
-    color: rgba(255, 255, 255, 0.7);
-    line-height: var(--leading-normal);
+    margin: 0 0 var(--space-4);
+  }
+  .v2-hero-scope {
+    font-size: var(--text-base);
     margin: 0 0 var(--space-8);
-    max-width: 34rem;
   }
   .v2-hero-actions {
     display: flex;
@@ -63,17 +83,13 @@ import { buildUrl } from "@config/site";
     flex-wrap: wrap;
   }
   .v2-hero-link {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.72);
     text-decoration: none;
     font-size: var(--text-base);
     font-weight: var(--fw-medium);
-    transition: color var(--motion-fast);
   }
   .v2-hero-link:hover {
     color: var(--color-white);
-  }
-  .v2-hero-media {
-    position: relative;
   }
   .v2-hero-img {
     width: 100%;
@@ -82,7 +98,7 @@ import { buildUrl } from "@config/site";
     object-fit: cover;
     object-position: center 25%;
     max-height: 560px;
-    filter: grayscale(0.2) contrast(1.05);
+    filter: grayscale(0.12) contrast(1.04);
   }
   @media (max-width: 768px) {
     .v2-hero-grid {

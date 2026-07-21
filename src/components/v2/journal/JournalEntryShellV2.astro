@@ -15,7 +15,11 @@ export interface Props {
 const { title, description, kind, date, backHref, backLabel } = Astro.props;
 ---
 
-<BaseLayoutV2 title={`${title} — Александр Аликин`} description={description} currentPath="/journal/">
+<BaseLayoutV2
+  title={`${title} — Александр Аликин`}
+  description={description}
+  currentPath="/journal/"
+>
   <section class="v2-section">
     <div class="v2-container">
       <header class="v2-entry-header">

@@ -135,7 +135,8 @@ try {
       );
       for (const img of images) {
         if (!img.complete) errors.push(`${route.name} @${vp.name}: image not complete: ${img.src}`);
-        if (img.naturalWidth === 0) errors.push(`${route.name} @${vp.name}: broken image: ${img.src}`);
+        if (img.naturalWidth === 0)
+          errors.push(`${route.name} @${vp.name}: broken image: ${img.src}`);
       }
     }
   }
@@ -174,7 +175,10 @@ try {
     });
   }
 
-  const noJsContext = await browser.newContext({ javaScriptEnabled: false, reducedMotion: "reduce" });
+  const noJsContext = await browser.newContext({
+    javaScriptEnabled: false,
+    reducedMotion: "reduce",
+  });
   const noJsPage = await noJsContext.newPage();
   await noJsPage.setViewportSize({ width: 1440, height: 900 });
   for (const routeName of ["home", "about", "izo-asa", "project-learning", "contacts"]) {
@@ -220,9 +224,7 @@ try {
           .slice(0, 3)
           .map((node) => node.html)
           .join(" | ");
-        errors.push(
-          `Axe: ${violation.impact} ${violation.id} — ${violation.help} [${nodes}]`,
-        );
+        errors.push(`Axe: ${violation.impact} ${violation.id} — ${violation.help} [${nodes}]`);
       }
     }
   } catch (error) {

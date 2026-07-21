@@ -21,7 +21,11 @@ export interface Props {
 const { title, description, eyebrow, entries } = Astro.props;
 ---
 
-<BaseLayoutV2 title={`${title} — Александр Аликин`} description={description} currentPath="/journal/">
+<BaseLayoutV2
+  title={`${title} — Александр Аликин`}
+  description={description}
+  currentPath="/journal/"
+>
   <section class="v2-section">
     <div class="v2-container v2-journal-hero">
       <div class="v2-journal-intro">
@@ -30,7 +34,10 @@ const { title, description, eyebrow, entries } = Astro.props;
         <p>{description}</p>
       </div>
       <div class="v2-journal-aside">
-        <p>Материалы публикуются только после редакционной проверки. Авторские тезисы отделяются от подтверждённых фактов и проектных доказательств.</p>
+        <p>
+          Материалы публикуются только после редакционной проверки. Авторские тезисы отделяются от
+          подтверждённых фактов и проектных доказательств.
+        </p>
       </div>
     </div>
   </section>
@@ -50,7 +57,9 @@ const { title, description, eyebrow, entries } = Astro.props;
                   <h2>{entry.title}</h2>
                   <p>{entry.description}</p>
                 </div>
-                <span class="v2-journal-item-arrow" aria-hidden="true">→</span>
+                <span class="v2-journal-item-arrow" aria-hidden="true">
+                  →
+                </span>
               </a>
             ))}
           </div>

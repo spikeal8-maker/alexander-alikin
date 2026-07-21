@@ -63,8 +63,8 @@ const latest = [
         <p class="v2-accent-label">Авторское медиа</p>
         <h1 class="v2-page-title">Журнал практики и решений</h1>
         <p>
-          Здесь собраны материалы о том, как возникают проекты, где ломаются системы, чему учат ошибки
-          и почему хороший результат должен быть объяснимым и воспроизводимым.
+          Здесь собраны материалы о том, как возникают проекты, где ломаются системы, чему учат
+          ошибки и почему хороший результат должен быть объяснимым и воспроизводимым.
         </p>
       </div>
       <div class="v2-journal-aside">
@@ -83,7 +83,9 @@ const latest = [
         {
           categories.map((category) => (
             <a href={buildUrl(category.href)} class="v2-journal-category">
-              <span class="v2-accent-label">{category.num} · {category.count}</span>
+              <span class="v2-accent-label">
+                {category.num} · {category.count}
+              </span>
               <strong>{category.title}</strong>
               <span>{category.description}</span>
             </a>
@@ -108,7 +110,9 @@ const latest = [
                 <h3>{entry.data.title}</h3>
                 <p>{entry.data.description}</p>
               </div>
-              <span class="v2-journal-item-arrow" aria-hidden="true">→</span>
+              <span class="v2-journal-item-arrow" aria-hidden="true">
+                →
+              </span>
             </a>
           ))
         }
@@ -119,7 +123,9 @@ const latest = [
   <section class="v2-section">
     <div class="v2-container v2-cta-block">
       <h2>Следить за новыми материалами</h2>
-      <p>RSS содержит только опубликованные материалы без рекламных рассылок и автоматических писем.</p>
+      <p>
+        RSS содержит только опубликованные материалы без рекламных рассылок и автоматических писем.
+      </p>
       <a href={buildUrl("/rss.xml")} class="v2-btn v2-btn-accent">Открыть RSS</a>
     </div>
   </section>

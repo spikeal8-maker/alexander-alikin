@@ -1,9 +1,9 @@
 name: Debug Quality V2
 
 on:
-  push:
+  pull_request:
     branches:
-      - agent/integrate-visual-direction-v2-1
+      - agent/site-design-system
 
 permissions:
   contents: read

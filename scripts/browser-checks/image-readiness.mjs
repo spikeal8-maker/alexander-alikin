@@ -4,7 +4,9 @@ export async function readImagesAfterLoad(page) {
     for (const image of images) image.loading = "eager";
 
     window.scrollTo(0, document.body.scrollHeight);
-    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    await new Promise((resolve) =>
+      window.requestAnimationFrame(() => window.requestAnimationFrame(resolve)),
+    );
 
     await Promise.all(
       images.map(

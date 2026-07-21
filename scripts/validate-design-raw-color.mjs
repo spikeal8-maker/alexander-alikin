@@ -29,7 +29,11 @@ const hexPattern = /#[0-9A-Fa-f]{3,8}\b/g;
 for (const file of walk(path.join(ROOT, "src"), [".css", ".astro", ".ts", ".mjs"])) {
   const rel = path.relative(ROOT, file).replace(/\\/g, "/");
   if (ALLOWED_RAW_FILES.includes(rel)) continue;
-  if (rel.includes("tokens.css") || rel.includes("tokens-v2.css") || rel.includes("tokens-v3.css")) {
+  if (
+    rel.includes("tokens.css") ||
+    rel.includes("tokens-v2.css") ||
+    rel.includes("tokens-v3.css")
+  ) {
     continue;
   }
   const content = fs.readFileSync(file, "utf8");

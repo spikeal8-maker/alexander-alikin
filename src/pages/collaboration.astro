@@ -4,39 +4,42 @@ import { buildUrl } from "@config/site";
 
 const formats = [
   {
-    title: "Аудит и стратегия",
-    description: "Диагностика текущего состояния, карта автоматизации, дорожная карта. 2–4 недели.",
-  },
-  {
-    title: "Проектная разработка",
-    description: "Полный цикл: от проектирования до передачи. Фиксированный результат и срок.",
-  },
-  {
-    title: "Техническое лидерство",
+    title: "Разбор задачи",
     description:
-      "Временное усиление команды. Архитектура, код-ревью, наставничество разработчиков.",
+      "Короткий предметный разговор: контекст, текущее состояние, желаемое изменение и возможность измерить результат.",
+  },
+  {
+    title: "Проектирование первого этапа",
+    description:
+      "Формулировка границ, данных, ролей, рисков и проверяемого результата. Срок и стоимость появляются только после разбора.",
+  },
+  {
+    title: "Рабочий контур и передача",
+    description:
+      "Создание ограниченного решения, его проверка на реальных условиях, документация и объяснение команде.",
   },
 ];
 ---
 
 <BaseLayoutV2
   title="Обсудить задачу — Александр Аликин"
-  description="Выберите формат сотрудничества: аудит, проектная разработка или техническое лидерство."
+  description="Предметный разбор бизнес-, технологической или образовательной задачи без неподтверждённых обещаний и шаблонных пакетов."
   currentPath="/collaboration/"
 >
   <section class="v2-section">
-    <div class="v2-container">
-      <h1 class="v2-page-title">Обсудить задачу</h1>
+    <div class="v2-container v2-collab-hero">
+      <p class="v2-accent-label">Сотрудничество</p>
+      <h1 class="v2-page-title">Сначала понять задачу</h1>
       <p class="v2-page-lead">
-        Выберите формат, который лучше всего подходит вашей ситуации. Каждое сотрудничество
-        начинается с разбора контекста и фиксации ожидаемого результата.
+        Первый разговор нужен не для продажи готового пакета. Его задача — понять, что происходит
+        сейчас, какое изменение действительно нужно и есть ли у него проверяемый первый шаг.
       </p>
     </div>
   </section>
 
   <section class="v2-section v2-section-surface">
     <div class="v2-container">
-      <h2 class="v2-section-title">Форматы сотрудничества</h2>
+      <h2 class="v2-section-title">Как может начаться работа</h2>
       <div class="v2-formats-grid">
         {
           formats.map((f, i) => (
@@ -52,10 +55,64 @@ const formats = [
   </section>
 
   <section class="v2-section">
+    <div class="v2-container v2-collab-grid">
+      <div>
+        <h2 class="v2-section-title">Что подготовить</h2>
+        <ul class="v2-collab-list">
+          <li>Краткое описание текущей ситуации</li>
+          <li>Что должно работать иначе</li>
+          <li>Какие данные и люди участвуют в процессе</li>
+          <li>Что уже пробовали и где возникло ограничение</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="v2-section-title">Когда я не подхожу</h2>
+        <ul class="v2-collab-list">
+          <li>Нужно обещание результата до диагностики</li>
+          <li>Команда не готова участвовать во внедрении</li>
+          <li>Требуется массовый шаблонный консалтинг</li>
+          <li>Задача лежит вне инженерии, ИИ, процессов или технического образования</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="v2-section v2-section-surface">
     <div class="v2-container v2-cta-block">
-      <h2>Готовы начать?</h2>
-      <p>Напишите — разберём вашу задачу, оценим объём и предложим первый шаг.</p>
-      <a href={buildUrl("/contacts/")} class="v2-btn v2-btn-accent">Связаться</a>
+      <h2>Опишите контекст</h2>
+      <p>Достаточно нескольких абзацев. После этого можно определить, есть ли предмет для разговора.</p>
+      <a href={buildUrl("/contacts/")} class="v2-btn v2-btn-accent">Перейти к контактам</a>
     </div>
   </section>
 </BaseLayoutV2>
+
+<style>
+  .v2-collab-hero {
+    max-width: 56rem;
+  }
+  .v2-formats-grid,
+  .v2-collab-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+  .v2-collab-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+  }
+  .v2-collab-list {
+    margin: 0;
+    padding-left: var(--space-5);
+    color: rgba(255, 255, 255, 0.72);
+  }
+  .v2-collab-list li {
+    margin-bottom: var(--space-3);
+    line-height: var(--leading-normal);
+  }
+  @media (max-width: 768px) {
+    .v2-formats-grid,
+    .v2-collab-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

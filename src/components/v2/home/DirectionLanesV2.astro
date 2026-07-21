@@ -5,19 +5,19 @@ const lanes = [
   {
     num: "01",
     title: "Бизнесу",
-    desc: "ИИ, автоматизация, процессы. Превращаю разрозненные операции в измеримые системы.",
+    desc: "Разбор процессов, карта данных и ограниченный пилот. Сначала выясняем, что происходит сейчас и какой результат действительно можно измерить.",
     href: "/business/",
   },
   {
     num: "02",
     title: "Образованию",
-    desc: "Инженерные и ИИ-программы, лаборатории, методика проектного обучения.",
+    desc: "Инженерные программы, лаборатории и обучение педагогов. Участник создаёт и объясняет результат, а не повторяет готовую инструкцию.",
     href: "/education/",
   },
   {
     num: "03",
     title: "Обо мне",
-    desc: "Путь и метод. От электроники до ИИ-систем — один метод для трёх профессий.",
+    desc: "Инженерия, педагогика и предпринимательство собраны в один метод: разобрать, собрать, проверить, объяснить и передать.",
     href: "/about/",
   },
 ];
@@ -25,6 +25,7 @@ const lanes = [
 
 <section class="v2-section v2-section-surface">
   <div class="v2-container">
+    <p class="v2-section-kicker">Выберите контекст</p>
     <h2 class="v2-section-title">Направления</h2>
     <div class="v2-lanes">
       {
@@ -35,9 +36,7 @@ const lanes = [
               <h3>{lane.title}</h3>
               <p>{lane.desc}</p>
             </div>
-            <span class="v2-lane-arrow" aria-hidden="true">
-              &rarr;
-            </span>
+            <span class="v2-lane-arrow" aria-hidden="true">&rarr;</span>
           </a>
         ))
       }
@@ -46,6 +45,12 @@ const lanes = [
 </section>
 
 <style>
+  .v2-section-kicker {
+    margin: 0 0 var(--space-2);
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-bold);
+  }
   .v2-lanes {
     display: flex;
     flex-direction: column;
@@ -67,7 +72,6 @@ const lanes = [
     font-weight: var(--fw-bold);
     color: var(--color-primary);
     line-height: 1;
-    font-variant-numeric: tabular-nums;
   }
   .v2-lane-body h3 {
     font-size: var(--text-2xl);
@@ -79,19 +83,15 @@ const lanes = [
     font-size: var(--text-base);
     line-height: var(--leading-normal);
     margin: 0;
-    max-width: 42rem;
+    max-width: 48rem;
   }
   .v2-lane-arrow {
     font-size: var(--text-2xl);
-    color: var(--color-accent);
-    opacity: 0.4;
-    transition: opacity var(--motion-fast);
+    color: var(--color-primary);
+    opacity: 0.45;
   }
   .v2-lane:hover .v2-lane-arrow {
     opacity: 1;
-  }
-  .v2-lane:hover .v2-lane-body h3 {
-    color: var(--color-accent);
   }
   @media (max-width: 768px) {
     .v2-lane {
@@ -101,10 +101,6 @@ const lanes = [
     }
     .v2-lane-body h3 {
       font-size: var(--text-xl);
-      overflow-wrap: break-word;
-    }
-    .v2-lane-body p {
-      overflow-wrap: break-word;
     }
     .v2-lane-arrow {
       display: none;

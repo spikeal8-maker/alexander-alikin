@@ -1,116 +1,163 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import ButtonLink from "@components/ui/ButtonLink.astro";
-import Timeline from "@components/ui/Timeline.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
 import { buildUrl } from "@config/site";
 ---
 
-<BaseLayout
+<BaseLayoutV2
   title="Обо мне — Александр Аликин"
-  description="Инженер, педагог и предприниматель. Путь от электроники до ИИ-систем."
+  description="Инженер, педагог и предприниматель. Один метод для технологических, образовательных и организационных задач."
   currentPath="/about/"
-  breadcrumbs={[{ label: "Обо мне" }]}
 >
-  <div class="container container-main">
-    <div class="about-hero">
+  <section class="v2-section">
+    <div class="v2-container v2-about-hero">
+      <div>
+        <p class="v2-accent-label">Обо мне</p>
+        <h1 class="v2-page-title">Один метод для разных классов задач</h1>
+        <p class="v2-page-lead">
+          Я работаю на пересечении инженерии, педагогики и предпринимательства. Общая логика —
+          разобрать систему, собрать решение, проверить его, объяснить и передать людям.
+        </p>
+        <p class="v2-about-note">
+          Точные даты отдельных этапов, масштабы практики и роли в некоторых проектах публикуются
+          только после проверки источников.
+        </p>
+      </div>
       <img
         src={buildUrl("/images/alikin/visualized/about-portrait-relaxed.webp")}
         alt="Александр Аликин — портрет"
-        width="336"
-        height="420"
-        class="about-portrait"
+        width="560"
+        height="700"
         loading="eager"
+        class="v2-about-img"
       />
+    </div>
+  </section>
+
+  <section class="v2-section v2-section-surface">
+    <div class="v2-container">
+      <h2 class="v2-section-title">Три ответственности</h2>
+      <div class="v2-role-grid">
+        <article class="v2-card-surface">
+          <span class="v2-accent-label">01</span>
+          <h3>Инженерная</h3>
+          <p>Понять устройство, ограничения, данные и архитектуру решения.</p>
+        </article>
+        <article class="v2-card-surface">
+          <span class="v2-accent-label">02</span>
+          <h3>Педагогическая</h3>
+          <p>Объяснить принцип и сделать результат воспроизводимым для других людей.</p>
+        </article>
+        <article class="v2-card-surface">
+          <span class="v2-accent-label">03</span>
+          <h3>Предпринимательская</h3>
+          <p>Учитывать спрос, ресурсы, команду, риск и последствия принятого решения.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="v2-section">
+    <div class="v2-container v2-arc-grid">
       <div>
-        <h1>Александр Аликин</h1>
-        <p class="text-lg muted-text">
-          Предприниматель-практик и инженер-педагог. Проектирую и запускаю технологические, ИИ- и
-          образовательные системы.
-        </p>
-        <p>
-          Разбираю сложные задачи, собираю работающие конструкции, проверяю их практикой и объясняю
-          людям, как ими пользоваться.
-        </p>
-        <ButtonLink href={buildUrl("/projects/")} variant="secondary" size="compact"
-          >Посмотреть проекты</ButtonLink
-        >
+        <p class="v2-accent-label">Профессиональная дуга</p>
+        <h2 class="v2-section-title">От устройства к системе</h2>
+      </div>
+      <div class="v2-arc-list">
+        <div><strong>Техника</strong><p>Работа с устройствами формирует привычку искать причину, а не маскировать симптом.</p></div>
+        <div><strong>Педагогика</strong><p>Обучение показывает: решение не передано, пока человек не может объяснить и воспроизвести его сам.</p></div>
+        <div><strong>Предпринимательство</strong><p>Даже технически правильная конструкция должна выдерживать ограничения спроса, ресурсов и команды.</p></div>
+        <div><strong>ИИ и системы знаний</strong><p>Новые инструменты усиливают работу только там, где качественно поставлена задача и выстроен контекст.</p></div>
       </div>
     </div>
+  </section>
 
-    <h2>Четыре роли как одна система</h2>
-    <p>
-      Мой профессиональный путь соединяет три типа ответственности — и это не три карьеры, а один
-      метод:
-    </p>
-    <div class="method-steps">
-      <div class="method-step">
-        <div class="method-number">01</div>
-        <div>
-          <strong>Инженерная</strong><p>
-            Понимаю устройство, ограничения и архитектуру решения. Проектирую от схемы до работающей
-            системы.
-          </p>
-        </div>
+  <section class="v2-section v2-section-surface">
+    <div class="v2-container v2-principles-grid">
+      <div>
+        <p class="v2-accent-label">Редакционная политика</p>
+        <h2 class="v2-section-title">Что важно на этом сайте</h2>
       </div>
-      <div class="method-step">
-        <div class="method-number">02</div>
-        <div>
-          <strong>Педагогическая</strong><p>
-            Объясняю принцип, обучаю людей и делаю результат воспроизводимым. Ученик создаёт, а не
-            повторяет.
-          </p>
-        </div>
-      </div>
-      <div class="method-step">
-        <div class="method-number">03</div>
-        <div>
-          <strong>Предпринимательская</strong><p>
-            Учитываю спрос, экономику, сроки, команду и последствия решения. Бизнес как инженерная
-            система.
-          </p>
-        </div>
+      <ul>
+        <li>Проекты и решения важнее общих титулов.</li>
+        <li>Факт отделяется от интерпретации и стратегической гипотезы.</li>
+        <li>Ограничения проекта публикуются вместе с результатом.</li>
+        <li>Visualized-изображения не выдаются за документальные события.</li>
+        <li>Приватный архив не становится публичным автоматически.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="v2-section">
+    <div class="v2-container v2-cta-block">
+      <h2>Посмотреть работу в контексте</h2>
+      <p>Проекты показывают не только результат, но и роль, текущий статус и ограничения.</p>
+      <div class="v2-about-actions">
+        <a href={buildUrl("/projects/")} class="v2-btn v2-btn-outline">Проекты</a>
+        <a href={buildUrl("/collaboration/")} class="v2-btn v2-btn-accent">Обсудить задачу</a>
       </div>
     </div>
+  </section>
+</BaseLayoutV2>
 
-    <h2>Хронология</h2>
-    <Timeline
-      items={[
-        {
-          date: "2010-е",
-          title: "Инженерия и техника",
-          description: "Первые проекты, электроника, понимание систем.",
-        },
-        {
-          date: "2015+",
-          title: "Педагогика и робототехника",
-          description: "Обучение, соревнования, методика.",
-        },
-        {
-          date: "2018+",
-          title: "Предпринимательство",
-          description: "Лига роботов, Laser Love. Запуск и масштабирование.",
-        },
-        {
-          date: "2024+",
-          title: "ИИ и автоматизация",
-          description: "Системы знаний, n8n, ИИ-ассистенты, вторая редакция ИЗО АСА.",
-        },
-      ]}
-    />
-
-    <h2>Принципы работы</h2>
-    <ul>
-      <li>Проекты и доказательства важнее титулов.</li>
-      <li>Широта опыта объясняется общей инженерной логикой.</li>
-      <li>Факт отделяется от интерпретации и гипотезы.</li>
-      <li>Ошибки описываются как материал для вывода.</li>
-      <li>Публикации имеют дату, автора, статус и источник.</li>
-      <li>Приватный архив не становится публичным автоматически.</li>
-    </ul>
-
-    <hr />
-    <ButtonLink href={buildUrl("/collaboration/")} variant="primary"
-      >Обсудить сотрудничество</ButtonLink
-    >
-  </div>
-</BaseLayout>
+<style>
+  .v2-about-hero,
+  .v2-role-grid,
+  .v2-arc-grid,
+  .v2-principles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-10);
+    align-items: center;
+  }
+  .v2-role-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .v2-about-img {
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover;
+    object-position: center 25%;
+    border-radius: var(--radius-lg);
+  }
+  .v2-about-note,
+  .v2-role-grid p,
+  .v2-arc-list p,
+  .v2-principles-grid li {
+    color: var(--color-text-secondary);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+  }
+  .v2-about-note {
+    margin-top: var(--space-6);
+  }
+  .v2-role-grid h3 {
+    font-size: var(--text-xl);
+    margin: var(--space-3) 0;
+  }
+  .v2-arc-list div {
+    padding: var(--space-5) 0;
+    border-bottom: var(--border-width) solid var(--color-border-light);
+  }
+  .v2-arc-list p {
+    margin: var(--space-2) 0 0;
+    color: rgba(255, 255, 255, 0.65);
+  }
+  .v2-principles-grid ul {
+    margin: 0;
+    padding-left: var(--space-5);
+  }
+  .v2-about-actions {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 768px) {
+    .v2-about-hero,
+    .v2-role-grid,
+    .v2-arc-grid,
+    .v2-principles-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

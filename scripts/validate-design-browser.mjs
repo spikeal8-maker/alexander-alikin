@@ -5,6 +5,7 @@ import fs from "node:fs";
 import { checkV2Design } from "./browser-checks/v2-design-tokens.mjs";
 import { checkNotFound } from "./browser-checks/not-found.mjs";
 import { readImagesAfterLoad } from "./browser-checks/image-readiness.mjs";
+import { findOverflowOffenders } from "./browser-checks/overflow-diagnostics.mjs";
 import {
   BASE,
   NOT_FOUND_PATH,
@@ -65,34 +66,13 @@ try {
           : { overflow: false };
       });
       if (overflow.overflow) {
-        const offenders = await page.evaluate(() => {
-          const bad = [];
-          for (const element of document.querySelectorAll("*")) {
-            const rect = element.getBoundingClientRect();
-            if (rect.right > window.innerWidth + 2 && rect.left < window.innerWidth) {
-              const tag = element.tagName.toLowerCase();
-              const classes = element.className?.toString?.().slice(0, 60) || "";
-              bad.push({
-                selector: element.id
-                  ? `#${element.id}`
-                  : classes
-                    ? `${tag}.${classes.replace(/ /g, ".")}`
-                    : tag,
-                left: Math.round(rect.left),
-                right: Math.round(rect.right),
-                width: Math.round(rect.width),
-              });
-            }
-            if (bad.length >= 6) break;
-          }
-          return bad;
-        });
+        const offenders = await findOverflowOffenders(page);
         errors.push(
           `${route.name} @${viewport.name}: horizontal overflow (${overflow.scrollWidth} vs ${overflow.viewportWidth})`,
         );
         for (const offender of offenders) {
           errors.push(
-            `  └─ ${offender.selector}: left=${offender.left} right=${offender.right} width=${offender.width}`,
+            `  └─ ${offender.selector}: left=${offender.left} right=${offender.right} width=${offender.width} client=${offender.clientWidth} scroll=${offender.scrollWidth} min=${offender.minWidth} position=${offender.position} display=${offender.display} grid=${offender.grid} text="${offender.text}"`,
           );
         }
       }

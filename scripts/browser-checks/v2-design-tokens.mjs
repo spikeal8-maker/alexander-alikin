@@ -12,7 +12,11 @@ export async function checkV2Design(page, name, vpWidth) {
         }
 
         const bodyBackground = bodyStyle.backgroundColor;
-        if (!bodyBackground || bodyBackground === "transparent" || bodyBackground === "rgba(0, 0, 0, 0)") {
+        if (
+          !bodyBackground ||
+          bodyBackground === "transparent" ||
+          bodyBackground === "rgba(0, 0, 0, 0)"
+        ) {
           issues.push(`V3 body bg=${bodyBackground}`);
         }
         if (bodyStyle.fontFamily.includes("Times New Roman") || bodyStyle.fontFamily === "serif") {
@@ -34,7 +38,8 @@ export async function checkV2Design(page, name, vpWidth) {
           if (!style.backgroundColor || style.backgroundColor === "rgba(0, 0, 0, 0)") {
             issues.push("V3 primary CTA background missing");
           }
-          if (parseFloat(style.minHeight) < 40) issues.push(`V3 primary CTA min-height=${style.minHeight}`);
+          if (parseFloat(style.minHeight) < 40)
+            issues.push(`V3 primary CTA min-height=${style.minHeight}`);
         }
 
         const portrait = document.querySelector(".v3-hero__portrait img");
@@ -69,7 +74,11 @@ export async function checkV2Design(page, name, vpWidth) {
         const buttonStyle = getComputedStyle(button);
         if (buttonStyle.display === "inline") issues.push(".v2-btn-accent display=inline");
         const buttonBackground = buttonStyle.backgroundColor;
-        if (!buttonBackground || buttonBackground === "transparent" || buttonBackground === "rgba(0, 0, 0, 0)") {
+        if (
+          !buttonBackground ||
+          buttonBackground === "transparent" ||
+          buttonBackground === "rgba(0, 0, 0, 0)"
+        ) {
           issues.push(`.v2-btn-accent bg=${buttonBackground}`);
         }
         if (parseFloat(buttonStyle.paddingLeft) <= 0) issues.push(".v2-btn-accent no padding-left");
@@ -95,7 +104,11 @@ export async function checkV2Design(page, name, vpWidth) {
       } else {
         if (parseFloat(getComputedStyle(header).height) <= 0) issues.push("header height=0");
         const headerBackground = getComputedStyle(header).backgroundColor;
-        if (!headerBackground || headerBackground === "transparent" || headerBackground === "rgba(0, 0, 0, 0)") {
+        if (
+          !headerBackground ||
+          headerBackground === "transparent" ||
+          headerBackground === "rgba(0, 0, 0, 0)"
+        ) {
           issues.push(`header bg=${headerBackground} (expected dark)`);
         }
       }

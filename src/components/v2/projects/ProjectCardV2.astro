@@ -10,6 +10,7 @@ export interface Props {
     role: string;
     period: string;
     result: string;
+    limitations?: string;
     projectStatus: "active" | "completed" | "paused" | "archived";
   };
   index: number;
@@ -20,7 +21,7 @@ const imgSrc = PROJECT_MEDIA[project.slug]?.hero ?? DEFAULT_MEDIA.hero;
 const isReversed = index % 2 !== 0;
 
 const STATUS_LABEL: Record<string, string> = {
-  active: "Активный проект",
+  active: "В работе",
   completed: "Завершён",
   paused: "Приостановлен",
   archived: "Архивный проект",
@@ -36,7 +37,7 @@ const statusLabel = STATUS_LABEL[project.projectStatus] ?? project.projectStatus
   <div class="v2-editorial-media">
     <img
       src={buildUrl(imgSrc)}
-      alt=""
+      alt={`Иллюстрация проекта «${project.title}»`}
       width="600"
       height="450"
       loading="lazy"
@@ -45,7 +46,7 @@ const statusLabel = STATUS_LABEL[project.projectStatus] ?? project.projectStatus
   </div>
   <div class="v2-editorial-body">
     <span class="v2-accent-label">{statusLabel}</span>
-    <h3>{project.title}</h3>
+    <h2>{project.title}</h2>
     <p class="v2-editorial-desc">{project.description}</p>
     <dl class="v2-editorial-meta-row">
       <div class="v2-editorial-meta-item">
@@ -53,15 +54,16 @@ const statusLabel = STATUS_LABEL[project.projectStatus] ?? project.projectStatus
         <dd>{project.role}</dd>
       </div>
       <div class="v2-editorial-meta-item">
-        <dt>Период</dt>
+        <dt>Этап</dt>
         <dd>{project.period}</dd>
       </div>
     </dl>
     <div class="v2-editorial-result">
-      <span class="v2-editorial-result-label">Результат</span>
+      <span class="v2-editorial-result-label">Что можно утверждать сейчас</span>
       <p class="v2-editorial-result-text">{project.result}</p>
     </div>
-    <span class="v2-editorial-link">Смотреть кейс &rarr;</span>
+    {project.limitations && <p class="v2-editorial-limit">Ограничение: {project.limitations}</p>}
+    <span class="v2-editorial-link">Открыть разбор &rarr;</span>
   </div>
 </a>
 
@@ -75,10 +77,6 @@ const statusLabel = STATUS_LABEL[project.projectStatus] ?? project.projectStatus
     border: var(--border-width) solid var(--color-border-light);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    transition: border-color var(--motion-fast);
-  }
-  .v2-editorial-card:hover {
-    border-color: rgba(255, 255, 255, 0.2);
   }
   .v2-editorial-card--reversed {
     grid-template-columns: 2fr 3fr;
@@ -106,20 +104,14 @@ const statusLabel = STATUS_LABEL[project.projectStatus] ?? project.projectStatus
     flex-direction: column;
     gap: var(--space-4);
     min-width: 0;
-    overflow-wrap: break-word;
   }
-  .v2-editorial-body h3,
-  .v2-editorial-body p,
-  .v2-editorial-body dt,
-  .v2-editorial-body dd {
-    min-width: 0;
-    overflow-wrap: break-word;
-  }
-  .v2-editorial-body h3 {
+  .v2-editorial-body h2 {
     font-size: var(--text-2xl);
     margin: 0;
   }
-  .v2-editorial-desc {
+  .v2-editorial-desc,
+  .v2-editorial-result-text,
+  .v2-editorial-limit {
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
     line-height: var(--leading-normal);
@@ -130,9 +122,9 @@ const statusLabel = STATUS_LABEL[project.projectStatus] ?? project.projectStatus
     flex-wrap: wrap;
     gap: var(--space-4);
     margin: 0;
-    padding: 0;
   }
-  .v2-editorial-meta-item dt {
+  .v2-editorial-meta-item dt,
+  .v2-editorial-result-label {
     color: var(--color-accent-text);
     font-weight: var(--fw-bold);
     text-transform: uppercase;
@@ -148,30 +140,17 @@ const statusLabel = STATUS_LABEL[project.projectStatus] ?? project.projectStatus
   }
   .v2-editorial-result-label {
     display: block;
-    font-size: var(--text-xs);
-    color: var(--color-accent-warm);
-    font-weight: var(--fw-bold);
-    text-transform: uppercase;
     margin-bottom: var(--space-1);
   }
-  .v2-editorial-result-text {
-    font-size: var(--text-base);
-    color: rgba(255, 255, 255, 0.7);
-    margin: 0;
-    line-height: var(--leading-normal);
+  .v2-editorial-limit {
+    color: rgba(255, 255, 255, 0.52);
+    font-size: var(--text-sm);
   }
   .v2-editorial-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-1);
-    font-size: var(--text-base);
     color: var(--color-accent-text);
     font-weight: var(--fw-semibold);
     margin-top: auto;
     padding-top: var(--space-4);
-  }
-  .v2-editorial-card:hover .v2-editorial-link {
-    color: var(--color-white);
   }
   @media (max-width: 768px) {
     .v2-editorial-card,

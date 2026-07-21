@@ -4,6 +4,7 @@ import path from "node:path";
 import fs from "node:fs";
 import { checkV2Design } from "./browser-checks/v2-design-tokens.mjs";
 import { checkNotFound } from "./browser-checks/not-found.mjs";
+import { readImagesAfterLoad } from "./browser-checks/image-readiness.mjs";
 import {
   BASE,
   NOT_FOUND_PATH,
@@ -98,13 +99,7 @@ try {
       for (const issue of await checkV2Design(page, route.name, viewport.width)) {
         errors.push(`${route.name} @${viewport.name}: ${issue}`);
       }
-      const images = await page.evaluate(() =>
-        [...document.images].map((image) => ({
-          complete: image.complete,
-          naturalWidth: image.naturalWidth,
-          src: image.src,
-        })),
-      );
+      const images = await readImagesAfterLoad(page);
       for (const image of images) {
         if (!image.complete) {
           errors.push(`${route.name} @${viewport.name}: image not complete: ${image.src}`);
@@ -124,6 +119,7 @@ try {
     ]) {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
       await page.goto(`${SITE}${route.path}`, { waitUntil: "networkidle" });
+      await readImagesAfterLoad(page);
       await page.screenshot({
         path: path.join(SCREENSHOT_DIR, `${route.name}-${viewport.suffix}.png`),
         fullPage: true,

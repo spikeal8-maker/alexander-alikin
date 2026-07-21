@@ -1,0 +1,57 @@
+---
+import { buildUrl } from "@config/site";
+---
+
+<section class="v2-section v2-section-surface">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Материалы</h2>
+    <div class="v2-evidence-grid">
+      <div>
+        <img
+          src={buildUrl("/images/alikin/documentary/08-robotics-archive-4x3.webp")}
+          alt="Архивные занятия по робототехнике"
+          width="800"
+          height="600"
+          loading="eager"
+          class="v2-evidence-img"
+        />
+        <p class="v2-evidence-caption">Архивные занятия по робототехнике (2018 г)</p>
+      </div>
+      <div>
+        <img
+          src={buildUrl("/images/alikin/documentary/10-laser-love-archive-4x3.webp")}
+          alt="Архив проекта"
+          width="800"
+          height="600"
+          loading="eager"
+          class="v2-evidence-img"
+        />
+        <p class="v2-evidence-caption">Архив проекта (2018 г)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+  .v2-evidence-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+  .v2-evidence-caption {
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    margin-top: var(--space-2);
+  }
+  @media (max-width: 768px) {
+    .v2-evidence-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

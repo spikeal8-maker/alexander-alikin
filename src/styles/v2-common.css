@@ -1,17 +1,31 @@
 @import "./tokens-v2.css";
 
-/* Shared layout primitives */
+/* Section backgrounds */
 .v2-section {
   padding: var(--space-24) 0;
+  background: var(--color-bg);
 }
-.v2-section-dark {
-  background: rgba(255, 255, 255, 0.02);
+.v2-section-alt {
+  background: var(--color-bg-alt);
+}
+.v2-section-surface {
+  background: var(--color-surface);
+}
+.v2-section-surface .v2-section-title,
+.v2-section-surface .v2-page-title {
+  color: var(--color-text);
+}
+.v2-section-surface .v2-page-lead {
+  color: var(--color-text-secondary);
 }
 .v2-container {
   max-width: var(--container-wide);
   margin: 0 auto;
   padding: 0 var(--gutter);
+  overflow-wrap: break-word;
 }
+
+/* Typography */
 .v2-section-title {
   font-size: var(--text-4xl);
   font-weight: var(--fw-bold);
@@ -60,13 +74,35 @@
 .v2-btn-outline:hover {
   border-color: var(--color-white);
 }
+.v2-btn-surface {
+  background: var(--color-text);
+  color: var(--color-surface);
+}
+.v2-btn-surface:hover {
+  background: var(--color-text-secondary);
+}
 
-/* Method/step numbers */
+/* Labels and meta */
+.v2-accent-label {
+  font-size: var(--text-xs);
+  color: var(--color-accent-text);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
 .v2-method-num {
   font-size: var(--text-xs);
   color: var(--color-accent-text);
   font-weight: var(--fw-bold);
   letter-spacing: 0.1em;
+}
+
+/* Cards on surface bg */
+.v2-card-surface {
+  background: var(--color-surface-raised);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
 }
 
 /* CTA block */
@@ -84,15 +120,43 @@
   margin: 0 0 var(--space-8);
   font-size: var(--text-lg);
 }
+.v2-cta-block-surface h2 {
+  color: var(--color-text);
+}
+.v2-cta-block-surface p {
+  color: var(--color-text-secondary);
+}
+
+/* Divider line */
+.v2-divider {
+  border: 0;
+  border-top: var(--border-width) solid var(--color-border-light);
+  margin: var(--space-16) 0;
+}
+
+/* Image frames */
+.v2-img-frame {
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
 
 @media (max-width: 768px) {
   .v2-page-title {
     font-size: var(--text-3xl);
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
   .v2-section {
     padding: var(--space-16) 0;
   }
   .v2-section-title {
     font-size: var(--text-2xl);
+    overflow-wrap: break-word;
+  }
+  .v2-page-lead {
+    overflow-wrap: break-word;
   }
 }

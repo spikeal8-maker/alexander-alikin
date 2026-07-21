@@ -1,0 +1,95 @@
+<section class="v2-section">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Решение и пилот</h2>
+    <div class="v2-sp-grid">
+      <div>
+        <span class="v2-accent-label">Решение</span>
+        <div class="v2-sp-item v2-sp-first">
+          <h3>Архитектура процессов</h3>
+          <p>
+            Проектируем целевую модель: какие данные, какие потоки, какие роли. Фиксируем метрики
+            успеха.
+          </p>
+        </div>
+        <div class="v2-sp-item">
+          <h3>Автоматизация и ИИ</h3>
+          <p>
+            Убираем рутину: интеграции, скрипты, интеллектуальные агенты. Всё, что можно
+            алгоритмизировать — алгоритмизируем.
+          </p>
+        </div>
+        <div class="v2-sp-item">
+          <h3>Единая система данных</h3>
+          <p>
+            Собираем разрозненные таблицы и сервисы в одну архитектуру. Дашборды и отчёты — не
+            отдельный проект, а побочный продукт.
+          </p>
+        </div>
+      </div>
+      <div>
+        <span class="v2-accent-label">Пилот</span>
+        <p class="v2-sp-pilot-text">
+          Ограниченный запуск на реальных данных. Прототип, который даёт измеримый результат, а не
+          презентацию.
+        </p>
+        <div class="v2-sp-highlight">
+          <h3>Результат пилота</h3>
+          <p>
+            Работающий прототип на ваших данных с конкретными метриками: время обработки, количество
+            ошибок, пропускная способность. Цифры, на основе которых принимается решение о полном
+            внедрении.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-sp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+  }
+  .v2-sp-item {
+    margin-bottom: var(--space-6);
+  }
+  .v2-sp-first {
+    margin-top: var(--space-6);
+  }
+  .v2-sp-item h3 {
+    font-size: var(--text-lg);
+    color: var(--color-white);
+    margin: 0 0 var(--space-2);
+  }
+  .v2-sp-item p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: var(--leading-normal);
+  }
+  .v2-sp-highlight {
+    background: rgba(37, 99, 235, 0.1);
+    border: var(--border-width) solid rgba(37, 99, 235, 0.3);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    margin-top: var(--space-8);
+  }
+  .v2-sp-pilot-text {
+    color: rgba(255, 255, 255, 0.7);
+    margin: var(--space-4) 0 0;
+    line-height: var(--leading-normal);
+  }
+  .v2-sp-highlight h3 {
+    color: var(--color-accent-text);
+    margin: 0 0 var(--space-3);
+  }
+  .v2-sp-highlight p {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+    .v2-sp-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

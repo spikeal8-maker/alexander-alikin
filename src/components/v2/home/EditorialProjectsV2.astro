@@ -1,0 +1,117 @@
+---
+import { buildUrl } from "@config/site";
+
+const projects = [
+  {
+    slug: "izo-asa",
+    title: "ИЗО АСА",
+    description:
+      "Образовательная платформа для виртуальных лабораторий, управления классами и учебных проектов.",
+    period: "2025–2026",
+    role: "Автор архитектуры",
+    media: "/images/alikin/visualized/robotics-lab.webp",
+  },
+  {
+    slug: "engineering-education",
+    title: "Инженерное образование",
+    description:
+      "Образовательные программы по информатике, технологии и робототехнике для разных возрастов.",
+    period: "2015–2026",
+    role: "Педагог, методист",
+    media: "/images/alikin/visualized/education-presentation.webp",
+  },
+];
+---
+
+<section class="v2-section">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Проекты</h2>
+    <div class="v2-editorial-grid">
+      {
+        projects.map((p) => (
+          <a href={buildUrl(`/projects/${p.slug}/`)} class="v2-editorial-card">
+            <div class="v2-editorial-media">
+              <img
+                src={buildUrl(p.media)}
+                alt=""
+                width="800"
+                height="600"
+                loading="lazy"
+                class="v2-editorial-img"
+              />
+            </div>
+            <div class="v2-editorial-body">
+              <h3>{p.title}</h3>
+              <p>{p.description}</p>
+              <div class="v2-editorial-meta">
+                {p.period} · {p.role}
+              </div>
+              <span class="v2-editorial-link">Смотреть кейс</span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-editorial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    margin-top: var(--space-12);
+  }
+  .v2-editorial-card {
+    text-decoration: none;
+    color: var(--color-white);
+    display: block;
+    position: relative;
+  }
+  .v2-editorial-media {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-5);
+  }
+  .v2-editorial-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--motion-standard);
+  }
+  .v2-editorial-card:hover .v2-editorial-img {
+    transform: scale(1.03);
+  }
+  .v2-editorial-body h3 {
+    font-size: var(--text-2xl);
+    margin: 0 0 var(--space-2);
+  }
+  .v2-editorial-body p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 var(--space-3);
+    line-height: var(--leading-normal);
+  }
+  .v2-editorial-meta {
+    font-size: var(--text-xs);
+    color: var(--color-accent-text);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .v2-editorial-link {
+    display: inline-block;
+    margin-top: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--color-accent-text);
+    font-weight: var(--fw-semibold);
+  }
+  .v2-editorial-card:hover .v2-editorial-link {
+    color: var(--color-white);
+  }
+  @media (max-width: 768px) {
+    .v2-editorial-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

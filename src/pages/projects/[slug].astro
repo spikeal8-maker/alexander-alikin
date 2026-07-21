@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import { buildUrl } from "@config/site";
 import ProjectCaseHeroV2 from "@components/v2/projects/ProjectCaseHeroV2.astro";
 import ProjectCaseFactsV2 from "@components/v2/projects/ProjectCaseFactsV2.astro";
+import DocumentaryEvidenceV2 from "@components/v2/projects/DocumentaryEvidenceV2.astro";
 
 export async function getStaticPaths() {
   const ps = await getCollection("projects", (p) => p.data.status === "published");
@@ -25,7 +26,8 @@ const { data } = project;
 >
   <ProjectCaseHeroV2 data={data} />
   <ProjectCaseFactsV2 data={data} />
-  <section class="v2-section v2-section-dark">
+  <DocumentaryEvidenceV2 />
+  <section class="v2-section">
     <div class="v2-container v2-cta-block">
       <h2>Похожая задача?</h2>
       <p>Если вы видите параллели с вашим проектом — обсудим.</p>

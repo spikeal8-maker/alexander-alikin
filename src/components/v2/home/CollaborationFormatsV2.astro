@@ -1,0 +1,65 @@
+---
+const formats = [
+  {
+    title: "Аудит и стратегия",
+    description:
+      "Диагностика процессов, карта данных и зон автоматизации. Находим узкие места и точки роста, формируем дорожную карту.",
+  },
+  {
+    title: "Проектная разработка",
+    description:
+      "Полный цикл: от прототипа до внедрения. ИИ-решения, автоматизация, веб-системы под ключ с документацией и обучением команды.",
+  },
+  {
+    title: "Техническое лидерство",
+    description:
+      "Архитектурный надзор, техлид на аутсорсе, менторство команд. Система работает без героических усилий автора.",
+  },
+];
+---
+
+<section class="v2-section v2-section-alt">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Форматы сотрудничества</h2>
+    <div class="v2-formats-grid">
+      {
+        formats.map((f, i) => (
+          <div class="v2-format-card">
+            <span class="v2-accent-label">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{f.title}</h3>
+            <p>{f.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-formats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+  .v2-format-card {
+    border: var(--border-width) solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    color: var(--color-white);
+  }
+  .v2-format-card h3 {
+    font-size: var(--text-xl);
+    color: var(--color-white);
+    margin: 0 0 var(--space-3);
+  }
+  .v2-format-card p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: var(--leading-normal);
+  }
+  @media (max-width: 768px) {
+    .v2-formats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

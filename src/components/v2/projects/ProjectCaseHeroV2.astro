@@ -18,18 +18,28 @@ const imgSrc = PROJECT_MEDIA[data.slug]?.hero ?? DEFAULT_MEDIA.hero;
 
 <section class="v2-section">
   <div class="v2-container">
-    <div class="v2-page-hero">
+    <span class="v2-accent-label v2-case-label">Кейс</span>
+    <div class="v2-case-hero">
       <div>
-        <span class="v2-case-meta">{data.period} &middot; {data.role}</span>
         <h1 class="v2-page-title">{data.title}</h1>
         <p class="v2-page-lead">{data.description}</p>
+        <dl class="v2-case-hero-meta">
+          <div class="v2-case-hero-meta-item">
+            <dt>Роль</dt>
+            <dd>{data.role}</dd>
+          </div>
+          <div class="v2-case-hero-meta-item">
+            <dt>Период</dt>
+            <dd>{data.period}</dd>
+          </div>
+        </dl>
       </div>
       <img
         src={buildUrl(imgSrc)}
         alt=""
-        width="600"
-        height="400"
-        class="v2-page-hero-img"
+        width="800"
+        height="600"
+        class="v2-case-hero-img"
         loading="eager"
       />
     </div>
@@ -37,30 +47,45 @@ const imgSrc = PROJECT_MEDIA[data.slug]?.hero ?? DEFAULT_MEDIA.hero;
 </section>
 
 <style>
-  .v2-page-hero {
+  .v2-case-label {
+    display: block;
+    margin-bottom: var(--space-4);
+  }
+  .v2-case-hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-12);
     align-items: center;
+    padding: var(--space-20) 0 var(--space-24);
   }
-  .v2-case-meta {
+  .v2-case-hero-img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    max-height: 480px;
+  }
+  .v2-case-hero-meta {
+    display: flex;
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+    padding: 0;
+  }
+  .v2-case-hero-meta-item dt {
     font-size: var(--text-xs);
     color: var(--color-accent-text);
     font-weight: var(--fw-bold);
-    letter-spacing: 0.1em;
-    display: block;
-    margin-bottom: var(--space-4);
+    text-transform: uppercase;
+    margin-bottom: var(--space-1);
   }
-  .v2-page-hero-img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-lg);
-    max-height: 420px;
-    object-fit: cover;
+  .v2-case-hero-meta-item dd {
+    font-size: var(--text-base);
+    color: var(--color-white);
+    margin: 0;
   }
   @media (max-width: 768px) {
-    .v2-page-hero {
+    .v2-case-hero {
       grid-template-columns: 1fr;
+      padding: var(--space-12) 0 var(--space-16);
     }
   }
 </style>

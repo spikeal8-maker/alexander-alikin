@@ -1,0 +1,83 @@
+---
+import { buildUrl } from "@config/site";
+---
+
+<section class="v2-section">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Пример: ИЗО АСА</h2>
+    <div class="v2-case-example">
+      <img
+        src={buildUrl("/images/alikin/visualized/robotics-lab.webp")}
+        alt="ИЗО АСА — образовательная платформа"
+        width="640"
+        height="480"
+        loading="lazy"
+        class="v2-case-example-img"
+      />
+      <div class="v2-case-example-body">
+        <h3>ИЗО АСА</h3>
+        <p class="v2-case-example-desc">
+          Образовательная платформа для виртуальных лабораторий, управления классами и учебных
+          проектов.
+        </p>
+        <dl class="v2-case-example-meta">
+          <div>
+            <dt>Роль</dt>
+            <dd>Автор архитектуры и разработчик</dd>
+          </div>
+          <div>
+            <dt>Период</dt>
+            <dd>2025–2026</dd>
+          </div>
+        </dl>
+        <a href={buildUrl("/projects/izo-asa/")} class="v2-btn v2-btn-outline">
+          Смотреть кейс ИЗО АСА
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-case-example {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-10);
+    align-items: center;
+  }
+  .v2-case-example-img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+  }
+  .v2-case-example-body h3 {
+    font-size: var(--text-2xl);
+    color: var(--color-white);
+    margin: 0 0 var(--space-4);
+  }
+  .v2-case-example-body .v2-case-example-desc {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 var(--space-6);
+    line-height: var(--leading-normal);
+  }
+  .v2-case-example-meta {
+    display: flex;
+    gap: var(--space-8);
+    margin-bottom: var(--space-6);
+  }
+  .v2-case-example-meta dt {
+    font-size: var(--text-xs);
+    color: var(--color-accent-text);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+  }
+  .v2-case-example-meta dd {
+    font-size: var(--text-base);
+    color: var(--color-white);
+    margin: var(--space-1) 0 0;
+  }
+  @media (max-width: 768px) {
+    .v2-case-example {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

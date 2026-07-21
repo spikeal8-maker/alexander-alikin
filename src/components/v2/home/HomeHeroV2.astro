@@ -7,12 +7,12 @@ import { buildUrl } from "@config/site";
     <div class="v2-hero-text">
       <h1 class="v2-hero-name">Александр Аликин</h1>
       <p class="v2-hero-role">
-        Предприниматель-практик и инженер-педагог. Проектирую и запускаю технологические, ИИ-и
+        Предприниматель-практик и инженер-педагог. Проектирую и запускаю технологические, ИИ- и
         образовательные системы.
       </p>
       <div class="v2-hero-actions">
         <a href={buildUrl("/collaboration/")} class="v2-btn v2-btn-accent">Обсудить задачу</a>
-        <a href={buildUrl("/projects/")} class="v2-btn v2-btn-outline">Посмотреть проекты</a>
+        <a href={buildUrl("/projects/")} class="v2-btn v2-btn-outline">Проекты</a>
       </div>
     </div>
     <div class="v2-hero-media">
@@ -30,14 +30,14 @@ import { buildUrl } from "@config/site";
 
 <style>
   .v2-hero {
-    padding: var(--space-20) 0 var(--space-16);
+    padding: var(--space-20) 0 var(--space-24);
   }
   .v2-hero-grid {
     max-width: var(--container-wide);
     margin: 0 auto;
     padding: 0 var(--gutter);
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: var(--space-12);
     align-items: center;
   }
@@ -67,7 +67,7 @@ import { buildUrl } from "@config/site";
     border-radius: var(--radius-lg);
     object-fit: cover;
     object-position: center 15%;
-    max-height: 560px;
+    max-height: 640px;
   }
   @media (max-width: 768px) {
     .v2-hero-grid {
@@ -77,7 +77,7 @@ import { buildUrl } from "@config/site";
       font-size: var(--text-4xl);
     }
     .v2-hero {
-      padding: var(--space-12) 0;
+      padding: var(--space-12) 0 var(--space-16);
     }
   }
 </style>

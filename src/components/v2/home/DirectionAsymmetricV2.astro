@@ -1,0 +1,86 @@
+---
+import { buildUrl } from "@config/site";
+---
+
+<section class="v2-section v2-section-surface">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Направления</h2>
+    <div class="v2-direction-grid">
+      <a href={buildUrl("/business/")} class="v2-direction-block">
+        <span class="v2-direction-label">Бизнесу</span>
+        <h2>ИИ, автоматизация, процессы</h2>
+        <p>
+          Превращаю разрозненные операции в измеримые системы. Диагностика, проектирование и
+          внедрение: от аудита бизнес-процессов до запуска ИИ-решений под ключ.
+        </p>
+      </a>
+      <a href={buildUrl("/education/")} class="v2-direction-block">
+        <span class="v2-direction-label">Образованию</span>
+        <h2>Инженерные и ИИ-программы</h2>
+        <p>
+          Программы обучения, лаборатории, методика проектного обучения для школ, вузов и EdTech.
+        </p>
+      </a>
+      <a href={buildUrl("/about/")} class="v2-direction-block">
+        <span class="v2-direction-label">Обо мне</span>
+        <h2>Путь и метод</h2>
+        <p>
+          От электроники до ИИ-систем. Один метод для трёх профессий: инженера, педагога,
+          предпринимателя.
+        </p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-direction-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+  .v2-direction-grid > :first-child {
+    grid-column: 1 / -1;
+  }
+  .v2-direction-block {
+    text-decoration: none;
+    padding: var(--space-10);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--motion-fast);
+    background: var(--color-surface-raised);
+  }
+  .v2-direction-block:hover {
+    border-color: var(--color-accent);
+  }
+  .v2-direction-label {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .v2-direction-block h2 {
+    font-size: var(--text-3xl);
+    color: var(--color-text);
+    margin: var(--space-3) 0 var(--space-2);
+  }
+  .v2-direction-block p {
+    color: var(--color-text-secondary);
+    margin: 0;
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+  }
+  @media (max-width: 768px) {
+    .v2-direction-grid {
+      grid-template-columns: 1fr;
+    }
+    .v2-direction-block h2 {
+      font-size: var(--text-xl);
+      overflow-wrap: break-word;
+    }
+    .v2-direction-block p {
+      overflow-wrap: break-word;
+    }
+  }
+</style>

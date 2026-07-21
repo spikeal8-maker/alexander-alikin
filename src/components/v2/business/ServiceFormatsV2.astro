@@ -1,0 +1,47 @@
+<section class="v2-section">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Форматы сотрудничества</h2>
+    <div class="v2-signal-grid">
+      <div class="v2-signal-card">
+        <h3>Аудит и стратегия</h3>
+        <p>Диагностика текущего состояния, карта автоматизации, дорожная карта. 2–4 недели.</p>
+      </div>
+      <div class="v2-signal-card">
+        <h3>Проектная разработка</h3>
+        <p>Полный цикл: от проектирования до передачи. Фиксированный результат и срок.</p>
+      </div>
+      <div class="v2-signal-card">
+        <h3>Техническое лидерство</h3>
+        <p>Временное усиление команды. Архитектура, код-ревью, наставничество разработчиков.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-signal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+  .v2-signal-card {
+    border: var(--border-width) solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    color: var(--color-white);
+  }
+  .v2-signal-card h3 {
+    font-size: var(--text-xl);
+    margin: 0 0 var(--space-3);
+  }
+  .v2-signal-card p {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    line-height: var(--leading-normal);
+  }
+  @media (max-width: 768px) {
+    .v2-signal-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,54 @@
+<section class="v2-section">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Что получает бизнес</h2>
+    <div class="v2-outcome-grid">
+      <div class="v2-outcome-item">
+        <span class="v2-method-num">Скорость</span>
+        <p class="v2-outcome-copy">
+          Сокращение ручного труда в операционных цепочках. Автоматизация рутины.
+        </p>
+      </div>
+      <div class="v2-outcome-item">
+        <span class="v2-method-num">Прозрачность</span>
+        <p class="v2-outcome-copy">
+          Единая картина: дашборды, метрики, логи. Решения на данных, а не на догадках.
+        </p>
+      </div>
+      <div class="v2-outcome-item">
+        <span class="v2-method-num">Масштаб</span>
+        <p class="v2-outcome-copy">
+          Системная архитектура, которая выдерживает рост без пересборки заново.
+        </p>
+      </div>
+      <div class="v2-outcome-item">
+        <span class="v2-method-num">Независимость</span>
+        <p class="v2-outcome-copy">
+          Передача системы команде с документацией, обучением и поддержкой.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-outcome-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-8);
+  }
+  .v2-outcome-item {
+    color: var(--color-white);
+  }
+  .v2-outcome-item p {
+    color: rgba(255, 255, 255, 0.6);
+    line-height: var(--leading-normal);
+  }
+  .v2-outcome-copy {
+    margin-top: var(--space-3);
+  }
+  @media (max-width: 768px) {
+    .v2-outcome-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

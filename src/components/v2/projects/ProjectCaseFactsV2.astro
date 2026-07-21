@@ -1,0 +1,75 @@
+---
+export interface Props {
+  data: {
+    description: string;
+    role: string;
+    result: string;
+    projectStatus: "active" | "completed" | "paused" | "archived";
+    limitations?: string;
+  };
+}
+
+const { data } = Astro.props;
+
+const STATUS_LABEL: Record<string, string> = {
+  active: "Активный проект",
+  completed: "Завершён",
+  paused: "Приостановлен",
+  archived: "Архивный",
+};
+
+const statusLabel = STATUS_LABEL[data.projectStatus] ?? data.projectStatus;
+---
+
+<section class="v2-section v2-section-dark">
+  <div class="v2-container">
+    <div class="v2-case-grid">
+      <div class="v2-method-step">
+        <span class="v2-method-num">Контекст</span>
+        <p class="v2-case-param">{data.description}</p>
+      </div>
+      <div class="v2-method-step">
+        <span class="v2-method-num">Роль</span>
+        <p class="v2-case-param">{data.role}</p>
+      </div>
+      <div class="v2-method-step">
+        <span class="v2-method-num">Результат</span>
+        <p class="v2-case-param">{data.result}</p>
+      </div>
+      <div class="v2-method-step">
+        <span class="v2-method-num">Статус</span>
+        <p class="v2-case-param">{statusLabel}</p>
+      </div>
+    </div>
+    {
+      data.limitations && (
+        <div class="v2-case-limitations">
+          <strong>Ограничения:</strong> {data.limitations}
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .v2-case-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+  .v2-case-param {
+    margin-top: var(--space-3);
+  }
+  .v2-case-limitations {
+    margin-top: var(--space-12);
+    padding: var(--space-6);
+    border: var(--border-width) solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    color: rgba(255, 255, 255, 0.6);
+  }
+  @media (max-width: 768px) {
+    .v2-case-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

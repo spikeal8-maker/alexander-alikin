@@ -1,0 +1,96 @@
+/* Shared layout primitives */
+.v2-section {
+  padding: var(--space-24) 0;
+}
+.v2-section-dark {
+  background: rgba(255, 255, 255, 0.02);
+}
+.v2-container {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.v2-section-title {
+  font-size: var(--text-4xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-white);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 var(--space-12);
+}
+.v2-page-title {
+  font-size: var(--text-5xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-white);
+  letter-spacing: -0.03em;
+  margin: 0 0 var(--space-6);
+}
+.v2-page-lead {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: var(--leading-normal);
+  max-width: 42rem;
+  margin: 0;
+}
+
+/* Buttons */
+.v2-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-base);
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all var(--motion-fast);
+  min-height: var(--target-size);
+}
+.v2-btn-accent {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+.v2-btn-accent:hover {
+  background: var(--color-accent-hover);
+}
+.v2-btn-outline {
+  border: var(--border-width-thick) solid rgba(255, 255, 255, 0.3);
+  color: var(--color-white);
+}
+.v2-btn-outline:hover {
+  border-color: var(--color-white);
+}
+
+/* Method/step numbers */
+.v2-method-num {
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.1em;
+}
+
+/* CTA block */
+.v2-cta-block {
+  text-align: center;
+  max-width: 42rem;
+}
+.v2-cta-block h2 {
+  font-size: var(--text-4xl);
+  color: var(--color-white);
+  margin: 0 0 var(--space-4);
+}
+.v2-cta-block p {
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 var(--space-8);
+  font-size: var(--text-lg);
+}
+
+@media (max-width: 768px) {
+  .v2-page-title {
+    font-size: var(--text-3xl);
+  }
+  .v2-section {
+    padding: var(--space-16) 0;
+  }
+  .v2-section-title {
+    font-size: var(--text-2xl);
+  }
+}

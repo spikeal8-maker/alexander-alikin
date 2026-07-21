@@ -1,0 +1,85 @@
+---
+import { buildUrl } from "@config/site";
+import { PROJECT_MEDIA, DEFAULT_MEDIA } from "./mediaMap";
+
+export interface Props {
+  project: {
+    title: string;
+    description: string;
+    slug: string;
+    role: string;
+    period: string;
+  };
+}
+
+const { project } = Astro.props;
+const imgSrc = PROJECT_MEDIA[project.slug]?.hero ?? DEFAULT_MEDIA.hero;
+---
+
+<a class="v2-project-card" href={buildUrl(`/projects/${project.slug}/`)}>
+  <div class="v2-project-media">
+    <img
+      src={buildUrl(imgSrc)}
+      alt=""
+      width="600"
+      height="400"
+      loading="lazy"
+      class="v2-project-img"
+    />
+  </div>
+  <div class="v2-project-body">
+    <h3>{project.title}</h3>
+    <p>{project.description}</p>
+    <span class="v2-project-meta">{project.period} &middot; {project.role}</span>
+  </div>
+</a>
+
+<style>
+  .v2-project-card {
+    text-decoration: none;
+    color: var(--color-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+    border: var(--border-width) solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    transition: border-color var(--motion-fast);
+  }
+  .v2-project-card:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+  .v2-project-media {
+    aspect-ratio: 3/2;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+  }
+  .v2-project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--motion-standard);
+  }
+  .v2-project-card:hover .v2-project-img {
+    transform: scale(1.02);
+  }
+  .v2-project-body h3 {
+    font-size: var(--text-2xl);
+    margin: 0 0 var(--space-2);
+  }
+  .v2-project-body p {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 var(--space-3);
+    line-height: var(--leading-normal);
+  }
+  .v2-project-meta {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+  }
+  @media (max-width: 768px) {
+    .v2-project-card {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,94 @@
+---
+import { buildUrl } from "@config/site";
+---
+
+<section class="v2-section v2-section-dark">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Проекты</h2>
+    <div class="v2-project-grid">
+      <a href={buildUrl("/projects/izo-asa/")} class="v2-project-card">
+        <div class="v2-project-media">
+          <img
+            src={buildUrl("/images/alikin/visualized/robotics-lab.webp")}
+            alt=""
+            width="600"
+            height="400"
+            loading="lazy"
+            class="v2-project-img"
+          />
+        </div>
+        <div class="v2-project-body">
+          <h3>ИЗО АСА</h3>
+          <p>
+            Образовательная платформа для виртуальных лабораторий, управления классами и учебных
+            проектов.
+          </p>
+          <span class="v2-project-meta">2025–2026 · Автор архитектуры</span>
+        </div>
+      </a>
+      <a href={buildUrl("/projects/engineering-education/")} class="v2-project-card">
+        <div class="v2-project-media">
+          <img
+            src={buildUrl("/images/alikin/visualized/education-presentation.webp")}
+            alt=""
+            width="600"
+            height="400"
+            loading="lazy"
+            class="v2-project-img"
+          />
+        </div>
+        <div class="v2-project-body">
+          <h3>Инженерное образование</h3>
+          <p>Образовательные программы по информатике, технологии и робототехнике.</p>
+          <span class="v2-project-meta">2015–2026 · Педагог, методист</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+  .v2-project-card {
+    text-decoration: none;
+    color: var(--color-white);
+    display: block;
+  }
+  .v2-project-media {
+    aspect-ratio: 3/2;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-5);
+  }
+  .v2-project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--motion-standard);
+  }
+  .v2-project-card:hover .v2-project-img {
+    transform: scale(1.02);
+  }
+  .v2-project-body h3 {
+    font-size: var(--text-2xl);
+    margin: 0 0 var(--space-2);
+  }
+  .v2-project-body p {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 var(--space-3);
+    line-height: var(--leading-normal);
+  }
+  .v2-project-meta {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+  }
+  @media (max-width: 768px) {
+    .v2-project-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

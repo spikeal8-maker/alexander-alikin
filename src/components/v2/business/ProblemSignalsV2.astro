@@ -1,0 +1,58 @@
+<section class="v2-section v2-section-dark">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Когда стоит обратиться</h2>
+    <div class="v2-signal-grid">
+      <div class="v2-signal-card">
+        <span class="v2-signal-num">01</span>
+        <h3>Процессы разрослись</h3>
+        <p>Операции делаются вручную, передача между сотрудниками ломается, данные теряются.</p>
+      </div>
+      <div class="v2-signal-card">
+        <span class="v2-signal-num">02</span>
+        <h3>Решения не оцифрованы</h3>
+        <p>Выбор делается на основании интуиции, а не данных. Нет единой картины происходящего.</p>
+      </div>
+      <div class="v2-signal-card">
+        <span class="v2-signal-num">03</span>
+        <h3>Масштабирование буксует</h3>
+        <p>
+          То, что работало на 10 клиентов, не работает на 100. Нужна архитектура, а не заплатки.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-signal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+  .v2-signal-card {
+    border: var(--border-width) solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    color: var(--color-white);
+  }
+  .v2-signal-num {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.1em;
+  }
+  .v2-signal-card h3 {
+    font-size: var(--text-xl);
+    margin: var(--space-3) 0 var(--space-3);
+  }
+  .v2-signal-card p {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    line-height: var(--leading-normal);
+  }
+  @media (max-width: 768px) {
+    .v2-signal-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

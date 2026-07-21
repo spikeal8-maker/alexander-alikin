@@ -1,0 +1,66 @@
+---
+import { buildUrl } from "@config/site";
+import { PROJECT_MEDIA, DEFAULT_MEDIA } from "./mediaMap";
+
+export interface Props {
+  data: {
+    title: string;
+    description: string;
+    role: string;
+    period: string;
+    slug: string;
+  };
+}
+
+const { data } = Astro.props;
+const imgSrc = PROJECT_MEDIA[data.slug]?.hero ?? DEFAULT_MEDIA.hero;
+---
+
+<section class="v2-section">
+  <div class="v2-container">
+    <div class="v2-page-hero">
+      <div>
+        <span class="v2-case-meta">{data.period} &middot; {data.role}</span>
+        <h1 class="v2-page-title">{data.title}</h1>
+        <p class="v2-page-lead">{data.description}</p>
+      </div>
+      <img
+        src={buildUrl(imgSrc)}
+        alt=""
+        width="600"
+        height="400"
+        class="v2-page-hero-img"
+        loading="eager"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-page-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+  .v2-case-meta {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: var(--space-4);
+  }
+  .v2-page-hero-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    max-height: 420px;
+    object-fit: cover;
+  }
+  @media (max-width: 768px) {
+    .v2-page-hero {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

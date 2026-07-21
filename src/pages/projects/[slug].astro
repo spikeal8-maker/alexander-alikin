@@ -2,11 +2,14 @@
 import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
 import { getCollection } from "astro:content";
 import { buildUrl } from "@config/site";
+import ProjectCaseHeroV2 from "@components/v2/projects/ProjectCaseHeroV2.astro";
+import ProjectCaseFactsV2 from "@components/v2/projects/ProjectCaseFactsV2.astro";
 
 export async function getStaticPaths() {
   const ps = await getCollection("projects", (p) => p.data.status === "published");
   return ps.map((p) => ({ params: { slug: p.data.slug } }));
 }
+
 const { slug } = Astro.params;
 const project = (await getCollection("projects", (p) => p.data.status === "published")).find(
   (p) => p.data.slug === slug,
@@ -20,56 +23,8 @@ const { data } = project;
   description={data.description}
   currentPath="/projects/"
 >
-  <section class="v2-section">
-    <div class="v2-container">
-      <div class="v2-page-hero">
-        <div>
-          <span class="v2-case-meta">{data.period} · {data.role}</span>
-          <h1 class="v2-page-title">{data.title}</h1>
-          <p class="v2-page-lead">{data.description}</p>
-        </div>
-        <img
-          src={buildUrl("/images/alikin/visualized/robotics-lab.webp")}
-          alt=""
-          width="600"
-          height="400"
-          class="v2-page-hero-img"
-          loading="eager"
-        />
-      </div>
-    </div>
-  </section>
-
-  <section class="v2-section v2-section-dark">
-    <div class="v2-container">
-      <div class="v2-case-grid">
-        <div class="v2-method-step">
-          <span class="v2-method-num">Задача</span>
-          <p class="v2-case-param">{data.result}</p>
-        </div>
-        <div class="v2-method-step">
-          <span class="v2-method-num">Роль</span>
-          <p class="v2-case-param">{data.role}</p>
-        </div>
-        <div class="v2-method-step">
-          <span class="v2-method-num">Результат</span>
-          <p class="v2-case-param">{data.result}</p>
-        </div>
-        <div class="v2-method-step">
-          <span class="v2-method-num">Статус</span>
-          <p class="v2-case-param">Активный проект, находится в разработке.</p>
-        </div>
-      </div>
-      {
-        data.limitations && (
-          <div class="v2-case-limitations">
-            <strong>Ограничения:</strong> {data.limitations}
-          </div>
-        )
-      }
-    </div>
-  </section>
-
+  <ProjectCaseHeroV2 data={data} />
+  <ProjectCaseFactsV2 data={data} />
   <section class="v2-section v2-section-dark">
     <div class="v2-container v2-cta-block">
       <h2>Похожая задача?</h2>
@@ -78,127 +33,3 @@ const { data } = project;
     </div>
   </section>
 </BaseLayoutV2>
-
-<style>
-  .v2-page-hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-12);
-    align-items: center;
-  }
-  .v2-page-title {
-    font-size: var(--text-5xl);
-    font-weight: var(--fw-bold);
-    color: var(--color-white);
-    letter-spacing: -0.03em;
-    margin: 0 0 var(--space-6);
-  }
-  .v2-page-lead {
-    font-size: var(--text-lg);
-    color: rgba(255, 255, 255, 0.7);
-    line-height: var(--leading-normal);
-    max-width: 42rem;
-    margin: 0;
-  }
-  .v2-page-hero-img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-lg);
-    max-height: 420px;
-    object-fit: cover;
-  }
-  .v2-case-meta {
-    font-size: var(--text-xs);
-    color: var(--color-accent);
-    font-weight: var(--fw-bold);
-    letter-spacing: 0.1em;
-    display: block;
-    margin-bottom: var(--space-4);
-  }
-  .v2-case-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-8);
-  }
-  .v2-case-param {
-    margin-top: var(--space-3);
-  }
-  .v2-case-limitations {
-    margin-top: var(--space-12);
-    padding: var(--space-6);
-    border: var(--border-width) solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-lg);
-    color: rgba(255, 255, 255, 0.6);
-  }
-  .v2-section {
-    padding: var(--space-24) 0;
-  }
-  .v2-section-dark {
-    background: rgba(255, 255, 255, 0.02);
-  }
-  .v2-container {
-    max-width: var(--container-wide);
-    margin: 0 auto;
-    padding: 0 var(--gutter);
-  }
-  .v2-method-num {
-    font-size: var(--text-xs);
-    color: var(--color-accent);
-    font-weight: var(--fw-bold);
-    letter-spacing: 0.1em;
-  }
-  .v2-method-step h3 {
-    font-size: var(--text-xl);
-    margin: var(--space-2) 0 var(--space-3);
-  }
-  .v2-method-step p {
-    color: rgba(255, 255, 255, 0.6);
-    margin: 0;
-  }
-  .v2-btn {
-    display: inline-flex;
-    align-items: center;
-    padding: var(--space-4) var(--space-8);
-    font-size: var(--text-base);
-    font-weight: var(--fw-semibold);
-    text-decoration: none;
-    border-radius: var(--radius-md);
-    transition: all var(--motion-fast);
-    min-height: var(--target-size);
-  }
-  .v2-btn-accent {
-    background: var(--color-accent);
-    color: var(--color-white);
-  }
-  .v2-btn-accent:hover {
-    background: var(--color-accent-hover);
-  }
-  .v2-cta-block {
-    text-align: center;
-    max-width: 42rem;
-  }
-  .v2-cta-block h2 {
-    font-size: var(--text-4xl);
-    color: var(--color-white);
-    margin: 0 0 var(--space-4);
-  }
-  .v2-cta-block p {
-    color: rgba(255, 255, 255, 0.6);
-    margin: 0 0 var(--space-8);
-    font-size: var(--text-lg);
-  }
-  @media (max-width: 768px) {
-    .v2-page-hero {
-      grid-template-columns: 1fr;
-    }
-    .v2-page-title {
-      font-size: var(--text-3xl);
-    }
-    .v2-section {
-      padding: var(--space-16) 0;
-    }
-    .v2-case-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

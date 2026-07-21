@@ -24,6 +24,8 @@ const componentsDir = path.join(ROOT, "src", "components");
 
 const controlRoutes = [
   path.join(pagesDir, "index.astro"),
+  path.join(pagesDir, "business.astro"),
+  path.join(pagesDir, "projects", "index.astro"),
   path.join(pagesDir, "projects", "[slug].astro"),
   path.join(pagesDir, "journal", "articles", "[slug].astro"),
 ];

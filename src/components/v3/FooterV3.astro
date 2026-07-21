@@ -1,0 +1,104 @@
+---
+import { buildUrl } from "@config/site";
+---
+
+<footer class="v3-footer">
+  <div class="v3-shell v3-footer__grid">
+    <div class="v3-footer__statement">
+      <p class="v3-kicker">Александр Аликин</p>
+      <p>Инженерная практика, образование и ИИ — в одной системе работы.</p>
+    </div>
+
+    <nav aria-label="Разделы">
+      <span>Разделы</span>
+      <a href={buildUrl("/projects/")}>Проекты</a>
+      <a href={buildUrl("/business/")}>Бизнесу</a>
+      <a href={buildUrl("/education/")}>Образованию</a>
+      <a href={buildUrl("/journal/")}>Журнал</a>
+    </nav>
+
+    <nav aria-label="Системные страницы">
+      <span>Система</span>
+      <a href={buildUrl("/facts/")}>Факты и источники</a>
+      <a href={buildUrl("/contacts/")}>Контакты</a>
+      <a href={buildUrl("/privacy/")}>Конфиденциальность</a>
+    </nav>
+  </div>
+
+  <div class="v3-shell v3-footer__bottom">
+    <span>© {new Date().getFullYear()} Александр Аликин</span>
+    <a href="https://github.com/spikeal8-maker">GitHub ↗</a>
+  </div>
+</footer>
+
+<style>
+  .v3-footer {
+    padding-top: clamp(5rem, 10vw, 9rem);
+    color: var(--v3-white);
+    background: var(--v3-ink);
+  }
+
+  .v3-footer__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) 1fr 1fr;
+    gap: clamp(2rem, 7vw, 8rem);
+    padding-bottom: 5rem;
+  }
+
+  .v3-footer__statement p:last-child {
+    max-width: 30rem;
+    margin: 0;
+    font-family: var(--v3-serif);
+    font-size: clamp(2rem, 4vw, 4.25rem);
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+  }
+
+  .v3-footer nav {
+    display: grid;
+    align-content: start;
+    gap: 0.8rem;
+  }
+
+  .v3-footer nav span {
+    margin-bottom: 0.6rem;
+    color: rgba(255, 255, 255, 0.45);
+    font-family: var(--v3-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .v3-footer nav a,
+  .v3-footer__bottom a {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.86rem;
+    text-decoration: none;
+  }
+
+  .v3-footer nav a:hover,
+  .v3-footer nav a:focus-visible,
+  .v3-footer__bottom a:hover,
+  .v3-footer__bottom a:focus-visible {
+    color: var(--v3-white);
+  }
+
+  .v3-footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 1.5rem;
+    color: rgba(255, 255, 255, 0.42);
+    border-top: 1px solid var(--v3-line-light);
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 760px) {
+    .v3-footer__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .v3-footer__statement {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

@@ -1,0 +1,108 @@
+.v3-work__feature,
+.v3-work__copy,
+.v3-work__copy > *,
+.v3-work__stairs {
+  min-width: 0;
+}
+
+.v3-work__feature--blue .v3-work__copy > p:not(.v3-kicker) {
+  color: rgba(255, 255, 255, 0.94) !important;
+}
+
+.v3-work__feature--blue .v3-work__copy dt {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.v3-work__feature--blue .v3-work__copy dd {
+  color: var(--v3-white) !important;
+}
+
+.v3-work__feature--ink .v3-kicker,
+.v3-journal .v3-kicker,
+.v3-journal__kind,
+.v3-journal__arrow,
+.v3-footer .v3-kicker {
+  color: var(--v3-cobalt-light) !important;
+}
+
+.v3-journal__index {
+  color: rgba(255, 255, 255, 0.64) !important;
+}
+
+.v3-closing .v3-kicker {
+  color: var(--v3-white) !important;
+}
+
+.v3-footer__bottom {
+  color: rgba(255, 255, 255, 0.68) !important;
+}
+
+@media (max-width: 900px) {
+  .v3-hero__portrait figcaption {
+    right: var(--v3-gutter) !important;
+    left: var(--v3-gutter);
+    max-width: calc(100% - 2 * var(--v3-gutter));
+  }
+
+  .v3-hero__portrait figcaption span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    text-align: right;
+  }
+}
+
+@media (max-width: 820px) {
+  .v3-work__feature {
+    width: 100%;
+    min-height: 0;
+  }
+
+  .v3-work__copy {
+    width: 100%;
+    padding: 2.25rem 1.5rem;
+    overflow-wrap: anywhere;
+  }
+
+  .v3-work__copy dl {
+    grid-template-columns: 1fr !important;
+  }
+
+  .v3-work__stairs {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1px;
+    min-height: 20rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .v3-work__stairs span:nth-child(n) {
+    min-height: 8rem;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .v3-journal h3 {
+    hyphens: auto;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 480px) {
+  .v3-footer__grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .v3-footer__statement {
+    grid-column: auto !important;
+  }
+
+  .v3-footer nav a {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .v3-footer__bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

@@ -4,8 +4,11 @@ import { buildUrl } from "@config/site";
 
 <section class="v2-section">
   <div class="v2-container v2-fcta">
-    <h2>Обсудим вашу задачу?</h2>
-    <p>Если узнали свой случай в сигналах выше — напишите. Первая консультация без обязательств.</p>
+    <h2>Проверить, есть ли предмет для работы</h2>
+    <p>
+      Опишите текущий процесс, желаемое изменение и то, как вы поймёте, что первый этап оказался
+      полезным. Условия сотрудничества определяются после разбора контекста.
+    </p>
     <a href={buildUrl("/collaboration/")} class="v2-btn v2-btn-accent">Обсудить задачу</a>
   </div>
 </section>
@@ -20,14 +23,12 @@ import { buildUrl } from "@config/site";
     color: var(--color-white);
     margin: 0 0 var(--space-6);
     font-weight: var(--fw-bold);
-    overflow-wrap: break-word;
   }
   .v2-fcta p {
     font-size: var(--text-lg);
     color: rgba(255, 255, 255, 0.7);
     margin: 0 0 var(--space-8);
     line-height: var(--leading-normal);
-    overflow-wrap: break-word;
   }
   @media (max-width: 768px) {
     .v2-fcta h2 {

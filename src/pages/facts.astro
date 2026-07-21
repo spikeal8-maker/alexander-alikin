@@ -1,20 +1,68 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import { buildUrl } from "@config/site";
+import "../styles/v2-utility.css";
 ---
 
-<BaseLayout
+<BaseLayoutV2
   title="Факты и источники — Александр Аликин"
-  description="Проверяемые факты, утверждения и источники с уровнем доказательности."
+  description="Как сайт отделяет проверяемые факты, авторские утверждения и стратегические рекомендации."
   currentPath="/facts/"
-  breadcrumbs={[{ label: "Факты и источники" }]}
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Факты и источники</h1>
-      <p class="description">
-        Проверяемые утверждения с периодом, источником и уровнем доказательности.
-      </p>
-      <p>Реестр фактов будет опубликован после утверждения.</p>
+  <section class="v2-section">
+    <div class="v2-container v2-utility-hero">
+      <div class="v2-utility-lead">
+        <p class="v2-accent-label">Факты и источники</p>
+        <h1 class="v2-page-title">Доверие строится на происхождении утверждения</h1>
+        <p>
+          На сайте отдельно учитываются проверяемые факты, слова автора, редакционные связки,
+          стратегические рекомендации и гипотезы. Один тип текста не подменяет другой.
+        </p>
+      </div>
+      <div class="v2-utility-note">
+        <p>
+          Неподтверждённые числа, сроки, масштабы и достижения не публикуются как факты до появления
+          документа, публичной ссылки или отдельного письменного подтверждения.
+        </p>
+      </div>
     </div>
-  </div>
-</BaseLayout>
+  </section>
+
+  <section class="v2-section v2-section-surface">
+    <div class="v2-container v2-utility-grid">
+      <article class="v2-utility-card">
+        <span class="v2-accent-label">01</span>
+        <h2>Авторское утверждение</h2>
+        <p>Позиция, метод или описание собственной роли. Публикуется с явным пониманием происхождения.</p>
+      </article>
+      <article class="v2-utility-card">
+        <span class="v2-accent-label">02</span>
+        <h2>Публичный источник</h2>
+        <p>Внешняя страница, публикация, репозиторий или другой доступный материал, который можно проверить.</p>
+      </article>
+      <article class="v2-utility-card">
+        <span class="v2-accent-label">03</span>
+        <h2>Документальная проверка</h2>
+        <p>Утверждение связано с документом, журналом, выгрузкой или иным первичным доказательством.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="v2-section">
+    <div class="v2-container v2-utility-copy">
+      <h2>Что сейчас намеренно заблокировано</h2>
+      <ul>
+        <li>точные количества учеников и подготовленных педагогов;</li>
+        <li>поступления, соревнования и другие достижения третьих лиц;</li>
+        <li>масштаб внедрения и количество пользователей ИЗО АСА;</li>
+        <li>коммерческие сроки и гарантированные результаты;</li>
+        <li>биографические даты, не связанные с проверенным источником.</li>
+      </ul>
+      <p>
+        Подробная внутренняя редакционная система хранится в репозитории, но приватные документы и
+        персональные данные автоматически публичными не становятся.
+      </p>
+      <a href={buildUrl("/projects/")} class="v2-btn v2-btn-accent">Проверить описания проектов</a>
+    </div>
+  </section>
+</BaseLayoutV2>

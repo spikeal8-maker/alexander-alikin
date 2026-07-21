@@ -15,14 +15,14 @@ import "../../styles/v2-utility.css";
         <p class="v2-accent-label">Поиск</p>
         <h1 class="v2-page-title">Найти проект, тему или материал</h1>
         <p>
-          Поиск работает по публичному индексу сайта. Приватные заметки, черновики и внутренний реестр
-          доказательств в результаты не попадают.
+          Поиск работает по публичному индексу сайта. Приватные заметки, черновики и внутренний
+          реестр доказательств в результаты не попадают.
         </p>
       </div>
       <div class="v2-utility-note">
         <p>
-          Введите название проекта, тему или ключевое понятие. Без JavaScript остаются доступны меню,
-          журнал и карта основных разделов.
+          Введите название проекта, тему или ключевое понятие. Без JavaScript остаются доступны
+          меню, журнал и карта основных разделов.
         </p>
       </div>
     </div>
@@ -38,14 +38,12 @@ import "../../styles/v2-utility.css";
         placeholder="Например: ИЗО АСА, проектное обучение, автоматизация"
         autocomplete="off"
       />
-      <p id="search-status" class="v2-utility-copy" aria-live="polite">
-        Начните вводить запрос.
-      </p>
+      <p id="search-status" class="v2-utility-copy" aria-live="polite">Начните вводить запрос.</p>
       <ul id="search-results" class="v2-search-results"></ul>
       <noscript>
         <p class="v2-empty-note">
-          Для интерактивного поиска требуется JavaScript. Перейдите в <a href={buildUrl("/projects/")}
-            >проекты</a
+          Для интерактивного поиска требуется JavaScript. Перейдите в <a
+            href={buildUrl("/projects/")}>проекты</a
           > или <a href={buildUrl("/journal/")}>журнал</a>.
         </p>
       </noscript>

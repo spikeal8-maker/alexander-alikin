@@ -1,0 +1,194 @@
+---
+import { buildUrl } from "@config/site";
+---
+
+<section class="v3-hero">
+  <div class="v3-shell v3-hero__grid">
+    <div class="v3-hero__copy">
+      <p class="v3-kicker">Инженерия · образование · ИИ</p>
+      <h1 class="v3-display">Александр<br />Аликин</h1>
+      <p class="v3-hero__positioning">
+        Инженерия, педагогика и предпринимательство — не три роли, а один метод работы.
+      </p>
+      <p class="v3-hero__summary">
+        Разбираю сложную систему, собираю работающую конструкцию, проверяю её на практике и передаю
+        людям так, чтобы результат не зависел от одного автора.
+      </p>
+      <div class="v3-hero__actions">
+        <a class="v3-hero__primary" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
+        <a class="v3-link" href={buildUrl("/projects/")}>Смотреть проекты</a>
+      </div>
+    </div>
+
+    <figure class="v3-hero__portrait">
+      <div class="v3-hero__blue" aria-hidden="true"></div>
+      <img
+        src={buildUrl("/images/alikin/visualized/hero-main-business.webp")}
+        alt="Александр Аликин"
+        width="960"
+        height="1200"
+        loading="eager"
+      />
+      <figcaption>
+        <span>Предприниматель-практик</span>
+        <span>Инженер-педагог</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="v3-shell v3-hero__index">
+    <span>01 / Позиция</span>
+    <span>Проекты, системы и авторская практика</span>
+    <span>2026</span>
+  </div>
+</section>
+
+<style>
+  .v3-hero {
+    overflow: hidden;
+    background: var(--v3-paper);
+  }
+
+  .v3-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(26rem, 0.95fr);
+    min-height: calc(100vh - 5.25rem);
+  }
+
+  .v3-hero__copy {
+    align-self: center;
+    padding: clamp(4rem, 8vw, 8rem) clamp(2rem, 6vw, 7rem) 4rem 0;
+  }
+
+  .v3-hero__positioning {
+    max-width: 42rem;
+    margin: 2.5rem 0 1.25rem;
+    font-family: var(--v3-serif);
+    font-size: clamp(1.65rem, 2.6vw, 2.7rem);
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+  }
+
+  .v3-hero__summary {
+    max-width: 35rem;
+    margin: 0;
+    color: var(--v3-ink-soft);
+    font-size: clamp(1rem, 1.3vw, 1.18rem);
+    line-height: 1.65;
+  }
+
+  .v3-hero__actions {
+    display: flex;
+    gap: 1.75rem;
+    align-items: center;
+    margin-top: 2.75rem;
+  }
+
+  .v3-hero__primary {
+    display: inline-flex;
+    min-height: 3.4rem;
+    padding: 0.95rem 1.4rem;
+    align-items: center;
+    color: var(--v3-white);
+    background: var(--v3-cobalt);
+    font-size: 0.88rem;
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .v3-hero__portrait {
+    position: relative;
+    min-height: 42rem;
+    margin: 0;
+    isolation: isolate;
+  }
+
+  .v3-hero__portrait img {
+    position: absolute;
+    inset: 4rem 0 4rem 12%;
+    z-index: 2;
+    width: 88%;
+    height: calc(100% - 8rem);
+    object-fit: cover;
+    object-position: center 20%;
+    box-shadow: var(--v3-shadow);
+  }
+
+  .v3-hero__blue {
+    position: absolute;
+    inset: 0 -50vw 0 42%;
+    z-index: 1;
+    background: var(--v3-cobalt);
+  }
+
+  .v3-hero__portrait figcaption {
+    position: absolute;
+    right: 1.25rem;
+    bottom: 1.2rem;
+    z-index: 3;
+    display: grid;
+    justify-items: end;
+    color: var(--v3-white);
+    font-family: var(--v3-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+    text-transform: uppercase;
+  }
+
+  .v3-hero__index {
+    display: grid;
+    grid-template-columns: 1fr 2fr auto;
+    gap: 1rem;
+    padding-block: 1.1rem;
+    border-top: 1px solid var(--v3-line);
+    font-family: var(--v3-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .v3-hero__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .v3-hero__copy {
+      padding-right: 0;
+    }
+
+    .v3-hero__portrait {
+      min-height: 36rem;
+      margin-inline: calc(var(--v3-gutter) * -1);
+    }
+
+    .v3-hero__portrait img {
+      inset: 2rem var(--v3-gutter) 2rem 12%;
+      width: calc(88% - var(--v3-gutter));
+      height: calc(100% - 4rem);
+    }
+
+    .v3-hero__blue {
+      inset: 0 0 0 36%;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .v3-hero__actions {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .v3-hero__portrait {
+      min-height: 29rem;
+    }
+
+    .v3-hero__index {
+      grid-template-columns: 1fr auto;
+    }
+
+    .v3-hero__index span:nth-child(2) {
+      display: none;
+    }
+  }
+</style>

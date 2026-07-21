@@ -4,38 +4,42 @@ import { buildUrl } from "@config/site";
 
 <section class="v2-section v2-section-surface">
   <div class="v2-container">
-    <p class="v2-section-kicker">Практика, из которой вырос метод</p>
-    <h2 class="v2-section-title">Инженерное обучение через проект</h2>
-    <div class="v2-doc-story">
-      <div class="v2-doc-media">
-        <img
-          src={buildUrl("/images/alikin/documentary/08-robotics-archive-4x3.webp")}
-          alt="Архивный материал образовательной робототехники"
-          width="800"
-          height="600"
-          loading="eager"
-          class="v2-doc-img"
-        />
-        <p class="v2-doc-note">Архивный материал. Точный год и площадка требуют подтверждения.</p>
+    <div class="v2-method-intro">
+      <div>
+        <p class="v2-section-kicker">Практика, из которой вырос метод</p>
+        <h2 class="v2-section-title">Результат должен работать и быть объяснимым</h2>
       </div>
-      <div class="v2-doc-text">
-        <p class="v2-doc-caption">
-          В проектной работе участник сталкивается не с учебной абстракцией, а с реальным
-          ограничением: устройство должно заработать, решение — выдержать проверку, а результат —
-          быть объяснимым.
-        </p>
-        <div class="v2-doc-body">
-          <p>
-            Из этой практики сформировался общий метод: действие, ошибка, объяснение, доработка и
-            защита. Он применяется не только в образовании, но и при проектировании процессов и
-            цифровых систем.
-          </p>
-          <p>
-            Количественные заявления о масштабе программ и достижениях участников не используются до
-            отдельной проверки источников.
-          </p>
-        </div>
-      </div>
+      <p class="v2-method-lead">
+        В инженерном проекте недостаточно собрать устройство. В образовательной программе — провести
+        занятие. В бизнес-процессе — подключить новый сервис. Решение становится системой, когда его
+        можно проверить, объяснить и передать другим людям.
+      </p>
+    </div>
+
+    <div class="v2-method-principles">
+      <article>
+        <span>01</span>
+        <h3>Действие выявляет ограничение</h3>
+        <p>Реальная попытка быстро показывает, где схема, программа или процесс не выдерживают условий.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h3>Ошибка требует объяснения</h3>
+        <p>Исправление становится осознанным только после понимания причины, а не подбора случайного ответа.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h3>Передача проверяет качество</h3>
+        <p>Если решение невозможно документировать и объяснить команде, оно всё ещё зависит от автора.</p>
+      </article>
+    </div>
+
+    <div class="v2-method-source">
+      <p>
+        Этот подход раскрывается в авторских материалах о проектном обучении и едином методе для
+        инженерии, педагогики и предпринимательства.
+      </p>
+      <a href={buildUrl("/journal/stories/one-method/")}>Прочитать историю &rarr;</a>
     </div>
   </div>
 </section>
@@ -47,49 +51,75 @@ import { buildUrl } from "@config/site";
     font-size: var(--text-sm);
     font-weight: var(--fw-bold);
   }
-  .v2-doc-story {
+  .v2-method-intro {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: var(--space-12);
-    align-items: center;
-    margin-top: var(--space-10);
+    align-items: end;
   }
-  .v2-doc-img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-lg);
-    object-fit: cover;
-    aspect-ratio: 4/3;
-  }
-  .v2-doc-note {
-    margin: var(--space-2) 0 0;
+  .v2-method-lead {
+    margin: 0 0 var(--space-12);
     color: var(--color-text-secondary);
-    font-size: var(--text-xs);
-  }
-  .v2-doc-caption {
     font-size: var(--text-lg);
-    font-weight: var(--fw-semibold);
+    line-height: var(--leading-relaxed);
+  }
+  .v2-method-principles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+  .v2-method-principles article {
+    min-width: 0;
+    padding-top: var(--space-5);
+    border-top: var(--border-width-thick) solid var(--color-primary);
+  }
+  .v2-method-principles span {
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-bold);
+  }
+  .v2-method-principles h3 {
+    margin: var(--space-3) 0;
     color: var(--color-text);
-    line-height: var(--leading-snug);
-    margin: 0 0 var(--space-6);
+    font-size: var(--text-xl);
   }
-  .v2-doc-body p {
-    font-size: var(--text-lg);
+  .v2-method-principles p,
+  .v2-method-source p {
+    margin: 0;
     color: var(--color-text-secondary);
+    font-size: var(--text-base);
     line-height: var(--leading-normal);
-    margin: 0 0 var(--space-4);
   }
-  .v2-doc-body p:last-child {
-    margin-bottom: 0;
+  .v2-method-source {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    margin-top: var(--space-10);
+    padding-top: var(--space-6);
+    border-top: var(--border-width) solid var(--color-divider);
+  }
+  .v2-method-source p {
+    max-width: 48rem;
+  }
+  .v2-method-source a {
+    flex-shrink: 0;
+    color: var(--color-primary);
+    font-weight: var(--fw-bold);
+    text-decoration: none;
   }
   @media (max-width: 768px) {
-    .v2-doc-story {
+    .v2-method-intro,
+    .v2-method-principles {
       grid-template-columns: 1fr;
-      gap: var(--space-6);
     }
-    .v2-doc-caption,
-    .v2-doc-body p {
+    .v2-method-lead {
+      margin-bottom: var(--space-6);
       font-size: var(--text-base);
+    }
+    .v2-method-source {
+      align-items: flex-start;
+      flex-direction: column;
     }
   }
 </style>

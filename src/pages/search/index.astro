@@ -1,63 +1,111 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import { buildUrl } from "@config/site";
+import "../../styles/v2-utility.css";
 ---
 
-<BaseLayout
+<BaseLayoutV2
   title="Поиск — Александр Аликин"
-  description="Поиск по проектам, темам, материалам и годам."
+  description="Поиск по проектам, материалам, темам и публичным страницам сайта."
   currentPath="/search/"
-  breadcrumbs={[{ label: "Поиск" }]}
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Поиск</h1>
-      <p class="description">Поиск по проектам, темам, материалам и годам.</p>
-      <noscript>
+  <section class="v2-section">
+    <div class="v2-container v2-utility-hero">
+      <div class="v2-utility-lead">
+        <p class="v2-accent-label">Поиск</p>
+        <h1 class="v2-page-title">Найти проект, тему или материал</h1>
         <p>
-          Для поиска включите JavaScript. Без JavaScript доступна навигация через меню и карту
-          сайта.
+          Поиск работает по публичному индексу сайта. Приватные заметки, черновики и внутренний реестр
+          доказательств в результаты не попадают.
         </p>
-      </noscript>
-      <div id="search-app" style="margin-top:var(--space-lg);">
-        <input
-          type="search"
-          id="search-input"
-          placeholder="Введите запрос..."
-          style="width:100%;padding:var(--space-md);font-size:1rem;border:1px solid var(--color-border);border-radius:var(--radius);"
-        />
-        <ul id="search-results" style="list-style:none;padding:0;margin-top:var(--space-md);"></ul>
+      </div>
+      <div class="v2-utility-note">
+        <p>
+          Введите название проекта, тему или ключевое понятие. Без JavaScript остаются доступны меню,
+          журнал и карта основных разделов.
+        </p>
       </div>
     </div>
-  </div>
-</BaseLayout>
+  </section>
+
+  <section class="v2-section v2-section-surface">
+    <div class="v2-container">
+      <label for="search-input" class="v2-accent-label">Запрос</label>
+      <input
+        type="search"
+        id="search-input"
+        class="v2-search-box"
+        placeholder="Например: ИЗО АСА, проектное обучение, автоматизация"
+        autocomplete="off"
+      />
+      <p id="search-status" class="v2-utility-copy" aria-live="polite">
+        Начните вводить запрос.
+      </p>
+      <ul id="search-results" class="v2-search-results"></ul>
+      <noscript>
+        <p class="v2-empty-note">
+          Для интерактивного поиска требуется JavaScript. Перейдите в <a href={buildUrl("/projects/")}
+            >проекты</a
+          > или <a href={buildUrl("/journal/")}>журнал</a>.
+        </p>
+      </noscript>
+    </div>
+  </section>
+</BaseLayoutV2>
 
 <script>
-  const input = document.getElementById("search-input") as HTMLInputElement;
-  const results = document.getElementById("search-results") as HTMLUListElement;
-  let idx: { title: string; description: string; href: string }[] = [];
+  interface SearchItem {
+    title: string;
+    description: string;
+    href: string;
+  }
+
+  const input = document.getElementById("search-input") as HTMLInputElement | null;
+  const results = document.getElementById("search-results") as HTMLUListElement | null;
+  const status = document.getElementById("search-status");
+  let index: SearchItem[] = [];
+
+  const renderResults = (items: SearchItem[]) => {
+    if (!results || !status) return;
+    results.replaceChildren();
+    status.textContent = items.length ? `Найдено: ${items.length}` : "Совпадений не найдено.";
+    for (const item of items) {
+      const li = document.createElement("li");
+      li.className = "v2-search-result";
+      const link = document.createElement("a");
+      link.href = item.href;
+      link.textContent = item.title;
+      const description = document.createElement("p");
+      description.textContent = item.description;
+      li.append(link, description);
+      results.append(li);
+    }
+  };
 
   fetch(`${import.meta.env.BASE_URL}search-index.json`)
-    .then((r) => r.json())
-    .then((data) => {
-      idx = data;
+    .then((response) => response.json())
+    .then((data: SearchItem[]) => {
+      index = data;
+    })
+    .catch(() => {
+      if (status) status.textContent = "Индекс поиска временно недоступен.";
     });
 
   input?.addEventListener("input", () => {
-    const q = input.value.toLowerCase().trim();
-    results.innerHTML = "";
-    if (!q || !idx.length) return;
-    idx
-      .filter(
-        (item) =>
-          item.title.toLowerCase().includes(q) || item.description.toLowerCase().includes(q),
-      )
-      .slice(0, 20)
-      .forEach((item) => {
-        const li = document.createElement("li");
-        li.style.cssText =
-          "margin-bottom:var(--space-md);padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);";
-        li.innerHTML = `<a href="${item.href}" style="font-weight:600;">${item.title}</a><p style="color:var(--color-muted);margin-top:var(--space-xs);">${item.description}</p>`;
-        results.appendChild(li);
-      });
+    const query = input.value.toLowerCase().trim();
+    if (!query) {
+      results?.replaceChildren();
+      if (status) status.textContent = "Начните вводить запрос.";
+      return;
+    }
+    renderResults(
+      index
+        .filter(
+          (item) =>
+            item.title.toLowerCase().includes(query) ||
+            item.description.toLowerCase().includes(query),
+        )
+        .slice(0, 20),
+    );
   });
 </script>

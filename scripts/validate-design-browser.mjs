@@ -2,6 +2,7 @@ import { chromium } from "@playwright/test";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import fs from "node:fs";
+import { checkV2Design } from "./browser-checks/v2-design-tokens.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = "http://localhost:4321";
@@ -85,6 +86,12 @@ try {
         errors.push(
           `${route.name} @${vp.name}: horizontal overflow (${await page.evaluate(() => document.body.scrollWidth)} vs ${vp.width})`,
         );
+
+      if (["home", "business", "projects", "izo-asa"].includes(route.name)) {
+        const designIssues = await checkV2Design(page, route.name, vp.width);
+        for (const i of designIssues) errors.push(`${route.name} @${vp.name}: ${i}`);
+      }
+
       const images = await page.evaluate(() =>
         [...document.images].map((img) => ({
           complete: img.complete,
@@ -179,7 +186,11 @@ try {
     const results = await new axeCore.default({ page }).analyze();
     for (const v of results.violations) {
       if (v.impact === "serious" || v.impact === "critical") {
-        errors.push(`Axe: ${v.impact} ${v.id} — ${v.help}`);
+        const nodes = v.nodes
+          .slice(0, 3)
+          .map((n) => n.html)
+          .join(" | ");
+        errors.push(`Axe: ${v.impact} ${v.id} — ${v.help} [${nodes}]`);
       }
     }
   } catch (e) {

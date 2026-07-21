@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 import fs from "node:fs";
 import { checkV2Design } from "./browser-checks/v2-design-tokens.mjs";
+import { checkNotFound } from "./browser-checks/not-found.mjs";
 import {
   BASE,
   NOT_FOUND_PATH,
@@ -115,23 +116,6 @@ try {
     }
   }
 
-  for (const viewport of VIEWPORTS) {
-    await page.setViewportSize({ width: viewport.width, height: viewport.height });
-    const response = await page.goto(`${SITE}${NOT_FOUND_PATH}`, { waitUntil: "networkidle" });
-    if (response?.status() !== 404) {
-      errors.push(`not-found @${viewport.name}: expected HTTP 404, got ${response?.status()}`);
-    }
-    const bodyText = await page.evaluate(() => document.body.innerText || "");
-    if (!bodyText.includes("Такой страницы нет")) {
-      errors.push(`not-found @${viewport.name}: V2 404 content missing`);
-    }
-    const overflow = await page.evaluate(() => document.body.scrollWidth > window.innerWidth + 2);
-    if (overflow) errors.push(`not-found @${viewport.name}: horizontal overflow`);
-    for (const issue of await checkV2Design(page, "not-found", viewport.width)) {
-      errors.push(`not-found @${viewport.name}: ${issue}`);
-    }
-  }
-
   fs.mkdirSync(SCREENSHOT_DIR, { recursive: true });
   for (const route of ROUTES.filter((candidate) => SCREENSHOT_NAMES.has(candidate.name))) {
     for (const viewport of [
@@ -146,17 +130,15 @@ try {
       });
     }
   }
-  for (const viewport of [
-    { suffix: "desktop", width: 1440, height: 900 },
-    { suffix: "mobile", width: 390, height: 844 },
-  ]) {
-    await page.setViewportSize({ width: viewport.width, height: viewport.height });
-    await page.goto(`${SITE}${NOT_FOUND_PATH}`, { waitUntil: "networkidle" });
-    await page.screenshot({
-      path: path.join(SCREENSHOT_DIR, `not-found-${viewport.suffix}.png`),
-      fullPage: true,
-    });
-  }
+  await checkNotFound({
+    page,
+    site: SITE,
+    notFoundPath: NOT_FOUND_PATH,
+    viewports: VIEWPORTS,
+    screenshotDir: SCREENSHOT_DIR,
+    checkDesign: checkV2Design,
+    errors,
+  });
 
   const noJsContext = await browser.newContext({
     javaScriptEnabled: false,

@@ -1,8 +1,14 @@
 ---
-import { site, buildUrl } from "@config/site";
+import { site, navigation, buildUrl } from "@config/site";
 import HeaderV2 from "@components/layout/HeaderV2.astro";
 import "../styles/v2-common.css";
 import "../styles/v2-journal-mobile.css";
+import "../styles/v2-layout.css";
+
+const footerPrimary = navigation.primary.filter((item) => !("cta" in item && item.cta));
+const footerUtility = navigation.utility.filter((item) =>
+  ["now", "second-brain", "facts", "press", "contacts", "search"].includes(item.id),
+);
 ---
 
 <!doctype html>
@@ -21,69 +27,33 @@ import "../styles/v2-journal-mobile.css";
     <HeaderV2 currentPath={Astro.props.currentPath} />
     <main id="main-content"><slot /></main>
     <footer class="v2-footer">
-      <div class="v2-footer-inner">
-        <div>&copy; {new Date().getFullYear()} Александр Аликин</div>
-        <nav>
-          <a href={buildUrl("/contacts/")}>Контакты</a>
-          <a href={buildUrl("/privacy/")}>Конфиденциальность</a>
-        </nav>
+      <div class="v2-footer-shell">
+        <div class="v2-footer-main">
+          <div class="v2-footer-brand">
+            <a class="v2-footer-name" href={buildUrl("/")}>{site.name}</a>
+            <p>
+              Инженер, педагог и предприниматель. Проекты, материалы и источники собраны в одной
+              публичной системе с явными ограничениями и происхождением утверждений.
+            </p>
+          </div>
+          <nav class="v2-footer-nav" aria-label="Основные разделы">
+            <h2>Разделы</h2>
+            {footerPrimary.map((item) => <a href={buildUrl(item.href)}>{item.label}</a>)}
+          </nav>
+          <nav class="v2-footer-nav" aria-label="Служебные разделы">
+            <h2>Система</h2>
+            {footerUtility.map((item) => <a href={buildUrl(item.href)}>{item.label}</a>)}
+          </nav>
+        </div>
+        <div class="v2-footer-bottom">
+          <span>&copy; {new Date().getFullYear()} Александр Аликин</span>
+          <div class="v2-footer-legal">
+            <a href={buildUrl("/privacy/")}>Конфиденциальность</a>
+            <a href={buildUrl("/rss.xml")}>RSS</a>
+            <a href="https://github.com/spikeal8-maker" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
       </div>
     </footer>
   </body>
 </html>
-
-<style>
-  .v2-body {
-    background: var(--color-bg);
-    color: var(--color-text);
-    font-family: var(--font-sans);
-    margin: 0;
-  }
-  .v2-body img {
-    max-width: 100%;
-    height: auto;
-  }
-  .v2-body h1,
-  .v2-body h2,
-  .v2-body h3 {
-    overflow-wrap: break-word;
-  }
-  .v2-skip-link {
-    position: absolute;
-    left: -9999px;
-    top: 0;
-    z-index: var(--z-overlay);
-    padding: var(--space-3) var(--space-6);
-    background: var(--color-accent);
-    color: var(--color-white);
-    border-radius: 0 0 var(--radius-md) var(--radius-md);
-    font-size: var(--text-sm);
-  }
-  .v2-skip-link:focus {
-    left: var(--space-4);
-  }
-  .v2-footer {
-    background: var(--color-bg);
-    border-top: var(--border-width) solid rgba(255, 255, 255, 0.08);
-    padding: var(--space-8) 0;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: var(--text-sm);
-  }
-  .v2-footer-inner {
-    max-width: var(--container-wide);
-    margin: 0 auto;
-    padding: 0 var(--gutter);
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-  }
-  .v2-footer a {
-    color: rgba(255, 255, 255, 0.6);
-    text-decoration: none;
-    margin-left: var(--space-6);
-  }
-  .v2-footer a:hover {
-    color: var(--color-white);
-  }
-</style>

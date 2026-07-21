@@ -9,7 +9,7 @@ import CaseModulesV2 from "@components/v2/projects/CaseModulesV2.astro";
 import CaseRoleV2 from "@components/v2/projects/CaseRoleV2.astro";
 import CaseResultV2 from "@components/v2/projects/CaseResultV2.astro";
 import CaseLimitationsV2 from "@components/v2/projects/CaseLimitationsV2.astro";
-import CaseMaterialsV2 from "@components/v2/projects/CaseMaterialsV2.astro";
+import GenericProjectBodyV2 from "@components/v2/projects/GenericProjectBodyV2.astro";
 import CaseCtaV2 from "@components/v2/projects/CaseCtaV2.astro";
 
 export async function getStaticPaths() {
@@ -23,6 +23,7 @@ const project = (await getCollection("projects", (p) => p.data.status === "publi
 );
 if (!project) return Astro.redirect("/404");
 const { data } = project;
+const isIzoAsa = data.slug === "izo-asa";
 ---
 
 <BaseLayoutV2
@@ -31,13 +32,28 @@ const { data } = project;
   currentPath="/projects/"
 >
   <ProjectCaseHeroV2 data={data} />
-  <CaseContextV2 description={data.description} />
-  <CaseProblemV2 />
-  <CaseArchitectureV2 />
-  <CaseModulesV2 />
-  <CaseRoleV2 role={data.role} />
-  <CaseResultV2 result={data.result} />
-  {data.limitations && <CaseLimitationsV2 limitations={data.limitations} />}
-  <CaseMaterialsV2 />
+  {
+    isIzoAsa ? (
+      <>
+        <CaseContextV2 description={data.description} />
+        <CaseProblemV2 />
+        <CaseArchitectureV2 />
+        <CaseModulesV2 />
+        <CaseRoleV2
+          role={data.role}
+          details="В публичном описании зафиксированы архитектурный замысел и разработка ядра. Полный состав команды и объём реализованных модулей требуют отдельного подтверждения."
+        />
+        <CaseResultV2 result={data.result} />
+        {data.limitations && <CaseLimitationsV2 limitations={data.limitations} />}
+      </>
+    ) : (
+      <GenericProjectBodyV2
+        description={data.description}
+        role={data.role}
+        result={data.result}
+        limitations={data.limitations}
+      />
+    )
+  }
   <CaseCtaV2 />
 </BaseLayoutV2>

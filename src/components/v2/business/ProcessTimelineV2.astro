@@ -1,40 +1,41 @@
 <section class="v2-section v2-section-surface">
   <div class="v2-container">
-    <h2 class="v2-section-title">Процесс</h2>
+    <p class="v2-section-kicker">Рабочая последовательность</p>
+    <h2 class="v2-section-title">Разобрать → проверить → передать</h2>
     <div class="v2-tl">
       <div class="v2-tl-step">
         <div class="v2-tl-circle"><span>1</span></div>
         <div class="v2-tl-body">
-          <h3>Диагностика</h3>
-          <p>Интервью, аудит процессов, карта данных. Выявление узких мест и потерь.</p>
+          <h3>Разобрать текущую систему</h3>
+          <p>Собрать фактический процесс, ограничения, данные, роли и точки принятия решений.</p>
         </div>
       </div>
       <div class="v2-tl-step">
         <div class="v2-tl-circle"><span>2</span></div>
         <div class="v2-tl-body">
-          <h3>Проектирование</h3>
-          <p>Архитектура решения, выбор стека, план пилота с измеримыми критериями.</p>
+          <h3>Сформулировать проверяемую гипотезу</h3>
+          <p>Определить один участок, критерий результата и минимальный объём первого решения.</p>
         </div>
       </div>
       <div class="v2-tl-step">
         <div class="v2-tl-circle"><span>3</span></div>
         <div class="v2-tl-body">
-          <h3>Пилот</h3>
-          <p>Ограниченный запуск на реальных данных. Работающий прототип, не презентация.</p>
+          <h3>Собрать рабочий контур</h3>
+          <p>Создать прототип или автоматизацию на реальных условиях, не подменяя результат презентацией.</p>
         </div>
       </div>
       <div class="v2-tl-step">
         <div class="v2-tl-circle"><span>4</span></div>
         <div class="v2-tl-body">
-          <h3>Внедрение</h3>
-          <p>Интеграция в рабочие процессы, миграция данных, обучение команды.</p>
+          <h3>Проверить и доработать</h3>
+          <p>Сравнить результат с исходным состоянием, зафиксировать ошибки и скорректировать конструкцию.</p>
         </div>
       </div>
       <div class="v2-tl-step">
         <div class="v2-tl-circle"><span>5</span></div>
         <div class="v2-tl-body">
-          <h3>Сопровождение</h3>
-          <p>Мониторинг, доработка по обратной связи, документация. Гарантия 3–6 месяцев.</p>
+          <h3>Передать команде</h3>
+          <p>Документировать решение, объяснить принцип работы и определить следующий этап отдельно.</p>
         </div>
       </div>
     </div>
@@ -42,6 +43,12 @@
 </section>
 
 <style>
+  .v2-section-kicker {
+    margin: 0 0 var(--space-2);
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-bold);
+  }
   .v2-tl {
     --tl-size: 3.5rem;
     --tl-gap: var(--space-5);
@@ -55,13 +62,12 @@
     top: var(--tl-size);
     bottom: 0;
     width: 2px;
-    background: var(--color-accent);
+    background: var(--color-primary);
   }
   .v2-tl-step {
     position: relative;
     margin-bottom: var(--space-10);
     min-width: 0;
-    overflow-wrap: break-word;
   }
   .v2-tl-step:last-child {
     margin-bottom: 0;
@@ -74,33 +80,26 @@
     height: var(--tl-size);
     border-radius: 50%;
     background: var(--color-surface-raised);
-    border: 2px solid var(--color-accent);
+    border: 2px solid var(--color-primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
   }
   .v2-tl-circle span {
     font-size: var(--text-lg);
     font-weight: var(--fw-bold);
-    color: var(--color-accent);
-    line-height: 1;
-  }
-  .v2-tl-body {
-    min-width: 0;
+    color: var(--color-primary);
   }
   .v2-tl-body h3 {
-    font-size: var(--text-base);
+    font-size: var(--text-lg);
     font-weight: var(--fw-bold);
     color: var(--color-text);
     margin: 0 0 var(--space-2);
-    overflow-wrap: break-word;
   }
   .v2-tl-body p {
     font-size: var(--text-base);
     color: var(--color-text-secondary);
     margin: 0;
     line-height: var(--leading-normal);
-    overflow-wrap: break-word;
   }
 </style>

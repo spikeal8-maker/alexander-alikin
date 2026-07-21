@@ -1,33 +1,36 @@
-# Claims Audit
+# Editorial source and claims system
 
-This directory contains an audit of all public claims across the site.
+This directory separates strategic recommendations, owner statements, verified evidence, editorial bridges and hypotheses.
 
-## Structure
+## Canonical files
 
-- `claims.json` — One entry per factual claim, with source, evidence level, and publishability
-- `page-texts.json` — Full text inventory for each of the 7 public pages
+- `SOURCE-REGISTRY.json` — curated source catalogue. Test fixtures are excluded from public use.
+- `CLAIMS-REGISTRY.json` — public claims and strategic messages with verification and approval status.
+- `MEDIA-EDITORIAL-MAP.json` — one editorial purpose per image, with documentary/visualized separation.
+- `DRAFT-PROVENANCE.json` — paragraph-level origin and editorial role for seven page drafts.
+- `OWNER-QUESTIONS.md` — only decisions that still require the owner or additional evidence.
 
-## Claims fields
+## Strategy sources
 
-| Field | Description |
-|-------|-------------|
-| text | The claim text as it appears on the page |
-| page | Which page the claim appears on (one of 7 public routes) |
-| source | Where the claim originates (Content Collection, component text, etc.) |
-| evidence_level | `author_statement`, `public_source`, or `document_verified` |
-| publishable | Whether the claim is OK to publish publicly |
-| image | Associated image filename, if any |
+Safe extracts from the two owner-provided strategy documents are stored in:
 
-## Evidence levels
+- `src/content/sources/strategy-v1-extract.md`
+- `src/content/sources/strategy-v2-extract.md`
 
-- **author_statement** — Claim made by the site owner, not independently verified
-- **public_source** — Backed by a publicly available third-party source
-- **document_verified** — Verified by review of original documents or materials
+The original private documents are not committed.
 
-## Page texts
+## Roles
 
-`page-texts.json` provides a complete inventory of all text content per page, organised into:
-- `title` — Page title
-- `headings` — All heading text (h1, h2, etc.)
-- `body` — Descriptive text and content
-- `cta` — Call-to-action button and link text
+- `owner_statement` — Alexander's own identity, project or method statement.
+- `strategic_recommendation` — recommended audience, offer or page structure; not evidence of completed client work.
+- `market_observation` — a description of a target situation; not a client case.
+- `editorial_bridge` — connective prose that introduces no new fact.
+- `hypothesis` — cannot be published as fact before evidence or owner decision.
+
+## Publication rules
+
+- `owner_approval` stays `pending` until explicit written approval.
+- Unsupported numbers and commercial terms use `publishable: false`.
+- A strategy scenario cannot be presented as Alexander's completed case.
+- Visualized media illustrates a concept and never proves an event.
+- Documentary media requires an accurate year and context.

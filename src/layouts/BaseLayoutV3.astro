@@ -1,0 +1,52 @@
+---
+import { site, buildUrl } from "@config/site";
+import HeaderV3 from "@components/v3/HeaderV3.astro";
+import FooterV3 from "@components/v3/FooterV3.astro";
+import "../styles/tokens-v3.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {site.prelaunch && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={new URL(Astro.url.pathname, site.url).href} />
+    <link rel="icon" type="image/svg+xml" href={buildUrl("/favicon.svg")} />
+  </head>
+  <body>
+    <a class="v3-skip" href="#main-content">Перейти к содержимому</a>
+    <HeaderV3 />
+    <main id="main-content"><slot /></main>
+    <FooterV3 />
+  </body>
+</html>
+
+<style>
+  .v3-skip {
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.8rem 1rem;
+    color: var(--v3-white);
+    background: var(--v3-cobalt);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    transform: translateY(-120%);
+  }
+
+  .v3-skip:focus {
+    transform: translateY(0);
+  }
+</style>

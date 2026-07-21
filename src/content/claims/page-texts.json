@@ -1,19 +1,14 @@
 {
   "status": "superseded",
-  "purpose": "Historical inventory of the pre-rewrite page text. Do not use as canonical editorial copy.",
-  "canonical_drafts": [
+  "superseded_by": [
     "src/content/drafts/home.md",
     "src/content/drafts/business.md",
     "src/content/drafts/education.md",
     "src/content/drafts/about.md",
     "src/content/drafts/projects.md",
     "src/content/drafts/izo-asa.md",
-    "src/content/drafts/collaboration.md"
+    "src/content/drafts/collaboration.md",
+    "src/content/claims/DRAFT-PROVENANCE.json"
   ],
-  "canonical_governance": [
-    "src/content/claims/SOURCE-REGISTRY.json",
-    "src/content/claims/CLAIMS-REGISTRY.json",
-    "src/content/claims/DRAFT-PROVENANCE.json",
-    "src/content/claims/MEDIA-EDITORIAL-MAP.json"
-  ]
+  "note": "Снимок ранних текстов. Не является источником правды и не используется для публичной интеграции. Безопасная часть утверждённых редакционных драфтов перенесена в V2 Astro-страницы в PR №23."
 }

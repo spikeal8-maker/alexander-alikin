@@ -4,30 +4,33 @@ import { buildUrl } from "@config/site";
 
 <section class="v2-section v2-section-surface">
   <div class="v2-container">
-    <h2 class="v2-section-title">Опыт</h2>
+    <p class="v2-section-kicker">Практика, из которой вырос метод</p>
+    <h2 class="v2-section-title">Инженерное обучение через проект</h2>
     <div class="v2-doc-story">
       <div class="v2-doc-media">
         <img
           src={buildUrl("/images/alikin/documentary/08-robotics-archive-4x3.webp")}
-          alt="Образовательная робототехника. Занятия с учениками"
+          alt="Архивный материал образовательной робототехники"
           width="800"
           height="600"
-          loading="eager"
+          loading="lazy"
           class="v2-doc-img"
         />
+        <p class="v2-doc-note">Архивный материал. Точный год и площадка требуют подтверждения.</p>
       </div>
       <div class="v2-doc-text">
-        <p class="v2-doc-caption">Образовательная робототехника. Занятия с учениками, 2017–2020.</p>
+        <p class="v2-doc-caption">
+          В проектной работе участник сталкивается не с учебной абстракцией, а с реальным ограничением:
+          устройство должно заработать, решение — выдержать проверку, а результат — быть объяснимым.
+        </p>
         <div class="v2-doc-body">
           <p>
-            С 2017 года я веду практические занятия по робототехнике и программированию для
-            школьников и студентов. За это время через мои программы прошли сотни учеников, десятки
-            из которых поступили в ведущие технические вузы страны.
+            Из этой практики сформировался общий метод: действие, ошибка, объяснение, доработка и защита.
+            Он применяется не только в образовании, но и при проектировании процессов и цифровых систем.
           </p>
           <p>
-            Методика строится на проектном подходе: каждый ученик проходит путь от идеи до
-            работающего устройства. Мы собираем схемы, программируем контроллеры, проектируем
-            корпуса и презентуем результат — полный инженерный цикл.
+            Количественные заявления о масштабе программ и достижениях участников не используются до
+            отдельной проверки источников.
           </p>
         </div>
       </div>
@@ -36,6 +39,12 @@ import { buildUrl } from "@config/site";
 </section>
 
 <style>
+  .v2-section-kicker {
+    margin: 0 0 var(--space-2);
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-bold);
+  }
   .v2-doc-story {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -49,6 +58,11 @@ import { buildUrl } from "@config/site";
     border-radius: var(--radius-lg);
     object-fit: cover;
     aspect-ratio: 4/3;
+  }
+  .v2-doc-note {
+    margin: var(--space-2) 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--text-xs);
   }
   .v2-doc-caption {
     font-size: var(--text-lg);
@@ -71,13 +85,9 @@ import { buildUrl } from "@config/site";
       grid-template-columns: 1fr;
       gap: var(--space-6);
     }
-    .v2-doc-caption {
-      font-size: var(--text-base);
-      overflow-wrap: break-word;
-    }
+    .v2-doc-caption,
     .v2-doc-body p {
       font-size: var(--text-base);
-      overflow-wrap: break-word;
     }
   }
 </style>

@@ -1,6 +1,7 @@
 ---
 import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
 import { buildUrl } from "@config/site";
+import "../styles/v2-about.css";
 ---
 
 <BaseLayoutV2
@@ -64,9 +65,9 @@ import { buildUrl } from "@config/site";
       </div>
       <div class="v2-arc-list">
         <div><strong>Техника</strong><p>Работа с устройствами формирует привычку искать причину, а не маскировать симптом.</p></div>
-        <div><strong>Педагогика</strong><p>Обучение показывает: решение не передано, пока человек не может объяснить и воспроизвести его сам.</p></div>
-        <div><strong>Предпринимательство</strong><p>Даже технически правильная конструкция должна выдерживать ограничения спроса, ресурсов и команды.</p></div>
-        <div><strong>ИИ и системы знаний</strong><p>Новые инструменты усиливают работу только там, где качественно поставлена задача и выстроен контекст.</p></div>
+        <div><strong>Педагогика</strong><p>Решение не передано, пока человек не может объяснить и воспроизвести его сам.</p></div>
+        <div><strong>Предпринимательство</strong><p>Технически правильная конструкция должна выдерживать ограничения спроса, ресурсов и команды.</p></div>
+        <div><strong>ИИ и системы знаний</strong><p>Инструменты усиливают работу там, где качественно поставлена задача и выстроен контекст.</p></div>
       </div>
     </div>
   </section>
@@ -98,66 +99,3 @@ import { buildUrl } from "@config/site";
     </div>
   </section>
 </BaseLayoutV2>
-
-<style>
-  .v2-about-hero,
-  .v2-role-grid,
-  .v2-arc-grid,
-  .v2-principles-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-10);
-    align-items: center;
-  }
-  .v2-role-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .v2-about-img {
-    width: 100%;
-    max-height: 600px;
-    object-fit: cover;
-    object-position: center 25%;
-    border-radius: var(--radius-lg);
-  }
-  .v2-about-note,
-  .v2-role-grid p,
-  .v2-arc-list p,
-  .v2-principles-grid li {
-    color: var(--color-text-secondary);
-    font-size: var(--text-base);
-    line-height: var(--leading-normal);
-  }
-  .v2-about-note {
-    margin-top: var(--space-6);
-  }
-  .v2-role-grid h3 {
-    font-size: var(--text-xl);
-    margin: var(--space-3) 0;
-  }
-  .v2-arc-list div {
-    padding: var(--space-5) 0;
-    border-bottom: var(--border-width) solid var(--color-border-light);
-  }
-  .v2-arc-list p {
-    margin: var(--space-2) 0 0;
-    color: rgba(255, 255, 255, 0.65);
-  }
-  .v2-principles-grid ul {
-    margin: 0;
-    padding-left: var(--space-5);
-  }
-  .v2-about-actions {
-    display: flex;
-    gap: var(--space-4);
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  @media (max-width: 768px) {
-    .v2-about-hero,
-    .v2-role-grid,
-    .v2-arc-grid,
-    .v2-principles-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

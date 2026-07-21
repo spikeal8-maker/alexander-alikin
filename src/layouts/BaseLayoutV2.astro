@@ -15,6 +15,7 @@ import HeaderV2 from "@components/layout/HeaderV2.astro";
     <link rel="icon" type="image/svg+xml" href={buildUrl("/favicon.svg")} />
   </head>
   <body class="v2-body">
+    <a class="v2-skip-link" href="#main-content">Перейти к содержимому</a>
     <HeaderV2 currentPath={Astro.props.currentPath} />
     <main id="main-content"><slot /></main>
     <footer class="v2-footer">
@@ -35,6 +36,20 @@ import HeaderV2 from "@components/layout/HeaderV2.astro";
     color: var(--color-text);
     font-family: var(--font-sans);
     margin: 0;
+  }
+  .v2-skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: var(--z-overlay);
+    padding: var(--space-3) var(--space-6);
+    background: var(--color-accent);
+    color: var(--color-white);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    font-size: var(--text-sm);
+  }
+  .v2-skip-link:focus {
+    left: var(--space-4);
   }
   .v2-footer {
     background: var(--color-bg);

@@ -49,7 +49,7 @@ const { currentPath } = Astro.props;
   .v2-logo {
     font-size: var(--text-xl);
     font-weight: var(--fw-bold);
-    color: #fff;
+    color: var(--color-white);
     text-decoration: none;
     letter-spacing: var(--tracking-tight);
   }
@@ -67,11 +67,11 @@ const { currentPath } = Astro.props;
   }
   .v2-nav-link:hover,
   .v2-nav-link[aria-current="page"] {
-    color: #fff;
+    color: var(--color-white);
   }
   .v2-nav-cta {
     background: var(--color-accent);
-    color: #fff !important;
+    color: var(--color-white) !important;
     padding: var(--space-2) var(--space-5);
     border-radius: var(--radius-md);
   }
@@ -82,7 +82,7 @@ const { currentPath } = Astro.props;
     display: none;
     background: none;
     border: var(--border-width) solid rgba(255, 255, 255, 0.2);
-    color: #fff;
+    color: var(--color-white);
     padding: var(--space-2) var(--space-3);
     font-size: var(--text-xl);
     cursor: pointer;

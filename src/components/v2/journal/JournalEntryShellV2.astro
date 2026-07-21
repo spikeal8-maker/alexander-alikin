@@ -1,0 +1,45 @@
+---
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import { buildUrl } from "@config/site";
+import "../../../styles/v2-journal.css";
+
+export interface Props {
+  title: string;
+  description: string;
+  kind: string;
+  date?: string;
+  backHref: string;
+  backLabel: string;
+}
+
+const { title, description, kind, date, backHref, backLabel } = Astro.props;
+---
+
+<BaseLayoutV2 title={`${title} — Александр Аликин`} description={description} currentPath="/journal/">
+  <section class="v2-section">
+    <div class="v2-container">
+      <header class="v2-entry-header">
+        <div class="v2-entry-meta">
+          <span>{kind}</span>
+          {date && <time>{date}</time>}
+          <span>Авторский материал</span>
+        </div>
+        <h1 class="v2-entry-title">{title}</h1>
+        <p class="v2-entry-lead">{description}</p>
+      </header>
+    </div>
+  </section>
+
+  <section class="v2-entry-reading">
+    <article class="v2-entry-body">
+      <slot />
+    </article>
+  </section>
+
+  <section class="v2-section">
+    <div class="v2-container v2-entry-footer">
+      <a href={buildUrl(backHref)} class="v2-btn v2-btn-outline">← {backLabel}</a>
+      <a href={buildUrl("/collaboration/")} class="v2-btn v2-btn-accent">Обсудить задачу</a>
+    </div>
+  </section>
+</BaseLayoutV2>

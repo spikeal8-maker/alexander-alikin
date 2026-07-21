@@ -59,4 +59,5 @@ export const SCREENSHOT_NAMES = new Set([
   "video",
 ]);
 
+export const NOT_FOUND_PATH = `${BASE}/missing-owner-review-route/`;
 export { BASE };

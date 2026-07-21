@@ -4,24 +4,24 @@ import { buildUrl } from "@config/site";
 const projects = [
   {
     slug: "izo-asa",
+    eyebrow: "Продукт в разработке",
     title: "ИЗО АСА",
     description:
-      "Образовательная платформа для виртуальных лабораторий, управления классами и учебных проектов. Интерактивная среда с поддержкой 3D-симуляций и автоматической проверки заданий.",
+      "Образовательная платформа для виртуальных лабораторий, управления группами и учебных проектов.",
     result:
-      "Пилотный запуск в 2025 году. Платформа охватывает 5 дисциплин, включает виртуальные лаборатории и систему управления учебным процессом.",
-    period: "2025–2026",
-    role: "Автор архитектуры",
+      "Сейчас проект описывается как активная разработка: сформирована архитектура ядра и модульная логика, публичная версия ещё не заявлена.",
+    role: "Автор архитектуры и разработчик",
     media: "/images/alikin/visualized/robotics-lab.webp",
   },
   {
     slug: "engineering-education",
+    eyebrow: "Практика и методика",
     title: "Инженерное образование",
     description:
-      "Образовательные программы по информатике, технологии и робототехнике для разных возрастов. От начальной школы до вузовских курсов и корпоративного обучения.",
+      "Программы и проектные форматы в области информатики, технологии и робототехники.",
     result:
-      "Более 10 лет практики. Разработаны методики для школ, вузов и EdTech-компаний. Подготовлены десятки преподавателей.",
-    period: "2015–2026",
-    role: "Педагог, методист",
+      "Основа подхода — действие, ошибка, объяснение, доработка и защита результата. Количественные показатели вынесены за пределы публичной версии до проверки.",
+    role: "Педагог и методист",
     media: "/images/alikin/visualized/education-presentation.webp",
   },
 ];
@@ -29,7 +29,13 @@ const projects = [
 
 <section class="v2-section v2-section-alt">
   <div class="v2-container">
-    <h2 class="v2-section-title">Проекты</h2>
+    <div class="v2-section-heading-row">
+      <div>
+        <p class="v2-section-kicker">Текущая практика</p>
+        <h2 class="v2-section-title">Проекты</h2>
+      </div>
+      <a href={buildUrl("/projects/")} class="v2-all-projects">Все проекты &rarr;</a>
+    </div>
     <div class="v2-editorial-grid">
       {
         projects.map((p) => (
@@ -45,12 +51,11 @@ const projects = [
               />
             </div>
             <div class="v2-editorial-body">
+              <span class="v2-accent-label">{p.eyebrow}</span>
               <h3>{p.title}</h3>
               <p class="v2-editorial-desc">{p.description}</p>
               <div class="v2-editorial-result">{p.result}</div>
-              <div class="v2-editorial-meta">
-                {p.role} &middot; {p.period}
-              </div>
+              <div class="v2-editorial-meta">{p.role}</div>
               <span class="v2-editorial-link">Смотреть кейс &rarr;</span>
             </div>
           </a>
@@ -61,6 +66,23 @@ const projects = [
 </section>
 
 <style>
+  .v2-section-heading-row {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-6);
+  }
+  .v2-section-kicker {
+    margin: 0 0 var(--space-2);
+    color: var(--color-accent-text);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-bold);
+  }
+  .v2-all-projects {
+    color: var(--color-accent-text);
+    text-decoration: none;
+    font-weight: var(--fw-semibold);
+  }
   .v2-editorial-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -89,18 +111,19 @@ const projects = [
   }
   .v2-editorial-body h3 {
     font-size: var(--text-2xl);
-    margin: 0 0 var(--space-3);
+    margin: var(--space-2) 0 var(--space-3);
   }
-  .v2-editorial-desc {
-    color: rgba(255, 255, 255, 0.75);
+  .v2-editorial-desc,
+  .v2-editorial-result {
     font-size: var(--text-base);
     line-height: var(--leading-normal);
+  }
+  .v2-editorial-desc {
+    color: rgba(255, 255, 255, 0.76);
     margin: 0 0 var(--space-4);
   }
   .v2-editorial-result {
-    font-size: var(--text-base);
-    color: rgba(255, 255, 255, 0.55);
-    line-height: var(--leading-normal);
+    color: rgba(255, 255, 255, 0.58);
     margin: 0 0 var(--space-4);
     padding-left: var(--space-4);
     border-left: var(--border-width-thick) solid var(--color-accent-text);
@@ -110,33 +133,21 @@ const projects = [
     color: var(--color-accent-text);
     font-weight: var(--fw-bold);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     margin-bottom: var(--space-3);
   }
   .v2-editorial-link {
-    display: inline-block;
-    font-size: var(--text-base);
     color: var(--color-accent-text);
     font-weight: var(--fw-semibold);
-    transition: color var(--motion-fast);
-  }
-  .v2-editorial-card:hover .v2-editorial-link {
-    color: var(--color-white);
   }
   @media (max-width: 768px) {
+    .v2-section-heading-row {
+      align-items: flex-start;
+      flex-direction: column;
+    }
     .v2-editorial-grid {
       grid-template-columns: 1fr;
       gap: var(--space-12);
-    }
-    .v2-editorial-body h3 {
-      font-size: var(--text-xl);
-      overflow-wrap: break-word;
-    }
-    .v2-editorial-desc {
-      overflow-wrap: break-word;
-    }
-    .v2-editorial-result {
-      overflow-wrap: break-word;
     }
   }
 </style>

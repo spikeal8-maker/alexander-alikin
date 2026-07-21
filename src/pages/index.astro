@@ -1,59 +1,352 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import HomeHero from "@components/home/HomeHero.astro";
-import IntentRouter from "@components/home/IntentRouter.astro";
-import NowSection from "@components/home/NowSection.astro";
-import FeaturedProjects from "@components/home/FeaturedProjects.astro";
-import MethodSection from "@components/home/MethodSection.astro";
-import SectionHeader from "@components/ui/SectionHeader.astro";
-import Timeline from "@components/ui/Timeline.astro";
-import CTASection from "@components/ui/CTASection.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
 import { buildUrl } from "@config/site";
 ---
 
-<BaseLayout
+<BaseLayoutV2
   title="Александр Аликин — проекты, системы и мысли"
   description="Предприниматель-практик и инженер-педагог. Проектирую и запускаю технологические, ИИ- и образовательные системы."
   currentPath="/"
 >
-  <HomeHero />
-  <div class="container"><IntentRouter /></div>
-  <div class="container mt-12"><NowSection /></div>
-  <div class="container mt-12"><FeaturedProjects /></div>
-  <div class="container mt-12 container-main"><MethodSection /></div>
-  <div class="container mt-12 container-main">
-    <SectionHeader label="Путь" title="Ключевые этапы" />
-    <Timeline
-      items={[
-        {
-          date: "2010-е",
-          title: "Инженерия и техника",
-          description: "Первые проекты, электроника, понимание систем.",
-        },
-        {
-          date: "2015+",
-          title: "Педагогика и робототехника",
-          description: "Обучение, соревнования, методика.",
-        },
-        {
-          date: "2018+",
-          title: "Предпринимательство",
-          description: "Лига роботов, Laser Love, бизнес-проекты.",
-        },
-        {
-          date: "2024+",
-          title: "ИИ и автоматизация",
-          description: "Системы знаний, n8n, ИИ-ассистенты.",
-        },
-      ]}
-    />
-  </div>
-  <div class="container">
-    <CTASection
-      title="Готовы обсудить задачу?"
-      description="Если у вас есть процесс, который требует системы, или программа, которая должна давать измеримый результат — напишите."
-      href={buildUrl("/collaboration/")}
-      buttonLabel="Обсудить задачу"
-    />
-  </div>
-</BaseLayout>
+  <!-- HERO -->
+  <section class="v2-hero">
+    <div class="v2-hero-grid">
+      <div class="v2-hero-text">
+        <h1 class="v2-hero-name">Александр Аликин</h1>
+        <p class="v2-hero-role">
+          Предприниматель-практик и инженер-педагог. Проектирую и запускаю технологические, ИИ- и
+          образовательные системы.
+        </p>
+        <div class="v2-hero-actions">
+          <a href={buildUrl("/collaboration/")} class="v2-btn v2-btn-accent">Обсудить задачу</a>
+          <a href={buildUrl("/projects/")} class="v2-btn v2-btn-outline">Посмотреть проекты</a>
+        </div>
+      </div>
+      <div class="v2-hero-media">
+        <img
+          src={buildUrl("/images/alikin/visualized/hero-main-business.webp")}
+          alt="Александр Аликин — портрет"
+          width="560"
+          height="700"
+          loading="eager"
+          class="v2-hero-img"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- DIRECTIONS -->
+  <section class="v2-section">
+    <div class="v2-container">
+      <div class="v2-direction-grid">
+        <a href={buildUrl("/business/")} class="v2-direction-card">
+          <span class="v2-direction-num">01</span>
+          <h2 class="v2-direction-title">Бизнесу</h2>
+          <p>ИИ, автоматизация, процессы. Превращаю разрозненные операции в измеримые системы.</p>
+        </a>
+        <a href={buildUrl("/education/")} class="v2-direction-card">
+          <span class="v2-direction-num">02</span>
+          <h2 class="v2-direction-title">Образованию</h2>
+          <p>Инженерные и ИИ-программы, лаборатории, методика проектного обучения.</p>
+        </a>
+        <a href={buildUrl("/about/")} class="v2-direction-card">
+          <span class="v2-direction-num">03</span>
+          <h2 class="v2-direction-title">Обо мне</h2>
+          <p>Путь от электроники до ИИ-систем. Один метод для трёх профессий.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="v2-section v2-section-dark">
+    <div class="v2-container">
+      <h2 class="v2-section-title">Проекты</h2>
+      <div class="v2-project-grid">
+        <a href={buildUrl("/projects/izo-asa/")} class="v2-project-card">
+          <div class="v2-project-media">
+            <img
+              src={buildUrl("/images/alikin/visualized/robotics-lab.webp")}
+              alt=""
+              width="600"
+              height="400"
+              loading="lazy"
+              class="v2-project-img"
+            />
+          </div>
+          <div class="v2-project-body">
+            <h3>ИЗО АСА</h3>
+            <p>
+              Образовательная платформа для виртуальных лабораторий, управления классами и учебных
+              проектов.
+            </p>
+            <span class="v2-project-meta">2025–2026 · Автор архитектуры</span>
+          </div>
+        </a>
+        <a href={buildUrl("/projects/engineering-education/")} class="v2-project-card">
+          <div class="v2-project-media">
+            <img
+              src={buildUrl("/images/alikin/visualized/education-presentation.webp")}
+              alt=""
+              width="600"
+              height="400"
+              loading="lazy"
+              class="v2-project-img"
+            />
+          </div>
+          <div class="v2-project-body">
+            <h3>Инженерное образование</h3>
+            <p>Образовательные программы по информатике, технологии и робототехнике.</p>
+            <span class="v2-project-meta">2015–2026 · Педагог, методист</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section class="v2-section">
+    <div class="v2-container">
+      <h2 class="v2-section-title">Как я работаю</h2>
+      <div class="v2-method-grid">
+        <div class="v2-method-step">
+          <span class="v2-method-num">01</span><h3>Разобрать</h3><p>
+            Диагностика процесса, ограничений и потерь. Карта данных и зон автоматизации.
+          </p>
+        </div>
+        <div class="v2-method-step">
+          <span class="v2-method-num">02</span><h3>Проверить</h3><p>
+            Ограниченный пилот с измеримым результатом. Работающий прототип, а не презентация.
+          </p>
+        </div>
+        <div class="v2-method-step">
+          <span class="v2-method-num">03</span><h3>Передать</h3><p>
+            Внедрение, обучение команды, документация. Система работает без героических усилий
+            автора.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="v2-section v2-section-dark">
+    <div class="v2-container v2-cta-block">
+      <h2>Готовы обсудить задачу?</h2>
+      <p>Если у вас есть процесс, который требует системы — напишите.</p>
+      <a href={buildUrl("/collaboration/")} class="v2-btn v2-btn-accent">Обсудить задачу</a>
+    </div>
+  </section>
+</BaseLayoutV2>
+
+<style>
+  .v2-hero {
+    padding: var(--space-20) 0 var(--space-16);
+  }
+  .v2-hero-grid {
+    max-width: var(--container-wide);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+  .v2-hero-name {
+    font-size: var(--text-6xl);
+    font-weight: var(--fw-bold);
+    color: #fff;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin: 0 0 var(--space-6);
+  }
+  .v2-hero-role {
+    font-size: var(--text-xl);
+    color: rgba(255, 255, 255, 0.7);
+    line-height: var(--leading-normal);
+    margin: 0 0 var(--space-8);
+    max-width: 34rem;
+  }
+  .v2-hero-actions {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+  .v2-hero-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    object-position: center 15%;
+    max-height: 560px;
+  }
+  .v2-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-base);
+    font-weight: var(--fw-semibold);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: all var(--motion-fast);
+    min-height: var(--target-size);
+  }
+  .v2-btn-accent {
+    background: var(--color-accent);
+    color: #fff;
+  }
+  .v2-btn-accent:hover {
+    background: #9a3d08;
+  }
+  .v2-btn-outline {
+    border: var(--border-width-thick) solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+  }
+  .v2-btn-outline:hover {
+    border-color: #fff;
+  }
+  .v2-section {
+    padding: var(--space-24) 0;
+    background: var(--color-bg);
+  }
+  .v2-section-dark {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .v2-container {
+    max-width: var(--container-wide);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+  .v2-section-title {
+    font-size: var(--text-4xl);
+    font-weight: var(--fw-bold);
+    color: #fff;
+    letter-spacing: var(--tracking-tight);
+    margin: 0 0 var(--space-12);
+  }
+  .v2-direction-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+  .v2-direction-card {
+    text-decoration: none;
+    color: #fff;
+    padding: var(--space-8);
+    border: var(--border-width) solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--motion-fast);
+  }
+  .v2-direction-card:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+  .v2-direction-num {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.1em;
+  }
+  .v2-direction-title {
+    font-size: var(--text-2xl);
+    margin: var(--space-3) 0 var(--space-2);
+  }
+  .v2-direction-card p {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+  .v2-project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+  .v2-project-card {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+  }
+  .v2-project-media {
+    aspect-ratio: 3/2;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-5);
+  }
+  .v2-project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--motion-standard);
+  }
+  .v2-project-card:hover .v2-project-img {
+    transform: scale(1.02);
+  }
+  .v2-project-body h3 {
+    font-size: var(--text-2xl);
+    margin: 0 0 var(--space-2);
+  }
+  .v2-project-body p {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 var(--space-3);
+    line-height: var(--leading-normal);
+  }
+  .v2-project-meta {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+  }
+  .v2-method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+  .v2-method-step {
+    color: #fff;
+  }
+  .v2-method-num {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.1em;
+  }
+  .v2-method-step h3 {
+    font-size: var(--text-xl);
+    margin: var(--space-2) 0 var(--space-3);
+  }
+  .v2-method-step p {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+  }
+  .v2-cta-block {
+    text-align: center;
+    max-width: 42rem;
+  }
+  .v2-cta-block h2 {
+    font-size: var(--text-4xl);
+    color: #fff;
+    margin: 0 0 var(--space-4);
+  }
+  .v2-cta-block p {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 var(--space-8);
+    font-size: var(--text-lg);
+  }
+  @media (max-width: 768px) {
+    .v2-hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .v2-hero-name {
+      font-size: var(--text-4xl);
+    }
+    .v2-direction-grid,
+    .v2-project-grid,
+    .v2-method-grid {
+      grid-template-columns: 1fr;
+    }
+    .v2-hero {
+      padding: var(--space-12) 0;
+    }
+    .v2-section {
+      padding: var(--space-16) 0;
+    }
+  }
+</style>

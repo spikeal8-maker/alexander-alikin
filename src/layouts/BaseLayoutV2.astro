@@ -1,0 +1,63 @@
+---
+import { site, buildUrl } from "@config/site";
+import HeaderV2 from "@components/layout/HeaderV2.astro";
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{Astro.props.title}</title>
+    <meta name="description" content={Astro.props.description} />
+    {site.prelaunch && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={new URL(Astro.url.pathname, site.url).href} />
+    <link rel="icon" type="image/svg+xml" href={buildUrl("/favicon.svg")} />
+  </head>
+  <body class="v2-body">
+    <HeaderV2 currentPath={Astro.props.currentPath} />
+    <main id="main-content"><slot /></main>
+    <footer class="v2-footer">
+      <div class="v2-footer-inner">
+        <div>&copy; {new Date().getFullYear()} Александр Аликин</div>
+        <nav>
+          <a href={buildUrl("/contacts/")}>Контакты</a>
+          <a href={buildUrl("/privacy/")}>Конфиденциальность</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .v2-body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    margin: 0;
+  }
+  .v2-footer {
+    background: var(--color-bg);
+    border-top: var(--border-width) solid rgba(255, 255, 255, 0.08);
+    padding: var(--space-8) 0;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: var(--text-sm);
+  }
+  .v2-footer-inner {
+    max-width: var(--container-wide);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+  .v2-footer a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    margin-left: var(--space-6);
+  }
+  .v2-footer a:hover {
+    color: #fff;
+  }
+</style>

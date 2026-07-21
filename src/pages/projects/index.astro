@@ -1,44 +1,54 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
 import { getCollection } from "astro:content";
 import { buildUrl } from "@config/site";
-import ProjectCard from "@components/ui/ProjectCard.astro";
 
 const projects = await getCollection("projects", (p) => p.data.status === "published");
-const statusLabels = {
-  active: "Активный",
-  completed: "Завершён",
-  paused: "Приостановлен",
-  archived: "Архив",
-};
 ---
 
-<BaseLayout
+<BaseLayoutV2
   title="Проекты — Александр Аликин"
   description="Продукты, образовательные программы и технические инициативы."
   currentPath="/projects/"
-  breadcrumbs={[{ label: "Проекты" }]}
 >
-  <div class="container">
-    <h1>Проекты</h1>
-    <p class="text-lg muted-text">
-      Карта практики: продукты, образовательные программы, исследования и предпринимательские
-      инициативы.
-    </p>
-    <div class="card-grid mt-8">
-      {
-        projects.map((p) => (
-          <ProjectCard
-            title={p.data.title}
-            description={p.data.description}
-            href={buildUrl(`/projects/${p.data.slug}/`)}
-            role={p.data.role}
-            period={p.data.period}
-            projectStatus={statusLabels[p.data.projectStatus] || p.data.projectStatus}
-            evidenceLevel={p.data.evidenceLevel}
-          />
-        ))
-      }
+  <section class="v2-section">
+    <div class="v2-container">
+      <h1 class="v2-page-title">Проекты</h1>
+      <p
+        class="v2-page-lead"
+        style="color:rgba(255,255,255,0.7);font-size:var(--text-lg);max-width:42rem;"
+      >
+        Продукты, образовательные программы и технические инициативы. Каждый проект — это контекст,
+        роль, решение и наблюдаемый результат.
+      </p>
+      <div class="v2-project-grid" style="margin-top:var(--space-12);">
+        {
+          projects.map((p) => (
+            <a
+              href={buildUrl(`/projects/${p.data.slug}/`)}
+              class="v2-project-card v2-project-card-large"
+            >
+              <div class="v2-project-media">
+                <img
+                  src={buildUrl("/images/alikin/visualized/robotics-lab.webp")}
+                  alt=""
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  class="v2-project-img"
+                />
+              </div>
+              <div class="v2-project-body">
+                <h3>{p.data.title}</h3>
+                <p>{p.data.description}</p>
+                <span class="v2-project-meta">
+                  {p.data.period} · {p.data.role}
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
     </div>
-  </div>
-</BaseLayout>
+  </section>
+</BaseLayoutV2>

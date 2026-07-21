@@ -1,13 +1,11 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
 import { getCollection } from "astro:content";
-import EvidenceBadge from "@components/foundation/EvidenceBadge.astro";
-import ButtonLink from "@components/ui/ButtonLink.astro";
 import { buildUrl } from "@config/site";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects", (p) => p.data.status === "published");
-  return projects.map((p) => ({ params: { slug: p.data.slug } }));
+  const ps = await getCollection("projects", (p) => p.data.status === "published");
+  return ps.map((p) => ({ params: { slug: p.data.slug } }));
 }
 const { slug } = Astro.params;
 const project = (await getCollection("projects", (p) => p.data.status === "published")).find(
@@ -15,58 +13,70 @@ const project = (await getCollection("projects", (p) => p.data.status === "publi
 );
 if (!project) return Astro.redirect("/404");
 const { data } = project;
-const statusLabels = {
-  active: "Активный",
-  completed: "Завершён",
-  paused: "Приостановлен",
-  archived: "Архив",
-};
 ---
 
-<BaseLayout
+<BaseLayoutV2
   title={`${data.title} — Александр Аликин`}
   description={data.description}
   currentPath="/projects/"
-  breadcrumbs={[{ label: "Проекты", href: "/projects/" }, { label: data.title }]}
 >
-  <div class="container container-main">
-    <div class="project-meta">
-      <span class="badge badge-published"
-        >{statusLabels[data.projectStatus] || data.projectStatus}</span
-      >
-      <EvidenceBadge level={data.evidenceLevel} />
-      <span class="text-sm muted-text">{data.period}</span>
-    </div>
-    <h1>{data.title}</h1>
-    <p class="text-lg muted-text">{data.description}</p>
-    <div class="project-details">
-      <div><div class="text-sm muted-text">Роль</div><div><strong>{data.role}</strong></div></div>
-      <div>
-        <div class="text-sm muted-text">Период</div><div><strong>{data.period}</strong></div>
+  <section class="v2-section">
+    <div class="v2-container">
+      <div class="v2-page-hero">
+        <div>
+          <span class="v2-project-meta" style="margin-bottom:var(--space-4);display:block;"
+            >{data.period} · {data.role}</span
+          >
+          <h1 class="v2-page-title">{data.title}</h1>
+          <p class="v2-page-lead">{data.description}</p>
+        </div>
+        <img
+          src={buildUrl("/images/alikin/visualized/robotics-lab.webp")}
+          alt=""
+          width="600"
+          height="400"
+          class="v2-page-hero-img"
+          loading="eager"
+        />
       </div>
-      <div>
-        <div class="text-sm muted-text">Статус</div><div>
-          <strong>{statusLabels[data.projectStatus] || data.projectStatus}</strong>
+    </div>
+  </section>
+
+  <section class="v2-section v2-section-dark">
+    <div class="v2-container">
+      <div class="v2-method-grid" style="grid-template-columns: repeat(2,1fr);">
+        <div class="v2-method-step">
+          <span class="v2-method-num">Задача</span>
+          <p style="margin-top:var(--space-3);">{data.result}</p>
+        </div>
+        <div class="v2-method-step">
+          <span class="v2-method-num">Роль</span>
+          <p style="margin-top:var(--space-3);">{data.role}</p>
+        </div>
+        <div class="v2-method-step">
+          <span class="v2-method-num">Результат</span>
+          <p style="margin-top:var(--space-3);">{data.result}</p>
+        </div>
+        <div class="v2-method-step">
+          <span class="v2-method-num">Статус</span>
+          <p style="margin-top:var(--space-3);">Активный проект, находится в разработке.</p>
         </div>
       </div>
+      {
+        data.limitations && (
+          <div style="margin-top:var(--space-12);padding:var(--space-6);border:var(--border-width) solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);color:rgba(255,255,255,0.6);">
+            <strong>Ограничения:</strong> {data.limitations}
+          </div>
+        )
+      }
     </div>
-    <h2>Результат</h2>
-    <p>{data.result}</p>
-    {
-      data.limitations && (
-        <>
-          <>
-            <h2>Ограничения</h2>
-            <p>
-              <em>{data.limitations}</em>
-            </p>
-          </>
-        </>
-      )
-    }
-    <hr />
-    <ButtonLink href={buildUrl("/collaboration/")} variant="primary"
-      >Обсудить похожую задачу</ButtonLink
-    >
-  </div>
-</BaseLayout>
+  </section>
+
+  <section class="v2-section v2-section-dark">
+    <div class="v2-container v2-cta-block">
+      <h2>Похожая задача?</h2>
+      <p>Если вы видите параллели с вашим проектом — обсудим.</p>
+      <a href={buildUrl("/collaboration/")} class="v2-btn v2-btn-accent">Обсудить задачу</a>
+    </div>
+  </section>
+</BaseLayoutV2>

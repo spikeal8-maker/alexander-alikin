@@ -1,0 +1,121 @@
+---
+import { site, navigation, buildUrl } from "@config/site";
+
+interface Props {
+  currentPath?: string;
+}
+const { currentPath } = Astro.props;
+---
+
+<header class="v2-header">
+  <div class="v2-header-inner">
+    <a class="v2-logo" href={buildUrl("/")}>{site.name}</a>
+    <details class="v2-mobile-nav">
+      <summary class="v2-nav-toggle" aria-label="Меню">☰</summary>
+      <nav class="v2-nav-list">
+        {
+          navigation.primary.map((item) => (
+            <a
+              href={buildUrl(item.href)}
+              class:list={["v2-nav-link", { "v2-nav-cta": "cta" in item && item.cta }]}
+              aria-current={currentPath === item.href ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </details>
+  </div>
+</header>
+
+<style>
+  .v2-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    background: var(--color-bg);
+    border-bottom: var(--border-width) solid rgba(255, 255, 255, 0.08);
+    padding: var(--space-4) 0;
+  }
+  .v2-header-inner {
+    max-width: var(--container-wide);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .v2-logo {
+    font-size: var(--text-xl);
+    font-weight: var(--fw-bold);
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: var(--tracking-tight);
+  }
+  .v2-nav-list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+  .v2-nav-link {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: var(--fw-medium);
+    transition: color var(--motion-fast);
+  }
+  .v2-nav-link:hover,
+  .v2-nav-link[aria-current="page"] {
+    color: #fff;
+  }
+  .v2-nav-cta {
+    background: var(--color-accent);
+    color: #fff !important;
+    padding: var(--space-2) var(--space-5);
+    border-radius: var(--radius-md);
+  }
+  .v2-mobile-nav {
+    display: none;
+  }
+  .v2-nav-toggle {
+    display: none;
+    background: none;
+    border: var(--border-width) solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-xl);
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    list-style: none;
+  }
+  .v2-nav-toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .v2-nav-list {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      gap: 0;
+    }
+    .v2-mobile-nav[open] .v2-nav-list {
+      display: flex;
+      margin-top: var(--space-4);
+    }
+    .v2-mobile-nav {
+      display: block;
+      width: 100%;
+    }
+    .v2-nav-toggle {
+      display: block;
+    }
+    .v2-nav-link {
+      padding: var(--space-3) 0;
+    }
+    .v2-header-inner {
+      flex-wrap: wrap;
+    }
+  }
+</style>

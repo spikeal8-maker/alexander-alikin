@@ -5,8 +5,8 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 const ALLOWED_RAW_FILES = [
-  path.join("src", "styles", "tokens.css"),
-  path.join("src", "styles", "tokens-v2.css"),
+  path.join("src", "styles", "tokens.css").replace(/\\/g, "/"),
+  path.join("src", "styles", "tokens-v2.css").replace(/\\/g, "/"),
 ];
 
 function walk(dir, exts) {
@@ -28,7 +28,7 @@ const hexPattern = /#[0-9A-Fa-f]{3,8}\b/g;
 for (const file of walk(path.join(ROOT, "src"), [".css", ".astro", ".ts", ".mjs"])) {
   const rel = path.relative(ROOT, file).replace(/\\/g, "/");
   if (ALLOWED_RAW_FILES.includes(rel)) continue;
-  if (rel.includes("tokens.css")) continue;
+  if (rel.includes("tokens.css") || rel.includes("tokens-v2.css")) continue;
   const content = fs.readFileSync(file, "utf8");
   const matches = content.match(hexPattern);
   if (matches) {

@@ -13,7 +13,7 @@ import { buildUrl } from "@config/site";
           alt="Архивный материал образовательной робототехники"
           width="800"
           height="600"
-          loading="lazy"
+          loading="eager"
           class="v2-doc-img"
         />
         <p class="v2-doc-note">Архивный материал. Точный год и площадка требуют подтверждения.</p>
@@ -49,7 +49,7 @@ import { buildUrl } from "@config/site";
   }
   .v2-doc-story {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: var(--space-12);
     align-items: center;
     margin-top: var(--space-10);

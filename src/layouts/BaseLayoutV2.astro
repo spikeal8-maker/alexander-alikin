@@ -37,10 +37,16 @@ import "../styles/v2-common.css";
     color: var(--color-text);
     font-family: var(--font-sans);
     margin: 0;
+    overflow-x: clip;
   }
   .v2-body img {
     max-width: 100%;
     height: auto;
+  }
+  .v2-body h1,
+  .v2-body h2,
+  .v2-body h3 {
+    overflow-wrap: break-word;
   }
   .v2-skip-link {
     position: absolute;

@@ -1,0 +1,147 @@
+---
+import { getCollection } from "astro:content";
+import { buildUrl } from "@config/site";
+
+const [articles, stories, thoughts] = await Promise.all([
+  getCollection("articles", (entry) => entry.data.status === "published"),
+  getCollection("stories", (entry) => entry.data.status === "published"),
+  getCollection("thoughts", (entry) => entry.data.status === "published"),
+]);
+
+const entries = [
+  ...articles.map((entry) => ({ ...entry, kind: "Статья", href: `/journal/articles/${entry.data.slug}/` })),
+  ...stories.map((entry) => ({ ...entry, kind: "История", href: `/journal/stories/${entry.data.slug}/` })),
+  ...thoughts.map((entry) => ({ ...entry, kind: "Мысль", href: `/journal/thoughts/${entry.data.slug}/` })),
+]
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .slice(0, 3);
+---
+
+<section class="v3-journal v3-section">
+  <div class="v3-shell v3-journal__heading">
+    <div>
+      <p class="v3-kicker">Журнал</p>
+      <h2 class="v3-title">Не новости.<br />Следы работы.</h2>
+    </div>
+    <p>
+      Истории, статьи и короткие мысли о том, где ломаются системы, как меняется метод и почему
+      результат должен быть объяснимым.
+    </p>
+  </div>
+
+  <div class="v3-shell v3-journal__list">
+    {entries.map((entry, index) => (
+      <a href={buildUrl(entry.href)}>
+        <span class="v3-journal__index">0{index + 1}</span>
+        <div>
+          <span class="v3-journal__kind">{entry.kind}</span>
+          <h3>{entry.data.title}</h3>
+          <p>{entry.data.description}</p>
+        </div>
+        <span class="v3-journal__arrow" aria-hidden="true">↗</span>
+      </a>
+    ))}
+  </div>
+
+  <div class="v3-shell v3-journal__all">
+    <a class="v3-link" href={buildUrl("/journal/")}>Открыть журнал</a>
+  </div>
+</section>
+
+<style>
+  .v3-journal {
+    color: var(--v3-white);
+    background: var(--v3-ink);
+  }
+
+  .v3-journal__heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 0.6fr);
+    gap: clamp(2rem, 8vw, 9rem);
+    align-items: end;
+  }
+
+  .v3-journal__heading > p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.58);
+    line-height: 1.7;
+  }
+
+  .v3-journal__list {
+    margin-top: clamp(4rem, 8vw, 8rem);
+    border-top: 1px solid var(--v3-line-light);
+  }
+
+  .v3-journal__list > a {
+    display: grid;
+    grid-template-columns: 5rem minmax(0, 1fr) auto;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: start;
+    padding-block: clamp(2rem, 4vw, 3.5rem);
+    color: var(--v3-white);
+    border-bottom: 1px solid var(--v3-line-light);
+    text-decoration: none;
+  }
+
+  .v3-journal__index {
+    color: rgba(255, 255, 255, 0.28);
+    font-family: var(--v3-serif);
+    font-size: 2.5rem;
+    letter-spacing: -0.05em;
+  }
+
+  .v3-journal__kind {
+    color: var(--v3-cobalt);
+    font-family: var(--v3-mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .v3-journal h3 {
+    max-width: 28ch;
+    margin: 0.75rem 0 0.8rem;
+    font-family: var(--v3-serif);
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 400;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+  }
+
+  .v3-journal__list p {
+    max-width: 45rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.58);
+    line-height: 1.6;
+  }
+
+  .v3-journal__arrow {
+    color: var(--v3-cobalt);
+    font-size: 1.6rem;
+  }
+
+  .v3-journal__list > a:hover h3,
+  .v3-journal__list > a:focus-visible h3 {
+    color: #8aa7ff;
+  }
+
+  .v3-journal__all {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 2rem;
+  }
+
+  @media (max-width: 700px) {
+    .v3-journal__heading {
+      grid-template-columns: 1fr;
+    }
+
+    .v3-journal__list > a {
+      grid-template-columns: 3rem minmax(0, 1fr);
+    }
+
+    .v3-journal__arrow {
+      display: none;
+    }
+  }
+</style>

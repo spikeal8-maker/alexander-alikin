@@ -20,12 +20,21 @@
 .v3-work__feature--ink .v3-kicker,
 .v3-journal .v3-kicker,
 .v3-journal__kind,
-.v3-journal__arrow {
+.v3-journal__arrow,
+.v3-footer .v3-kicker {
   color: var(--v3-cobalt-light) !important;
 }
 
 .v3-journal__index {
   color: rgba(255, 255, 255, 0.64) !important;
+}
+
+.v3-closing .v3-kicker {
+  color: var(--v3-white) !important;
+}
+
+.v3-footer__bottom {
+  color: rgba(255, 255, 255, 0.68) !important;
 }
 
 @media (max-width: 900px) {
@@ -68,6 +77,13 @@
   .v3-work__stairs span:nth-child(n) {
     min-height: 8rem;
     transform: none !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .v3-journal h3 {
+    hyphens: auto;
+    overflow-wrap: anywhere;
   }
 }
 

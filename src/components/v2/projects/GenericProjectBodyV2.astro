@@ -34,7 +34,12 @@ const { description, role, result, limitations } = Astro.props;
     <div>
       <p class="v2-accent-label">Границы публичного описания</p>
       <h2 class="v2-section-title">Ограничения</h2>
-      <p>{limitations ?? "Дополнительные факты и количественные показатели требуют проверки источников."}</p>
+      <p>
+        {
+          limitations ??
+            "Дополнительные факты и количественные показатели требуют проверки источников."
+        }
+      </p>
     </div>
   </div>
 </section>

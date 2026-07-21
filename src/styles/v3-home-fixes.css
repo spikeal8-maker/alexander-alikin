@@ -6,15 +6,29 @@
 }
 
 .v3-work__feature--blue .v3-work__copy > p:not(.v3-kicker) {
-  color: rgba(255, 255, 255, 0.94);
+  color: rgba(255, 255, 255, 0.94) !important;
 }
 
 .v3-work__feature--blue .v3-work__copy dt {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .v3-work__feature--blue .v3-work__copy dd {
-  color: var(--v3-white);
+  color: var(--v3-white) !important;
+}
+
+@media (max-width: 900px) {
+  .v3-hero__portrait figcaption {
+    right: var(--v3-gutter) !important;
+    left: var(--v3-gutter);
+    max-width: calc(100% - 2 * var(--v3-gutter));
+  }
+
+  .v3-hero__portrait figcaption span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    text-align: right;
+  }
 }
 
 @media (max-width: 820px) {
@@ -30,11 +44,11 @@
   }
 
   .v3-work__copy dl {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
   .v3-work__stairs {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr !important;
     gap: 1px;
     min-height: 20rem;
     padding: 2rem 1.5rem;
@@ -42,6 +56,6 @@
 
   .v3-work__stairs span:nth-child(n) {
     min-height: 8rem;
-    transform: none;
+    transform: none !important;
   }
 }

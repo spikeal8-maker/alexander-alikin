@@ -1,1532 +1,372 @@
 [
   {
-    "paragraph_id": "HOME-P01",
+    "paragraph_id": "HOME-001",
     "page": "/",
-    "text": "Александр работает с двумя категориями людей. Первая — владельцы и руководители небольших и средних компаний, которые выросли из стадии «всё в голове основателя»...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001", "PROFILE-main-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Описание целевой аудитории. Соответствует разделу 5 STRAT-001."
-  },
-  {
-    "paragraph_id": "HOME-P02",
-    "page": "/",
-    "text": "Вторая категория — образовательные организации и педагоги, которые хотят перейти от трансляции готовых знаний к проектному инженерному обучению...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001", "PROJ-EDU-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Вторая целевая аудитория. Из STRAT-001 раздел 5."
-  },
-  {
-    "paragraph_id": "HOME-P03",
-    "page": "/",
-    "text": "Александру не нужны те, кто ждёт волшебной таблетки — «сделайте нам красиво и чтобы само работало»...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Квалификация аудитории. Вытекает из канонической позиции о доказательствах и честности."
-  },
-  {
-    "paragraph_id": "HOME-P04",
-    "page": "/",
-    "text": "Основная проблема, с которой Александр работает на обеих территориях — бизнесе и образовании, — это разрыв между намерением и работающим результатом...",
+    "heading": "Предлагаемое позиционирование",
     "content_role": "strategic_recommendation",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Формулировка проблемы. Стратегическая рамка, не подкреплённая конкретными клиентскими кейсами."
-  },
-  {
-    "paragraph_id": "HOME-P05",
-    "page": "/",
-    "text": "Александр не продаёт готовые ответы. Он строит систему, в которой ответ находится через диагностику, проектирование, пилотный запуск и измерение...",
-    "content_role": "strategic_recommendation",
-    "source_ids": ["STRAT-001", "STORY-002"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Описание подхода. Методологическая рамка, traceable к STORY-002 (цикл «разбери-собери-проверь-объясни-передай»)."
-  },
-  {
-    "paragraph_id": "HOME-P06",
-    "page": "/",
-    "text": "На первый взгляд, конструирование устройства, обучение ученика и запуск бизнес-процесса — три разные профессии. Но Александр обнаружил в них общую структуру: разбери, собери, проверь, объясни, передай...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-002", "STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Центральный методологический тезис. Подкреплён STORY-002 и STRAT-001 раздел 4."
-  },
-  {
-    "paragraph_id": "HOME-P07",
-    "page": "/",
-    "text": "Инженер разбирает неисправность до принципиальной схемы. Педагог разбирает непонимание ученика до конкретного пробела. Предприниматель разбирает бизнес-модель до ключевого ограничения...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-002"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Развёртывание метода по трём профессиям. Авторская рефлексия."
-  },
-  {
-    "paragraph_id": "HOME-P08",
-    "page": "/",
-    "text": "Затем каждый собирает решение, проверяет его в реальных условиях, объясняет результат другим людям и передаёт систему так, чтобы она работала без автора...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-002"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Продолжение развёртывания метода."
-  },
-  {
-    "paragraph_id": "HOME-P09",
-    "page": "/",
-    "text": "Это не три карьеры. Это один метод, применённый к трём разным средам. Именно поэтому широта опыта Александра — не хаотичная смена интересов, а последовательное применение инженерного мышления...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-002", "STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Интерпретационный вывод. Подкреплён каноническим позиционированием."
-  },
-  {
-    "paragraph_id": "HOME-P10",
-    "page": "/",
-    "text": "Бизнесу. Диагностика процессов, проектирование архитектуры, автоматизация рутины, внедрение ИИ-инструментов...",
-    "content_role": "strategic_recommendation",
-    "source_ids": ["STRAT-001", "THOUGHT-002"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Краткое описание бизнес-направления. Стратегическое, не подкреплено клиентскими кейсами."
-  },
-  {
-    "paragraph_id": "HOME-P11",
-    "page": "/",
-    "text": "Образованию. Инженерные и ИИ-программы, лаборатории, методика проектного обучения...",
-    "content_role": "strategic_recommendation",
-    "source_ids": ["STRAT-001", "PROJ-EDU-001", "ARTICLE-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Краткое описание образовательного направления. Частично traceable к PROJ-EDU-001."
-  },
-  {
-    "paragraph_id": "HOME-P12",
-    "page": "/",
-    "text": "Первая опора — проекты, а не титулы. У Александра нет формальных регалий, которые он ставил бы впереди дела. Вместо этого есть два зафиксированных проекта...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001", "PROJ-EDU-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Доказательная опора 1. Конкретные проекты указаны."
-  },
-  {
-    "paragraph_id": "HOME-P13",
-    "page": "/",
-    "text": "Вторая опора — метод, проверенный практикой. Педагогический подход «действие — ошибка — объяснение — доработка — защита» не является теоретической конструкцией...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-001", "ARTICLE-001", "PROJ-EDU-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Доказательная опора 2. Метод traceable к авторским материалам."
-  },
-  {
-    "paragraph_id": "HOME-P14",
-    "page": "/",
-    "text": "Третья опора — принципиальная честность о границах компетенции. Александр явно разделяет подтверждённое, неподтверждённое и гипотетическое...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "approved",
-    "editorial_notes": "Доказательная опора 3. Прямо из STRAT-001 раздел 12 (система доверия и доказательности). Канонический принцип."
-  },
-  {
-    "paragraph_id": "HOME-P15",
-    "page": "/",
-    "text": "ИЗО АСА — образовательная платформа для виртуальных лабораторий, управления классами и учебных проектов. Находится в активной разработке...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Текущий проект 1. Прямо из PROJ-IZO-001."
-  },
-  {
-    "paragraph_id": "HOME-P16",
-    "page": "/",
-    "text": "Инженерное образование и робототехника — действующие образовательные программы по информатике, технологии и робототехнике...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-EDU-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Текущий проект 2. Прямо из PROJ-EDU-001."
-  },
-  {
-    "paragraph_id": "HOME-P17",
-    "page": "/",
-    "text": "Александр не занимается массовым консалтингом «по скрипту». Каждый проект начинается с разбора конкретной ситуации...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Ограничение 1. Вытекает из канонического позиционирования."
-  },
-  {
-    "paragraph_id": "HOME-P18",
-    "page": "/",
-    "text": "Он не работает с компаниями, которые ожидают, что внешний специалист решит проблему без участия команды...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Ограничение 2."
-  },
-  {
-    "paragraph_id": "HOME-P19",
-    "page": "/",
-    "text": "Он не берётся за проекты, где заказчик не готов фиксировать текущее состояние до начала работ...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Ограничение 3. Инженерный подход."
-  },
-  {
-    "paragraph_id": "HOME-P20",
-    "page": "/",
-    "text": "Количественные утверждения о педагогической практике — количество учеников, результаты поступления в вузы — находятся в стадии сбора подтверждений...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "approved",
-    "editorial_notes": "Честное ограничение. Прямо соответствует STRAT-001 раздел 6 (запрет непроверенных чисел) и раздел 12 (прозрачность доказательности). Каноническая позиция."
-  },
-  {
-    "paragraph_id": "HOME-P21",
-    "page": "/",
-    "text": "Если вы узнали свою ситуацию в описанном выше — напишите. Первый разговор не про продажу. Это разбор контекста...",
-    "content_role": "editorial_bridge",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "approved",
-    "editorial_notes": "CTA. Соответствует STRAT-001 раздел 11 (конверсионная модель — квалифицированный разговор, а не заявка)."
-  },
-  {
-    "paragraph_id": "ABOUT-P01",
-    "page": "/about/",
-    "text": "Это не CV. Это рассказ о методе, который сложился не по плану, а через последовательное применение инженерного мышления к разным средам...",
-    "content_role": "editorial_bridge",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Редакционный мост. Не содержит новых фактов — задаёт тон страницы."
-  },
-  {
-    "paragraph_id": "ABOUT-P02",
-    "page": "/about/",
-    "text": "Первое, с чем Александр столкнулся всерьёз, — электроника. Не как хобби, а как способ понять, как устроены вещи...",
-    "content_role": "owner_statement",
-    "source_ids": [],
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "PROFILE-main-001"],
     "publishable": false,
     "owner_approval": "pending",
-    "editorial_notes": "Биографическое утверждение о раннем периоде. Не подтверждено BIO-001. [требуется подтверждение владельца]"
+    "editorial_notes": "Основная рыночная формулировка; не утверждает наличие большого портфеля клиентских ИИ-кейсов."
   },
   {
-    "paragraph_id": "ABOUT-P03",
-    "page": "/about/",
-    "text": "Главное, что дал этот этап, — привычку смотреть на любую проблему как на систему с входами, выходами, обратными связями и точками отказа...",
-    "content_role": "hypothesis",
-    "source_ids": ["STORY-002"],
+    "paragraph_id": "HOME-002",
+    "page": "/",
+    "heading": "Бизнесу",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Интерпретация автора о влиянии раннего опыта. Авторская рефлексия."
+    "editorial_notes": "Описание выбранной аудитории и точки входа, а не завершённого кейса."
   },
   {
-    "paragraph_id": "ABOUT-P04",
-    "page": "/about/",
-    "text": "Что добавил к методу. Принцип «разбери»: прежде чем строить новое, пойми, как устроено существующее...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-002"],
+    "paragraph_id": "HOME-003",
+    "page": "/",
+    "heading": "Образованию",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "ARTICLE-001"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Методологический вывод. Traceable к STORY-002."
+    "editorial_notes": "Разделяет предложение организациям и участникам."
   },
   {
-    "paragraph_id": "ABOUT-P05",
-    "page": "/about/",
-    "text": "Переход к педагогике не был сменой профессии — скорее расширением области применения того же метода. Александр начал вести занятия по робототехнике и программированию...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-EDU-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Биографическое утверждение о педагогической практике. Частично подтверждено PROJ-EDU-001. Конкретный год требует BIO-001."
-  },
-  {
-    "paragraph_id": "ABOUT-P06",
-    "page": "/about/",
-    "text": "Именно здесь проявилось ключевое наблюдение: ошибка ребёнка ценнее правильного ответа взрослого...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Педагогическое наблюдение. Прямо из STORY-001."
-  },
-  {
-    "paragraph_id": "ABOUT-P07",
-    "page": "/about/",
-    "text": "Это изменило способ работы. Роль педагога перестала быть транслятором знаний и стала ролью проектировщика учебной среды...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-001", "ARTICLE-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Методологическая позиция. Подкреплена авторскими материалами."
-  },
-  {
-    "paragraph_id": "ABOUT-P08",
-    "page": "/about/",
-    "text": "Что добавил к методу. Принцип «собери и объясни»: результат — не объект, а способность объяснить... Четырёхуровневая модель оценки...",
-    "content_role": "owner_statement",
-    "source_ids": ["ARTICLE-001", "STORY-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Методологический вывод. Четырёхуровневая модель из ARTICLE-001."
-  },
-  {
-    "paragraph_id": "ABOUT-P09",
-    "page": "/about/",
-    "text": "Ошибки, изменившие подход. Первые программы были перегружены теорией. Ученики знали определения, но не могли применить их...",
-    "content_role": "owner_statement",
-    "source_ids": ["ARTICLE-001", "STORY-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Авторская рефлексия об ошибках. Педагогический вывод."
-  },
-  {
-    "paragraph_id": "ABOUT-P10",
-    "page": "/about/",
-    "text": "Предпринимательский этап связан с проектами «Лига роботов» и «Laser Love»...",
-    "content_role": "owner_statement",
-    "source_ids": [],
-    "publishable": false,
-    "owner_approval": "pending",
-    "editorial_notes": "Утверждение о предпринимательских проектах. PROJ-003 не загружен. [требуется подтверждение допустимости владельцем]"
-  },
-  {
-    "paragraph_id": "ABOUT-P11",
-    "page": "/about/",
-    "text": "Здесь метод прошёл проверку самой жёсткой средой — рынком. Инженерная логика, работавшая с устройствами и учебными программами, столкнулась с реальностью: спрос, экономика, сроки...",
-    "content_role": "hypothesis",
-    "source_ids": ["STORY-002", "THOUGHT-002"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Интерпретация предпринимательского опыта. Авторская рефлексия."
-  },
-  {
-    "paragraph_id": "ABOUT-P12",
-    "page": "/about/",
-    "text": "Что добавил к методу. Принцип «передай». Система должна работать без автора...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-002", "THOUGHT-002"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Методологический вывод. Ключевой принцип метода."
-  },
-  {
-    "paragraph_id": "ABOUT-P13",
-    "page": "/about/",
-    "text": "Ошибки, изменившие подход. Попытка масштабироваться без зафиксированных процессов. То, что работает на десять клиентов, ломается на сто...",
-    "content_role": "owner_statement",
-    "source_ids": ["THOUGHT-003"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Предпринимательский урок. Из THOUGHT-003."
-  },
-  {
-    "paragraph_id": "ABOUT-P14",
-    "page": "/about/",
-    "text": "Профессиональный путь, соединяющий три типа ответственности, имеет свою цену. Первое — постоянная необходимость объяснять, что это не разбросанность...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Рефлексия о цене выбранного пути. Каноническое отличие из STRAT-001."
-  },
-  {
-    "paragraph_id": "ABOUT-P15",
-    "page": "/about/",
-    "text": "Второе — сложность упаковки. Метод, применимый к разным средам, не укладывается в стандартные форматы резюме или elevator pitch...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Рефлексия о сложности позиционирования."
-  },
-  {
-    "paragraph_id": "ABOUT-P16",
-    "page": "/about/",
-    "text": "Третье — ограничения ресурса. Нельзя одновременно вести разработку платформы, преподавать, запускать бизнес-проекты и писать методические материалы...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Честное ограничение. Соответствует каноническому принципу прозрачности."
-  },
-  {
-    "paragraph_id": "ABOUT-P17",
-    "page": "/about/",
-    "text": "Текущий этап — работа с системами знаний и ИИ-инструментами. Александр разрабатывает вторую редакцию платформы ИЗО АСА, проектирует ИИ-ассистентов на базе n8n...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Текущий этап. PROJ-IZO-001 подтверждает разработку. n8n, ИИ-ассистенты — не подтверждены отдельно."
-  },
-  {
-    "paragraph_id": "ABOUT-P18",
-    "page": "/about/",
-    "text": "Что добавляет к методу. ИИ не заменяет мышление — он усиливает качество постановки задачи. Метафора экзоскелета...",
-    "content_role": "owner_statement",
-    "source_ids": ["THOUGHT-001", "STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Авторский тезис об ИИ. Из THOUGHT-001 и STRAT-001 T-013."
-  },
-  {
-    "paragraph_id": "ABOUT-P19",
-    "page": "/about/",
-    "text": "Этот принцип уже вшит в методологию: проектирование, диагностика и объяснение требуют ясного мышления, а ИИ становится инструментом усиления...",
-    "content_role": "hypothesis",
-    "source_ids": ["THOUGHT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Интерпретация интеграции ИИ в метод."
-  },
-  {
-    "paragraph_id": "ABOUT-P20",
-    "page": "/about/",
-    "text": "Оглядываясь назад, Александр видит не череду смен рода деятельности, а последовательное применение одного метода к разным средам...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-002", "STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Рефлексивный вывод. Центральный тезис STORY-002."
-  },
-  {
-    "paragraph_id": "ABOUT-P21",
-    "page": "/about/",
-    "text": "Разобрать устройство → разобрать непонимание ученика → разобрать бизнес-модель → разобрать систему знаний...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-002"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Визуализация метода по этапам. Из STORY-002."
-  },
-  {
-    "paragraph_id": "ABOUT-P22",
-    "page": "/about/",
-    "text": "Собрать схему → собрать учебную программу → собрать архитектуру процессов → собрать инструментарий ИИ-ассистентов...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-002"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Визуализация метода — этап «собери»."
-  },
-  {
-    "paragraph_id": "ABOUT-P23",
-    "page": "/about/",
-    "text": "Проверить в лаборатории → проверить на занятии → проверить рынком → проверить автоматизацией...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-002"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Визуализация метода — этап «проверь»."
-  },
-  {
-    "paragraph_id": "ABOUT-P24",
-    "page": "/about/",
-    "text": "Объяснить коллеге → объяснить ученику → объяснить команде и заказчику → объяснить читателю...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-002"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Визуализация метода — этап «объясни»."
-  },
-  {
-    "paragraph_id": "ABOUT-P25",
-    "page": "/about/",
-    "text": "Передать документацию → передать методику → передать систему → передать публичный архив знаний...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-002"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Визуализация метода — этап «передай»."
-  },
-  {
-    "paragraph_id": "ABOUT-P26",
-    "page": "/about/",
-    "text": "Это не пять разных профессий. Это один метод, развёрнутый во времени и применённый к растущей сложности систем...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-002", "STRAT-001"],
-    "publishable": true,
-    "owner_approval": "approved",
-    "editorial_notes": "Итоговый вывод. Каноническая позиция из STRAT-001 и STORY-002."
-  },
-  {
-    "paragraph_id": "ABOUT-P27",
-    "page": "/about/",
-    "text": "[требуется подтверждение владельца: полная биографическая хронология, BIO-001; подтверждение предпринимательских проектов, PROJ-003]",
+    "paragraph_id": "HOME-004",
+    "page": "/",
+    "heading": "Один способ работы",
     "content_role": "editorial_bridge",
-    "source_ids": [],
-    "publishable": false,
-    "owner_approval": "pending",
-    "editorial_notes": "Редакционная пометка о необходимости подтверждения. Не публикуется."
-  },
-  {
-    "paragraph_id": "BIZ-P01",
-    "page": "/business/",
-    "text": "Александр работает с бизнесом не как консультант, который оставляет презентацию и исчезает, а как инженер, который проектирует и запускает работающую систему...",
-    "content_role": "strategic_recommendation",
-    "source_ids": ["STRAT-001", "THOUGHT-002"],
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "STORY-002"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Позиционирование бизнес-направления. Стратегическое, не подкреплено клиентскими кейсами."
+    "editorial_notes": "Связывает роли в одну биографическую систему; точные даты не добавляет."
   },
   {
-    "paragraph_id": "BIZ-P02",
-    "page": "/business/",
-    "text": "Ситуация. Компания оказывает услуги, у неё пять-двадцать сотрудников. Клиентский путь не описан, заявки передаются в мессенджерах...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Сценарий 1. Типовая ситуация, описанная как стратегическая рекомендация. Не привязана к конкретному проекту."
-  },
-  {
-    "paragraph_id": "BIZ-P03",
-    "page": "/business/",
-    "text": "Цена проблемы. Без архитектуры процессов каждый новый клиент увеличивает хаос, а не прибыль...",
-    "content_role": "market_observation",
-    "source_ids": ["THOUGHT-002"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Рыночное наблюдение о цене отсутствия архитектуры. Концептуально из THOUGHT-002."
-  },
-  {
-    "paragraph_id": "BIZ-P04",
-    "page": "/business/",
-    "text": "Формат пилота. Один сквозной процесс — от входящей заявки до закрытия задачи с клиентом...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Описание формата сотрудничества. Стратегическое, без подтверждённых кейсов."
-  },
-  {
-    "paragraph_id": "BIZ-P05",
-    "page": "/business/",
-    "text": "Требования к заказчику. Готовность описать текущий процесс как есть... Готовность выделить 4–8 недель на пилотный запуск...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": false,
-    "owner_approval": "pending",
-    "editorial_notes": "Содержит численное утверждение '4–8 недель' (CL-034, publishable: false)."
-  },
-  {
-    "paragraph_id": "BIZ-P06",
-    "page": "/business/",
-    "text": "Результат первого этапа. Целевой процесс описан и оцифрован. Минимум одна ручная операция автоматизирована...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Обещание результата. Не подкреплено кейсами."
-  },
-  {
-    "paragraph_id": "BIZ-P07",
-    "page": "/business/",
-    "text": "Ограничения. В пилот не входит полная интеграция с legacy-системами, миграция всех исторических данных...",
-    "content_role": "editorial_bridge",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Честное ограничение. Редакционный мост."
-  },
-  {
-    "paragraph_id": "BIZ-P08",
-    "page": "/business/",
-    "text": "Ситуация. Частный образовательный центр или сеть кружков. Занятия ведутся, но учебные программы не стандартизированы...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Сценарий 2. Типовая ситуация."
-  },
-  {
-    "paragraph_id": "BIZ-P09",
-    "page": "/business/",
-    "text": "Цена проблемы. Без методической системы каждая новая точка открывается как стартап с нуля...",
-    "content_role": "market_observation",
-    "source_ids": ["PROJ-EDU-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Рыночное наблюдение. Частично из педагогического опыта."
-  },
-  {
-    "paragraph_id": "BIZ-P10",
-    "page": "/business/",
-    "text": "Формат пилота. Аудит текущих программ, оцифровка методики, проектирование системы оценки результатов учеников...",
-    "content_role": "strategic_recommendation",
-    "source_ids": ["PROJ-EDU-001", "ARTICLE-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Описание формата. Частично traceable к педагогической практике."
-  },
-  {
-    "paragraph_id": "BIZ-P11",
-    "page": "/business/",
-    "text": "Требования к заказчику. Доступ к реальным учебным планам... Понимание, что стандартизация методики — не ограничение творчества...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Требования к заказчику."
-  },
-  {
-    "paragraph_id": "BIZ-P12",
-    "page": "/business/",
-    "text": "Результат первого этапа. Зафиксированная методика... Минимум одна программа переведена на проектный формат...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Обещание результата."
-  },
-  {
-    "paragraph_id": "BIZ-P13",
-    "page": "/business/",
-    "text": "Ограничения. Александр не разрабатывает методики по предметам, в которых у него нет собственной практики...",
+    "paragraph_id": "HOME-005",
+    "page": "/",
+    "heading": "ИЗО АСА",
     "content_role": "owner_statement",
-    "source_ids": ["PROJ-EDU-001"],
+    "source_ids": ["PROJ-IZO-001", "STRAT-V2-001"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Ограничение компетенции. Соответствует проектам в реестре."
+    "editorial_notes": "Статус — активная разработка; нельзя называть зрелой платформой."
   },
   {
-    "paragraph_id": "BIZ-P14",
-    "page": "/business/",
-    "text": "Ситуация. Команда экспертов — консультантов, аналитиков, методологов — обладает уникальной экспертизой, но она не упакована в воспроизводимый продукт...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Сценарий 3. Типовая ситуация."
-  },
-  {
-    "paragraph_id": "BIZ-P15",
-    "page": "/business/",
-    "text": "Цена проблемы. Потолок выручки ограничен физическим временем экспертов...",
-    "content_role": "market_observation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Рыночное наблюдение."
-  },
-  {
-    "paragraph_id": "BIZ-P16",
-    "page": "/business/",
-    "text": "Формат пилота. Картирование экспертных процессов, выделение повторяющихся элементов, проектирование структуры продукта...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Описание формата."
-  },
-  {
-    "paragraph_id": "BIZ-P17",
-    "page": "/business/",
-    "text": "Требования к заказчику. Готовность формализовать неявные знания — то, что эксперты «просто знают», должно быть записано...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Требования к заказчику."
-  },
-  {
-    "paragraph_id": "BIZ-P18",
-    "page": "/business/",
-    "text": "Результат первого этапа. Описана структура интеллектуального продукта. Минимум один повторяющийся процесс автоматизирован...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Обещание результата."
-  },
-  {
-    "paragraph_id": "BIZ-P19",
-    "page": "/business/",
-    "text": "Ограничения. Александр не является экспертом в предметной области заказчика. Его роль — архитектура процесса и системы...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Честное ограничение. Инженерный подход."
-  },
-  {
-    "paragraph_id": "BIZ-P20",
-    "page": "/business/",
-    "text": "Александр не работает с компаниями, которые ищут готовое решение «под ключ» без своего участия...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Ограничение. Соответствует каноническому подходу."
-  },
-  {
-    "paragraph_id": "BIZ-P21",
-    "page": "/business/",
-    "text": "Он не берётся за проекты, где заказчик не может назвать, что именно должно измениться в измеримых показателях...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Ограничение. Инженерный подход."
-  },
-  {
-    "paragraph_id": "BIZ-P22",
-    "page": "/business/",
-    "text": "Он не работает в режиме «пожарной команды» — срочно исправить, залатать, переделать за три дня то, что ломалось годами...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Ограничение. Честная квалификация."
-  },
-  {
-    "paragraph_id": "BIZ-P23",
-    "page": "/business/",
-    "text": "Он не замещает технического директора или руководителя разработки на постоянной основе...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Ограничение формата сотрудничества."
-  },
-  {
-    "paragraph_id": "BIZ-P24",
-    "page": "/business/",
-    "text": "[требуется подтверждение владельца: список завершённых бизнес-проектов для подтверждения формулировок «проверено практикой», PROJ-003]",
-    "content_role": "editorial_bridge",
-    "source_ids": [],
-    "publishable": false,
-    "owner_approval": "pending",
-    "editorial_notes": "Редакционная пометка. Не публикуется."
-  },
-  {
-    "paragraph_id": "BIZ-P25",
-    "page": "/business/",
-    "text": "Если ваш случай похож на один из сценариев выше — напишите. Первый разговор — диагностический: разберём, что происходит сейчас...",
-    "content_role": "editorial_bridge",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "approved",
-    "editorial_notes": "CTA. Соответствует STRAT-001 раздел 11."
-  },
-  {
-    "paragraph_id": "EDU-P01",
-    "page": "/education/",
-    "text": "Образовательное направление Александра построено на одном принципе: ученик не повторяет инструкцию — он создаёт собственный проект...",
+    "paragraph_id": "HOME-006",
+    "page": "/",
+    "heading": "Инженерное образование",
     "content_role": "owner_statement",
     "source_ids": ["PROJ-EDU-001", "ARTICLE-001", "STORY-001"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Центральный педагогический принцип. Traceable к авторским материалам."
+    "editorial_notes": "Метод и направления допустимы; количественные результаты исключены."
   },
   {
-    "paragraph_id": "EDU-P02",
-    "page": "/education/",
-    "text": "Александр проектирует и ведёт программы по информатике, технологии, робототехнике и основам ИИ...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-EDU-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Перечень дисциплин. PROJ-EDU-001 подтверждает направления."
-  },
-  {
-    "paragraph_id": "EDU-P03",
-    "page": "/education/",
-    "text": "Возраст участников. От начальной школы до студентов вузов...",
-    "content_role": "owner_statement",
-    "source_ids": [],
-    "publishable": false,
-    "owner_approval": "pending",
-    "editorial_notes": "Возрастной диапазон не подтверждён в реестре. [требуется PROJ-001]"
-  },
-  {
-    "paragraph_id": "EDU-P04",
-    "page": "/education/",
-    "text": "Формат занятий. Проектные модули по 12–24 часа с финальной защитой работы...",
-    "content_role": "owner_statement",
-    "source_ids": ["ARTICLE-001", "STORY-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Описание формата. Согласуется с описанной методикой."
-  },
-  {
-    "paragraph_id": "EDU-P05",
-    "page": "/education/",
-    "text": "Роль педагога. Педагог не демонстрирует «как правильно» и не исправляет ошибки молча. Он создаёт ситуацию, в которой ошибка становится материалом...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-001", "ARTICLE-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Описание педагогической роли. Из авторских материалов."
-  },
-  {
-    "paragraph_id": "EDU-P06",
-    "page": "/education/",
-    "text": "Результат. Работающее устройство или программа, которые участник может объяснить...",
-    "content_role": "owner_statement",
-    "source_ids": ["ARTICLE-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Критерии результата. Из ARTICLE-001 (четырёхуровневая модель)."
-  },
-  {
-    "paragraph_id": "EDU-P07",
-    "page": "/education/",
-    "text": "Требования к площадке. Помещение с доступом к электричеству, столы для сборки, место для хранения незавершённых проектов...",
+    "paragraph_id": "HOME-007",
+    "page": "/",
+    "heading": "Честные ограничения",
     "content_role": "editorial_bridge",
-    "source_ids": [],
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Практические требования. Редакционный мост, не содержит утверждений о фактах."
+    "editorial_notes": "Фиксирует границы текущего позиционирования."
   },
   {
-    "paragraph_id": "EDU-P08",
-    "page": "/education/",
-    "text": "Безопасность. Все занятия проводятся с соблюдением требований по электробезопасности... Авторство ученика и защита персональных данных — обязательные условия...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Принципы безопасности. Соответствует каноническим принципам."
-  },
-  {
-    "paragraph_id": "EDU-P09",
-    "page": "/education/",
-    "text": "Помимо работы с участниками, Александр работает с организациями — школами, образовательными центрами, EdTech-компаниями...",
+    "paragraph_id": "BUS-001",
+    "page": "/business/",
+    "heading": "Не начинать с инструмента",
     "content_role": "strategic_recommendation",
-    "source_ids": ["STRAT-001"],
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "THOUGHT-002"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Образовательные услуги для организаций. Стратегическое описание."
+    "editorial_notes": "Сценарии аудитории не называются личной практикой Александра."
   },
   {
-    "paragraph_id": "EDU-P10",
-    "page": "/education/",
-    "text": "Аудит образовательной программы. Диагностика текущей программы... Срок: [требуется подтверждение владельца]...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Описание услуги аудита. Срок явно помечен как требующий подтверждения."
-  },
-  {
-    "paragraph_id": "EDU-P11",
-    "page": "/education/",
-    "text": "Разработка программ. Проектирование модульной образовательной программы под конкретную площадку...",
-    "content_role": "strategic_recommendation",
-    "source_ids": ["PROJ-EDU-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Описание услуги разработки программ."
-  },
-  {
-    "paragraph_id": "EDU-P12",
-    "page": "/education/",
-    "text": "Обучение педагогов. Практикум по методике проектного инженерного образования — не лекция, а работа с реальными задачами...",
-    "content_role": "strategic_recommendation",
-    "source_ids": ["PROJ-EDU-001", "ARTICLE-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Описание услуги обучения педагогов."
-  },
-  {
-    "paragraph_id": "EDU-P13",
-    "page": "/education/",
-    "text": "Александр использует четырёхуровневую модель оценки, описанную в статье «Проектное обучение: результат виден в объяснении»...",
-    "content_role": "owner_statement",
-    "source_ids": ["ARTICLE-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Четырёхуровневая модель. Прямо из ARTICLE-001."
-  },
-  {
-    "paragraph_id": "EDU-P14",
-    "page": "/education/",
-    "text": "Уровень 1 — Выполнение. Уровень 2 — Настройка. Уровень 3 — Диагностика. Уровень 4 — Объяснение...",
-    "content_role": "owner_statement",
-    "source_ids": ["ARTICLE-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Описание уровней модели. Из ARTICLE-001."
-  },
-  {
-    "paragraph_id": "EDU-P15",
-    "page": "/education/",
-    "text": "Только третий и четвёртый уровни доказывают инженерное понимание. Программы Александра нацелены именно на них...",
-    "content_role": "owner_statement",
-    "source_ids": ["ARTICLE-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Вывод о критериях оценки."
-  },
-  {
-    "paragraph_id": "EDU-P16",
-    "page": "/education/",
-    "text": "Педагогическая практика Александра охватывает период с 2015 года...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-EDU-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Период практики из PROJ-EDU-001. Точный год требует BIO-001."
-  },
-  {
-    "paragraph_id": "EDU-P17",
-    "page": "/education/",
-    "text": "За это время разработана и внедрена методика проектного инженерного образования, созданы программы по робототехнике и информатике, подготовлен ряд педагогов...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-EDU-001", "ARTICLE-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Обобщённое утверждение о педагогической практике. 'Ряд педагогов' — качественная формулировка вместо численной."
-  },
-  {
-    "paragraph_id": "EDU-P18",
-    "page": "/education/",
-    "text": "Утверждения о количестве учеников, результатах соревнований и поступлении в вузы находятся в стадии сбора документальных подтверждений и не публикуются до верификации...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "approved",
-    "editorial_notes": "Честное ограничение. Прямо из STRAT-001 раздел 12 (прозрачность доказательности) и раздел 6 (запрет непроверенных чисел)."
-  },
-  {
-    "paragraph_id": "EDU-P19",
-    "page": "/education/",
-    "text": "Если вы представляете образовательную организацию и видите пересечение... напишите. Разберём вашу ситуацию...",
-    "content_role": "editorial_bridge",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "approved",
-    "editorial_notes": "CTA. Соответствует STRAT-001 раздел 11."
-  },
-  {
-    "paragraph_id": "PROJ-P01",
-    "page": "/projects/",
-    "text": "На этой странице собраны проекты Александра. Каждый описан через контекст, задачу, роль, ограничения, решение и текущий результат...",
-    "content_role": "editorial_bridge",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Введение к странице проектов. Редакционный мост."
-  },
-  {
-    "paragraph_id": "PROJ-P02",
-    "page": "/projects/",
-    "text": "Контекст. С 2015 года Александр ведёт практические занятия по робототехнике, программированию и информатике для школьников и студентов...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-EDU-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Контекст проекта 'Инженерное образование'. Период из PROJ-EDU-001."
-  },
-  {
-    "paragraph_id": "PROJ-P03",
-    "page": "/projects/",
-    "text": "Задача. Перевести обучение от трансляции готовых знаний к проектному инженерному формату...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-EDU-001", "ARTICLE-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Задача проекта. Соответствует описанию методики."
-  },
-  {
-    "paragraph_id": "PROJ-P04",
-    "page": "/projects/",
-    "text": "Роль. Педагог, методист, руководитель проектов. Александр разрабатывал программы, вёл занятия, готовил команды к соревнованиям...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-EDU-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Роль из PROJ-EDU-001."
-  },
-  {
-    "paragraph_id": "PROJ-P05",
-    "page": "/projects/",
-    "text": "Ограничения. Количественные результаты — количество учеников, результаты соревнований, поступление в вузы — требуют отдельной проверки...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-EDU-001", "STRAT-001"],
-    "publishable": true,
-    "owner_approval": "approved",
-    "editorial_notes": "Честное ограничение. Соответствует каноническому принципу прозрачности доказательности."
-  },
-  {
-    "paragraph_id": "PROJ-P06",
-    "page": "/projects/",
-    "text": "Решение. Разработана методика проектного инженерного образования с четырёхуровневой моделью оценки...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-EDU-001", "ARTICLE-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Решение. Описана методика."
-  },
-  {
-    "paragraph_id": "PROJ-P07",
-    "page": "/projects/",
-    "text": "Текущий результат. Методика сформулирована, зафиксирована в публичных материалах и применяется в действующих программах...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-EDU-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Текущий результат. Из PROJ-EDU-001."
-  },
-  {
-    "paragraph_id": "PROJ-P08",
-    "page": "/projects/",
-    "text": "Доказательства — что есть. Авторские материалы: статья (ARTICLE-001), история (STORY-001), история (STORY-002). Подтверждённый период: 2015–2026 (PROJ-EDU-001)...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-EDU-001", "ARTICLE-001", "STORY-001", "STORY-002"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Перечень доказательств. Конкретные source_ids указаны."
-  },
-  {
-    "paragraph_id": "PROJ-P09",
-    "page": "/projects/",
-    "text": "Что пока нельзя утверждать. Количество учеников («сотни» — CL-015). Количество поступивших в вузы («десятки» — CL-016)...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "approved",
-    "editorial_notes": "Прозрачное перечисление заблокированных утверждений. Соответствует каноническому принципу."
-  },
-  {
-    "paragraph_id": "PROJ-P10",
-    "page": "/projects/",
-    "text": "Чему научил кейс. Ошибка ученика ценнее правильного ответа педагога. Теория работает только тогда, когда практическая задача создаёт в ней необходимость...",
-    "content_role": "owner_statement",
-    "source_ids": ["STORY-001", "ARTICLE-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Выводы из кейса. Авторская рефлексия."
-  },
-  {
-    "paragraph_id": "PROJ-P11",
-    "page": "/projects/",
-    "text": "Контекст. В 2025 году Александр начал проектирование образовательной платформы для виртуальных лабораторий...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Контекст ИЗО АСА. Из PROJ-IZO-001."
-  },
-  {
-    "paragraph_id": "PROJ-P12",
-    "page": "/projects/",
-    "text": "Задача. Создать модульную архитектуру платформы, которая позволит образовательным учреждениям проводить виртуальные лабораторные работы...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Задача ИЗО АСА. Рыночная потребность требует STRAT-002."
-  },
-  {
-    "paragraph_id": "PROJ-P13",
-    "page": "/projects/",
-    "text": "Роль. Автор архитектуры и разработчик. Александр спроектировал архитектуру ядра, выбрал технологический стек и ведёт разработку...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Роль из PROJ-IZO-001."
-  },
-  {
-    "paragraph_id": "PROJ-P14",
-    "page": "/projects/",
-    "text": "Ограничения. Проект находится в стадии активной разработки. Демонстрационная версия доступна ограниченному кругу тестировщиков...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Ограничения ИЗО АСА. Из PROJ-IZO-001 limitations."
-  },
-  {
-    "paragraph_id": "PROJ-P15",
-    "page": "/projects/",
-    "text": "Решение. Спроектировано ядро платформы с модульной архитектурой: виртуальные лаборатории, система управления классами, проектная среда...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Решение ИЗО АСА. Архитектурное описание."
-  },
-  {
-    "paragraph_id": "PROJ-P16",
-    "page": "/projects/",
-    "text": "Текущий результат. Архитектура ядра спроектирована и находится в разработке. Демо-версия доступна ограниченному кругу тестировщиков...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Текущий результат ИЗО АСА."
-  },
-  {
-    "paragraph_id": "PROJ-P17",
-    "page": "/projects/",
-    "text": "Доказательства — что есть. Авторское утверждение подтверждено владельцем (PROJ-IZO-001, owner_confirmed)...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Перечень доказательств."
-  },
-  {
-    "paragraph_id": "PROJ-P18",
-    "page": "/projects/",
-    "text": "Что пока нельзя утверждать. Количество дисциплин и модулей без подтверждения PROJ-002...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "approved",
-    "editorial_notes": "Прозрачное перечисление ограничений."
-  },
-  {
-    "paragraph_id": "PROJ-P19",
-    "page": "/projects/",
-    "text": "Чему научил кейс. Архитектура продукта должна проектироваться до написания кода...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Выводы из кейса. Авторская рефлексия."
-  },
-  {
-    "paragraph_id": "PROJ-P20",
-    "page": "/projects/",
-    "text": "Статус: [требуется проверка допустимости владельцем]. Упоминания проектов «Лига роботов» и «Laser Love» присутствуют в хронологии...",
-    "content_role": "owner_statement",
-    "source_ids": [],
-    "publishable": false,
-    "owner_approval": "pending",
-    "editorial_notes": "Статус проектов Laser Love / Лига роботов. PROJ-003 не загружен. [требуется решение владельца]"
-  },
-  {
-    "paragraph_id": "IZO-P01",
-    "page": "/projects/izo-asa/",
-    "text": "ИЗО АСА — образовательная платформа, проектирование которой Александр начал в 2025 году. Название расшифровывается как «Интерактивная Знаниевая Образовательная Среда...»",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Контекст проекта. Расшифровка названия требует подтверждения."
-  },
-  {
-    "paragraph_id": "IZO-P02",
-    "page": "/projects/izo-asa/",
-    "text": "Предпосылкой к созданию платформы послужил многолетний опыт Александра в преподавании робототехники и информатики...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-EDU-001", "PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Предпосылка создания. Связывает педагогический опыт с продуктовой разработкой."
-  },
-  {
-    "paragraph_id": "IZO-P03",
-    "page": "/projects/izo-asa/",
-    "text": "Образовательные учреждения — школы, колледжи, вузы и центры дополнительного образования — используют разрозненные инструменты...",
+    "paragraph_id": "BUS-002",
+    "page": "/business/",
+    "heading": "Сервисная компания",
     "content_role": "market_observation",
-    "source_ids": [],
-    "publishable": false,
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Рыночная гипотеза (CL-059, publishable: false). Требуется STRAT-002."
+    "editorial_notes": "Типовая рыночная ситуация, не клиентский кейс."
   },
   {
-    "paragraph_id": "IZO-P04",
-    "page": "/projects/izo-asa/",
-    "text": "[требуется подтверждение владельца: данная формулировка проблемы опирается на рыночную гипотезу автора...]",
-    "content_role": "editorial_bridge",
-    "source_ids": [],
-    "publishable": false,
-    "owner_approval": "pending",
-    "editorial_notes": "Редакционная пометка. Не публикуется."
-  },
-  {
-    "paragraph_id": "IZO-P05",
-    "page": "/projects/izo-asa/",
-    "text": "Существующие решения либо ориентированы на отдельные функции, либо требуют значительной кастомизации...",
+    "paragraph_id": "BUS-003",
+    "page": "/business/",
+    "heading": "Образовательный центр",
     "content_role": "market_observation",
-    "source_ids": [],
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Типовая ситуация аудитории."
+  },
+  {
+    "paragraph_id": "BUS-004",
+    "page": "/business/",
+    "heading": "Экспертная команда",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "THOUGHT-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Экспериментальная линия управления знаниями."
+  },
+  {
+    "paragraph_id": "BUS-005",
+    "page": "/business/",
+    "heading": "Продуктовая лестница",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Сроки и цены исключены до подтверждения."
+  },
+  {
+    "paragraph_id": "BUS-006",
+    "page": "/business/",
+    "heading": "Границы ответственности",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Инженерная культура безопасности, не юридическая гарантия."
+  },
+  {
+    "paragraph_id": "BUS-007",
+    "page": "/business/",
+    "heading": "Доказательства сейчас",
+    "content_role": "editorial_bridge",
+    "source_ids": ["PROJ-IZO-001", "PROJ-EDU-001", "STORY-002", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Прямо признаёт отсутствие завершённого верифицированного B2B-кейса."
+  },
+  {
+    "paragraph_id": "EDU-001",
+    "page": "/education/",
+    "heading": "Два разных предложения",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Разделяет B2B и участника программы."
+  },
+  {
+    "paragraph_id": "EDU-002",
+    "page": "/education/",
+    "heading": "Для организаций",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
     "publishable": false,
     "owner_approval": "pending",
-    "editorial_notes": "Рыночное наблюдение. Не подтверждено исследованием."
+    "editorial_notes": "Форматы требуют подтверждения как фактически предлагаемые сейчас."
   },
   {
-    "paragraph_id": "IZO-P06",
-    "page": "/projects/izo-asa/",
-    "text": "Александр спроектировал модульную архитектуру, в которой ядро платформы обеспечивает базовую функциональность и связность данных...",
+    "paragraph_id": "EDU-003",
+    "page": "/education/",
+    "heading": "Педагогический метод",
     "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
+    "source_ids": ["STORY-001", "STORY-002", "ARTICLE-001", "THOUGHT-004"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Архитектурное описание. Из PROJ-IZO-001."
+    "editorial_notes": "Авторская модель, не независимо валидированная педагогическая теория."
   },
   {
-    "paragraph_id": "IZO-P07",
-    "page": "/projects/izo-asa/",
-    "text": "Модульность. Виртуальные лаборатории, управление классами и проектная среда — независимые модули...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
+    "paragraph_id": "EDU-004",
+    "page": "/education/",
+    "heading": "Результат для организации",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Принцип модульности. Авторская оценка архитектуры."
+    "editorial_notes": "Артефакты формата, без обещания количественного эффекта."
   },
   {
-    "paragraph_id": "IZO-P08",
-    "page": "/projects/izo-asa/",
-    "text": "Связность данных. Единая модель данных связывает учебные группы, лабораторные работы, проекты и прогресс учащихся...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
+    "paragraph_id": "EDU-005",
+    "page": "/education/",
+    "heading": "Роль педагога и ИИ",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "THOUGHT-001"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Принцип связности данных."
+    "editorial_notes": "Человек сохраняет критическое решение."
   },
   {
-    "paragraph_id": "IZO-P09",
-    "page": "/projects/izo-asa/",
-    "text": "Масштабируемость. Архитектура спроектирована под добавление новых дисциплин и модулей без перестройки ядра...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Заявленная масштабируемость. Не подтверждена независимым аудитом."
-  },
-  {
-    "paragraph_id": "IZO-P10",
-    "page": "/projects/izo-asa/",
-    "text": "[Ограничение: характеристики «модульность» и «масштабируемость» являются авторской оценкой. Независимый технический аудит не проводился...]",
+    "paragraph_id": "ABOUT-001",
+    "page": "/about/",
+    "heading": "Один способ действовать",
     "content_role": "editorial_bridge",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "approved",
-    "editorial_notes": "Честное ограничение. Канонический принцип прозрачности."
-  },
-  {
-    "paragraph_id": "IZO-P11",
-    "page": "/projects/izo-asa/",
-    "text": "Виртуальные лаборатории — среда для проведения практических занятий с симуляциями и, потенциально, удалённым доступом к реальному оборудованию...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "STORY-002", "PROFILE-main-001"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Модуль 1. Из PROJ-IZO-001."
+    "editorial_notes": "Связная биографическая рамка."
   },
   {
-    "paragraph_id": "IZO-P12",
-    "page": "/projects/izo-asa/",
-    "text": "Управление классами — система создания учебных групп, управления расписанием и назначения заданий...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Модуль 2."
-  },
-  {
-    "paragraph_id": "IZO-P13",
-    "page": "/projects/izo-asa/",
-    "text": "Проектная среда — инструменты для организации, выполнения и оценки учебных проектов...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Модуль 3."
-  },
-  {
-    "paragraph_id": "IZO-P14",
-    "page": "/projects/izo-asa/",
-    "text": "[Ограничение: полный перечень модулей и их функциональное наполнение не подтверждён в реестре источников...]",
+    "paragraph_id": "ABOUT-002",
+    "page": "/about/",
+    "heading": "Биографическая дуга",
     "content_role": "editorial_bridge",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "approved",
-    "editorial_notes": "Честное ограничение."
-  },
-  {
-    "paragraph_id": "IZO-P15",
-    "page": "/projects/izo-asa/",
-    "text": "Текущая редакция платформы разрабатывается на технологическом стеке, включающем современные веб-технологии...",
-    "content_role": "owner_statement",
-    "source_ids": [],
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
     "publishable": false,
     "owner_approval": "pending",
-    "editorial_notes": "Технологический стек. Не подтверждён PROJ-002. [требуется подтверждение]"
+    "editorial_notes": "Точные годы и названия исключены до доказательств."
   },
   {
-    "paragraph_id": "IZO-P16",
-    "page": "/projects/izo-asa/",
-    "text": "Александр выступает автором архитектуры и разработчиком платформы. В его задачи входит: проектирование архитектуры ядра, выбор стека...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Роль Александра. Из PROJ-IZO-001."
-  },
-  {
-    "paragraph_id": "IZO-P17",
-    "page": "/projects/izo-asa/",
-    "text": "Это сольный проект на стадии разработки. На данном этапе Александр является единственным разработчиком...",
-    "content_role": "owner_statement",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Состав команды. Требуется PROJ-002 для подтверждения."
-  },
-  {
-    "paragraph_id": "IZO-P18",
-    "page": "/projects/izo-asa/",
-    "text": "На момент написания драфта статус проекта определён как active в frontmatter PROJ-IZO-001. Демонстрационная версия доступна ограниченному кругу...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Текущий статус."
-  },
-  {
-    "paragraph_id": "IZO-P19",
-    "page": "/projects/izo-asa/",
-    "text": "Владельцу необходимо уточнить: является ли проект пилотом или разработкой? Существует ли публичная демо-версия?..",
-    "content_role": "editorial_bridge",
-    "source_ids": [],
+    "paragraph_id": "ABOUT-003",
+    "page": "/about/",
+    "heading": "Цена роста",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
     "publishable": false,
     "owner_approval": "pending",
-    "editorial_notes": "Вопросы владельцу. Не публикуется."
+    "editorial_notes": "Публиковать только после решения по Лиге роботов и Laser Love."
   },
   {
-    "paragraph_id": "IZO-P20",
-    "page": "/projects/izo-asa/",
-    "text": "Что сделано (подтверждённое). Спроектирована архитектура ядра платформы. Разработка ведётся в активной фазе...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
+    "paragraph_id": "ABOUT-004",
+    "page": "/about/",
+    "heading": "Текущий фокус",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "PROJ-IZO-001"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Подтверждённый результат."
+    "editorial_notes": "Не использует громкие ИИ-титулы."
   },
   {
-    "paragraph_id": "IZO-P21",
+    "paragraph_id": "PROJ-001",
+    "page": "/projects/",
+    "heading": "Правило раздела",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Различает проект, кейс, лабораторию и эксперимент."
+  },
+  {
+    "paragraph_id": "PROJ-002",
+    "page": "/projects/",
+    "heading": "ИЗО АСА",
+    "content_role": "owner_statement",
+    "source_ids": ["PROJ-IZO-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Активная разработка, не зрелый продукт."
+  },
+  {
+    "paragraph_id": "PROJ-003",
+    "page": "/projects/",
+    "heading": "Инженерное образование",
+    "content_role": "owner_statement",
+    "source_ids": ["PROJ-EDU-001", "ARTICLE-001", "STORY-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Количественные достижения исключены."
+  },
+  {
+    "paragraph_id": "PROJ-004",
+    "page": "/projects/",
+    "heading": "Второй мозг",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "THOUGHT-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Эксперимент, нуждается в публичной демонстрации сценария."
+  },
+  {
+    "paragraph_id": "IZO-001",
     "page": "/projects/izo-asa/",
-    "text": "Что ещё предстоит. Публичный запуск, привлечение внешних пользователей, независимая верификация...",
+    "heading": "Статус",
+    "content_role": "owner_statement",
+    "source_ids": ["PROJ-IZO-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Активная разработка."
+  },
+  {
+    "paragraph_id": "IZO-002",
+    "page": "/projects/izo-asa/",
+    "heading": "Контекст",
     "content_role": "editorial_bridge",
-    "source_ids": [],
+    "source_ids": ["PROJ-IZO-001", "STRAT-V2-001"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Честное перечисление предстоящих этапов. Редакционный мост."
+    "editorial_notes": "Цель разработки, не универсальное рыночное доказательство."
   },
   {
-    "paragraph_id": "IZO-P22",
+    "paragraph_id": "IZO-003",
     "page": "/projects/izo-asa/",
-    "text": "Проект имеет следующие ограничения: нет пользовательских метрик, нет цифр внедрения, нет независимой верификации, рыночная потребность не подтверждена...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001", "STRAT-001"],
-    "publishable": true,
-    "owner_approval": "approved",
-    "editorial_notes": "Честное перечисление ограничений. Канонический принцип прозрачности."
-  },
-  {
-    "paragraph_id": "IZO-P23",
-    "page": "/projects/izo-asa/",
-    "text": "Что есть: PROJ-IZO-001, CL-004/026/036/038/039/040, демо-версия...",
+    "heading": "Роль Александра",
     "content_role": "owner_statement",
     "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
+    "publishable": false,
     "owner_approval": "pending",
-    "editorial_notes": "Перечень имеющихся доказательств."
+    "editorial_notes": "Требует подтверждения состава команды и границ роли."
   },
   {
-    "paragraph_id": "IZO-P24",
+    "paragraph_id": "IZO-004",
     "page": "/projects/izo-asa/",
-    "text": "Чего нет: PROJ-002, STRAT-002, BIO-002, независимый аудит архитектуры...",
+    "heading": "Модули",
+    "content_role": "owner_statement",
+    "source_ids": ["PROJ-IZO-001"],
+    "publishable": false,
+    "owner_approval": "pending",
+    "editorial_notes": "Точный список работающих модулей требует подтверждения."
+  },
+  {
+    "paragraph_id": "IZO-005",
+    "page": "/projects/izo-asa/",
+    "heading": "Ограничения",
     "content_role": "editorial_bridge",
-    "source_ids": [],
+    "source_ids": ["PROJ-IZO-001", "STRAT-V1-001", "STRAT-V2-001"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Прозрачное перечисление отсутствующих источников."
+    "editorial_notes": "Предотвращает выдачу разработки за зрелую платформу."
   },
   {
-    "paragraph_id": "IZO-P25",
-    "page": "/projects/izo-asa/",
-    "text": "Проектирование образовательной платформы с нуля — это не только техническая, но и методологическая задача...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
+    "paragraph_id": "COLLAB-001",
+    "page": "/collaboration/",
+    "heading": "Предварительная квалификация",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Вывод 1. Авторская рефлексия."
+    "editorial_notes": "Основная функция первого контакта."
   },
   {
-    "paragraph_id": "IZO-P26",
-    "page": "/projects/izo-asa/",
-    "text": "Архитектура важнее функциональности на раннем этапе. Без продуманного ядра и согласованной модели данных добавление функций превращается в наращивание заплаток...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001", "STORY-002"],
+    "paragraph_id": "COLLAB-002",
+    "page": "/collaboration/",
+    "heading": "Диагностика процесса",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": false,
+    "owner_approval": "pending",
+    "editorial_notes": "Коммерческие условия и состав работ требуют утверждения."
+  },
+  {
+    "paragraph_id": "COLLAB-003",
+    "page": "/collaboration/",
+    "heading": "Пилот и внедрение",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Вывод 2. Инженерный принцип."
+    "editorial_notes": "Без фиксированных сроков и гарантированных процентов."
   },
   {
-    "paragraph_id": "IZO-P27",
-    "page": "/projects/izo-asa/",
-    "text": "Платформа не становится продуктом до первого реального пользователя. Разработка в изоляции позволяет построить архитектуру, но не валидирует гипотезы...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
+    "paragraph_id": "COLLAB-004",
+    "page": "/collaboration/",
+    "heading": "Что требуется от заказчика",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
     "publishable": true,
     "owner_approval": "pending",
-    "editorial_notes": "Вывод 3. Продуктовый урок."
+    "editorial_notes": "Квалификационные условия."
   },
   {
-    "paragraph_id": "IZO-P28",
-    "page": "/projects/izo-asa/",
-    "text": "Сольная разработка — это ограничение темпа, а не качества архитектуры...",
-    "content_role": "owner_statement",
-    "source_ids": ["PROJ-IZO-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Вывод 4. Ограничение соло-разработки."
-  },
-  {
-    "paragraph_id": "IZO-P29",
-    "page": "/projects/izo-asa/",
-    "text": "Педагогическая экспертиза — конкурентное преимущество при проектировании EdTech...",
+    "paragraph_id": "COLLAB-005",
+    "page": "/collaboration/",
+    "heading": "Основной канал связи",
     "content_role": "hypothesis",
-    "source_ids": ["PROJ-EDU-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Вывод 5. Авторская гипотеза о конкурентном преимуществе."
-  },
-  {
-    "paragraph_id": "IZO-P30",
-    "page": "/projects/izo-asa/",
-    "text": "[требуется подтверждение владельца: весь раздел «Чему научил проект» является авторской рефлексией...]",
-    "content_role": "editorial_bridge",
-    "source_ids": [],
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
     "publishable": false,
     "owner_approval": "pending",
-    "editorial_notes": "Редакционная пометка. Не публикуется."
-  },
-  {
-    "paragraph_id": "COLLAB-P01",
-    "page": "/collaboration/",
-    "text": "Александр работает с двумя типами запросов. Первый — владельцы и руководители небольших и средних компаний... Второй — образовательные организации...",
-    "content_role": "editorial_bridge",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Введение — квалификация аудитории. Из STRAT-001."
-  },
-  {
-    "paragraph_id": "COLLAB-P02",
-    "page": "/collaboration/",
-    "text": "Александру не подходят те, кто ищет готовое решение «под ключ» без своего участия...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Квалификация. Каноническое ограничение."
-  },
-  {
-    "paragraph_id": "COLLAB-P03",
-    "page": "/collaboration/",
-    "text": "Аудит и стратегия. Диагностика текущего состояния процессов или образовательной программы, карта проблемных мест, дорожная карта изменений...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Формат 1. Без численных сроков (CL-039)."
-  },
-  {
-    "paragraph_id": "COLLAB-P04",
-    "page": "/collaboration/",
-    "text": "Проектная разработка. Полный цикл от проектирования архитектуры до передачи работающей системы...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Формат 2. Стратегическое описание."
-  },
-  {
-    "paragraph_id": "COLLAB-P05",
-    "page": "/collaboration/",
-    "text": "Техническое лидерство. Временное усиление команды заказчика: архитектурные решения, код-ревью, наставничество разработчиков...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Формат 3. Стратегическое описание."
-  },
-  {
-    "paragraph_id": "COLLAB-P06",
-    "page": "/collaboration/",
-    "text": "Что потребуется от заказчика. Доступ к реальным данным для замера baseline... Назначенный ответственный... Готовность описать текущее состояние...",
-    "content_role": "editorial_bridge",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Требования к заказчику. Не содержит новых фактов."
-  },
-  {
-    "paragraph_id": "COLLAB-P07",
-    "page": "/collaboration/",
-    "text": "Что Александр предоставляет. Архитектуру решения, спроектированную под конкретный контекст... Работающий прототип или пилот на реальных данных...",
-    "content_role": "strategic_recommendation",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Обещания. Не подкреплены клиентскими кейсами."
-  },
-  {
-    "paragraph_id": "COLLAB-P08",
-    "page": "/collaboration/",
-    "text": "Ограничения: когда сотрудничество не подходит. Александр не работает в режиме «пожарной команды»...",
-    "content_role": "owner_statement",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Честные ограничения."
-  },
-  {
-    "paragraph_id": "COLLAB-P09",
-    "page": "/collaboration/",
-    "text": "Сроки зависят от объёма и сложности задачи. Типовые ориентиры (аудит — 2–4 недели, пилот — 4–8 недель) являются оценочными и не подтверждены статистикой...",
-    "content_role": "editorial_bridge",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Честная оговорка о сроках. Признаёт неподтверждённость численных ориентиров."
-  },
-  {
-    "paragraph_id": "COLLAB-P10",
-    "page": "/collaboration/",
-    "text": "Реалистичный подход: сроки обсуждаются индивидуально после диагностики и фиксируются в рамках конкретного проекта...",
-    "content_role": "editorial_bridge",
-    "source_ids": [],
-    "publishable": true,
-    "owner_approval": "pending",
-    "editorial_notes": "Рекомендация по формулировке сроков. Не содержит новых фактов."
-  },
-  {
-    "paragraph_id": "COLLAB-P11",
-    "page": "/collaboration/",
-    "text": "Если ваш случай похож на один из описанных сценариев — напишите. Первый разговор — диагностический и бесплатный: разберём, что происходит сейчас...",
-    "content_role": "editorial_bridge",
-    "source_ids": ["STRAT-001"],
-    "publishable": true,
-    "owner_approval": "approved",
-    "editorial_notes": "CTA. Соответствует STRAT-001 раздел 11."
+    "editorial_notes": "Канал связи ещё не выбран."
   }
 ]

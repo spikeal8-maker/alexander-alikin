@@ -1,20 +1,78 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import { buildUrl } from "@config/site";
+import "../styles/v2-utility.css";
+
+const stages = [
+  ["Наблюдение", "Фиксируется вопрос, ошибка, ограничение или найденная связь."],
+  ["Связь", "Заметка соединяется с проектом, решением, источником или другой идеей."],
+  ["Проверка", "Отделяется личная интерпретация от факта и стратегической гипотезы."],
+  ["Публикация", "Материал выходит только после редакционной проверки и очистки приватного контекста."],
+];
 ---
 
-<BaseLayout
+<BaseLayoutV2
   title="Как я мыслю — Александр Аликин"
-  description="Метод работы со знаниями: заметки, связи, второй мозг и превращение идей в решения."
+  description="Публичная часть метода работы со знаниями: от наблюдения и связей до проекта или материала."
   currentPath="/second-brain/"
-  breadcrumbs={[{ label: "Как я мыслю" }]}
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Как я мыслю</h1>
-      <p class="description">
-        Метод работы со знаниями: как заметки превращаются в статьи, проекты и кейсы.
-      </p>
-      <p>Описание метода и публичные связи будут опубликованы после утверждения.</p>
+  <section class="v2-section">
+    <div class="v2-container v2-utility-hero">
+      <div class="v2-utility-lead">
+        <p class="v2-accent-label">Как я мыслю</p>
+        <h1 class="v2-page-title">Заметка становится полезной, когда меняет решение</h1>
+        <p>
+          Второй мозг — не публичный архив и не коллекция красивых формулировок. Это рабочая система,
+          которая связывает наблюдения, проекты, источники, ошибки и следующие действия.
+        </p>
+      </div>
+      <div class="v2-utility-note">
+        <p>
+          Приватный архив остаётся закрытым. На сайт попадает только безопасная часть, прошедшая
+          проверку публичности и происхождения утверждений.
+        </p>
+      </div>
     </div>
-  </div>
-</BaseLayout>
+  </section>
+
+  <section class="v2-section v2-section-alt">
+    <div class="v2-container">
+      <h2 class="v2-section-title">Рабочий цикл</h2>
+      <div class="v2-utility-list">
+        {
+          stages.map(([title, text], index) => (
+            <div class="v2-utility-row">
+              <strong>{String(index + 1).padStart(2, "0")} · {title}</strong>
+              <p>{text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="v2-section v2-section-surface">
+    <div class="v2-container v2-utility-grid">
+      <article class="v2-utility-card">
+        <h2>Проект</h2>
+        <p>Наблюдения превращаются в архитектурное решение, эксперимент или ограниченный пилот.</p>
+      </article>
+      <article class="v2-utility-card">
+        <h2>Журнал</h2>
+        <p>Мысль получает форму статьи, истории или короткого тезиса с понятным контекстом.</p>
+      </article>
+      <article class="v2-utility-card">
+        <h2>Реестр доказательств</h2>
+        <p>Фиксируется, что подтверждено, что является словом автора и что пока нельзя публиковать.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="v2-section">
+    <div class="v2-container v2-cta-block">
+      <h2>Посмотреть публичный результат системы</h2>
+      <p>Журнал показывает идеи, а проекты — решения и ограничения.</p>
+      <a href={buildUrl("/journal/")} class="v2-btn v2-btn-accent">Открыть журнал</a>
+    </div>
+  </section>
+</BaseLayoutV2>

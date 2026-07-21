@@ -1,49 +1,126 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import { getCollection } from "astro:content";
 import { buildUrl } from "@config/site";
+import "../../styles/v2-journal.css";
+
+const [stories, thoughts, articles, news] = await Promise.all([
+  getCollection("stories", (entry) => entry.data.status === "published"),
+  getCollection("thoughts", (entry) => entry.data.status === "published"),
+  getCollection("articles", (entry) => entry.data.status === "published"),
+  getCollection("news", (entry) => entry.data.status === "published"),
+]);
+
+const categories = [
+  {
+    num: "01",
+    title: "Истории",
+    description: "События, ошибки и изменения подхода, рассказанные через личный опыт.",
+    href: "/journal/stories/",
+    count: stories.length,
+  },
+  {
+    num: "02",
+    title: "Мысли",
+    description: "Короткие тезисы об инженерии, образовании, системах и ИИ.",
+    href: "/journal/thoughts/",
+    count: thoughts.length,
+  },
+  {
+    num: "03",
+    title: "Статьи",
+    description: "Развёрнутые материалы с аргументом, структурой и выводами.",
+    href: "/journal/articles/",
+    count: articles.length,
+  },
+  {
+    num: "04",
+    title: "Новости",
+    description: "Только фактические обновления проектов и публикаций.",
+    href: "/journal/news/",
+    count: news.length,
+  },
+];
+
+const latest = [
+  ...stories.map((entry) => ({ entry, kind: "История", base: "/journal/stories/" })),
+  ...thoughts.map((entry) => ({ entry, kind: "Мысль", base: "/journal/thoughts/" })),
+  ...articles.map((entry) => ({ entry, kind: "Статья", base: "/journal/articles/" })),
+  ...news.map((entry) => ({ entry, kind: "Новость", base: "/journal/news/" })),
+]
+  .sort((a, b) => b.entry.data.publishedAt.getTime() - a.entry.data.publishedAt.getTime())
+  .slice(0, 6);
 ---
 
-<BaseLayout
+<BaseLayoutV2
   title="Журнал — Александр Аликин"
-  description="Мысли, истории, статьи и новости. Авторское медиа о сложных системах, образовании и инженерии."
+  description="Истории, мысли, статьи и фактические обновления о проектах, инженерии, образовании и системах."
   currentPath="/journal/"
-  breadcrumbs={[{ label: "Журнал" }]}
 >
-  <div class="container container-main">
-    <h1>Журнал</h1>
-    <p class="text-lg muted-text">
-      Авторское медиа: истории, мысли, статьи, разборы, новости и видео.
-    </p>
-    <p>
-      Материалы публикуются по мере редакционной готовности. Подпишитесь на <a
-        href={buildUrl("/rss.xml")}>RSS</a
-      > или следите за обновлениями.
-    </p>
-    <nav aria-label="Рубрики журнала" class="mt-8">
-      <div class="card-grid">
-        <a href={buildUrl("/journal/stories/")} class="card" style="text-decoration:none;">
-          <h3 class="card-title">Истории</h3>
-          <p class="card-description">
-            Человеческие рассказы о выборе, ошибках и изменениях подхода.
-          </p>
-        </a>
-        <a href={buildUrl("/journal/thoughts/")} class="card" style="text-decoration:none;">
-          <h3 class="card-title">Мысли</h3>
-          <p class="card-description">Короткие авторские тезисы, ведущие к проектам и историям.</p>
-        </a>
-        <a href={buildUrl("/journal/articles/")} class="card" style="text-decoration:none;">
-          <h3 class="card-title">Статьи</h3>
-          <p class="card-description">
-            Системные материалы с аргументацией, источниками и смысловыми связями.
-          </p>
-        </a>
-        <a href={buildUrl("/journal/news/")} class="card" style="text-decoration:none;">
-          <h3 class="card-title">Новости</h3>
-          <p class="card-description">
-            Фактические обновления: запуски, публикации, события и изменения проектов.
-          </p>
-        </a>
+  <section class="v2-section">
+    <div class="v2-container v2-journal-hero">
+      <div class="v2-journal-intro">
+        <p class="v2-accent-label">Авторское медиа</p>
+        <h1 class="v2-page-title">Журнал практики и решений</h1>
+        <p>
+          Здесь собраны материалы о том, как возникают проекты, где ломаются системы, чему учат ошибки
+          и почему хороший результат должен быть объяснимым и воспроизводимым.
+        </p>
       </div>
-    </nav>
-  </div>
-</BaseLayout>
+      <div class="v2-journal-aside">
+        <p>
+          Это не новостная лента ради регулярности. Материал выходит, когда есть завершённая мысль,
+          проверяемый факт или полезный разбор.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="v2-section v2-section-surface">
+    <div class="v2-container">
+      <h2 class="v2-section-title">Рубрики</h2>
+      <div class="v2-journal-categories">
+        {
+          categories.map((category) => (
+            <a href={buildUrl(category.href)} class="v2-journal-category">
+              <span class="v2-accent-label">{category.num} · {category.count}</span>
+              <strong>{category.title}</strong>
+              <span>{category.description}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="v2-section v2-section-alt">
+    <div class="v2-container">
+      <h2 class="v2-section-title">Последние материалы</h2>
+      <div class="v2-journal-list">
+        {
+          latest.map(({ entry, kind, base }) => (
+            <a href={buildUrl(`${base}${entry.data.slug}/`)} class="v2-journal-item">
+              <div class="v2-journal-item-meta">
+                <span>{kind}</span>
+                <time>{entry.data.publishedAt.toLocaleDateString("ru")}</time>
+              </div>
+              <div>
+                <h3>{entry.data.title}</h3>
+                <p>{entry.data.description}</p>
+              </div>
+              <span class="v2-journal-item-arrow" aria-hidden="true">→</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="v2-section">
+    <div class="v2-container v2-cta-block">
+      <h2>Следить за новыми материалами</h2>
+      <p>RSS содержит только опубликованные материалы без рекламных рассылок и автоматических писем.</p>
+      <a href={buildUrl("/rss.xml")} class="v2-btn v2-btn-accent">Открыть RSS</a>
+    </div>
+  </section>
+</BaseLayoutV2>

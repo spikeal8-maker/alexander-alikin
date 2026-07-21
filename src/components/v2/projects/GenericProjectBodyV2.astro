@@ -1,0 +1,63 @@
+---
+export interface Props {
+  description: string;
+  role: string;
+  result: string;
+  limitations?: string;
+}
+
+const { description, role, result, limitations } = Astro.props;
+---
+
+<section class="v2-section v2-section-surface">
+  <div class="v2-container v2-generic-grid">
+    <div>
+      <p class="v2-accent-label">Контекст</p>
+      <h2 class="v2-section-title">О чём этот проект</h2>
+      <p>{description}</p>
+    </div>
+    <div>
+      <p class="v2-accent-label">Роль</p>
+      <h2 class="v2-section-title">Ответственность Александра</h2>
+      <p>{role}</p>
+    </div>
+  </div>
+</section>
+
+<section class="v2-section">
+  <div class="v2-container v2-generic-grid">
+    <div>
+      <p class="v2-accent-label">Что можно утверждать сейчас</p>
+      <h2 class="v2-section-title">Текущий результат</h2>
+      <p>{result}</p>
+    </div>
+    <div>
+      <p class="v2-accent-label">Границы публичного описания</p>
+      <h2 class="v2-section-title">Ограничения</h2>
+      <p>{limitations ?? "Дополнительные факты и количественные показатели требуют проверки источников."}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-generic-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+  .v2-generic-grid p:not(.v2-accent-label) {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+  }
+  .v2-section:not(.v2-section-surface) .v2-generic-grid p:not(.v2-accent-label) {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  @media (max-width: 768px) {
+    .v2-generic-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

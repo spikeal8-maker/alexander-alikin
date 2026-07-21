@@ -73,6 +73,7 @@ const { currentPath } = Astro.props;
     align-items: center;
     justify-content: space-between;
     gap: var(--space-6);
+    flex-wrap: wrap;
   }
   .v2-logo {
     flex-shrink: 0;
@@ -83,17 +84,19 @@ const { currentPath } = Astro.props;
     letter-spacing: var(--tracking-tight);
   }
   .v2-desktop-nav {
+    min-width: 0;
+    flex: 1 1 auto;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: var(--space-5);
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-5);
   }
   .v2-nav-link {
     color: rgba(255, 255, 255, 0.72);
     text-decoration: none;
     font-size: var(--text-sm);
     font-weight: var(--fw-medium);
-    white-space: nowrap;
   }
   .v2-nav-link:hover,
   .v2-nav-link:focus-visible,
@@ -108,6 +111,11 @@ const { currentPath } = Astro.props;
   }
   .v2-mobile-nav {
     display: none;
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+  .v2-mobile-nav:not([open]) .v2-mobile-panel {
+    display: none;
   }
   .v2-nav-toggle {
     border: var(--border-width) solid rgba(255, 255, 255, 0.24);
@@ -116,6 +124,7 @@ const { currentPath } = Astro.props;
     cursor: pointer;
     border-radius: var(--radius-md);
     list-style: none;
+    font-size: var(--text-sm);
   }
   .v2-nav-toggle::-webkit-details-marker {
     display: none;
@@ -125,7 +134,6 @@ const { currentPath } = Astro.props;
     top: calc(100% + var(--space-2));
     left: var(--gutter);
     right: var(--gutter);
-    display: flex;
     flex-direction: column;
     padding: var(--space-4);
     background: var(--color-bg-alt);
@@ -133,10 +141,26 @@ const { currentPath } = Astro.props;
     border-radius: var(--radius-lg);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.24);
   }
+  .v2-mobile-nav[open] .v2-mobile-panel {
+    display: flex;
+  }
   .v2-mobile-panel .v2-nav-link {
     padding: var(--space-3);
   }
   @media (max-width: 900px) {
+    .v2-header-inner {
+      min-height: 4rem;
+      flex-wrap: nowrap;
+      gap: var(--space-2);
+    }
+    .v2-logo {
+      min-width: 0;
+      max-width: calc(100% - 4.75rem);
+      font-size: var(--text-base);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
     .v2-desktop-nav {
       display: none;
     }

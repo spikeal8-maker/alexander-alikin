@@ -1,20 +1,49 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
 import { buildUrl } from "@config/site";
+import "../styles/v2-utility.css";
 ---
 
-<BaseLayout
+<BaseLayoutV2
   title="Страница не найдена — Александр Аликин"
-  description="Запрошенная страница не существует. Воспользуйтесь навигацией или поиском."
+  description="Запрошенная страница не существует."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>404</h1>
-      <p class="description">Страница не найдена.</p>
-      <p>
-        Запрошенный адрес не существует. Воспользуйтесь <a href={buildUrl("/search/")}>поиском</a> или
-        перейдите на <a href={buildUrl("/")}>главную</a>.
-      </p>
+  <section class="v2-section">
+    <div class="v2-container v2-utility-hero">
+      <div class="v2-utility-lead">
+        <p class="v2-accent-label">Ошибка 404</p>
+        <h1 class="v2-page-title">Такой страницы нет</h1>
+        <p>
+          Адрес мог измениться, материал мог остаться черновиком или ссылка была введена с ошибкой.
+          Приватные и неподтверждённые страницы намеренно не публикуются.
+        </p>
+      </div>
+      <div class="v2-utility-note">
+        <p>Используйте поиск или вернитесь к основным разделам сайта.</p>
+      </div>
     </div>
-  </div>
-</BaseLayout>
+  </section>
+
+  <section class="v2-section v2-section-surface">
+    <div class="v2-container v2-utility-grid">
+      <a href={buildUrl("/")} class="v2-contact-card">
+        <span class="v2-accent-label">01</span>
+        <h2>Главная</h2>
+        <p>Позиционирование, проекты, направления работы и метод.</p>
+        <span class="v2-contact-action">Перейти →</span>
+      </a>
+      <a href={buildUrl("/projects/")} class="v2-contact-card">
+        <span class="v2-accent-label">02</span>
+        <h2>Проекты</h2>
+        <p>Контекст, роль, текущий результат и ограничения.</p>
+        <span class="v2-contact-action">Открыть →</span>
+      </a>
+      <a href={buildUrl("/search/")} class="v2-contact-card">
+        <span class="v2-accent-label">03</span>
+        <h2>Поиск</h2>
+        <p>Поиск по публичным страницам, темам и материалам.</p>
+        <span class="v2-contact-action">Искать →</span>
+      </a>
+    </div>
+  </section>
+</BaseLayoutV2>

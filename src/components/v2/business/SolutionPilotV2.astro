@@ -1,55 +1,39 @@
 <section class="v2-section">
   <div class="v2-container">
-    <h2 class="v2-section-title">Решение и пилот</h2>
+    <p class="v2-section-kicker">Первый рабочий контур</p>
+    <h2 class="v2-section-title">Что проверяется в пилоте</h2>
     <div class="v2-sp-grid">
       <div class="v2-sp-col">
-        <span class="v2-accent-label">Решение</span>
         <div class="v2-sp-item">
-          <h3>Архитектура процессов</h3>
-          <p>
-            Проектируем целевую модель: какие данные, какие потоки, какие роли. Фиксируем метрики
-            успеха.
-          </p>
+          <h3>Архитектура процесса</h3>
+          <p>Фиксируем роли, данные, переходы между этапами и места, где решение теряет управляемость.</p>
         </div>
         <div class="v2-sp-item">
-          <h3>Автоматизация и ИИ</h3>
-          <p>
-            Убираем рутину: интеграции, скрипты, интеллектуальные агенты. Всё, что можно
-            алгоритмизировать — алгоритмизируем.
-          </p>
+          <h3>Ограниченная автоматизация</h3>
+          <p>Выбираем один участок, где интеграция, правило или ИИ-инструмент могут дать проверяемое изменение.</p>
         </div>
         <div class="v2-sp-item">
-          <h3>Единая система данных</h3>
-          <p>
-            Собираем разрозненные таблицы и сервисы в одну архитектуру. Дашборды и отчёты — не
-            отдельный проект, а побочный продукт.
-          </p>
+          <h3>Передача команде</h3>
+          <p>Решение документируется и объясняется людям, которые будут использовать и развивать его дальше.</p>
         </div>
       </div>
       <div class="v2-sp-col">
-        <span class="v2-accent-label">Пилот</span>
-        <p class="v2-sp-lead">
-          Ограниченный запуск на реальных данных. Прототип, который даёт измеримый результат, а не
-          презентацию.
-        </p>
         <div class="v2-sp-criteria">
-          <h4>Что покрывает пилот</h4>
+          <h3>Критерии первого этапа</h3>
           <ul>
-            <li>Целевой процесс описан и оцифрован</li>
-            <li>Минимум одна ручная операция автоматизирована</li>
-            <li>Определены метрики для измерения результата</li>
-            <li>Команда обучена работе с системой</li>
+            <li>Есть описание текущего и целевого процесса</li>
+            <li>Определён владелец процесса со стороны заказчика</li>
+            <li>Выбрана одна проверяемая гипотеза</li>
+            <li>Зафиксирован способ сравнить состояние до и после</li>
           </ul>
         </div>
         <div class="v2-sp-limits">
-          <h4>Ограничения пилота</h4>
+          <h3>Честные ограничения</h3>
           <ul>
-            <li>Объём: один сквозной процесс, не вся компания</li>
-            <li>Сроки: 4–8 недель от старта до первых метрик</li>
-            <li>
-              Не входит: полная интеграция с legacy-системами, миграция всех данных, полномасштабное
-              внедрение
-            </li>
+            <li>Срок и объём определяются только после диагностики</li>
+            <li>Пилот не равен автоматизации всей компании</li>
+            <li>Без участия команды заказчика решение не передаётся в эксплуатацию</li>
+            <li>Коммерческие сроки и фиксированные показатели пока не заявляются публично</li>
           </ul>
         </div>
       </div>
@@ -58,6 +42,12 @@
 </section>
 
 <style>
+  .v2-section-kicker {
+    margin: 0 0 var(--space-2);
+    color: var(--color-accent-text);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-bold);
+  }
   .v2-sp-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -65,55 +55,42 @@
   }
   .v2-sp-col {
     min-width: 0;
-    overflow-wrap: break-word;
   }
   .v2-sp-item {
     margin-bottom: var(--space-6);
+    padding-bottom: var(--space-6);
+    border-bottom: var(--border-width) solid var(--color-border-light);
   }
-  .v2-sp-item:first-of-type {
-    margin-top: var(--space-6);
-  }
-  .v2-sp-item h3 {
-    font-size: var(--text-base);
+  .v2-sp-item h3,
+  .v2-sp-criteria h3,
+  .v2-sp-limits h3 {
+    font-size: var(--text-lg);
+    margin: 0 0 var(--space-3);
     color: var(--color-white);
-    margin: 0 0 var(--space-2);
-    font-weight: var(--fw-bold);
   }
   .v2-sp-item p,
-  .v2-sp-lead {
+  .v2-sp-criteria li,
+  .v2-sp-limits li {
     font-size: var(--text-base);
-    color: rgba(255, 255, 255, 0.7);
-    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
     line-height: var(--leading-normal);
   }
-  .v2-sp-lead {
-    margin-top: var(--space-4);
+  .v2-sp-item p {
+    margin: 0;
   }
   .v2-sp-criteria,
   .v2-sp-limits {
     border-radius: var(--radius-lg);
     padding: var(--space-6);
-    margin-top: var(--space-6);
   }
   .v2-sp-criteria {
     background: rgba(37, 99, 235, 0.1);
     border: var(--border-width) solid rgba(37, 99, 235, 0.3);
+    margin-bottom: var(--space-6);
   }
   .v2-sp-limits {
-    background: rgba(245, 158, 11, 0.08);
-    border: var(--border-width) solid rgba(245, 158, 11, 0.25);
-  }
-  .v2-sp-criteria h4,
-  .v2-sp-limits h4 {
-    font-size: var(--text-base);
-    margin: 0 0 var(--space-3);
-    font-weight: var(--fw-bold);
-  }
-  .v2-sp-criteria h4 {
-    color: var(--color-accent-text);
-  }
-  .v2-sp-limits h4 {
-    color: var(--color-accent-warm);
+    background: rgba(245, 158, 11, 0.06);
+    border: var(--border-width) solid rgba(245, 158, 11, 0.22);
   }
   .v2-sp-criteria ul,
   .v2-sp-limits ul {
@@ -123,23 +100,15 @@
   }
   .v2-sp-criteria li,
   .v2-sp-limits li {
-    font-size: var(--text-base);
     padding: var(--space-2) 0;
-    line-height: var(--leading-normal);
-  }
-  .v2-sp-criteria li {
-    color: rgba(255, 255, 255, 0.8);
-  }
-  .v2-sp-limits li {
-    color: rgba(255, 255, 255, 0.7);
   }
   .v2-sp-criteria li::before {
-    content: "\2713\A0";
-    color: var(--color-accent-warm);
+    content: "✓\00a0";
+    color: var(--color-accent-text);
     font-weight: var(--fw-bold);
   }
   .v2-sp-limits li::before {
-    content: "\2014\A0";
+    content: "—\00a0";
     color: var(--color-accent-warm);
   }
   @media (max-width: 768px) {

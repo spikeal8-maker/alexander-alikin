@@ -1,5 +1,18 @@
 @import "./tokens-v2.css";
 
+.v2-body,
+.v2-body *,
+.v2-body *::before,
+.v2-body *::after {
+  box-sizing: border-box;
+}
+
+.v2-body img,
+.v2-body svg,
+.v2-body video {
+  max-width: 100%;
+}
+
 /* Section backgrounds */
 .v2-section {
   padding: var(--space-24) 0;
@@ -23,6 +36,9 @@
   margin: 0 auto;
   padding: 0 var(--gutter);
   overflow-wrap: break-word;
+}
+.v2-container > * {
+  min-width: 0;
 }
 
 /* Typography */
@@ -103,6 +119,8 @@
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--space-8);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 /* CTA block */
@@ -146,7 +164,7 @@
 /* Format cards (collaboration page) */
 .v2-formats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-8);
 }
 .v2-format-card-title {
@@ -164,7 +182,7 @@
 @media (max-width: 768px) {
   .v2-page-title {
     font-size: var(--text-3xl);
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
     hyphens: auto;
   }
   .v2-section {
@@ -172,10 +190,10 @@
   }
   .v2-section-title {
     font-size: var(--text-2xl);
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
   }
   .v2-page-lead {
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
   }
   .v2-formats-grid {
     grid-template-columns: 1fr;

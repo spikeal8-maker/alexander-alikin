@@ -1,44 +1,12 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import { buildUrl } from "@config/site";
-import ProjectCard from "@components/ui/ProjectCard.astro";
-
-const projects = await getCollection("projects", (p) => p.data.status === "published");
-const statusLabels = {
-  active: "Активный",
-  completed: "Завершён",
-  paused: "Приостановлен",
-  archived: "Архив",
-};
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import ProjectGridV2 from "@components/v2/projects/ProjectGridV2.astro";
 ---
 
-<BaseLayout
+<BaseLayoutV2
   title="Проекты — Александр Аликин"
   description="Продукты, образовательные программы и технические инициативы."
   currentPath="/projects/"
-  breadcrumbs={[{ label: "Проекты" }]}
 >
-  <div class="container">
-    <h1>Проекты</h1>
-    <p class="text-lg muted-text">
-      Карта практики: продукты, образовательные программы, исследования и предпринимательские
-      инициативы.
-    </p>
-    <div class="card-grid mt-8">
-      {
-        projects.map((p) => (
-          <ProjectCard
-            title={p.data.title}
-            description={p.data.description}
-            href={buildUrl(`/projects/${p.data.slug}/`)}
-            role={p.data.role}
-            period={p.data.period}
-            projectStatus={statusLabels[p.data.projectStatus] || p.data.projectStatus}
-            evidenceLevel={p.data.evidenceLevel}
-          />
-        ))
-      }
-    </div>
-  </div>
-</BaseLayout>
+  <ProjectGridV2 />
+</BaseLayoutV2>

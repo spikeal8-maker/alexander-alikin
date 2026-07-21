@@ -1,72 +1,59 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
 import { getCollection } from "astro:content";
-import EvidenceBadge from "@components/foundation/EvidenceBadge.astro";
-import ButtonLink from "@components/ui/ButtonLink.astro";
-import { buildUrl } from "@config/site";
+import ProjectCaseHeroV2 from "@components/v2/projects/ProjectCaseHeroV2.astro";
+import CaseContextV2 from "@components/v2/projects/CaseContextV2.astro";
+import CaseProblemV2 from "@components/v2/projects/CaseProblemV2.astro";
+import CaseArchitectureV2 from "@components/v2/projects/CaseArchitectureV2.astro";
+import CaseModulesV2 from "@components/v2/projects/CaseModulesV2.astro";
+import CaseRoleV2 from "@components/v2/projects/CaseRoleV2.astro";
+import CaseResultV2 from "@components/v2/projects/CaseResultV2.astro";
+import CaseLimitationsV2 from "@components/v2/projects/CaseLimitationsV2.astro";
+import GenericProjectBodyV2 from "@components/v2/projects/GenericProjectBodyV2.astro";
+import CaseCtaV2 from "@components/v2/projects/CaseCtaV2.astro";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects", (p) => p.data.status === "published");
-  return projects.map((p) => ({ params: { slug: p.data.slug } }));
+  const ps = await getCollection("projects", (p) => p.data.status === "published");
+  return ps.map((p) => ({ params: { slug: p.data.slug } }));
 }
+
 const { slug } = Astro.params;
 const project = (await getCollection("projects", (p) => p.data.status === "published")).find(
   (p) => p.data.slug === slug,
 );
 if (!project) return Astro.redirect("/404");
 const { data } = project;
-const statusLabels = {
-  active: "Активный",
-  completed: "Завершён",
-  paused: "Приостановлен",
-  archived: "Архив",
-};
+const isIzoAsa = data.slug === "izo-asa";
 ---
 
-<BaseLayout
+<BaseLayoutV2
   title={`${data.title} — Александр Аликин`}
   description={data.description}
   currentPath="/projects/"
-  breadcrumbs={[{ label: "Проекты", href: "/projects/" }, { label: data.title }]}
 >
-  <div class="container container-main">
-    <div class="project-meta">
-      <span class="badge badge-published"
-        >{statusLabels[data.projectStatus] || data.projectStatus}</span
-      >
-      <EvidenceBadge level={data.evidenceLevel} />
-      <span class="text-sm muted-text">{data.period}</span>
-    </div>
-    <h1>{data.title}</h1>
-    <p class="text-lg muted-text">{data.description}</p>
-    <div class="project-details">
-      <div><div class="text-sm muted-text">Роль</div><div><strong>{data.role}</strong></div></div>
-      <div>
-        <div class="text-sm muted-text">Период</div><div><strong>{data.period}</strong></div>
-      </div>
-      <div>
-        <div class="text-sm muted-text">Статус</div><div>
-          <strong>{statusLabels[data.projectStatus] || data.projectStatus}</strong>
-        </div>
-      </div>
-    </div>
-    <h2>Результат</h2>
-    <p>{data.result}</p>
-    {
-      data.limitations && (
-        <>
-          <>
-            <h2>Ограничения</h2>
-            <p>
-              <em>{data.limitations}</em>
-            </p>
-          </>
-        </>
-      )
-    }
-    <hr />
-    <ButtonLink href={buildUrl("/collaboration/")} variant="primary"
-      >Обсудить похожую задачу</ButtonLink
-    >
-  </div>
-</BaseLayout>
+  <ProjectCaseHeroV2 data={data} />
+  {
+    isIzoAsa ? (
+      <>
+        <CaseContextV2 description={data.description} />
+        <CaseProblemV2 />
+        <CaseArchitectureV2 />
+        <CaseModulesV2 />
+        <CaseRoleV2
+          role={data.role}
+          details="В публичном описании зафиксированы архитектурный замысел и разработка ядра. Полный состав команды и объём реализованных модулей требуют отдельного подтверждения."
+        />
+        <CaseResultV2 result={data.result} />
+        {data.limitations && <CaseLimitationsV2 limitations={data.limitations} />}
+      </>
+    ) : (
+      <GenericProjectBodyV2
+        description={data.description}
+        role={data.role}
+        result={data.result}
+        limitations={data.limitations}
+      />
+    )
+  }
+  <CaseCtaV2 />
+</BaseLayoutV2>

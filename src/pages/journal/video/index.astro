@@ -1,18 +1,46 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import { buildUrl } from "@config/site";
+import "../../../styles/v2-utility.css";
 ---
 
-<BaseLayout
+<BaseLayoutV2
   title="Видео — Александр Аликин"
-  description="Видеоматериалы: выступления, демонстрации проектов, интервью и записи лекций."
+  description="Публичные видеоматериалы и правила их редакционной публикации."
   currentPath="/journal/"
-  breadcrumbs={[{ label: "Журнал", href: "/journal/" }, { label: "Видео" }]}
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Видео</h1>
-      <p class="description">Выступления, демонстрации проектов, интервью и записи лекций.</p>
-      <p>Видеоматериалы будут опубликованы после утверждения.</p>
+  <section class="v2-section">
+    <div class="v2-container v2-utility-hero">
+      <div class="v2-utility-lead">
+        <p class="v2-accent-label">Журнал · Видео</p>
+        <h1 class="v2-page-title">Видео публикуется вместе с контекстом</h1>
+        <p>
+          Выступление, демонстрация или интервью полезны только тогда, когда указаны тема, дата,
+          площадка и границы того, что материал действительно подтверждает.
+        </p>
+      </div>
+      <div class="v2-utility-note">
+        <p>
+          В текущей публичной коллекции нет утверждённых видеоматериалов. Страница остаётся честным
+          пустым разделом, а не имитацией наполнения.
+        </p>
+      </div>
     </div>
-  </div>
-</BaseLayout>
+  </section>
+
+  <section class="v2-section v2-section-surface">
+    <div class="v2-container">
+      <p class="v2-empty-note">
+        После утверждения здесь появятся записи выступлений, демонстрации проектов и интервью с
+        точными подписями и источниками.
+      </p>
+    </div>
+  </section>
+
+  <section class="v2-section">
+    <div class="v2-container v2-entry-footer">
+      <a href={buildUrl("/journal/")} class="v2-btn v2-btn-outline">← Вернуться в журнал</a>
+      <a href={buildUrl("/press/")} class="v2-btn v2-btn-accent">Материалы для СМИ</a>
+    </div>
+  </section>
+</BaseLayoutV2>

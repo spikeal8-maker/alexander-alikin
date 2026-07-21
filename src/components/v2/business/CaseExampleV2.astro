@@ -1,0 +1,140 @@
+---
+import { buildUrl } from "@config/site";
+---
+
+<section class="v2-section">
+  <div class="v2-container">
+    <p class="v2-section-kicker">Собственный продукт как открытая практика</p>
+    <h2 class="v2-section-title">Пример: ИЗО АСА</h2>
+    <div class="v2-ce-grid">
+      <div class="v2-ce-media">
+        <img
+          src={buildUrl("/images/alikin/visualized/robotics-lab.webp")}
+          alt="Иллюстрация проекта ИЗО АСА"
+          width="640"
+          height="480"
+          loading="lazy"
+          class="v2-img-frame"
+        />
+      </div>
+      <div class="v2-ce-body">
+        <h3>ИЗО АСА</h3>
+        <p class="v2-ce-desc">
+          Образовательная платформа для виртуальных лабораторий, управления группами и учебных
+          проектов. Проект используется на сайте как пример архитектурной работы, а не как
+          доказанный клиентский результат.
+        </p>
+        <dl class="v2-ce-meta">
+          <div class="v2-ce-meta-item">
+            <dt>Заявленная роль</dt>
+            <dd>Автор архитектуры и разработчик</dd>
+          </div>
+          <div class="v2-ce-meta-item">
+            <dt>Статус</dt>
+            <dd>Активная разработка</dd>
+          </div>
+        </dl>
+        <div class="v2-ce-done">
+          <h4>Что можно утверждать сейчас</h4>
+          <p>
+            Сформулирована архитектурная логика ядра и модульного развития. Демонстрационная версия
+            не заявляется как публично доступный зрелый продукт.
+          </p>
+        </div>
+        <div class="v2-ce-scope">
+          <h4>Что пока не утверждается</h4>
+          <p>
+            Масштаб внедрения, число дисциплин, количество пользователей и результат внешнего
+            пилота.
+          </p>
+        </div>
+        <a href={buildUrl("/projects/izo-asa/")} class="v2-btn v2-btn-outline">
+          Смотреть разбор проекта
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-section-kicker {
+    margin: 0 0 var(--space-2);
+    color: var(--color-accent-text);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-bold);
+  }
+  .v2-ce-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-10);
+    align-items: start;
+  }
+  .v2-ce-media,
+  .v2-ce-body {
+    min-width: 0;
+  }
+  .v2-ce-media img {
+    max-height: 360px;
+    object-position: center 30%;
+  }
+  .v2-ce-body h3 {
+    font-size: var(--text-2xl);
+    color: var(--color-white);
+    margin: 0 0 var(--space-4);
+  }
+  .v2-ce-desc,
+  .v2-ce-done p,
+  .v2-ce-scope p {
+    font-size: var(--text-base);
+    color: rgba(255, 255, 255, 0.72);
+    line-height: var(--leading-normal);
+  }
+  .v2-ce-desc {
+    margin: 0 0 var(--space-6);
+  }
+  .v2-ce-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+    margin-bottom: var(--space-6);
+  }
+  .v2-ce-meta dt,
+  .v2-ce-done h4,
+  .v2-ce-scope h4 {
+    font-size: var(--text-xs);
+    color: var(--color-accent-text);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .v2-ce-meta dd {
+    font-size: var(--text-base);
+    color: var(--color-white);
+    margin: var(--space-1) 0 0;
+  }
+  .v2-ce-done {
+    margin-bottom: var(--space-5);
+  }
+  .v2-ce-done h4,
+  .v2-ce-scope h4 {
+    margin: 0 0 var(--space-2);
+  }
+  .v2-ce-done p,
+  .v2-ce-scope p {
+    margin: 0;
+  }
+  .v2-ce-scope {
+    margin-bottom: var(--space-6);
+    padding: var(--space-4);
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-lg);
+  }
+  @media (max-width: 768px) {
+    .v2-ce-grid {
+      grid-template-columns: 1fr;
+    }
+    .v2-ce-media img {
+      max-height: 280px;
+    }
+  }
+</style>

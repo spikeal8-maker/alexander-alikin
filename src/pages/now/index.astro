@@ -1,62 +1,66 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
 import { buildUrl } from "@config/site";
+import "../../styles/v2-utility.css";
+
+const focusItems = [
+  {
+    title: "ИЗО АСА",
+    text: "Активная разработка архитектуры образовательной платформы для виртуальных лабораторий, групп и учебных проектов.",
+  },
+  {
+    title: "Редакционная платформа",
+    text: "Сайт, журнал и реестр источников приводятся к единой системе, где факт отделён от авторской интерпретации.",
+  },
+  {
+    title: "Инженерное образование",
+    text: "Развиваются проектные форматы, в которых участник создаёт, проверяет и объясняет работающий результат.",
+  },
+];
 ---
 
-<BaseLayout
+<BaseLayoutV2
   title="Сейчас — Александр Аликин"
-  description="Текущая деятельность и фокус."
+  description="Публично подтверждённые текущие направления работы."
   currentPath="/now/"
-  breadcrumbs={[{ label: "Сейчас" }]}
 >
-  <div class="container container-main">
-    <h1>Сейчас</h1>
-    <p class="text-sm muted-text">Обновлено: июль 2026</p>
-    <div class="now-list">
-      <div class="now-item">
-        <h3>Разрабатываю ИЗО АСА</h3><p>
-          Образовательная платформа для виртуальных лабораторий и управления классами.
+  <section class="v2-section">
+    <div class="v2-container v2-utility-hero">
+      <div class="v2-utility-lead">
+        <p class="v2-accent-label">Сейчас</p>
+        <h1 class="v2-page-title">Текущий рабочий фокус</h1>
+        <p>
+          Здесь фиксируются только направления, которые подтверждены опубликованными проектами и
+          текущим состоянием репозитория. Страница не используется как поток случайных обновлений.
         </p>
       </div>
-      <div class="now-item">
-        <h3>Исследую автоматизацию образовательных процессов</h3><p>
-          Проектирую системы на базе ИИ и n8n.
-        </p>
-      </div>
-      <div class="now-item">
-        <h3>Веду проекты по информатике и робототехнике</h3><p>
-          Проектная деятельность, соревнования, методика.
-        </p>
-      </div>
-      <div class="now-item">
-        <h3>Собираю публичную базу знаний</h3><p>
-          Формирую персональную цифровую платформу как канонический источник.
+      <div class="v2-utility-note">
+        <p>
+          Обновлено: июль 2026. Точные внешние результаты добавляются только вместе с источником.
         </p>
       </div>
     </div>
-    <p class="mt-8"><a href={buildUrl("/projects/")}>Посмотреть проекты</a></p>
-  </div>
-</BaseLayout>
+  </section>
 
-<style>
-  .now-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    margin-top: var(--space-6);
-  }
-  .now-item {
-    padding: var(--space-4);
-    background: var(--color-surface);
-    border: var(--border-width) solid var(--color-divider);
-    border-radius: var(--radius-md);
-  }
-  .now-item h3 {
-    font-size: var(--text-lg);
-    margin-bottom: var(--space-1);
-  }
-  .now-item p {
-    color: var(--color-text-secondary);
-    margin: 0;
-  }
-</style>
+  <section class="v2-section v2-section-surface">
+    <div class="v2-container v2-utility-grid">
+      {
+        focusItems.map((item, index) => (
+          <article class="v2-utility-card">
+            <span class="v2-accent-label">{String(index + 1).padStart(2, "0")}</span>
+            <h2>{item.title}</h2>
+            <p>{item.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="v2-section">
+    <div class="v2-container v2-cta-block">
+      <h2>Посмотреть работу в контексте</h2>
+      <p>Статусы, роли и ограничения раскрыты на страницах проектов.</p>
+      <a href={buildUrl("/projects/")} class="v2-btn v2-btn-accent">Открыть проекты</a>
+    </div>
+  </section>
+</BaseLayoutV2>

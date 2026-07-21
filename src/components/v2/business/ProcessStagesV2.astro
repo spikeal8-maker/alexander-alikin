@@ -1,0 +1,94 @@
+<section class="v2-section v2-section-dark">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Метод работы</h2>
+    <div class="v2-process-stages">
+      <div class="v2-stage">
+        <span class="v2-stage-num">01</span>
+        <div>
+          <h3>Диагностика</h3>
+          <p>
+            Интервью, аудит процессов, карта данных. Выявление узких мест и потерь. Две–три сессии.
+          </p>
+        </div>
+      </div>
+      <div class="v2-stage">
+        <span class="v2-stage-num">02</span>
+        <div>
+          <h3>Проектирование</h3>
+          <p>
+            Архитектура решения, выбор стека, план пилота. Техническое задание с измеримыми
+            критериями.
+          </p>
+        </div>
+      </div>
+      <div class="v2-stage">
+        <span class="v2-stage-num">03</span>
+        <div>
+          <h3>Пилот</h3>
+          <p>
+            Ограниченный запуск на реальных данных. Прототип, который даёт измеримый результат, а не
+            презентацию.
+          </p>
+        </div>
+      </div>
+      <div class="v2-stage">
+        <span class="v2-stage-num">04</span>
+        <div>
+          <h3>Внедрение</h3>
+          <p>
+            Интеграция в рабочие процессы, миграция данных, обучение команды. Система без
+            героических усилий автора.
+          </p>
+        </div>
+      </div>
+      <div class="v2-stage">
+        <span class="v2-stage-num">05</span>
+        <div>
+          <h3>Сопровождение</h3>
+          <p>
+            Мониторинг, доработка по обратной связи, документация. Гарантия работоспособности на
+            горизонте 3–6 месяцев.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-process-stages {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  .v2-stage {
+    display: flex;
+    gap: var(--space-6);
+    align-items: flex-start;
+    padding: var(--space-6);
+    border: var(--border-width) solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-lg);
+  }
+  .v2-stage-num {
+    font-size: var(--text-2xl);
+    font-weight: var(--fw-bold);
+    color: var(--color-accent-text);
+    min-width: 3rem;
+    line-height: 1;
+  }
+  .v2-stage h3 {
+    font-size: var(--text-lg);
+    color: var(--color-white);
+    margin: 0 0 var(--space-2);
+  }
+  .v2-stage p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: var(--leading-normal);
+  }
+  @media (max-width: 768px) {
+    .v2-stage {
+      flex-direction: column;
+    }
+  }
+</style>

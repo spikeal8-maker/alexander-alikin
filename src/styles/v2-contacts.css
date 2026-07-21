@@ -1,0 +1,103 @@
+.v2-contact-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+  gap: var(--space-12);
+  align-items: end;
+}
+
+.v2-contact-lead {
+  max-width: 44rem;
+}
+
+.v2-contact-lead p,
+.v2-contact-note p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: var(--text-lg);
+  line-height: var(--leading-normal);
+}
+
+.v2-contact-note {
+  padding: var(--space-6);
+  border: var(--border-width) solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+}
+
+.v2-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.v2-contact-card {
+  display: flex;
+  min-width: 0;
+  min-height: 18rem;
+  flex-direction: column;
+  padding: var(--space-8);
+  color: var(--color-text);
+  text-decoration: none;
+  background: var(--color-surface-raised);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.v2-contact-card h2 {
+  margin: var(--space-4) 0 var(--space-3);
+  font-size: var(--text-2xl);
+}
+
+.v2-contact-card p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+}
+
+.v2-contact-action {
+  margin-top: auto;
+  padding-top: var(--space-8);
+  color: var(--color-primary);
+  font-weight: var(--fw-semibold);
+}
+
+.v2-contact-card:hover h2,
+.v2-contact-card:focus-visible h2 {
+  color: var(--color-primary);
+}
+
+.v2-contact-policy {
+  display: grid;
+  grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.35fr);
+  gap: var(--space-12);
+  align-items: start;
+}
+
+.v2-contact-policy ul {
+  margin: 0;
+  padding-left: var(--space-5);
+  color: rgba(255, 255, 255, 0.68);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+@media (max-width: 900px) {
+  .v2-contact-hero,
+  .v2-contact-policy {
+    grid-template-columns: 1fr;
+  }
+
+  .v2-contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .v2-contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .v2-contact-card {
+    min-height: 0;
+  }
+}

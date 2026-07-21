@@ -1,0 +1,48 @@
+<section class="v2-section">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Как я работаю</h2>
+    <div class="v2-method-grid">
+      <div class="v2-method-step">
+        <span class="v2-method-num">01</span>
+        <h3>Разобрать</h3>
+        <p>Диагностика процесса, ограничений и потерь. Карта данных и зон автоматизации.</p>
+      </div>
+      <div class="v2-method-step">
+        <span class="v2-method-num">02</span>
+        <h3>Проверить</h3>
+        <p>Ограниченный пилот с измеримым результатом. Работающий прототип, а не презентация.</p>
+      </div>
+      <div class="v2-method-step">
+        <span class="v2-method-num">03</span>
+        <h3>Передать</h3>
+        <p>
+          Внедрение, обучение команды, документация. Система работает без героических усилий автора.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+  .v2-method-step {
+    color: var(--color-white);
+  }
+  .v2-method-step h3 {
+    font-size: var(--text-xl);
+    margin: var(--space-2) 0 var(--space-3);
+  }
+  .v2-method-step p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+    .v2-method-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

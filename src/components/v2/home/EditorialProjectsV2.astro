@@ -1,0 +1,152 @@
+---
+import { buildUrl } from "@config/site";
+
+const projects = [
+  {
+    slug: "izo-asa",
+    eyebrow: "Продукт в разработке",
+    title: "ИЗО АСА",
+    description:
+      "Образовательная платформа для виртуальных лабораторий, управления группами и учебных проектов.",
+    result:
+      "Сейчас проект описывается как активная разработка: сформирована архитектура ядра и модульная логика, публичная версия ещё не заявлена.",
+    role: "Автор архитектуры и разработчик",
+    media: "/images/alikin/visualized/robotics-lab.webp",
+  },
+  {
+    slug: "engineering-education",
+    eyebrow: "Практика и методика",
+    title: "Инженерное образование",
+    description: "Программы и проектные форматы в области информатики, технологии и робототехники.",
+    result:
+      "Основа подхода — действие, ошибка, объяснение, доработка и защита результата. Количественные показатели вынесены за пределы публичной версии до проверки.",
+    role: "Педагог и методист",
+    media: "/images/alikin/visualized/education-presentation.webp",
+  },
+];
+---
+
+<section class="v2-section v2-section-alt">
+  <div class="v2-container">
+    <div class="v2-section-heading-row">
+      <div>
+        <p class="v2-section-kicker">Текущая практика</p>
+        <h2 class="v2-section-title">Проекты</h2>
+      </div>
+      <a href={buildUrl("/projects/")} class="v2-all-projects">Все проекты &rarr;</a>
+    </div>
+    <div class="v2-editorial-grid">
+      {
+        projects.map((p) => (
+          <a href={buildUrl(`/projects/${p.slug}/`)} class="v2-editorial-card">
+            <div class="v2-editorial-media">
+              <img
+                src={buildUrl(p.media)}
+                alt=""
+                width="800"
+                height="450"
+                loading="lazy"
+                class="v2-editorial-img"
+              />
+            </div>
+            <div class="v2-editorial-body">
+              <span class="v2-accent-label">{p.eyebrow}</span>
+              <h3>{p.title}</h3>
+              <p class="v2-editorial-desc">{p.description}</p>
+              <div class="v2-editorial-result">{p.result}</div>
+              <div class="v2-editorial-meta">{p.role}</div>
+              <span class="v2-editorial-link">Смотреть кейс &rarr;</span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-section-heading-row {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-6);
+  }
+  .v2-section-kicker {
+    margin: 0 0 var(--space-2);
+    color: var(--color-accent-text);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-bold);
+  }
+  .v2-all-projects {
+    color: var(--color-accent-text);
+    text-decoration: none;
+    font-weight: var(--fw-semibold);
+  }
+  .v2-editorial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-10);
+    margin-top: var(--space-12);
+  }
+  .v2-editorial-card {
+    text-decoration: none;
+    color: var(--color-white);
+    display: block;
+  }
+  .v2-editorial-media {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-6);
+  }
+  .v2-editorial-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--motion-standard);
+  }
+  .v2-editorial-card:hover .v2-editorial-img {
+    transform: scale(1.03);
+  }
+  .v2-editorial-body h3 {
+    font-size: var(--text-2xl);
+    margin: var(--space-2) 0 var(--space-3);
+  }
+  .v2-editorial-desc,
+  .v2-editorial-result {
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+  }
+  .v2-editorial-desc {
+    color: rgba(255, 255, 255, 0.76);
+    margin: 0 0 var(--space-4);
+  }
+  .v2-editorial-result {
+    color: rgba(255, 255, 255, 0.58);
+    margin: 0 0 var(--space-4);
+    padding-left: var(--space-4);
+    border-left: var(--border-width-thick) solid var(--color-accent-text);
+  }
+  .v2-editorial-meta {
+    font-size: var(--text-xs);
+    color: var(--color-accent-text);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-3);
+  }
+  .v2-editorial-link {
+    color: var(--color-accent-text);
+    font-weight: var(--fw-semibold);
+  }
+  @media (max-width: 768px) {
+    .v2-section-heading-row {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .v2-editorial-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-12);
+    }
+  }
+</style>

@@ -1,37 +1,21 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import { buildUrl } from "@config/site";
+import JournalListingV2 from "@components/v2/journal/JournalListingV2.astro";
 
-const stories = await getCollection("stories", (s) => s.data.status === "published");
+const stories = (await getCollection("stories", (entry) => entry.data.status === "published"))
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .map((entry) => ({
+    title: entry.data.title,
+    description: entry.data.description,
+    href: `/journal/stories/${entry.data.slug}/`,
+    kind: "История",
+    date: entry.data.publishedAt.toLocaleDateString("ru"),
+  }));
 ---
 
-<BaseLayout
-  title="Истории — Александр Аликин"
-  description="Человеческие истории о выборе, ошибках, изменениях подхода и том, чему научили реальные проекты."
-  currentPath="/journal/"
-  breadcrumbs={[{ label: "Журнал", href: "/journal/" }, { label: "Истории" }]}
->
-  <div class="container">
-    <div class="route-shell">
-      <h1>Истории</h1>
-      <p class="description">
-        Рассказы о событиях, выборе, ошибках и том, чему научили реальные проекты.
-      </p>
-      {
-        stories.map((s) => (
-          <article style="margin-bottom:var(--space-lg);padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);">
-            <a
-              href={buildUrl(`/journal/stories/${s.data.slug}/`)}
-              style="font-weight:600;font-size:1.125rem;"
-            >
-              {s.data.title}
-            </a>
-            <p style="color:var(--color-muted);margin-top:var(--space-xs);">{s.data.description}</p>
-          </article>
-        ))
-      }
-      {stories.length === 0 && <p>Истории появятся после утверждения материалов.</p>}
-    </div>
-  </div>
-</BaseLayout>
+<JournalListingV2
+  title="Истории"
+  eyebrow="Опыт и изменение подхода"
+  description="События и наблюдения, которые изменили способ проектировать, обучать и принимать решения."
+  entries={stories}
+/>

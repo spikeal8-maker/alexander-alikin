@@ -1,0 +1,171 @@
+---
+import { site, navigation, buildUrl } from "@config/site";
+
+interface Props {
+  currentPath?: string;
+}
+const { currentPath } = Astro.props;
+---
+
+<header class="v2-header">
+  <div class="v2-header-inner">
+    <a class="v2-logo" href={buildUrl("/")}>{site.name}</a>
+
+    <nav class="v2-desktop-nav" aria-label="Основная навигация">
+      {
+        navigation.primary.map((item) => (
+          <a
+            href={buildUrl(item.href)}
+            class:list={["v2-nav-link", { "v2-nav-cta": "cta" in item && item.cta }]}
+            aria-current={currentPath === item.href ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <details class="v2-mobile-nav">
+      <summary class="v2-nav-toggle" aria-label="Открыть меню">Меню</summary>
+      <nav class="v2-mobile-panel" aria-label="Мобильная навигация">
+        {
+          navigation.primary.map((item) => (
+            <a
+              href={buildUrl(item.href)}
+              class:list={["v2-nav-link", { "v2-nav-cta": "cta" in item && item.cta }]}
+              aria-current={currentPath === item.href ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </details>
+  </div>
+</header>
+
+<script>
+  const mobileNav = document.querySelector(".v2-mobile-nav");
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && mobileNav instanceof HTMLDetailsElement) {
+      mobileNav.open = false;
+      mobileNav.querySelector("summary")?.focus();
+    }
+  });
+</script>
+
+<style>
+  .v2-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    background: rgba(26, 31, 37, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: var(--border-width) solid rgba(255, 255, 255, 0.08);
+  }
+  .v2-header-inner {
+    position: relative;
+    max-width: var(--container-wide);
+    min-height: 4.5rem;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+  }
+  .v2-logo {
+    flex-shrink: 0;
+    font-size: var(--text-xl);
+    font-weight: var(--fw-bold);
+    color: var(--color-white);
+    text-decoration: none;
+    letter-spacing: var(--tracking-tight);
+  }
+  .v2-desktop-nav {
+    min-width: 0;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-5);
+  }
+  .v2-nav-link {
+    color: rgba(255, 255, 255, 0.72);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: var(--fw-medium);
+  }
+  .v2-nav-link:hover,
+  .v2-nav-link:focus-visible,
+  .v2-nav-link[aria-current="page"] {
+    color: var(--color-white);
+  }
+  .v2-nav-cta {
+    background: var(--color-accent);
+    color: var(--color-white) !important;
+    padding: var(--space-2) var(--space-5);
+    border-radius: var(--radius-md);
+  }
+  .v2-mobile-nav {
+    display: none;
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+  .v2-mobile-nav:not([open]) .v2-mobile-panel {
+    display: none;
+  }
+  .v2-nav-toggle {
+    border: var(--border-width) solid rgba(255, 255, 255, 0.24);
+    color: var(--color-white);
+    padding: var(--space-2) var(--space-3);
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    list-style: none;
+    font-size: var(--text-sm);
+  }
+  .v2-nav-toggle::-webkit-details-marker {
+    display: none;
+  }
+  .v2-mobile-panel {
+    position: absolute;
+    top: calc(100% + var(--space-2));
+    left: var(--gutter);
+    right: var(--gutter);
+    flex-direction: column;
+    padding: var(--space-4);
+    background: var(--color-bg-alt);
+    border: var(--border-width) solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.24);
+  }
+  .v2-mobile-nav[open] .v2-mobile-panel {
+    display: flex;
+  }
+  .v2-mobile-panel .v2-nav-link {
+    padding: var(--space-3);
+  }
+  @media (max-width: 900px) {
+    .v2-header-inner {
+      min-height: 4rem;
+      flex-wrap: nowrap;
+      gap: var(--space-2);
+    }
+    .v2-logo {
+      min-width: 0;
+      max-width: calc(100% - 4.75rem);
+      font-size: var(--text-base);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .v2-desktop-nav {
+      display: none;
+    }
+    .v2-mobile-nav {
+      display: block;
+    }
+  }
+</style>

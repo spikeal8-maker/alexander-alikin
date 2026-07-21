@@ -1,59 +1,22 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import HomeHero from "@components/home/HomeHero.astro";
-import IntentRouter from "@components/home/IntentRouter.astro";
-import NowSection from "@components/home/NowSection.astro";
-import FeaturedProjects from "@components/home/FeaturedProjects.astro";
-import MethodSection from "@components/home/MethodSection.astro";
-import SectionHeader from "@components/ui/SectionHeader.astro";
-import Timeline from "@components/ui/Timeline.astro";
-import CTASection from "@components/ui/CTASection.astro";
-import { buildUrl } from "@config/site";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import HomeHeroV2 from "@components/v2/home/HomeHeroV2.astro";
+import EditorialProjectsV2 from "@components/v2/home/EditorialProjectsV2.astro";
+import DirectionLanesV2 from "@components/v2/home/DirectionLanesV2.astro";
+import SystemGraphicV2 from "@components/v2/home/SystemGraphicV2.astro";
+import DocumentaryStoryV2 from "@components/v2/home/DocumentaryStoryV2.astro";
+import EnhancedCtaV2 from "@components/v2/home/EnhancedCtaV2.astro";
 ---
 
-<BaseLayout
-  title="Александр Аликин — проекты, системы и мысли"
-  description="Предприниматель-практик и инженер-педагог. Проектирую и запускаю технологические, ИИ- и образовательные системы."
+<BaseLayoutV2
+  title="Александр Аликин — инженерные, ИИ- и образовательные системы"
+  description="Предприниматель-практик и инженер-педагог. Разбираю сложные задачи, собираю работающие конструкции и передаю их людям как понятные системы."
   currentPath="/"
 >
-  <HomeHero />
-  <div class="container"><IntentRouter /></div>
-  <div class="container mt-12"><NowSection /></div>
-  <div class="container mt-12"><FeaturedProjects /></div>
-  <div class="container mt-12 container-main"><MethodSection /></div>
-  <div class="container mt-12 container-main">
-    <SectionHeader label="Путь" title="Ключевые этапы" />
-    <Timeline
-      items={[
-        {
-          date: "2010-е",
-          title: "Инженерия и техника",
-          description: "Первые проекты, электроника, понимание систем.",
-        },
-        {
-          date: "2015+",
-          title: "Педагогика и робототехника",
-          description: "Обучение, соревнования, методика.",
-        },
-        {
-          date: "2018+",
-          title: "Предпринимательство",
-          description: "Лига роботов, Laser Love, бизнес-проекты.",
-        },
-        {
-          date: "2024+",
-          title: "ИИ и автоматизация",
-          description: "Системы знаний, n8n, ИИ-ассистенты.",
-        },
-      ]}
-    />
-  </div>
-  <div class="container">
-    <CTASection
-      title="Готовы обсудить задачу?"
-      description="Если у вас есть процесс, который требует системы, или программа, которая должна давать измеримый результат — напишите."
-      href={buildUrl("/collaboration/")}
-      buttonLabel="Обсудить задачу"
-    />
-  </div>
-</BaseLayout>
+  <HomeHeroV2 />
+  <EditorialProjectsV2 />
+  <DirectionLanesV2 />
+  <SystemGraphicV2 />
+  <DocumentaryStoryV2 />
+  <EnhancedCtaV2 />
+</BaseLayoutV2>

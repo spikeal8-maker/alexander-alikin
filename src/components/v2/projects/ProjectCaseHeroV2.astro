@@ -1,0 +1,92 @@
+---
+import { buildUrl } from "@config/site";
+import { PROJECT_MEDIA, DEFAULT_MEDIA } from "./mediaMap";
+
+export interface Props {
+  data: {
+    title: string;
+    description: string;
+    role: string;
+    period: string;
+    slug: string;
+  };
+}
+
+const { data } = Astro.props;
+const imgSrc = PROJECT_MEDIA[data.slug]?.hero ?? DEFAULT_MEDIA.hero;
+---
+
+<section class="v2-section">
+  <div class="v2-container">
+    <span class="v2-accent-label v2-case-label">Разбор проекта</span>
+    <div class="v2-case-hero">
+      <div>
+        <h1 class="v2-page-title">{data.title}</h1>
+        <p class="v2-page-lead">{data.description}</p>
+        <dl class="v2-case-hero-meta">
+          <div class="v2-case-hero-meta-item">
+            <dt>Заявленная роль</dt>
+            <dd>{data.role}</dd>
+          </div>
+          <div class="v2-case-hero-meta-item">
+            <dt>Текущий этап</dt>
+            <dd>{data.period}</dd>
+          </div>
+        </dl>
+      </div>
+      <img
+        src={buildUrl(imgSrc)}
+        alt={`Иллюстрация проекта «${data.title}»`}
+        width="800"
+        height="600"
+        class="v2-case-hero-img"
+        loading="eager"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-case-label {
+    display: block;
+    margin-bottom: var(--space-4);
+  }
+  .v2-case-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+    padding: var(--space-20) 0 var(--space-24);
+  }
+  .v2-case-hero-img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    max-height: 480px;
+  }
+  .v2-case-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+    padding: 0;
+  }
+  .v2-case-hero-meta-item dt {
+    font-size: var(--text-xs);
+    color: var(--color-accent-text);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    margin-bottom: var(--space-1);
+  }
+  .v2-case-hero-meta-item dd {
+    font-size: var(--text-base);
+    color: var(--color-white);
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+    .v2-case-hero {
+      grid-template-columns: 1fr;
+      padding: var(--space-12) 0 var(--space-16);
+    }
+  }
+</style>

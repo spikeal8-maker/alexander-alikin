@@ -1,0 +1,122 @@
+<section class="v2-section v2-section-surface">
+  <div class="v2-container">
+    <p class="v2-section-kicker">Сигналы для проверки</p>
+    <h2 class="v2-section-title">Когда имеет смысл разбирать систему</h2>
+    <div class="v2-pd-grid">
+      <div class="v2-pd-signals">
+        <div class="v2-pd-signal">
+          <span class="v2-pd-num">01</span>
+          <div class="v2-pd-signal-body">
+            <h3>Процесс зависит от памяти людей</h3>
+            <p>Статусы, договорённости и правила перехода между этапами нигде не зафиксированы.</p>
+          </div>
+        </div>
+        <div class="v2-pd-signal">
+          <span class="v2-pd-num">02</span>
+          <div class="v2-pd-signal-body">
+            <h3>Данные не образуют единую картину</h3>
+            <p>
+              Информация распределена между таблицами, сервисами и перепиской, а решения трудно
+              проверить.
+            </p>
+          </div>
+        </div>
+        <div class="v2-pd-signal">
+          <span class="v2-pd-num">03</span>
+          <div class="v2-pd-signal-body">
+            <h3>Рост усиливает ручную нагрузку</h3>
+            <p>
+              Новые задачи требуют всё больше координации, но сама конструкция процесса не меняется.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="v2-pd-diag">
+        <h3>Что нужно выяснить до автоматизации</h3>
+        <ul>
+          <li>Как процесс работает сейчас, а не как описан в регламенте</li>
+          <li>Где возникают задержки, повторная работа и потеря контекста</li>
+          <li>Какие данные являются источником правды</li>
+          <li>Какой результат первого этапа можно проверить</li>
+          <li>Кто внутри команды отвечает за внедрение</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-section-kicker {
+    margin: 0 0 var(--space-2);
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-bold);
+  }
+  .v2-pd-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+  }
+  .v2-pd-grid > * {
+    min-width: 0;
+  }
+  .v2-pd-signal {
+    display: flex;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+    align-items: flex-start;
+  }
+  .v2-pd-signal-body {
+    min-width: 0;
+  }
+  .v2-pd-num {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-bold);
+  }
+  .v2-pd-signal h3,
+  .v2-pd-diag h3 {
+    color: var(--color-text);
+    margin: 0 0 var(--space-2);
+    font-weight: var(--fw-bold);
+  }
+  .v2-pd-signal h3 {
+    font-size: var(--text-lg);
+  }
+  .v2-pd-signal p,
+  .v2-pd-diag li {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-normal);
+  }
+  .v2-pd-signal p {
+    margin: 0;
+  }
+  .v2-pd-diag ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .v2-pd-diag li {
+    padding: var(--space-3) 0;
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+  .v2-pd-diag li::before {
+    content: "—\00a0";
+    color: var(--color-primary);
+    font-weight: var(--fw-bold);
+  }
+  @media (max-width: 768px) {
+    .v2-pd-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

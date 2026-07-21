@@ -1,0 +1,121 @@
+---
+export interface Props {
+  data: {
+    description: string;
+    role: string;
+    result: string;
+    projectStatus: "active" | "completed" | "paused" | "archived";
+    limitations?: string;
+  };
+}
+
+const { data } = Astro.props;
+
+const STATUS_LABEL: Record<string, string> = {
+  active: "Активный проект",
+  completed: "Завершён",
+  paused: "Приостановлен",
+  archived: "Архивный проект",
+};
+
+const statusLabel = STATUS_LABEL[data.projectStatus] ?? data.projectStatus;
+---
+
+<section class="v2-section v2-section-surface">
+  <div class="v2-container">
+    <div class="v2-context-block">
+      <h2>Контекст</h2>
+      <p>{data.description}</p>
+    </div>
+    <hr class="v2-divider" />
+    <div class="v2-context-block">
+      <h2>Архитектура решения</h2>
+      <p>{data.result}</p>
+    </div>
+  </div>
+</section>
+
+<section class="v2-section">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Роль и результат</h2>
+    <dl class="v2-role-meta">
+      <div class="v2-role-item">
+        <dt>Роль</dt>
+        <dd>{data.role}</dd>
+      </div>
+      <div class="v2-role-item">
+        <dt>Результат</dt>
+        <dd>{data.result}</dd>
+      </div>
+      <div class="v2-role-item">
+        <dt>Статус</dt>
+        <dd>{statusLabel}</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+{
+  data.limitations && (
+    <section class="v2-section v2-section-alt">
+      <div class="v2-container">
+        <h2 class="v2-section-title">Ограничения</h2>
+        <div class="v2-limits-box">
+          <strong>Важно:</strong> {data.limitations}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .v2-context-block {
+    max-width: var(--container-reading);
+  }
+  .v2-context-block h2 {
+    font-size: var(--text-3xl);
+    color: var(--color-text);
+    margin: 0 0 var(--space-4);
+  }
+  .v2-context-block p {
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    font-size: var(--text-lg);
+    margin: 0;
+  }
+  .v2-role-meta {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+    padding: 0;
+  }
+  .v2-role-item dt {
+    font-size: var(--text-xs);
+    color: var(--color-accent-text);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    margin-bottom: var(--space-1);
+  }
+  .v2-role-item dd {
+    font-size: var(--text-base);
+    color: var(--color-white);
+    margin: 0;
+  }
+  .v2-limits-box {
+    max-width: var(--container-reading);
+    padding: var(--space-6);
+    border: var(--border-width) solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+  .v2-limits-box strong {
+    color: var(--color-accent-warm);
+  }
+  @media (max-width: 768px) {
+    .v2-role-meta {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

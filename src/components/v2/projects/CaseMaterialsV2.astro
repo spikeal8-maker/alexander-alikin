@@ -1,0 +1,51 @@
+---
+import { buildUrl } from "@config/site";
+---
+
+<section class="v2-section v2-section-surface">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Материалы</h2>
+    <div class="case-materials-grid">
+      <div>
+        <img
+          src={buildUrl("/images/alikin/documentary/08-robotics-archive-4x3.webp")}
+          alt="Занятия по робототехнике"
+          width="800"
+          height="600"
+          loading="eager"
+          class="v2-img-frame"
+        />
+        <p class="case-materials-caption">Занятия по робототехнике</p>
+      </div>
+      <div>
+        <img
+          src={buildUrl("/images/alikin/documentary/07-education-robotics-square.webp")}
+          alt="Образовательная робототехника"
+          width="800"
+          height="800"
+          loading="eager"
+          class="v2-img-frame"
+        />
+        <p class="case-materials-caption">Образовательная робототехника</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .case-materials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+  .case-materials-caption {
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    margin-top: var(--space-2);
+  }
+  @media (max-width: 768px) {
+    .case-materials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

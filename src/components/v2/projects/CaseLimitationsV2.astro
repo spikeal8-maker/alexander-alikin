@@ -1,0 +1,31 @@
+---
+export interface Props {
+  limitations: string;
+}
+
+const { limitations } = Astro.props;
+---
+
+<section class="v2-section v2-section-alt">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Ограничения</h2>
+    <div class="case-limits-box">
+      <p>{limitations}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .case-limits-box {
+    max-width: var(--container-reading);
+    padding: var(--space-8);
+    border: var(--border-width) solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+  }
+  .case-limits-box p {
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,372 @@
+[
+  {
+    "paragraph_id": "HOME-001",
+    "page": "/",
+    "heading": "Предлагаемое позиционирование",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "PROFILE-main-001"],
+    "publishable": false,
+    "owner_approval": "pending",
+    "editorial_notes": "Основная рыночная формулировка; не утверждает наличие большого портфеля клиентских ИИ-кейсов."
+  },
+  {
+    "paragraph_id": "HOME-002",
+    "page": "/",
+    "heading": "Бизнесу",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Описание выбранной аудитории и точки входа, а не завершённого кейса."
+  },
+  {
+    "paragraph_id": "HOME-003",
+    "page": "/",
+    "heading": "Образованию",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "ARTICLE-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Разделяет предложение организациям и участникам."
+  },
+  {
+    "paragraph_id": "HOME-004",
+    "page": "/",
+    "heading": "Один способ работы",
+    "content_role": "editorial_bridge",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "STORY-002"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Связывает роли в одну биографическую систему; точные даты не добавляет."
+  },
+  {
+    "paragraph_id": "HOME-005",
+    "page": "/",
+    "heading": "ИЗО АСА",
+    "content_role": "owner_statement",
+    "source_ids": ["PROJ-IZO-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Статус — активная разработка; нельзя называть зрелой платформой."
+  },
+  {
+    "paragraph_id": "HOME-006",
+    "page": "/",
+    "heading": "Инженерное образование",
+    "content_role": "owner_statement",
+    "source_ids": ["PROJ-EDU-001", "ARTICLE-001", "STORY-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Метод и направления допустимы; количественные результаты исключены."
+  },
+  {
+    "paragraph_id": "HOME-007",
+    "page": "/",
+    "heading": "Честные ограничения",
+    "content_role": "editorial_bridge",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Фиксирует границы текущего позиционирования."
+  },
+  {
+    "paragraph_id": "BUS-001",
+    "page": "/business/",
+    "heading": "Не начинать с инструмента",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "THOUGHT-002"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Сценарии аудитории не называются личной практикой Александра."
+  },
+  {
+    "paragraph_id": "BUS-002",
+    "page": "/business/",
+    "heading": "Сервисная компания",
+    "content_role": "market_observation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Типовая рыночная ситуация, не клиентский кейс."
+  },
+  {
+    "paragraph_id": "BUS-003",
+    "page": "/business/",
+    "heading": "Образовательный центр",
+    "content_role": "market_observation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Типовая ситуация аудитории."
+  },
+  {
+    "paragraph_id": "BUS-004",
+    "page": "/business/",
+    "heading": "Экспертная команда",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "THOUGHT-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Экспериментальная линия управления знаниями."
+  },
+  {
+    "paragraph_id": "BUS-005",
+    "page": "/business/",
+    "heading": "Продуктовая лестница",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Сроки и цены исключены до подтверждения."
+  },
+  {
+    "paragraph_id": "BUS-006",
+    "page": "/business/",
+    "heading": "Границы ответственности",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Инженерная культура безопасности, не юридическая гарантия."
+  },
+  {
+    "paragraph_id": "BUS-007",
+    "page": "/business/",
+    "heading": "Доказательства сейчас",
+    "content_role": "editorial_bridge",
+    "source_ids": ["PROJ-IZO-001", "PROJ-EDU-001", "STORY-002", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Прямо признаёт отсутствие завершённого верифицированного B2B-кейса."
+  },
+  {
+    "paragraph_id": "EDU-001",
+    "page": "/education/",
+    "heading": "Два разных предложения",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Разделяет B2B и участника программы."
+  },
+  {
+    "paragraph_id": "EDU-002",
+    "page": "/education/",
+    "heading": "Для организаций",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": false,
+    "owner_approval": "pending",
+    "editorial_notes": "Форматы требуют подтверждения как фактически предлагаемые сейчас."
+  },
+  {
+    "paragraph_id": "EDU-003",
+    "page": "/education/",
+    "heading": "Педагогический метод",
+    "content_role": "owner_statement",
+    "source_ids": ["STORY-001", "STORY-002", "ARTICLE-001", "THOUGHT-004"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Авторская модель, не независимо валидированная педагогическая теория."
+  },
+  {
+    "paragraph_id": "EDU-004",
+    "page": "/education/",
+    "heading": "Результат для организации",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Артефакты формата, без обещания количественного эффекта."
+  },
+  {
+    "paragraph_id": "EDU-005",
+    "page": "/education/",
+    "heading": "Роль педагога и ИИ",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "THOUGHT-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Человек сохраняет критическое решение."
+  },
+  {
+    "paragraph_id": "ABOUT-001",
+    "page": "/about/",
+    "heading": "Один способ действовать",
+    "content_role": "editorial_bridge",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "STORY-002", "PROFILE-main-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Связная биографическая рамка."
+  },
+  {
+    "paragraph_id": "ABOUT-002",
+    "page": "/about/",
+    "heading": "Биографическая дуга",
+    "content_role": "editorial_bridge",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": false,
+    "owner_approval": "pending",
+    "editorial_notes": "Точные годы и названия исключены до доказательств."
+  },
+  {
+    "paragraph_id": "ABOUT-003",
+    "page": "/about/",
+    "heading": "Цена роста",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": false,
+    "owner_approval": "pending",
+    "editorial_notes": "Публиковать только после решения по Лиге роботов и Laser Love."
+  },
+  {
+    "paragraph_id": "ABOUT-004",
+    "page": "/about/",
+    "heading": "Текущий фокус",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "PROJ-IZO-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Не использует громкие ИИ-титулы."
+  },
+  {
+    "paragraph_id": "PROJ-001",
+    "page": "/projects/",
+    "heading": "Правило раздела",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Различает проект, кейс, лабораторию и эксперимент."
+  },
+  {
+    "paragraph_id": "PROJ-002",
+    "page": "/projects/",
+    "heading": "ИЗО АСА",
+    "content_role": "owner_statement",
+    "source_ids": ["PROJ-IZO-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Активная разработка, не зрелый продукт."
+  },
+  {
+    "paragraph_id": "PROJ-003",
+    "page": "/projects/",
+    "heading": "Инженерное образование",
+    "content_role": "owner_statement",
+    "source_ids": ["PROJ-EDU-001", "ARTICLE-001", "STORY-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Количественные достижения исключены."
+  },
+  {
+    "paragraph_id": "PROJ-004",
+    "page": "/projects/",
+    "heading": "Второй мозг",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001", "THOUGHT-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Эксперимент, нуждается в публичной демонстрации сценария."
+  },
+  {
+    "paragraph_id": "IZO-001",
+    "page": "/projects/izo-asa/",
+    "heading": "Статус",
+    "content_role": "owner_statement",
+    "source_ids": ["PROJ-IZO-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Активная разработка."
+  },
+  {
+    "paragraph_id": "IZO-002",
+    "page": "/projects/izo-asa/",
+    "heading": "Контекст",
+    "content_role": "editorial_bridge",
+    "source_ids": ["PROJ-IZO-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Цель разработки, не универсальное рыночное доказательство."
+  },
+  {
+    "paragraph_id": "IZO-003",
+    "page": "/projects/izo-asa/",
+    "heading": "Роль Александра",
+    "content_role": "owner_statement",
+    "source_ids": ["PROJ-IZO-001"],
+    "publishable": false,
+    "owner_approval": "pending",
+    "editorial_notes": "Требует подтверждения состава команды и границ роли."
+  },
+  {
+    "paragraph_id": "IZO-004",
+    "page": "/projects/izo-asa/",
+    "heading": "Модули",
+    "content_role": "owner_statement",
+    "source_ids": ["PROJ-IZO-001"],
+    "publishable": false,
+    "owner_approval": "pending",
+    "editorial_notes": "Точный список работающих модулей требует подтверждения."
+  },
+  {
+    "paragraph_id": "IZO-005",
+    "page": "/projects/izo-asa/",
+    "heading": "Ограничения",
+    "content_role": "editorial_bridge",
+    "source_ids": ["PROJ-IZO-001", "STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Предотвращает выдачу разработки за зрелую платформу."
+  },
+  {
+    "paragraph_id": "COLLAB-001",
+    "page": "/collaboration/",
+    "heading": "Предварительная квалификация",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Основная функция первого контакта."
+  },
+  {
+    "paragraph_id": "COLLAB-002",
+    "page": "/collaboration/",
+    "heading": "Диагностика процесса",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": false,
+    "owner_approval": "pending",
+    "editorial_notes": "Коммерческие условия и состав работ требуют утверждения."
+  },
+  {
+    "paragraph_id": "COLLAB-003",
+    "page": "/collaboration/",
+    "heading": "Пилот и внедрение",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Без фиксированных сроков и гарантированных процентов."
+  },
+  {
+    "paragraph_id": "COLLAB-004",
+    "page": "/collaboration/",
+    "heading": "Что требуется от заказчика",
+    "content_role": "strategic_recommendation",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": true,
+    "owner_approval": "pending",
+    "editorial_notes": "Квалификационные условия."
+  },
+  {
+    "paragraph_id": "COLLAB-005",
+    "page": "/collaboration/",
+    "heading": "Основной канал связи",
+    "content_role": "hypothesis",
+    "source_ids": ["STRAT-V1-001", "STRAT-V2-001"],
+    "publishable": false,
+    "owner_approval": "pending",
+    "editorial_notes": "Канал связи ещё не выбран."
+  }
+]

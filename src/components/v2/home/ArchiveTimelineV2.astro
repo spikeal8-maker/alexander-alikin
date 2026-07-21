@@ -1,0 +1,142 @@
+---
+import { buildUrl } from "@config/site";
+
+const items = [
+  {
+    year: "2017–2020",
+    label: "Образовательная робототехника",
+    img: "/images/alikin/documentary/07-education-robotics-square.webp",
+    alt: "Образовательная робототехника",
+  },
+  {
+    year: "2018",
+    label: "Проектная деятельность",
+    img: "/images/alikin/documentary/08-robotics-archive-4x3.webp",
+    alt: "Проектная деятельность",
+  },
+];
+---
+
+<section class="v2-section v2-section-surface">
+  <div class="v2-container">
+    <div class="v2-timeline">
+      <div class="v2-timeline-line" aria-hidden="true"></div>
+      {
+        items.map((item) => (
+          <div class="v2-timeline-item">
+            <div class="v2-timeline-dot" aria-hidden="true" />
+            <img
+              src={buildUrl(item.img)}
+              alt={item.alt}
+              width="80"
+              height="80"
+              loading="eager"
+              class="v2-timeline-thumb"
+            />
+            <div class="v2-timeline-info">
+              <span class="v2-timeline-year">{item.year}</span>
+              <span class="v2-timeline-label">{item.label}</span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    gap: var(--space-8);
+    padding: var(--space-12) 0 var(--space-8);
+  }
+  .v2-timeline-line {
+    position: absolute;
+    top: var(--space-6);
+    left: 0;
+    right: 0;
+    height: var(--border-width);
+    background: var(--color-divider);
+  }
+  .v2-timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    max-width: 200px;
+  }
+  .v2-timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    margin-bottom: var(--space-4);
+    flex-shrink: 0;
+    border: 2px solid var(--color-surface);
+  }
+  .v2-timeline-thumb {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+    margin-bottom: var(--space-4);
+    border: var(--border-width-thick) solid var(--color-surface-raised);
+  }
+  .v2-timeline-year {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: var(--fw-bold);
+    color: var(--color-accent);
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-1);
+  }
+  .v2-timeline-label {
+    display: block;
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-normal);
+  }
+  @media (max-width: 768px) {
+    .v2-timeline {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      padding-left: var(--space-10);
+    }
+    .v2-timeline-line {
+      top: 0;
+      bottom: 0;
+      left: 14px;
+      right: auto;
+      width: var(--border-width);
+      height: auto;
+    }
+    .v2-timeline-item {
+      flex-direction: row;
+      align-items: flex-start;
+      text-align: left;
+      max-width: none;
+      gap: var(--space-4);
+      padding: var(--space-6) 0;
+      width: 100%;
+    }
+    .v2-timeline-dot {
+      position: absolute;
+      left: calc(-1 * var(--space-10) - 4px);
+      top: var(--space-6);
+      margin-bottom: 0;
+    }
+    .v2-timeline-thumb {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+  }
+</style>

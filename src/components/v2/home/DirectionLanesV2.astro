@@ -1,0 +1,114 @@
+---
+import { buildUrl } from "@config/site";
+
+const lanes = [
+  {
+    num: "01",
+    title: "Бизнесу",
+    desc: "Разбор процессов, карта данных и ограниченный пилот. Сначала выясняем, что происходит сейчас и какой результат действительно можно измерить.",
+    href: "/business/",
+  },
+  {
+    num: "02",
+    title: "Образованию",
+    desc: "Инженерные программы, лаборатории и обучение педагогов. Участник создаёт и объясняет результат, а не повторяет готовую инструкцию.",
+    href: "/education/",
+  },
+  {
+    num: "03",
+    title: "Обо мне",
+    desc: "Инженерия, педагогика и предпринимательство собраны в один метод: разобрать, собрать, проверить, объяснить и передать.",
+    href: "/about/",
+  },
+];
+---
+
+<section class="v2-section v2-section-surface">
+  <div class="v2-container">
+    <p class="v2-section-kicker">Выберите контекст</p>
+    <h2 class="v2-section-title">Направления</h2>
+    <div class="v2-lanes">
+      {
+        lanes.map((lane) => (
+          <a href={buildUrl(lane.href)} class="v2-lane">
+            <span class="v2-lane-num">{lane.num}</span>
+            <div class="v2-lane-body">
+              <h3>{lane.title}</h3>
+              <p>{lane.desc}</p>
+            </div>
+            <span class="v2-lane-arrow" aria-hidden="true">
+              &rarr;
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-section-kicker {
+    margin: 0 0 var(--space-2);
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-bold);
+  }
+  .v2-lanes {
+    display: flex;
+    flex-direction: column;
+  }
+  .v2-lane {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--space-8);
+    padding: var(--space-8) 0;
+    text-decoration: none;
+    border-bottom: var(--border-width) solid var(--color-divider);
+  }
+  .v2-lane:first-child {
+    border-top: var(--border-width) solid var(--color-divider);
+  }
+  .v2-lane-num {
+    font-size: var(--text-5xl);
+    font-weight: var(--fw-bold);
+    color: var(--color-primary);
+    line-height: 1;
+  }
+  .v2-lane-body h3 {
+    font-size: var(--text-2xl);
+    color: var(--color-text);
+    margin: 0 0 var(--space-1);
+  }
+  .v2-lane-body p {
+    color: var(--color-text-secondary);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    margin: 0;
+    max-width: 48rem;
+  }
+  .v2-lane-arrow {
+    font-size: var(--text-2xl);
+    color: var(--color-primary);
+    opacity: 0.45;
+  }
+  .v2-lane:hover .v2-lane-arrow {
+    opacity: 1;
+  }
+  @media (max-width: 768px) {
+    .v2-lane {
+      grid-template-columns: auto 1fr;
+      gap: var(--space-4);
+      padding: var(--space-6) 0;
+    }
+    .v2-lane-body h3 {
+      font-size: var(--text-xl);
+    }
+    .v2-lane-arrow {
+      display: none;
+    }
+    .v2-lane-num {
+      font-size: var(--text-3xl);
+    }
+  }
+</style>

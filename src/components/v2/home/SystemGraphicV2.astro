@@ -1,0 +1,99 @@
+---
+const nodes = [
+  { label: "Разобрать", desc: "Анализ и диагностика" },
+  { label: "Проверить", desc: "Проектирование и прототип" },
+  { label: "Передать", desc: "Внедрение и сопровождение" },
+];
+---
+
+<section class="v2-section v2-section-alt">
+  <div class="v2-container">
+    <div class="v2-system">
+      <div class="v2-system-line" aria-hidden="true"></div>
+      {
+        nodes.map((node, i) => (
+          <div class="v2-system-node">
+            <div class="v2-system-circle" aria-hidden="true">
+              {i + 1}
+            </div>
+            <span class="v2-system-label">{node.label}</span>
+            <span class="v2-system-desc">{node.desc}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-system {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--space-8);
+    padding: var(--space-16) 0;
+    position: relative;
+  }
+  .v2-system-line {
+    position: absolute;
+    top: 64px;
+    left: 12%;
+    right: 12%;
+    height: var(--border-width-thick);
+    background: var(--color-accent);
+    opacity: 0.3;
+  }
+  .v2-system-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    max-width: 220px;
+  }
+  .v2-system-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-2xl);
+    font-weight: var(--fw-bold);
+    margin-bottom: var(--space-4);
+    border: 4px solid var(--color-bg-alt);
+  }
+  .v2-system-label {
+    font-size: var(--text-base);
+    font-weight: var(--fw-bold);
+    color: var(--color-white);
+    margin-bottom: var(--space-1);
+  }
+  .v2-system-desc {
+    font-size: var(--text-base);
+    color: rgba(255, 255, 255, 0.5);
+    line-height: var(--leading-normal);
+  }
+  @media (max-width: 768px) {
+    .v2-system {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-10);
+      padding: var(--space-10) 0;
+    }
+    .v2-system-line {
+      top: 64px;
+      left: auto;
+      right: auto;
+      width: var(--border-width-thick);
+      height: calc(100% - 128px);
+    }
+    .v2-system-node {
+      max-width: none;
+    }
+  }
+</style>

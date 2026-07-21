@@ -1,0 +1,66 @@
+---
+import { buildUrl } from "@config/site";
+
+const photos = [
+  {
+    src: "/images/alikin/documentary/08-robotics-archive-4x3.webp",
+    alt: "Занятия по робототехнике",
+    caption: "Архив: занятия по робототехнике, 2018–2020",
+  },
+  {
+    src: "/images/alikin/documentary/07-education-robotics-square.webp",
+    alt: "Образовательная робототехника",
+    caption: "Образовательные программы: инженерия и робототехника",
+  },
+];
+---
+
+<section class="v2-section v2-section-surface">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Опыт</h2>
+    <div class="v2-doc-grid">
+      {
+        photos.map((photo) => (
+          <figure class="v2-doc-item">
+            <img
+              src={buildUrl(photo.src)}
+              alt={photo.alt}
+              width="600"
+              height="450"
+              loading="eager"
+              class="v2-doc-img"
+            />
+            <figcaption class="v2-doc-caption">{photo.caption}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-doc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+  .v2-doc-item {
+    margin: 0;
+  }
+  .v2-doc-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+  .v2-doc-caption {
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    margin-top: var(--space-2);
+  }
+  @media (max-width: 768px) {
+    .v2-doc-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,61 +1,120 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import ButtonLink from "@components/ui/ButtonLink.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
 import { buildUrl } from "@config/site";
+
+const formats = [
+  {
+    title: "Разбор задачи",
+    description:
+      "Короткий предметный разговор: контекст, текущее состояние, желаемое изменение и возможность измерить результат.",
+  },
+  {
+    title: "Проектирование первого этапа",
+    description:
+      "Формулировка границ, данных, ролей, рисков и проверяемого результата. Срок и стоимость появляются только после разбора.",
+  },
+  {
+    title: "Рабочий контур и передача",
+    description:
+      "Создание ограниченного решения, его проверка на реальных условиях, документация и объяснение команде.",
+  },
+];
 ---
 
-<BaseLayout
-  title="Сотрудничество — Александр Аликин"
-  description="Выберите контекст обращения: бизнес-задача, образовательная программа, партнёрство, выступление или другой вопрос."
+<BaseLayoutV2
+  title="Обсудить задачу — Александр Аликин"
+  description="Предметный разбор бизнес-, технологической или образовательной задачи без неподтверждённых обещаний и шаблонных пакетов."
   currentPath="/collaboration/"
-  breadcrumbs={[{ label: "Сотрудничество" }]}
 >
-  <div class="container container-main">
-    <h1>Сотрудничество</h1>
-    <p class="text-lg muted-text">
-      Выберите контекст обращения. Это поможет быстрее понять вашу задачу и предложить подходящий
-      формат.
-    </p>
-    <div class="card-grid mt-8">
-      <div class="card">
-        <h3>Бизнес-процесс или ИИ-пилот</h3>
-        <p class="card-description">
-          У вас есть ручной или разрозненный процесс, который нужно превратить в систему с измеримым
-          результатом.
-        </p>
-        <ButtonLink href={buildUrl("/business/")} variant="secondary" size="compact"
-          >Подробнее</ButtonLink
-        >
-      </div>
-      <div class="card">
-        <h3>Образовательная программа или лаборатория</h3>
-        <p class="card-description">
-          Вы представляете школу, центр или EdTech-проект и хотите создать инженерную или
-          ИИ-программу.
-        </p>
-        <ButtonLink href={buildUrl("/education/")} variant="secondary" size="compact"
-          >Подробнее</ButtonLink
-        >
-      </div>
-      <div class="card">
-        <h3>Партнёрство по проекту</h3>
-        <p class="card-description">
-          У вас есть идея или проект, где нужна инженерная, педагогическая или предпринимательская
-          экспертиза.
-        </p>
-        <ButtonLink href={buildUrl("/contacts/")} variant="secondary" size="compact"
-          >Связаться</ButtonLink
-        >
-      </div>
-      <div class="card">
-        <h3>Выступление или СМИ</h3>
-        <p class="card-description">
-          Вы организуете мероприятие или готовите материал и хотите пригласить Александра.
-        </p>
-        <ButtonLink href={buildUrl("/press/")} variant="secondary" size="compact"
-          >Пресс-пакет</ButtonLink
-        >
+  <section class="v2-section">
+    <div class="v2-container v2-collab-hero">
+      <p class="v2-accent-label">Сотрудничество</p>
+      <h1 class="v2-page-title">Сначала понять задачу</h1>
+      <p class="v2-page-lead">
+        Первый разговор нужен не для продажи готового пакета. Его задача — понять, что происходит
+        сейчас, какое изменение действительно нужно и есть ли у него проверяемый первый шаг.
+      </p>
+    </div>
+  </section>
+
+  <section class="v2-section v2-section-surface">
+    <div class="v2-container">
+      <h2 class="v2-section-title">Как может начаться работа</h2>
+      <div class="v2-formats-grid">
+        {
+          formats.map((f, i) => (
+            <div class="v2-card-surface v2-format-card">
+              <span class="v2-accent-label">{String(i + 1).padStart(2, "0")}</span>
+              <h3 class="v2-format-card-title">{f.title}</h3>
+              <p class="v2-format-card-desc">{f.description}</p>
+            </div>
+          ))
+        }
       </div>
     </div>
-  </div>
-</BaseLayout>
+  </section>
+
+  <section class="v2-section">
+    <div class="v2-container v2-collab-grid">
+      <div>
+        <h2 class="v2-section-title">Что подготовить</h2>
+        <ul class="v2-collab-list">
+          <li>Краткое описание текущей ситуации</li>
+          <li>Что должно работать иначе</li>
+          <li>Какие данные и люди участвуют в процессе</li>
+          <li>Что уже пробовали и где возникло ограничение</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="v2-section-title">Когда я не подхожу</h2>
+        <ul class="v2-collab-list">
+          <li>Нужно обещание результата до диагностики</li>
+          <li>Команда не готова участвовать во внедрении</li>
+          <li>Требуется массовый шаблонный консалтинг</li>
+          <li>Задача лежит вне инженерии, ИИ, процессов или технического образования</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="v2-section v2-section-surface">
+    <div class="v2-container v2-cta-block">
+      <h2>Опишите контекст</h2>
+      <p>
+        Достаточно нескольких абзацев. После этого можно определить, есть ли предмет для разговора.
+      </p>
+      <a href={buildUrl("/contacts/")} class="v2-btn v2-btn-accent">Перейти к контактам</a>
+    </div>
+  </section>
+</BaseLayoutV2>
+
+<style>
+  .v2-collab-hero {
+    max-width: 56rem;
+  }
+  .v2-formats-grid,
+  .v2-collab-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+  .v2-collab-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+  }
+  .v2-collab-list {
+    margin: 0;
+    padding-left: var(--space-5);
+    color: rgba(255, 255, 255, 0.72);
+  }
+  .v2-collab-list li {
+    margin-bottom: var(--space-3);
+    line-height: var(--leading-normal);
+  }
+  @media (max-width: 768px) {
+    .v2-formats-grid,
+    .v2-collab-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,103 @@
+<section class="v2-section v2-section-surface">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Процесс</h2>
+    <div class="v2-process">
+      <div class="v2-process-step">
+        <div class="v2-process-circle">1</div>
+        <h3>Диагностика</h3>
+        <p>Интервью, аудит процессов, карта данных. Выявление узких мест и потерь.</p>
+      </div>
+      <div class="v2-process-step">
+        <div class="v2-process-circle">2</div>
+        <h3>Проектирование</h3>
+        <p>Архитектура решения, выбор стека, план пилота с измеримыми критериями.</p>
+      </div>
+      <div class="v2-process-step">
+        <div class="v2-process-circle">3</div>
+        <h3>Пилот</h3>
+        <p>Ограниченный запуск на реальных данных. Работающий прототип, не презентация.</p>
+      </div>
+      <div class="v2-process-step">
+        <div class="v2-process-circle">4</div>
+        <h3>Внедрение</h3>
+        <p>Интеграция в рабочие процессы, миграция данных, обучение команды.</p>
+      </div>
+      <div class="v2-process-step">
+        <div class="v2-process-circle">5</div>
+        <h3>Сопровождение</h3>
+        <p>Мониторинг, доработка по обратной связи, документация. Гарантия 3–6 месяцев.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-process {
+    display: flex;
+    gap: 0;
+    justify-content: space-between;
+    position: relative;
+  }
+  .v2-process::before {
+    content: "";
+    position: absolute;
+    top: 1.75rem;
+    left: 2rem;
+    right: 2rem;
+    height: 2px;
+    background: var(--color-accent);
+    z-index: 0;
+  }
+  .v2-process-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 var(--space-2);
+  }
+  .v2-process-circle {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: var(--color-surface-raised);
+    border: 2px solid var(--color-accent);
+    margin: 0 auto var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-lg);
+    font-weight: var(--fw-bold);
+    color: var(--color-accent);
+  }
+  .v2-process-step h3 {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    margin: 0 0 var(--space-1);
+    font-weight: var(--fw-bold);
+  }
+  .v2-process-step p {
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.4;
+  }
+  @media (max-width: 768px) {
+    .v2-process {
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .v2-process::before {
+      display: none;
+    }
+    .v2-process-step {
+      text-align: left;
+      display: flex;
+      gap: var(--space-4);
+      align-items: flex-start;
+    }
+    .v2-process-circle {
+      margin: 0;
+      flex-shrink: 0;
+    }
+  }
+</style>

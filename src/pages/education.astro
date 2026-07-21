@@ -1,59 +1,148 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import ButtonLink from "@components/ui/ButtonLink.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
 import { buildUrl } from "@config/site";
 ---
 
-<BaseLayout
+<BaseLayoutV2
   title="Образованию — Александр Аликин"
-  description="Проектирую инженерные и ИИ-программы, лаборатории и методические системы с воспроизводимым результатом."
+  description="Инженерные программы, лаборатории и методические системы, в которых результат создаётся, проверяется и объясняется."
   currentPath="/education/"
-  breadcrumbs={[{ label: "Образованию" }]}
 >
-  <div class="container container-main">
-    <h1>Образованию</h1>
-    <p class="text-lg muted-text">
-      Проектирую инженерные и ИИ-программы, лаборатории и методические системы, в которых ученик
-      создаёт и защищает работающий результат, а педагог получает воспроизводимый процесс.
-    </p>
-    <img
-      src={buildUrl("/images/alikin/visualized/education-presentation.webp")}
-      alt="Александр Аликин в образовательном контексте"
-      width="480"
-      height="320"
-      loading="lazy"
-      style="border-radius:var(--radius-lg);margin:var(--space-6) 0;width:100%;max-width:480px;object-fit:cover;height:auto;"
-    />
+  <section class="v2-section">
+    <div class="v2-container v2-edu-hero">
+      <div>
+        <p class="v2-accent-label">Образованию</p>
+        <h1 class="v2-page-title">Учиться через действие и защиту результата</h1>
+        <p class="v2-page-lead">
+          Проектирую программы и лаборатории, где участник не воспроизводит готовый ответ, а
+          создаёт, проверяет, дорабатывает и объясняет собственное решение.
+        </p>
+      </div>
+      <img
+        src={buildUrl("/images/alikin/visualized/education-presentation.webp")}
+        alt="Иллюстрация инженерного образования и проектной работы"
+        width="640"
+        height="480"
+        loading="eager"
+        class="v2-img-frame"
+      />
+    </div>
+  </section>
 
-    <h2>Метод: действие — ошибка — объяснение — доработка — защита</h2>
-    <p>
-      Ученик не повторяет инструкцию, а создаёт собственный проект. Это развивает инженерное
-      мышление, самостоятельность и ответственность за результат.
-    </p>
+  <section class="v2-section v2-section-surface">
+    <div class="v2-container">
+      <h2 class="v2-section-title">Два типа задач</h2>
+      <div class="v2-edu-grid">
+        <article class="v2-card-surface">
+          <span class="v2-accent-label">01</span>
+          <h3>Программы и лаборатории</h3>
+          <p>Проектные форматы в области информатики, технологии, робототехники и применения ИИ.</p>
+          <ul>
+            <li>результат участника виден в работающем проекте;</li>
+            <li>ошибка становится частью процесса;</li>
+            <li>защита показывает глубину понимания.</li>
+          </ul>
+        </article>
+        <article class="v2-card-surface">
+          <span class="v2-accent-label">02</span>
+          <h3>Методическая система</h3>
+          <p>
+            Аудит программы, структура курса, критерии оценки и подготовка педагогов к
+            воспроизводимой работе.
+          </p>
+          <ul>
+            <li>понятна роль педагога и участника;</li>
+            <li>зафиксированы требования к площадке;</li>
+            <li>учтены безопасность, авторство и данные.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <h2>Форматы сотрудничества</h2>
-    <ul>
-      <li>
-        <strong>Аудит программы</strong> — анализ текущей образовательной программы и рекомендации.
-      </li>
-      <li>
-        <strong>Практикум для педагогов</strong> — обучение методике проектного и инженерного образования.
-      </li>
-      <li><strong>Проектная лаборатория</strong> — создание лаборатории робототехники или ИИ.</li>
-      <li><strong>Модуль по ИИ</strong> — безопасное применение ИИ в образовании.</li>
-      <li><strong>Инженерный интенсив</strong> — короткая программа с измеримым результатом.</li>
-      <li><strong>Методические материалы</strong> — разработка программ и учебных планов.</li>
-    </ul>
+  <section class="v2-section">
+    <div class="v2-container">
+      <p class="v2-accent-label">Метод</p>
+      <h2 class="v2-section-title">Действие → ошибка → объяснение → доработка → защита</h2>
+      <div class="v2-method-row">
+        <div><strong>Действие</strong><span>Участник начинает создавать.</span></div>
+        <div><strong>Ошибка</strong><span>Ограничение становится видимым.</span></div>
+        <div><strong>Объяснение</strong><span>Нужно понять причину, а не угадать ответ.</span></div>
+        <div><strong>Доработка</strong><span>Решение пересобирается осознанно.</span></div>
+        <div><strong>Защита</strong><span>Результат проверяется через объяснение.</span></div>
+      </div>
+    </div>
+  </section>
 
-    <h2>Требования и безопасность</h2>
-    <p>
-      Программы адаптируются под возраст, уровень подготовки и доступное оборудование. Безопасность,
-      авторство ученика и защита данных — обязательные условия.
-    </p>
+  <section class="v2-section v2-section-surface">
+    <div class="v2-container v2-evidence-note">
+      <div>
+        <h2 class="v2-section-title">Что подтверждено, а что ещё проверяется</h2>
+        <p>
+          Публично используется авторская методика и описание действующей практики. Точные периоды,
+          количество участников, подготовленных педагогов и результаты соревнований не публикуются
+          до отдельной проверки источников.
+        </p>
+      </div>
+      <a href={buildUrl("/projects/engineering-education/")} class="v2-btn v2-btn-outline">
+        Открыть проект
+      </a>
+    </div>
+  </section>
 
-    <hr />
-    <ButtonLink href={buildUrl("/collaboration/")} variant="primary"
-      >Обсудить программу или лабораторию</ButtonLink
-    >
-  </div>
-</BaseLayout>
+  <section class="v2-section">
+    <div class="v2-container v2-cta-block">
+      <h2>Обсудить программу или лабораторию</h2>
+      <p>Опишите аудиторию, доступное оборудование и результат, который участник должен создать.</p>
+      <a href={buildUrl("/collaboration/")} class="v2-btn v2-btn-accent">Обсудить задачу</a>
+    </div>
+  </section>
+</BaseLayoutV2>
+
+<style>
+  .v2-edu-hero,
+  .v2-edu-grid,
+  .v2-evidence-note {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-10);
+    align-items: center;
+  }
+  .v2-edu-grid article h3 {
+    font-size: var(--text-2xl);
+    margin: var(--space-3) 0;
+  }
+  .v2-edu-grid p,
+  .v2-edu-grid li,
+  .v2-evidence-note p {
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--color-text-secondary);
+  }
+  .v2-method-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-4);
+  }
+  .v2-method-row div {
+    border-top: var(--border-width-thick) solid var(--color-primary);
+    padding-top: var(--space-4);
+  }
+  .v2-method-row strong,
+  .v2-method-row span {
+    display: block;
+  }
+  .v2-method-row span {
+    margin-top: var(--space-2);
+    color: rgba(255, 255, 255, 0.65);
+    line-height: var(--leading-normal);
+  }
+  @media (max-width: 768px) {
+    .v2-edu-hero,
+    .v2-edu-grid,
+    .v2-evidence-note,
+    .v2-method-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

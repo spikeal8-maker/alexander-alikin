@@ -1,0 +1,59 @@
+---
+import { site, navigation, buildUrl } from "@config/site";
+import HeaderV2 from "@components/layout/HeaderV2.astro";
+import "../styles/v2-common.css";
+import "../styles/v2-journal-mobile.css";
+import "../styles/v2-layout.css";
+
+const footerPrimary = navigation.primary.filter((item) => !("cta" in item && item.cta));
+const footerUtility = navigation.utility.filter((item) =>
+  ["now", "second-brain", "facts", "press", "contacts", "search"].includes(item.id),
+);
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{Astro.props.title}</title>
+    <meta name="description" content={Astro.props.description} />
+    {site.prelaunch && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={new URL(Astro.url.pathname, site.url).href} />
+    <link rel="icon" type="image/svg+xml" href={buildUrl("/favicon.svg")} />
+  </head>
+  <body class="v2-body">
+    <a class="v2-skip-link" href="#main-content">Перейти к содержимому</a>
+    <HeaderV2 currentPath={Astro.props.currentPath} />
+    <main id="main-content"><slot /></main>
+    <footer class="v2-footer">
+      <div class="v2-footer-shell">
+        <div class="v2-footer-main">
+          <div class="v2-footer-brand">
+            <a class="v2-footer-name" href={buildUrl("/")}>{site.name}</a>
+            <p>
+              Инженер, педагог и предприниматель. Проекты, материалы и источники собраны в одной
+              публичной системе с явными ограничениями и происхождением утверждений.
+            </p>
+          </div>
+          <nav class="v2-footer-nav" aria-label="Основные разделы">
+            <h2>Разделы</h2>
+            {footerPrimary.map((item) => <a href={buildUrl(item.href)}>{item.label}</a>)}
+          </nav>
+          <nav class="v2-footer-nav" aria-label="Служебные разделы">
+            <h2>Система</h2>
+            {footerUtility.map((item) => <a href={buildUrl(item.href)}>{item.label}</a>)}
+          </nav>
+        </div>
+        <div class="v2-footer-bottom">
+          <span>&copy; {new Date().getFullYear()} Александр Аликин</span>
+          <div class="v2-footer-legal">
+            <a href={buildUrl("/privacy/")}>Конфиденциальность</a>
+            <a href={buildUrl("/rss.xml")}>RSS</a>
+            <a href="https://github.com/spikeal8-maker" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

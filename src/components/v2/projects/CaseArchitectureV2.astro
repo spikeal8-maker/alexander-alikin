@@ -1,0 +1,108 @@
+<section class="v2-section v2-section-surface">
+  <div class="v2-container">
+    <p class="v2-accent-label">Архитектурный замысел</p>
+    <h2 class="v2-section-title">Ядро → модули → интерфейсы</h2>
+    <div class="arch-diagram">
+      <div class="arch-box">
+        <span class="arch-box-num">01</span>
+        <span class="arch-box-label">Ядро платформы</span>
+      </div>
+      <div class="arch-arrow"><span class="arch-arrow-line"></span></div>
+      <div class="arch-box">
+        <span class="arch-box-num">02</span>
+        <span class="arch-box-label">Предметные модули</span>
+      </div>
+      <div class="arch-arrow"><span class="arch-arrow-line"></span></div>
+      <div class="arch-box">
+        <span class="arch-box-num">03</span>
+        <span class="arch-box-label">Ролевые интерфейсы</span>
+      </div>
+    </div>
+    <p class="arch-text">
+      В архитектурной модели ядро отвечает за общие сущности и связность данных, модули развиваются
+      отдельно, а интерфейсы отражают задачи преподавателя, участника и администратора. Степень
+      фактической готовности каждого слоя требует отдельного технического описания.
+    </p>
+  </div>
+</section>
+
+<style>
+  .arch-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin: 0 0 var(--space-12);
+    flex-wrap: wrap;
+  }
+  .arch-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 140px;
+    background: var(--color-surface-raised);
+    border: var(--border-width-thick) solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    gap: var(--space-2);
+  }
+  .arch-box-num {
+    font-size: var(--text-xs);
+    color: var(--color-primary);
+    font-weight: var(--fw-bold);
+  }
+  .arch-box-label {
+    font-size: var(--text-base);
+    color: var(--color-text);
+    font-weight: var(--fw-semibold);
+  }
+  .arch-arrow {
+    display: flex;
+    align-items: center;
+    width: 80px;
+    height: 4px;
+  }
+  .arch-arrow-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--color-primary);
+    position: relative;
+  }
+  .arch-arrow-line::after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    top: -4px;
+    border-left: 10px solid var(--color-primary);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+  .arch-text {
+    max-width: var(--container-reading);
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+    .arch-diagram {
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .arch-arrow {
+      width: 4px;
+      height: 40px;
+    }
+    .arch-arrow-line::after {
+      right: -4px;
+      top: auto;
+      bottom: -1px;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 10px solid var(--color-primary);
+      border-bottom: 0;
+    }
+  }
+</style>

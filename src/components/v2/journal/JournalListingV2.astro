@@ -1,0 +1,79 @@
+---
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import { buildUrl } from "@config/site";
+import "../../../styles/v2-journal.css";
+
+export interface JournalListEntry {
+  title: string;
+  description: string;
+  href: string;
+  kind: string;
+  date?: string;
+}
+
+export interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  entries: JournalListEntry[];
+}
+
+const { title, description, eyebrow, entries } = Astro.props;
+---
+
+<BaseLayoutV2
+  title={`${title} — Александр Аликин`}
+  description={description}
+  currentPath="/journal/"
+>
+  <section class="v2-section">
+    <div class="v2-container v2-journal-hero">
+      <div class="v2-journal-intro">
+        <p class="v2-accent-label">{eyebrow}</p>
+        <h1 class="v2-page-title">{title}</h1>
+        <p>{description}</p>
+      </div>
+      <div class="v2-journal-aside">
+        <p>
+          Материалы публикуются только после редакционной проверки. Авторские тезисы отделяются от
+          подтверждённых фактов и проектных доказательств.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="v2-section v2-section-alt">
+    <div class="v2-container">
+      {
+        entries.length > 0 ? (
+          <div class="v2-journal-list">
+            {entries.map((entry) => (
+              <a href={buildUrl(entry.href)} class="v2-journal-item">
+                <div class="v2-journal-item-meta">
+                  <span>{entry.kind}</span>
+                  {entry.date && <time>{entry.date}</time>}
+                </div>
+                <div>
+                  <h2>{entry.title}</h2>
+                  <p>{entry.description}</p>
+                </div>
+                <span class="v2-journal-item-arrow" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <p class="v2-empty-note">В этой рубрике пока нет опубликованных материалов.</p>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="v2-section">
+    <div class="v2-container v2-entry-footer">
+      <a href={buildUrl("/journal/")} class="v2-btn v2-btn-outline">Все рубрики</a>
+      <a href={buildUrl("/rss.xml")} class="v2-btn v2-btn-accent">RSS журнала</a>
+    </div>
+  </section>
+</BaseLayoutV2>

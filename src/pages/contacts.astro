@@ -1,39 +1,99 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
 import { buildUrl } from "@config/site";
+import "../styles/v2-contacts.css";
+
+const channels = [
+  {
+    num: "01",
+    title: "Предметный запрос",
+    description:
+      "Для обсуждения бизнес-процесса, образовательной программы, проектной разработки или технического участия.",
+    href: buildUrl("/collaboration/"),
+    action: "Подготовить контекст →",
+    external: false,
+  },
+  {
+    num: "02",
+    title: "GitHub",
+    description:
+      "Публичная техническая деятельность, исходный код и развитие цифровой платформы сайта.",
+    href: "https://github.com/spikeal8-maker",
+    action: "Открыть профиль →",
+    external: true,
+  },
+  {
+    num: "03",
+    title: "Журнал",
+    description:
+      "Статьи, истории и короткие тезисы об инженерии, образовании, проектах и системном мышлении.",
+    href: buildUrl("/journal/"),
+    action: "Читать материалы →",
+    external: false,
+  },
+];
 ---
 
-<BaseLayout
+<BaseLayoutV2
   title="Контакты — Александр Аликин"
-  description="Официальные каналы связи."
+  description="Проверенные публичные каналы связи и маршруты для предметного обращения."
   currentPath="/contacts/"
-  breadcrumbs={[{ label: "Контакты" }]}
 >
-  <div class="container container-main">
-    <h1>Контакты</h1>
-    <p class="text-lg muted-text">Официальные каналы связи. Выберите подходящий способ.</p>
-    <div class="card-grid mt-8">
-      <div class="card">
-        <h3>Telegram</h3>
-        <p class="card-description">Основной канал для прямого общения и оперативных вопросов.</p>
-      </div>
-      <div class="card">
-        <h3>GitHub</h3>
-        <p class="card-description">
-          Публичная техническая деятельность: <a href="https://github.com/spikeal8-maker"
-            >spikeal8-maker</a
-          >
+  <section class="v2-section">
+    <div class="v2-container v2-contact-hero">
+      <div class="v2-contact-lead">
+        <p class="v2-accent-label">Контакты</p>
+        <h1 class="v2-page-title">Начать с контекста, а не с общего запроса</h1>
+        <p>
+          Самый быстрый путь к предметному разговору — описать задачу, текущую ситуацию и результат,
+          который должен стать наблюдаемым после первого этапа.
         </p>
       </div>
-      <div class="card">
-        <h3>VK</h3>
-        <p class="card-description">Профиль и архив публикаций.</p>
+      <aside class="v2-contact-note">
+        <p>
+          На странице публикуются только проверенные каналы. Неподтверждённые Telegram, VK и другие
+          профили не выводятся до фиксации официальных ссылок владельцем.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="v2-section v2-section-surface">
+    <div class="v2-container">
+      <h2 class="v2-section-title">Доступные маршруты</h2>
+      <div class="v2-contact-grid">
+        {
+          channels.map((channel) => (
+            <a
+              href={channel.href}
+              class="v2-contact-card"
+              target={channel.external ? "_blank" : undefined}
+              rel={channel.external ? "noreferrer" : undefined}
+            >
+              <span class="v2-accent-label">{channel.num}</span>
+              <h2>{channel.title}</h2>
+              <p>{channel.description}</p>
+              <span class="v2-contact-action">{channel.action}</span>
+            </a>
+          ))
+        }
       </div>
     </div>
-    <p class="mt-8">
-      Для предметного обсуждения задачи перейдите на страницу <a href={buildUrl("/collaboration/")}
-        >сотрудничества</a
-      >.
-    </p>
-  </div>
-</BaseLayout>
+  </section>
+
+  <section class="v2-section">
+    <div class="v2-container v2-contact-policy">
+      <div>
+        <p class="v2-accent-label">До первого разговора</p>
+        <h2 class="v2-section-title">Что стоит подготовить</h2>
+      </div>
+      <ul>
+        <li>какой процесс, продукт или программа требуют изменения;</li>
+        <li>что сейчас не работает или зависит от ручного усилия;</li>
+        <li>какие данные, люди и системы уже участвуют в задаче;</li>
+        <li>какой результат первого этапа можно проверить;</li>
+        <li>какие ограничения нельзя игнорировать.</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayoutV2>

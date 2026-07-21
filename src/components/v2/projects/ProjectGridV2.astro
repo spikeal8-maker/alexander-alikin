@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCardV2 from "./ProjectCardV2.astro";
+
+const projects = await getCollection("projects", (p) => p.data.status === "published");
+---
+
+<section class="v2-section">
+  <div class="v2-container">
+    <p class="v2-accent-label">Не портфолио достижений, а журнал текущей практики</p>
+    <h1 class="v2-page-title">Проекты</h1>
+    <p class="v2-page-lead">
+      Здесь проекты описываются через контекст, роль, текущий результат и ограничения.
+      Неподтверждённые показатели, результаты соревнований и масштабы внедрения не публикуются как
+      факты.
+    </p>
+    <div class="v2-project-list">
+      {projects.map((p, i) => <ProjectCardV2 project={p.data} index={i} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-project-list {
+    margin-top: var(--space-12);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+</style>

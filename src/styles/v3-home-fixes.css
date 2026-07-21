@@ -70,3 +70,23 @@
     transform: none !important;
   }
 }
+
+@media (max-width: 480px) {
+  .v3-footer__grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .v3-footer__statement {
+    grid-column: auto !important;
+  }
+
+  .v3-footer nav a {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .v3-footer__bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

@@ -17,6 +17,17 @@
   color: var(--v3-white) !important;
 }
 
+.v3-work__feature--ink .v3-kicker,
+.v3-journal .v3-kicker,
+.v3-journal__kind,
+.v3-journal__arrow {
+  color: var(--v3-cobalt-light) !important;
+}
+
+.v3-journal__index {
+  color: rgba(255, 255, 255, 0.64) !important;
+}
+
 @media (max-width: 900px) {
   .v3-hero__portrait figcaption {
     right: var(--v3-gutter) !important;

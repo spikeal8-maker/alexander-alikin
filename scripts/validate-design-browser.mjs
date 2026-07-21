@@ -3,12 +3,10 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 import fs from "node:fs";
 import { checkV2Design } from "./browser-checks/v2-design-tokens.mjs";
-
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = "http://localhost:4321";
 const BASE = "/alexander-alikin";
 const SCREENSHOT_DIR = path.join(ROOT, ".work", "screenshots");
-
 const ROUTES = [
   { name: "home", path: `${BASE}/` },
   { name: "about", path: `${BASE}/about/` },
@@ -29,7 +27,6 @@ const ROUTES = [
   { name: "contacts", path: `${BASE}/contacts/` },
   { name: "collaboration", path: `${BASE}/collaboration/` },
 ];
-
 const VIEWPORTS = [
   { name: "320", width: 320, height: 568 },
   { name: "390", width: 390, height: 844 },
@@ -37,7 +34,6 @@ const VIEWPORTS = [
   { name: "1024", width: 1024, height: 768 },
   { name: "1440", width: 1440, height: 900 },
 ];
-
 const FORBIDDEN = [
   "Тестовая",
   "Синтетическая",
@@ -47,15 +43,11 @@ const FORBIDDEN = [
   "test-story",
   "test-thought",
 ];
-
 const errors = [];
-
 const browser = await chromium.launch({ headless: true });
-
 try {
   const context = await browser.newContext({ reducedMotion: "reduce" });
   const page = await context.newPage();
-
   for (const route of ROUTES) {
     for (const vp of VIEWPORTS) {
       await page.setViewportSize({ width: vp.width, height: vp.height });
@@ -122,10 +114,8 @@ try {
           );
         }
       }
-
       const designIssues = await checkV2Design(page, route.name, vp.width);
       for (const issue of designIssues) errors.push(`${route.name} @${vp.name}: ${issue}`);
-
       const images = await page.evaluate(() =>
         [...document.images].map((img) => ({
           complete: img.complete,
@@ -140,7 +130,6 @@ try {
       }
     }
   }
-
   const screenshotNames = new Set([
     "home",
     "about",
@@ -158,7 +147,6 @@ try {
   ]);
   const screenshotRoutes = ROUTES.filter((route) => screenshotNames.has(route.name));
   fs.mkdirSync(SCREENSHOT_DIR, { recursive: true });
-
   for (const route of screenshotRoutes) {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(`${SITE}${route.path}`, { waitUntil: "networkidle" });
@@ -166,7 +154,6 @@ try {
       path: path.join(SCREENSHOT_DIR, `${route.name}-desktop.png`),
       fullPage: true,
     });
-
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(`${SITE}${route.path}`, { waitUntil: "networkidle" });
     await page.screenshot({
@@ -174,7 +161,6 @@ try {
       fullPage: true,
     });
   }
-
   const noJsContext = await browser.newContext({
     javaScriptEnabled: false,
     reducedMotion: "reduce",
@@ -193,27 +179,23 @@ try {
     if (!title) errors.push(`No-JS ${routeName}: no title`);
   }
   await noJsContext.close();
-
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(`${SITE}${BASE}/`, { waitUntil: "networkidle" });
   await page.keyboard.press("Tab");
   const focused = await page.evaluate(() => document.activeElement?.tagName || "NONE");
   if (focused === "BODY" || focused === "NONE") errors.push("Keyboard: Tab did not focus element");
-
   await page.goto(`${SITE}${BASE}/about/`, { waitUntil: "networkidle" });
   const zoomOk = await page.evaluate(() => {
     document.body.style.zoom = "200%";
     return document.body.scrollWidth <= window.innerWidth + 10;
   });
   if (!zoomOk) errors.push("Zoom 200%: horizontal overflow detected");
-
   await page.goto(`${SITE}${BASE}/about/`, { waitUntil: "networkidle" });
   const textZoomOk = await page.evaluate(() => {
     document.documentElement.style.fontSize = "200%";
     return document.body.scrollWidth <= window.innerWidth + 10;
   });
   if (!textZoomOk) errors.push("Text zoom 200%: horizontal overflow");
-
   try {
     await page.goto(`${SITE}${BASE}/`, { waitUntil: "networkidle" });
     const axeCore = await import("@axe-core/playwright");
@@ -233,12 +215,10 @@ try {
 } finally {
   await browser.close();
 }
-
 console.log(`Routes tested: ${ROUTES.length} × ${VIEWPORTS.length} viewports`);
 console.log(
   `Screenshots: ${fs.existsSync(SCREENSHOT_DIR) ? fs.readdirSync(SCREENSHOT_DIR).length : 0} files`,
 );
-
 if (errors.length) {
   const report = errors.join("\n");
   console.error("BROWSER ERRORS:");

@@ -151,7 +151,7 @@ import { buildUrl } from "@config/site";
     position: relative;
     overflow: hidden;
     min-height: 38rem;
-    background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent 55%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 55%);
   }
 
   .v3-work__number {
@@ -167,12 +167,17 @@ import { buildUrl } from "@config/site";
 
   .v3-work__orbit {
     position: absolute;
-    border: 1px solid rgba(255,255,255,0.48);
+    border: 1px solid rgba(255, 255, 255, 0.48);
     border-radius: 50%;
   }
 
-  .v3-work__orbit--one { inset: 20% 14% 16% 22%; }
-  .v3-work__orbit--two { inset: 32% 28% 28% 10%; transform: rotate(24deg); }
+  .v3-work__orbit--one {
+    inset: 20% 14% 16% 22%;
+  }
+  .v3-work__orbit--two {
+    inset: 32% 28% 28% 10%;
+    transform: rotate(24deg);
+  }
 
   .v3-work__node {
     position: absolute;
@@ -182,9 +187,18 @@ import { buildUrl } from "@config/site";
     border-radius: 50%;
   }
 
-  .v3-work__node--a { top: 24%; right: 21%; }
-  .v3-work__node--b { right: 34%; bottom: 24%; }
-  .v3-work__node--c { bottom: 35%; left: 18%; }
+  .v3-work__node--a {
+    top: 24%;
+    right: 21%;
+  }
+  .v3-work__node--b {
+    right: 34%;
+    bottom: 24%;
+  }
+  .v3-work__node--c {
+    bottom: 35%;
+    left: 18%;
+  }
 
   .v3-work__stairs {
     display: grid;
@@ -200,17 +214,23 @@ import { buildUrl } from "@config/site";
     min-height: calc(8rem + var(--step, 0) * 3rem);
     padding: 1rem;
     align-items: flex-end;
-    border-top: 1px solid rgba(255,255,255,0.7);
-    border-left: 1px solid rgba(255,255,255,0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.7);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
     font-family: var(--v3-mono);
     font-size: 0.65rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
-  .v3-work__stairs span:nth-child(2) { transform: translateY(-3rem); }
-  .v3-work__stairs span:nth-child(3) { transform: translateY(-6rem); }
-  .v3-work__stairs span:nth-child(4) { transform: translateY(-9rem); }
+  .v3-work__stairs span:nth-child(2) {
+    transform: translateY(-3rem);
+  }
+  .v3-work__stairs span:nth-child(3) {
+    transform: translateY(-6rem);
+  }
+  .v3-work__stairs span:nth-child(4) {
+    transform: translateY(-9rem);
+  }
 
   @media (max-width: 820px) {
     .v3-work__header,

@@ -9,9 +9,21 @@ const [articles, stories, thoughts] = await Promise.all([
 ]);
 
 const entries = [
-  ...articles.map((entry) => ({ ...entry, kind: "Статья", href: `/journal/articles/${entry.data.slug}/` })),
-  ...stories.map((entry) => ({ ...entry, kind: "История", href: `/journal/stories/${entry.data.slug}/` })),
-  ...thoughts.map((entry) => ({ ...entry, kind: "Мысль", href: `/journal/thoughts/${entry.data.slug}/` })),
+  ...articles.map((entry) => ({
+    ...entry,
+    kind: "Статья",
+    href: `/journal/articles/${entry.data.slug}/`,
+  })),
+  ...stories.map((entry) => ({
+    ...entry,
+    kind: "История",
+    href: `/journal/stories/${entry.data.slug}/`,
+  })),
+  ...thoughts.map((entry) => ({
+    ...entry,
+    kind: "Мысль",
+    href: `/journal/thoughts/${entry.data.slug}/`,
+  })),
 ]
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
   .slice(0, 3);
@@ -30,17 +42,21 @@ const entries = [
   </div>
 
   <div class="v3-shell v3-journal__list">
-    {entries.map((entry, index) => (
-      <a href={buildUrl(entry.href)}>
-        <span class="v3-journal__index">0{index + 1}</span>
-        <div>
-          <span class="v3-journal__kind">{entry.kind}</span>
-          <h3>{entry.data.title}</h3>
-          <p>{entry.data.description}</p>
-        </div>
-        <span class="v3-journal__arrow" aria-hidden="true">↗</span>
-      </a>
-    ))}
+    {
+      entries.map((entry, index) => (
+        <a href={buildUrl(entry.href)}>
+          <span class="v3-journal__index">0{index + 1}</span>
+          <div>
+            <span class="v3-journal__kind">{entry.kind}</span>
+            <h3>{entry.data.title}</h3>
+            <p>{entry.data.description}</p>
+          </div>
+          <span class="v3-journal__arrow" aria-hidden="true">
+            ↗
+          </span>
+        </a>
+      ))
+    }
   </div>
 
   <div class="v3-shell v3-journal__all">

@@ -32,13 +32,15 @@ const modes = [
     </div>
 
     <div class="v3-practice__steps">
-      {modes.map((mode) => (
-        <article>
-          <span>{mode.number}</span>
-          <h3>{mode.title}</h3>
-          <p>{mode.text}</p>
-        </article>
-      ))}
+      {
+        modes.map((mode) => (
+          <article>
+            <span>{mode.number}</span>
+            <h3>{mode.title}</h3>
+            <p>{mode.text}</p>
+          </article>
+        ))
+      }
     </div>
 
     <div class="v3-practice__routes">

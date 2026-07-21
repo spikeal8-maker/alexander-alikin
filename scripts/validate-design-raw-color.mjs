@@ -4,7 +4,10 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
-const ALLOWED_RAW_FILES = [path.join("src", "styles", "tokens.css"), path.join("src", "styles", "tokens-v2.css")];
+const ALLOWED_RAW_FILES = [
+  path.join("src", "styles", "tokens.css"),
+  path.join("src", "styles", "tokens-v2.css"),
+];
 
 function walk(dir, exts) {
   const files = [];

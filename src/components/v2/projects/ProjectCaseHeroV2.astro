@@ -18,25 +18,25 @@ const imgSrc = PROJECT_MEDIA[data.slug]?.hero ?? DEFAULT_MEDIA.hero;
 
 <section class="v2-section">
   <div class="v2-container">
-    <span class="v2-accent-label v2-case-label">Кейс</span>
+    <span class="v2-accent-label v2-case-label">Разбор проекта</span>
     <div class="v2-case-hero">
       <div>
         <h1 class="v2-page-title">{data.title}</h1>
         <p class="v2-page-lead">{data.description}</p>
         <dl class="v2-case-hero-meta">
           <div class="v2-case-hero-meta-item">
-            <dt>Роль</dt>
+            <dt>Заявленная роль</dt>
             <dd>{data.role}</dd>
           </div>
           <div class="v2-case-hero-meta-item">
-            <dt>Период</dt>
+            <dt>Текущий этап</dt>
             <dd>{data.period}</dd>
           </div>
         </dl>
       </div>
       <img
         src={buildUrl(imgSrc)}
-        alt=""
+        alt={`Иллюстрация проекта «${data.title}»`}
         width="800"
         height="600"
         class="v2-case-hero-img"
@@ -66,6 +66,7 @@ const imgSrc = PROJECT_MEDIA[data.slug]?.hero ?? DEFAULT_MEDIA.hero;
   }
   .v2-case-hero-meta {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--space-8);
     margin-top: var(--space-8);
     padding: 0;

@@ -1,0 +1,308 @@
+[
+  {
+    "image": "hero-main-business.webp",
+    "type": "visualized",
+    "page": "/",
+    "section": "hero",
+    "role": "primary_portrait",
+    "allowed_caption": "Александр Аликин",
+    "prohibited_claims": ["Не использовать как фото реального события"],
+    "owner_visual_approval": "approved"
+  },
+  {
+    "image": "hero-wide-office.webp",
+    "type": "visualized",
+    "page": "/",
+    "section": "hero_background",
+    "role": "atmosphere_wide",
+    "allowed_caption": "Рабочий контекст",
+    "prohibited_claims": ["Не использовать как реальное фото офиса или команды"],
+    "owner_visual_approval": "approved"
+  },
+  {
+    "image": "business-ai-workflow.webp",
+    "type": "visualized",
+    "page": "/business/",
+    "section": "hero",
+    "role": "concept_illustration",
+    "allowed_caption": "ИИ и автоматизация бизнес-процессов",
+    "prohibited_claims": ["Не использовать как фото реального рабочего процесса", "Не выдавать за скриншот системы"],
+    "owner_visual_approval": "approved"
+  },
+  {
+    "image": "education-presentation.webp",
+    "type": "visualized",
+    "page": "/education/",
+    "section": "hero",
+    "role": "concept_illustration",
+    "allowed_caption": "Инженерное образование и проектная работа",
+    "prohibited_claims": ["Не использовать как фото реального класса или учебного заведения"],
+    "owner_visual_approval": "approved"
+  },
+  {
+    "image": "about-portrait-relaxed.webp",
+    "type": "visualized",
+    "page": "/about/",
+    "section": "hero",
+    "role": "secondary_portrait",
+    "allowed_caption": "Александр Аликин",
+    "prohibited_claims": ["Не использовать как документальное фото"],
+    "owner_visual_approval": "approved"
+  },
+  {
+    "image": "journal-cafe.webp",
+    "type": "visualized",
+    "page": "/journal/",
+    "section": "hero",
+    "role": "atmosphere",
+    "allowed_caption": "Рабочая обстановка",
+    "prohibited_claims": ["Не использовать как фото реального места"],
+    "owner_visual_approval": "approved"
+  },
+  {
+    "image": "contact-exterior.webp",
+    "type": "visualized",
+    "page": "/collaboration/",
+    "section": "hero",
+    "role": "atmosphere",
+    "allowed_caption": "Сотрудничество и связь",
+    "prohibited_claims": ["Не использовать как фото реального офиса или места встречи"],
+    "owner_visual_approval": "approved"
+  },
+  {
+    "image": "robotics-lab.webp",
+    "type": "visualized",
+    "page": "/",
+    "section": "projects_section",
+    "role": "project_card_illustration",
+    "allowed_caption": "Образовательная робототехника и виртуальные лаборатории",
+    "prohibited_claims": [
+      "Не использовать как фото реальной лаборатории",
+      "НЕ ДОЛЖНО ОБСЛУЖИВАТЬ ДВА РАЗНЫХ ПРОЕКТА ОДНОВРЕМЕННО"
+    ],
+    "owner_visual_approval": "violation_detected",
+    "violations": [
+      {
+        "type": "dual_project_assignment",
+        "severity": "critical",
+        "description": "robotics-lab.webp используется одновременно для проекта 'izo-asa' (EditorialProjectsV2, ProjectCaseHeroV2) и проекта 'engineering-education' (EditorialProjectsV2, ProjectCardV2). По правилу 'одно изображение не должно автоматически обслуживать несколько разных проектов' — это нарушение.",
+        "affected_projects": [
+          {
+            "project": "izo-asa",
+            "pages": ["/", "/projects/", "/projects/izo-asa/"],
+            "components": ["EditorialProjectsV2", "ProjectCardV2", "ProjectCaseHeroV2"],
+            "claims": ["CL-004", "CL-026", "CL-036"]
+          },
+          {
+            "project": "engineering-education",
+            "pages": ["/"],
+            "components": ["EditorialProjectsV2", "ProjectCardV2"],
+            "claims": []
+          }
+        ],
+        "resolution_required": "Владелец должен решить, какой проект получает robotics-lab.webp в качестве основного изображения. Для второго проекта необходимо подобрать или создать отдельное изображение.",
+        "suggested_alternatives": [
+          "Для engineering-education: использовать education-presentation.webp (уже закреплено за /education/)",
+          "Для engineering-education: создать новое visualized-изображение с концепцией инженерного образования",
+          "Для izo-asa: создать новое visualized-изображение, отражающее специфику платформы (интерфейс, виртуальные лаборатории)"
+        ],
+        "owner_decision": "pending"
+      }
+    ]
+  },
+  {
+    "image": "author-avatar.webp",
+    "type": "visualized",
+    "page": "/",
+    "section": "author_bio_teaser",
+    "role": "avatar",
+    "allowed_caption": "Александр Аликин",
+    "prohibited_claims": ["Не использовать как документальное фото"],
+    "owner_visual_approval": "approved"
+  },
+  {
+    "image": "social-card-base.webp",
+    "type": "visualized",
+    "page": "/",
+    "section": "meta",
+    "role": "og_image",
+    "allowed_caption": "Социальная карточка сайта",
+    "prohibited_claims": ["Не использовать в контенте страниц как основное изображение"],
+    "owner_visual_approval": "approved"
+  },
+  {
+    "image": "01-hero-desktop-4x5.webp",
+    "type": "documentary",
+    "page": "/",
+    "section": "hero",
+    "role": "hero_desktop_variant",
+    "allowed_caption": "Александр Аликин, [год]",
+    "prohibited_claims": [
+      "Не использовать без указания контекста и года",
+      "Не использовать в visualized-блоках"
+    ],
+    "owner_visual_approval": "approved",
+    "restrictions": "Только для timeline, captions, исторических блоков"
+  },
+  {
+    "image": "02-hero-mobile-4x5.webp",
+    "type": "documentary",
+    "page": "/",
+    "section": "hero",
+    "role": "hero_mobile_variant",
+    "allowed_caption": "Александр Аликин, [год]",
+    "prohibited_claims": [
+      "Не использовать без указания контекста и года",
+      "Не использовать в visualized-блоках"
+    ],
+    "owner_visual_approval": "approved",
+    "restrictions": "Только для timeline, captions, исторических блоков"
+  },
+  {
+    "image": "03-press-square-1x1.webp",
+    "type": "documentary",
+    "page": "/about/",
+    "section": "press",
+    "role": "press_photo",
+    "allowed_caption": "Александр Аликин, [год, контекст]",
+    "prohibited_claims": [
+      "Не использовать без указания года и контекста",
+      "Не использовать в visualized-блоках"
+    ],
+    "owner_visual_approval": "approved",
+    "restrictions": "Только для timeline, captions, исторических блоков"
+  },
+  {
+    "image": "04-about-portrait-4x5.webp",
+    "type": "documentary",
+    "page": "removed_from_v2",
+    "section": "about_portrait",
+    "role": "none",
+    "allowed_caption": "Не публиковать",
+    "prohibited_claims": ["Удалено из V2-страниц"],
+    "owner_visual_approval": "removed",
+    "removal_reason": "Удалено из V2 страниц — selfie/portrait, не соответствует редакционному стилю",
+    "restrictions": "Не использовать на страницах V2. Допустимо в личном архиве."
+  },
+  {
+    "image": "05-author-avatar-1x1.webp",
+    "type": "documentary",
+    "page": "/journal/",
+    "section": "author",
+    "role": "author_avatar",
+    "allowed_caption": "Александр Аликин",
+    "prohibited_claims": [
+      "Не использовать в visualized-блоках"
+    ],
+    "owner_visual_approval": "approved",
+    "restrictions": "Только для timeline, captions, исторических блоков, аватар автора"
+  },
+  {
+    "image": "06-business-portrait-4x5.webp",
+    "type": "documentary",
+    "page": "removed_from_v2",
+    "section": "business_portrait",
+    "role": "none",
+    "allowed_caption": "Не публиковать",
+    "prohibited_claims": ["Удалено из V2-страниц"],
+    "owner_visual_approval": "removed",
+    "removal_reason": "Удалено из V2 страниц — overexposed (пересвет), не соответствует техническим требованиям",
+    "restrictions": "Не использовать на страницах V2. Допустимо в личном архиве."
+  },
+  {
+    "image": "07-education-robotics-square.webp",
+    "type": "documentary",
+    "page": "/education/",
+    "section": "archive",
+    "role": "context_photo",
+    "allowed_caption": "Образовательная робототехника, [год]. [Контекст: занятие, соревнование, проект]",
+    "prohibited_claims": [
+      "Не использовать без указания года и контекста",
+      "Не использовать в visualized-блоках",
+      "Не выдавать за иллюстрацию текущих программ без указания периода"
+    ],
+    "owner_visual_approval": "approved",
+    "restrictions": "Только для timeline, captions, исторических блоков. Обязательно указание года и контекста."
+  },
+  {
+    "image": "08-robotics-archive-4x3.webp",
+    "type": "documentary",
+    "page": "/education/",
+    "section": "archive",
+    "role": "context_photo",
+    "allowed_caption": "Занятия по робототехнике, [год]. [Контекст]",
+    "prohibited_claims": [
+      "Не использовать без указания года и контекста",
+      "Не использовать в visualized-блоках"
+    ],
+    "owner_visual_approval": "approved",
+    "restrictions": "Только для timeline, captions, исторических блоков. Обязательно указание года и контекста."
+  },
+  {
+    "image": "09-personal-cafe-16x9.webp",
+    "type": "documentary",
+    "page": "/about/",
+    "section": "personal",
+    "role": "context_photo",
+    "allowed_caption": "[Место, год]",
+    "prohibited_claims": [
+      "Не использовать без указания контекста и года",
+      "Не использовать в visualized-блоках"
+    ],
+    "owner_visual_approval": "approved",
+    "restrictions": "Только для timeline, captions, исторических блоков. [требуется подтверждение владельца: место и год]"
+  },
+  {
+    "image": "10-laser-love-archive-4x3.webp",
+    "type": "documentary",
+    "page": "removed_from_v2",
+    "section": "archive",
+    "role": "none",
+    "allowed_caption": "Не публиковать",
+    "prohibited_claims": ["Удалено из V2-страниц"],
+    "owner_visual_approval": "removed",
+    "removal_reason": "Удалено из V2 страниц — non-education, не соответствует образовательному контексту текущих страниц",
+    "restrictions": "Не использовать на страницах V2. Допустимо в личном архиве."
+  },
+  {
+    "global_rules": [
+      {
+        "rule": "single_project_per_image",
+        "description": "Одно изображение не должно автоматически обслуживать несколько разных проектов. Каждое изображение получает одно первичное назначение на странице.",
+        "enforcement": "active"
+      },
+      {
+        "rule": "visualized_vs_documentary_separation",
+        "description": "AI-сгенерированные изображения (visualized) используются только для hero/editorial-блоков. Реальные фото (documentary) — только для timeline, captions, исторических блоков.",
+        "enforcement": "active"
+      },
+      {
+        "rule": "context_required_for_documentary",
+        "description": "Каждое documentary-изображение должно сопровождаться указанием года и контекста. Без контекста — не публиковать.",
+        "enforcement": "active"
+      },
+      {
+        "rule": "prohibited_misrepresentation",
+        "description": "Visualized-изображения не должны выдаваться за фотографии реальных событий, мест или процессов.",
+        "enforcement": "active"
+      }
+    ],
+    "pending_owner_decisions": [
+      {
+        "issue": "robotics-lab.webp dual assignment",
+        "description": "Решить, какой проект получает robotics-lab.webp. Для второго проекта подобрать или создать отдельное изображение.",
+        "deadline": "До следующего этапа редактуры"
+      },
+      {
+        "issue": "09-personal-cafe-16x9.webp context",
+        "description": "Уточнить год и место съёмки для сопроводительной подписи.",
+        "deadline": "До публикации на странице /about/"
+      },
+      {
+        "issue": "documentary image years",
+        "description": "Уточнить точные годы для всех documentary-изображений (01–03, 05, 07–09).",
+        "deadline": "До публикации страниц с documentary-блоками"
+      }
+    ]
+  }
+]

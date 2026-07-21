@@ -18,10 +18,14 @@ const ROUTES = [
   { name: "izo-asa", path: `${BASE}/projects/izo-asa/` },
   { name: "engineering-education", path: `${BASE}/projects/engineering-education/` },
   { name: "journal", path: `${BASE}/journal/` },
+  { name: "articles", path: `${BASE}/journal/articles/` },
   { name: "project-learning", path: `${BASE}/journal/articles/project-learning/` },
+  { name: "stories", path: `${BASE}/journal/stories/` },
   { name: "children-and-robots", path: `${BASE}/journal/stories/children-and-robots/` },
   { name: "one-method", path: `${BASE}/journal/stories/one-method/` },
+  { name: "thoughts", path: `${BASE}/journal/thoughts/` },
   { name: "projects-over-theory", path: `${BASE}/journal/thoughts/projects-over-theory/` },
+  { name: "news", path: `${BASE}/journal/news/` },
   { name: "contacts", path: `${BASE}/contacts/` },
   { name: "collaboration", path: `${BASE}/collaboration/` },
 ];
@@ -45,7 +49,7 @@ const FORBIDDEN = [
 ];
 
 const errors = [];
-fs.mkdirSync(SCREENSHOT_DIR, { recursive: true });
+
 const browser = await chromium.launch({ headless: true });
 
 try {
@@ -65,20 +69,22 @@ try {
       }
       const title = await page.title();
       if (!title) errors.push(`${route.name} @${vp.name}: no title`);
-      if (FORBIDDEN.some((w) => title.includes(w)))
+      if (FORBIDDEN.some((word) => title.includes(word))) {
         errors.push(`${route.name} @${vp.name}: forbidden text in title: ${title}`);
+      }
       const bodyText = await page.evaluate(() => document.body.innerText || "");
-      if (FORBIDDEN.some((w) => bodyText.includes(w)))
+      if (FORBIDDEN.some((word) => bodyText.includes(word))) {
         errors.push(`${route.name} @${vp.name}: forbidden text in body`);
+      }
       const mainText = await page.evaluate(() => {
-        const m = document.querySelector("main");
-        return m ? m.textContent?.trim().length || 0 : 0;
+        const main = document.querySelector("main");
+        return main ? main.textContent?.trim().length || 0 : 0;
       });
-      if (mainText < 20)
+      if (mainText < 20) {
         errors.push(`${route.name} @${vp.name}: main content too short (${mainText})`);
+      }
       const overflow = await page.evaluate(() => {
-        const body = document.body;
-        const maxScroll = body.scrollWidth;
+        const maxScroll = document.body.scrollWidth;
         const viewW = window.innerWidth;
         const tolerance = 2;
         return maxScroll > viewW + tolerance
@@ -87,20 +93,20 @@ try {
       });
       if (overflow.overflow) {
         const offenders = await page.evaluate(() => {
-          const els = document.querySelectorAll("*");
-          const vw = window.innerWidth;
+          const elements = document.querySelectorAll("*");
+          const viewportWidth = window.innerWidth;
           const bad = [];
-          for (const el of els) {
-            const r = el.getBoundingClientRect();
-            if (r.right > vw + 2 && r.left < vw) {
-              const tag = el.tagName.toLowerCase();
-              const cls = el.className?.toString?.().slice(0, 60) || "";
-              const id = el.id || "";
+          for (const element of elements) {
+            const rect = element.getBoundingClientRect();
+            if (rect.right > viewportWidth + 2 && rect.left < viewportWidth) {
+              const tag = element.tagName.toLowerCase();
+              const cls = element.className?.toString?.().slice(0, 60) || "";
+              const id = element.id || "";
               bad.push({
                 selector: id ? `#${id}` : cls ? `${tag}.${cls.replace(/ /g, ".")}` : tag,
-                left: Math.round(r.left),
-                right: Math.round(r.right),
-                width: Math.round(r.width),
+                left: Math.round(rect.left),
+                right: Math.round(rect.right),
+                width: Math.round(rect.width),
               });
             }
             if (bad.length >= 6) break;
@@ -110,18 +116,15 @@ try {
         errors.push(
           `${route.name} @${vp.name}: horizontal overflow (${overflow.scrollWidth} vs ${overflow.viewport})`,
         );
-        for (const o of offenders)
-          errors.push(`  └─ ${o.selector}: left=${o.left} right=${o.right} width=${o.width}`);
+        for (const offender of offenders) {
+          errors.push(
+            `  └─ ${offender.selector}: left=${offender.left} right=${offender.right} width=${offender.width}`,
+          );
+        }
       }
 
-      if (
-        ["home", "about", "business", "education", "projects", "izo-asa", "collaboration"].includes(
-          route.name,
-        )
-      ) {
-        const designIssues = await checkV2Design(page, route.name, vp.width);
-        for (const i of designIssues) errors.push(`${route.name} @${vp.name}: ${i}`);
-      }
+      const designIssues = await checkV2Design(page, route.name, vp.width);
+      for (const issue of designIssues) errors.push(`${route.name} @${vp.name}: ${issue}`);
 
       const images = await page.evaluate(() =>
         [...document.images].map((img) => ({
@@ -132,26 +135,28 @@ try {
       );
       for (const img of images) {
         if (!img.complete) errors.push(`${route.name} @${vp.name}: image not complete: ${img.src}`);
-        if (img.naturalWidth === 0)
-          errors.push(`${route.name} @${vp.name}: broken image: ${img.src}`);
+        if (img.naturalWidth === 0) errors.push(`${route.name} @${vp.name}: broken image: ${img.src}`);
       }
     }
   }
 
-  const screenshotRoutes = ROUTES.filter((r) =>
-    [
-      "home",
-      "about",
-      "business",
-      "education",
-      "projects",
-      "izo-asa",
-      "journal",
-      "project-learning",
-      "collaboration",
-      "contacts",
-    ].includes(r.name),
-  );
+  const screenshotNames = new Set([
+    "home",
+    "about",
+    "business",
+    "education",
+    "projects",
+    "izo-asa",
+    "engineering-education",
+    "journal",
+    "project-learning",
+    "children-and-robots",
+    "projects-over-theory",
+    "collaboration",
+    "contacts",
+  ]);
+  const screenshotRoutes = ROUTES.filter((route) => screenshotNames.has(route.name));
+  fs.mkdirSync(SCREENSHOT_DIR, { recursive: true });
 
   for (const route of screenshotRoutes) {
     await page.setViewportSize({ width: 1440, height: 900 });
@@ -169,21 +174,21 @@ try {
     });
   }
 
-  const noJsCtx = await browser.newContext({ javaScriptEnabled: false, reducedMotion: "reduce" });
-  const noJsPage = await noJsCtx.newPage();
+  const noJsContext = await browser.newContext({ javaScriptEnabled: false, reducedMotion: "reduce" });
+  const noJsPage = await noJsContext.newPage();
   await noJsPage.setViewportSize({ width: 1440, height: 900 });
-  for (const route of ["home", "about", "izo-asa", "project-learning"]) {
-    const r = ROUTES.find((x) => x.name === route);
-    if (!r) continue;
-    await noJsPage.goto(`${SITE}${r.path}`, { waitUntil: "networkidle", timeout: 15000 });
+  for (const routeName of ["home", "about", "izo-asa", "project-learning", "contacts"]) {
+    const route = ROUTES.find((candidate) => candidate.name === routeName);
+    if (!route) continue;
+    await noJsPage.goto(`${SITE}${route.path}`, { waitUntil: "networkidle", timeout: 15000 });
     const text = await noJsPage.evaluate(
       () => document.querySelector("main")?.textContent?.trim() || "",
     );
-    if (text.length < 20) errors.push(`No-JS ${route}: no main content`);
+    if (text.length < 20) errors.push(`No-JS ${routeName}: no main content`);
     const title = await noJsPage.title();
-    if (!title) errors.push(`No-JS ${route}: no title`);
+    if (!title) errors.push(`No-JS ${routeName}: no title`);
   }
-  await noJsCtx.close();
+  await noJsContext.close();
 
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(`${SITE}${BASE}/`, { waitUntil: "networkidle" });
@@ -192,40 +197,36 @@ try {
   if (focused === "BODY" || focused === "NONE") errors.push("Keyboard: Tab did not focus element");
 
   await page.goto(`${SITE}${BASE}/about/`, { waitUntil: "networkidle" });
-  const zoomResult = await page.evaluate(() => {
+  const zoomOk = await page.evaluate(() => {
     document.body.style.zoom = "200%";
-    return { scrollWidth: document.body.scrollWidth, viewport: window.innerWidth };
+    return document.body.scrollWidth <= window.innerWidth + 10;
   });
-  if (zoomResult.scrollWidth > zoomResult.viewport + 10)
-    errors.push(
-      `Zoom 200%: horizontal overflow (${zoomResult.scrollWidth} vs ${zoomResult.viewport})`,
-    );
+  if (!zoomOk) errors.push("Zoom 200%: horizontal overflow detected");
 
   await page.goto(`${SITE}${BASE}/about/`, { waitUntil: "networkidle" });
-  const textZoomResult = await page.evaluate(() => {
+  const textZoomOk = await page.evaluate(() => {
     document.documentElement.style.fontSize = "200%";
-    return { scrollWidth: document.body.scrollWidth, viewport: window.innerWidth };
+    return document.body.scrollWidth <= window.innerWidth + 10;
   });
-  if (textZoomResult.scrollWidth > textZoomResult.viewport + 10)
-    errors.push(
-      `Text zoom 200%: horizontal overflow (${textZoomResult.scrollWidth} vs ${textZoomResult.viewport})`,
-    );
+  if (!textZoomOk) errors.push("Text zoom 200%: horizontal overflow");
 
   try {
     await page.goto(`${SITE}${BASE}/`, { waitUntil: "networkidle" });
     const axeCore = await import("@axe-core/playwright");
     const results = await new axeCore.default({ page }).analyze();
-    for (const v of results.violations) {
-      if (v.impact === "serious" || v.impact === "critical") {
-        const nodes = v.nodes
+    for (const violation of results.violations) {
+      if (violation.impact === "serious" || violation.impact === "critical") {
+        const nodes = violation.nodes
           .slice(0, 3)
-          .map((n) => n.html)
+          .map((node) => node.html)
           .join(" | ");
-        errors.push(`Axe: ${v.impact} ${v.id} — ${v.help} [${nodes}]`);
+        errors.push(
+          `Axe: ${violation.impact} ${violation.id} — ${violation.help} [${nodes}]`,
+        );
       }
     }
-  } catch (e) {
-    errors.push(`Axe scan failed: ${e.message}`);
+  } catch (error) {
+    errors.push(`Axe scan failed: ${error.message}`);
   }
 } finally {
   await browser.close();
@@ -237,13 +238,11 @@ console.log(
 );
 
 if (errors.length) {
-  const report = `${errors.join("\n")}\n`;
-  fs.writeFileSync(path.join(SCREENSHOT_DIR, "browser-errors.txt"), report, "utf8");
+  const report = errors.join("\n");
   console.error("BROWSER ERRORS:");
   console.error(report);
+  fs.mkdirSync(SCREENSHOT_DIR, { recursive: true });
+  fs.writeFileSync(path.join(SCREENSHOT_DIR, "browser-errors.txt"), `${report}\n`, "utf8");
   process.exit(1);
 }
-
-const errorReportPath = path.join(SCREENSHOT_DIR, "browser-errors.txt");
-if (fs.existsSync(errorReportPath)) fs.rmSync(errorReportPath);
 console.log("Browser check: PASS");

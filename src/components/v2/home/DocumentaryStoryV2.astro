@@ -1,0 +1,83 @@
+---
+import { buildUrl } from "@config/site";
+---
+
+<section class="v2-section v2-section-surface">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Опыт</h2>
+    <div class="v2-doc-story">
+      <div class="v2-doc-media">
+        <img
+          src={buildUrl("/images/alikin/documentary/08-robotics-archive-4x3.webp")}
+          alt="Образовательная робототехника. Занятия с учениками"
+          width="800"
+          height="600"
+          loading="eager"
+          class="v2-doc-img"
+        />
+      </div>
+      <div class="v2-doc-text">
+        <p class="v2-doc-caption">Образовательная робототехника. Занятия с учениками, 2017–2020.</p>
+        <div class="v2-doc-body">
+          <p>
+            С 2017 года я веду практические занятия по робототехнике и программированию для
+            школьников и студентов. За это время через мои программы прошли сотни учеников, десятки
+            из которых поступили в ведущие технические вузы страны.
+          </p>
+          <p>
+            Методика строится на проектном подходе: каждый ученик проходит путь от идеи до
+            работающего устройства. Мы собираем схемы, программируем контроллеры, проектируем
+            корпуса и презентуем результат — полный инженерный цикл.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-doc-story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+    margin-top: var(--space-10);
+  }
+  .v2-doc-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+  .v2-doc-caption {
+    font-size: var(--text-lg);
+    font-weight: var(--fw-semibold);
+    color: var(--color-text);
+    line-height: var(--leading-snug);
+    margin: 0 0 var(--space-6);
+  }
+  .v2-doc-body p {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-normal);
+    margin: 0 0 var(--space-4);
+  }
+  .v2-doc-body p:last-child {
+    margin-bottom: 0;
+  }
+  @media (max-width: 768px) {
+    .v2-doc-story {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+    .v2-doc-caption {
+      font-size: var(--text-base);
+      overflow-wrap: break-word;
+    }
+    .v2-doc-body p {
+      font-size: var(--text-base);
+      overflow-wrap: break-word;
+    }
+  }
+</style>

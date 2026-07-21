@@ -143,6 +143,24 @@
   max-width: 100%;
 }
 
+/* Format cards (collaboration page) */
+.v2-formats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+.v2-format-card-title {
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  margin: var(--space-4) 0 var(--space-3);
+}
+.v2-format-card-desc {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: var(--leading-normal);
+}
+
 @media (max-width: 768px) {
   .v2-page-title {
     font-size: var(--text-3xl);
@@ -158,5 +176,8 @@
   }
   .v2-page-lead {
     overflow-wrap: break-word;
+  }
+  .v2-formats-grid {
+    grid-template-columns: 1fr;
   }
 }

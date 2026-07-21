@@ -1,0 +1,24 @@
+---
+export interface Props {
+  result: string;
+}
+
+const { result } = Astro.props;
+---
+
+<section class="v2-section">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Текущий результат</h2>
+    <p class="case-result-text">{result}</p>
+  </div>
+</section>
+
+<style>
+  .case-result-text {
+    max-width: var(--container-reading);
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+</style>

@@ -1,26 +1,32 @@
 <section class="v2-section v2-section-surface">
   <div class="v2-container">
     <h2 class="v2-section-title">Проблема и диагностика</h2>
-    <div class="v2-pd-split">
+    <div class="v2-pd-grid">
       <div class="v2-pd-signals">
         <div class="v2-pd-signal">
-          <span class="v2-pd-signal-num">01</span>
-          <h3>Процессы разрослись</h3>
-          <p>Операции делаются вручную, передача между сотрудниками ломается, данные теряются.</p>
+          <span class="v2-pd-num">01</span>
+          <div class="v2-pd-signal-body">
+            <h3>Процессы разрослись</h3>
+            <p>Операции делаются вручную, передача между сотрудниками ломается, данные теряются.</p>
+          </div>
         </div>
         <div class="v2-pd-signal">
-          <span class="v2-pd-signal-num">02</span>
-          <h3>Решения не оцифрованы</h3>
-          <p>
-            Выбор делается на основании интуиции, а не данных. Нет единой картины происходящего.
-          </p>
+          <span class="v2-pd-num">02</span>
+          <div class="v2-pd-signal-body">
+            <h3>Решения не оцифрованы</h3>
+            <p>
+              Выбор делается на основании интуиции, а не данных. Нет единой картины происходящего.
+            </p>
+          </div>
         </div>
         <div class="v2-pd-signal">
-          <span class="v2-pd-signal-num">03</span>
-          <h3>Масштабирование буксует</h3>
-          <p>
-            То, что работало на 10 клиентов, не работает на 100. Нужна архитектура, а не заплатки.
-          </p>
+          <span class="v2-pd-num">03</span>
+          <div class="v2-pd-signal-body">
+            <h3>Масштабирование буксует</h3>
+            <p>
+              То, что работало на 10 клиентов, не работает на 100. Нужна архитектура, а не заплатки.
+            </p>
+          </div>
         </div>
       </div>
       <div class="v2-pd-diag">
@@ -37,40 +43,61 @@
 </section>
 
 <style>
-  .v2-pd-split {
+  .v2-pd-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-12);
   }
-  .v2-pd-signal {
-    margin-bottom: var(--space-6);
+  .v2-pd-grid > * {
+    min-width: 0;
   }
-  .v2-pd-signal-num {
-    display: inline-block;
+  .v2-pd-signal {
+    display: flex;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+    align-items: flex-start;
+  }
+  .v2-pd-signal-body {
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+  .v2-pd-num {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 1.75rem;
     height: 1.75rem;
-    line-height: 1.75rem;
-    text-align: center;
     border-radius: 50%;
     background: var(--color-accent-warm);
     color: var(--color-white);
-    font-size: var(--text-xs);
+    font-size: var(--text-sm);
     font-weight: var(--fw-bold);
-    margin-right: var(--space-3);
+    line-height: 1;
   }
   .v2-pd-signal h3 {
-    display: inline;
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     color: var(--color-text);
+    margin: 0 0 var(--space-1);
+    font-weight: var(--fw-bold);
+    overflow-wrap: break-word;
   }
   .v2-pd-signal p {
+    font-size: var(--text-base);
     color: var(--color-text-secondary);
-    margin: var(--space-2) 0 0 2.5rem;
+    margin: 0;
+    line-height: var(--leading-normal);
+    overflow-wrap: break-word;
+  }
+  .v2-pd-diag {
+    min-width: 0;
   }
   .v2-pd-diag h3 {
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
     color: var(--color-text);
     margin: 0 0 var(--space-4);
+    font-weight: var(--fw-bold);
+    overflow-wrap: break-word;
   }
   .v2-pd-diag ul {
     list-style: none;
@@ -82,13 +109,17 @@
     color: var(--color-text-secondary);
     border-bottom: var(--border-width) solid var(--color-border);
     font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    overflow-wrap: break-word;
+    min-width: 0;
   }
   .v2-pd-diag li::before {
-    content: "\2014 ";
+    content: "\2014\A0";
     color: var(--color-accent);
+    font-weight: var(--fw-bold);
   }
   @media (max-width: 768px) {
-    .v2-pd-split {
+    .v2-pd-grid {
       grid-template-columns: 1fr;
     }
   }

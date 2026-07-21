@@ -12,21 +12,27 @@ export interface Props {
     result: string;
     projectStatus: "active" | "completed" | "paused" | "archived";
   };
+  index: number;
 }
 
-const { project } = Astro.props;
+const { project, index } = Astro.props;
 const imgSrc = PROJECT_MEDIA[project.slug]?.hero ?? DEFAULT_MEDIA.hero;
+const isReversed = index % 2 !== 0;
 
 const STATUS_LABEL: Record<string, string> = {
-  active: "Активный",
+  active: "Активный проект",
   completed: "Завершён",
   paused: "Приостановлен",
-  archived: "Архивный",
+  archived: "Архивный проект",
 };
 const statusLabel = STATUS_LABEL[project.projectStatus] ?? project.projectStatus;
 ---
 
-<a href={buildUrl(`/projects/${project.slug}/`)} class="v2-editorial-card">
+<a
+  href={buildUrl(`/projects/${project.slug}/`)}
+  class="v2-editorial-card"
+  class:list={[{ "v2-editorial-card--reversed": isReversed }]}
+>
   <div class="v2-editorial-media">
     <img
       src={buildUrl(imgSrc)}
@@ -38,6 +44,7 @@ const statusLabel = STATUS_LABEL[project.projectStatus] ?? project.projectStatus
     />
   </div>
   <div class="v2-editorial-body">
+    <span class="v2-accent-label">{statusLabel}</span>
     <h3>{project.title}</h3>
     <p class="v2-editorial-desc">{project.description}</p>
     <dl class="v2-editorial-meta-row">
@@ -49,11 +56,11 @@ const statusLabel = STATUS_LABEL[project.projectStatus] ?? project.projectStatus
         <dt>Период</dt>
         <dd>{project.period}</dd>
       </div>
-      <div class="v2-editorial-meta-item">
-        <dt>Статус</dt>
-        <dd>{statusLabel}</dd>
-      </div>
     </dl>
+    <div class="v2-editorial-result">
+      <span class="v2-editorial-result-label">Результат</span>
+      <p class="v2-editorial-result-text">{project.result}</p>
+    </div>
     <span class="v2-editorial-link">Смотреть кейс &rarr;</span>
   </div>
 </a>
@@ -63,10 +70,9 @@ const statusLabel = STATUS_LABEL[project.projectStatus] ?? project.projectStatus
     text-decoration: none;
     color: var(--color-white);
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: var(--space-8);
-    align-items: center;
-    border: var(--border-width) solid rgba(255, 255, 255, 0.06);
+    grid-template-columns: 3fr 2fr;
+    align-items: stretch;
+    border: var(--border-width) solid var(--color-border-light);
     border-radius: var(--radius-lg);
     overflow: hidden;
     transition: border-color var(--motion-fast);
@@ -74,9 +80,16 @@ const statusLabel = STATUS_LABEL[project.projectStatus] ?? project.projectStatus
   .v2-editorial-card:hover {
     border-color: rgba(255, 255, 255, 0.2);
   }
+  .v2-editorial-card--reversed {
+    grid-template-columns: 2fr 3fr;
+  }
+  .v2-editorial-card--reversed .v2-editorial-media {
+    order: 2;
+  }
   .v2-editorial-media {
-    aspect-ratio: 4/3;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
+    min-width: 0;
   }
   .v2-editorial-img {
     width: 100%;
@@ -88,15 +101,27 @@ const statusLabel = STATUS_LABEL[project.projectStatus] ?? project.projectStatus
     transform: scale(1.03);
   }
   .v2-editorial-body {
-    padding: var(--space-6);
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+  .v2-editorial-body h3,
+  .v2-editorial-body p,
+  .v2-editorial-body dt,
+  .v2-editorial-body dd {
+    min-width: 0;
+    overflow-wrap: break-word;
   }
   .v2-editorial-body h3 {
     font-size: var(--text-2xl);
-    margin: 0 0 var(--space-3);
+    margin: 0;
   }
-  .v2-editorial-body .v2-editorial-desc {
+  .v2-editorial-desc {
     color: rgba(255, 255, 255, 0.7);
-    margin: 0 0 var(--space-5);
+    margin: 0;
     line-height: var(--leading-normal);
     font-size: var(--text-base);
   }
@@ -104,35 +129,57 @@ const statusLabel = STATUS_LABEL[project.projectStatus] ?? project.projectStatus
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-4);
-    margin: 0 0 var(--space-4);
+    margin: 0;
     padding: 0;
-  }
-  .v2-editorial-meta-item {
-    font-size: var(--text-xs);
   }
   .v2-editorial-meta-item dt {
     color: var(--color-accent-text);
     font-weight: var(--fw-bold);
     text-transform: uppercase;
+    font-size: var(--text-xs);
   }
   .v2-editorial-meta-item dd {
     color: var(--color-white);
     margin: var(--space-1) 0 0;
+    font-size: var(--text-base);
+  }
+  .v2-editorial-result {
+    margin-top: var(--space-2);
+  }
+  .v2-editorial-result-label {
+    display: block;
+    font-size: var(--text-xs);
+    color: var(--color-accent-warm);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    margin-bottom: var(--space-1);
+  }
+  .v2-editorial-result-text {
+    font-size: var(--text-base);
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: var(--leading-normal);
   }
   .v2-editorial-link {
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
-    font-size: var(--text-sm);
+    font-size: var(--text-base);
     color: var(--color-accent-text);
     font-weight: var(--fw-semibold);
+    margin-top: auto;
+    padding-top: var(--space-4);
   }
   .v2-editorial-card:hover .v2-editorial-link {
     color: var(--color-white);
   }
   @media (max-width: 768px) {
-    .v2-editorial-card {
+    .v2-editorial-card,
+    .v2-editorial-card--reversed {
       grid-template-columns: 1fr;
+    }
+    .v2-editorial-card--reversed .v2-editorial-media {
+      order: 0;
     }
   }
 </style>

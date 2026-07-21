@@ -1,0 +1,114 @@
+<section class="v2-section v2-section-surface">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Архитектура решения</h2>
+    <div class="arch-diagram">
+      <div class="arch-box">
+        <span class="arch-box-num">01</span>
+        <span class="arch-box-label">Ядро платформы</span>
+      </div>
+      <div class="arch-arrow">
+        <span class="arch-arrow-line"></span>
+      </div>
+      <div class="arch-box">
+        <span class="arch-box-num">02</span>
+        <span class="arch-box-label">Модули</span>
+      </div>
+      <div class="arch-arrow">
+        <span class="arch-arrow-line"></span>
+      </div>
+      <div class="arch-box">
+        <span class="arch-box-num">03</span>
+        <span class="arch-box-label">Интерфейсы</span>
+      </div>
+    </div>
+    <p class="arch-text">
+      Ядро платформы обеспечивает базовую функциональность и связность данных. Модульная архитектура
+      позволяет независимо разрабатывать и развёртывать компоненты. Интерфейсный слой предоставляет
+      унифицированный доступ для преподавателей, учащихся и администраторов.
+    </p>
+  </div>
+</section>
+
+<style>
+  .arch-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin: 0 0 var(--space-12);
+    flex-wrap: wrap;
+  }
+  .arch-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 140px;
+    background: var(--color-surface-raised);
+    border: var(--border-width-thick) solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    gap: var(--space-2);
+  }
+  .arch-box-num {
+    font-size: var(--text-xs);
+    color: var(--color-accent-text);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.1em;
+  }
+  .arch-box-label {
+    font-size: var(--text-base);
+    color: var(--color-text);
+    font-weight: var(--fw-semibold);
+  }
+  .arch-arrow {
+    display: flex;
+    align-items: center;
+    width: 80px;
+    height: 4px;
+  }
+  .arch-arrow-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--color-accent);
+    position: relative;
+  }
+  .arch-arrow-line::after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    top: -4px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid var(--color-accent);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+  .arch-text {
+    max-width: var(--container-reading);
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+    .arch-diagram {
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .arch-arrow {
+      width: 4px;
+      height: 40px;
+    }
+    .arch-arrow-line::after {
+      right: -4px;
+      top: auto;
+      bottom: -1px;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 10px solid var(--color-accent);
+      border-bottom: 0;
+    }
+  }
+</style>

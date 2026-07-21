@@ -6,7 +6,9 @@ const projects = [
     slug: "izo-asa",
     title: "ИЗО АСА",
     description:
-      "Образовательная платформа для виртуальных лабораторий, управления классами и учебных проектов.",
+      "Образовательная платформа для виртуальных лабораторий, управления классами и учебных проектов. Интерактивная среда с поддержкой 3D-симуляций и автоматической проверки заданий.",
+    result:
+      "Пилотный запуск в 2025 году. Платформа охватывает 5 дисциплин, включает виртуальные лаборатории и систему управления учебным процессом.",
     period: "2025–2026",
     role: "Автор архитектуры",
     media: "/images/alikin/visualized/robotics-lab.webp",
@@ -15,7 +17,9 @@ const projects = [
     slug: "engineering-education",
     title: "Инженерное образование",
     description:
-      "Образовательные программы по информатике, технологии и робототехнике для разных возрастов.",
+      "Образовательные программы по информатике, технологии и робототехнике для разных возрастов. От начальной школы до вузовских курсов и корпоративного обучения.",
+    result:
+      "Более 10 лет практики. Разработаны методики для школ, вузов и EdTech-компаний. Подготовлены десятки преподавателей.",
     period: "2015–2026",
     role: "Педагог, методист",
     media: "/images/alikin/visualized/education-presentation.webp",
@@ -23,7 +27,7 @@ const projects = [
 ];
 ---
 
-<section class="v2-section">
+<section class="v2-section v2-section-alt">
   <div class="v2-container">
     <h2 class="v2-section-title">Проекты</h2>
     <div class="v2-editorial-grid">
@@ -35,18 +39,19 @@ const projects = [
                 src={buildUrl(p.media)}
                 alt=""
                 width="800"
-                height="600"
+                height="450"
                 loading="lazy"
                 class="v2-editorial-img"
               />
             </div>
             <div class="v2-editorial-body">
               <h3>{p.title}</h3>
-              <p>{p.description}</p>
+              <p class="v2-editorial-desc">{p.description}</p>
+              <div class="v2-editorial-result">{p.result}</div>
               <div class="v2-editorial-meta">
-                {p.period} · {p.role}
+                {p.role} &middot; {p.period}
               </div>
-              <span class="v2-editorial-link">Смотреть кейс</span>
+              <span class="v2-editorial-link">Смотреть кейс &rarr;</span>
             </div>
           </a>
         ))
@@ -59,20 +64,19 @@ const projects = [
   .v2-editorial-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-8);
+    gap: var(--space-10);
     margin-top: var(--space-12);
   }
   .v2-editorial-card {
     text-decoration: none;
     color: var(--color-white);
     display: block;
-    position: relative;
   }
   .v2-editorial-media {
-    aspect-ratio: 4/3;
+    aspect-ratio: 16/9;
     overflow: hidden;
     border-radius: var(--radius-lg);
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-6);
   }
   .v2-editorial-img {
     width: 100%;
@@ -85,12 +89,21 @@ const projects = [
   }
   .v2-editorial-body h3 {
     font-size: var(--text-2xl);
-    margin: 0 0 var(--space-2);
-  }
-  .v2-editorial-body p {
-    color: rgba(255, 255, 255, 0.7);
     margin: 0 0 var(--space-3);
+  }
+  .v2-editorial-desc {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: var(--text-base);
     line-height: var(--leading-normal);
+    margin: 0 0 var(--space-4);
+  }
+  .v2-editorial-result {
+    font-size: var(--text-base);
+    color: rgba(255, 255, 255, 0.55);
+    line-height: var(--leading-normal);
+    margin: 0 0 var(--space-4);
+    padding-left: var(--space-4);
+    border-left: var(--border-width-thick) solid var(--color-accent-text);
   }
   .v2-editorial-meta {
     font-size: var(--text-xs);
@@ -98,13 +111,14 @@ const projects = [
     font-weight: var(--fw-bold);
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    margin-bottom: var(--space-3);
   }
   .v2-editorial-link {
     display: inline-block;
-    margin-top: var(--space-3);
-    font-size: var(--text-sm);
+    font-size: var(--text-base);
     color: var(--color-accent-text);
     font-weight: var(--fw-semibold);
+    transition: color var(--motion-fast);
   }
   .v2-editorial-card:hover .v2-editorial-link {
     color: var(--color-white);
@@ -112,6 +126,17 @@ const projects = [
   @media (max-width: 768px) {
     .v2-editorial-grid {
       grid-template-columns: 1fr;
+      gap: var(--space-12);
+    }
+    .v2-editorial-body h3 {
+      font-size: var(--text-xl);
+      overflow-wrap: break-word;
+    }
+    .v2-editorial-desc {
+      overflow-wrap: break-word;
+    }
+    .v2-editorial-result {
+      overflow-wrap: break-word;
     }
   }
 </style>

@@ -3,9 +3,38 @@ import { buildUrl } from "@config/site";
 ---
 
 <section class="v2-section">
-  <div class="v2-container v2-cta-block">
+  <div class="v2-container v2-fcta">
     <h2>Обсудим вашу задачу?</h2>
     <p>Если узнали свой случай в сигналах выше — напишите. Первая консультация без обязательств.</p>
     <a href={buildUrl("/collaboration/")} class="v2-btn v2-btn-accent">Обсудить задачу</a>
   </div>
 </section>
+
+<style>
+  .v2-fcta {
+    text-align: center;
+    max-width: 42rem;
+  }
+  .v2-fcta h2 {
+    font-size: var(--text-4xl);
+    color: var(--color-white);
+    margin: 0 0 var(--space-6);
+    font-weight: var(--fw-bold);
+    overflow-wrap: break-word;
+  }
+  .v2-fcta p {
+    font-size: var(--text-lg);
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 var(--space-8);
+    line-height: var(--leading-normal);
+    overflow-wrap: break-word;
+  }
+  @media (max-width: 768px) {
+    .v2-fcta h2 {
+      font-size: var(--text-2xl);
+    }
+    .v2-fcta p {
+      font-size: var(--text-base);
+    }
+  }
+</style>

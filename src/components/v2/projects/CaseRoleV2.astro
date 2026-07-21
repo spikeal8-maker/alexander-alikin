@@ -1,0 +1,27 @@
+---
+export interface Props {
+  role: string;
+}
+
+const { role } = Astro.props;
+---
+
+<section class="v2-section v2-section-surface">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Роль Александра</h2>
+    <p class="case-role-text">
+      {role}. Проектирование архитектуры, выбор технологического стека, разработка ядра платформы,
+      координация интеграции модулей.
+    </p>
+  </div>
+</section>
+
+<style>
+  .case-role-text {
+    max-width: var(--container-reading);
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+</style>

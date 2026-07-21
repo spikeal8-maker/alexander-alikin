@@ -1,0 +1,106 @@
+<section class="v2-section v2-section-surface">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Процесс</h2>
+    <div class="v2-tl">
+      <div class="v2-tl-step">
+        <div class="v2-tl-circle"><span>1</span></div>
+        <div class="v2-tl-body">
+          <h3>Диагностика</h3>
+          <p>Интервью, аудит процессов, карта данных. Выявление узких мест и потерь.</p>
+        </div>
+      </div>
+      <div class="v2-tl-step">
+        <div class="v2-tl-circle"><span>2</span></div>
+        <div class="v2-tl-body">
+          <h3>Проектирование</h3>
+          <p>Архитектура решения, выбор стека, план пилота с измеримыми критериями.</p>
+        </div>
+      </div>
+      <div class="v2-tl-step">
+        <div class="v2-tl-circle"><span>3</span></div>
+        <div class="v2-tl-body">
+          <h3>Пилот</h3>
+          <p>Ограниченный запуск на реальных данных. Работающий прототип, не презентация.</p>
+        </div>
+      </div>
+      <div class="v2-tl-step">
+        <div class="v2-tl-circle"><span>4</span></div>
+        <div class="v2-tl-body">
+          <h3>Внедрение</h3>
+          <p>Интеграция в рабочие процессы, миграция данных, обучение команды.</p>
+        </div>
+      </div>
+      <div class="v2-tl-step">
+        <div class="v2-tl-circle"><span>5</span></div>
+        <div class="v2-tl-body">
+          <h3>Сопровождение</h3>
+          <p>Мониторинг, доработка по обратной связи, документация. Гарантия 3–6 месяцев.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .v2-tl {
+    --tl-size: 3.5rem;
+    --tl-gap: var(--space-5);
+    position: relative;
+    padding-left: calc(var(--tl-size) + var(--tl-gap));
+  }
+  .v2-tl::before {
+    content: "";
+    position: absolute;
+    left: calc(var(--tl-size) / 2);
+    top: var(--tl-size);
+    bottom: 0;
+    width: 2px;
+    background: var(--color-accent);
+  }
+  .v2-tl-step {
+    position: relative;
+    margin-bottom: var(--space-10);
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+  .v2-tl-step:last-child {
+    margin-bottom: 0;
+  }
+  .v2-tl-circle {
+    position: absolute;
+    left: calc(-1 * (var(--tl-size) + var(--tl-gap)));
+    top: 0;
+    width: var(--tl-size);
+    height: var(--tl-size);
+    border-radius: 50%;
+    background: var(--color-surface-raised);
+    border: 2px solid var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .v2-tl-circle span {
+    font-size: var(--text-lg);
+    font-weight: var(--fw-bold);
+    color: var(--color-accent);
+    line-height: 1;
+  }
+  .v2-tl-body {
+    min-width: 0;
+  }
+  .v2-tl-body h3 {
+    font-size: var(--text-base);
+    font-weight: var(--fw-bold);
+    color: var(--color-text);
+    margin: 0 0 var(--space-2);
+    overflow-wrap: break-word;
+  }
+  .v2-tl-body p {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: var(--leading-normal);
+    overflow-wrap: break-word;
+  }
+</style>

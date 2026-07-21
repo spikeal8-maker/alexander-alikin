@@ -3,48 +3,50 @@ import { buildUrl } from "@config/site";
 ---
 
 <section class="v2-section">
-  <div class="v2-biz-hero">
-    <div class="v2-biz-hero-text">
+  <div class="v2-container v2-bh-grid">
+    <div class="v2-bh-text">
       <h1 class="v2-page-title">Бизнесу</h1>
       <p class="v2-page-lead">
         ИИ, автоматизация, процессы. Превращаю разрозненные операции в измеримые системы с измеримым
         результатом.
       </p>
     </div>
-    <div class="v2-biz-hero-media">
+    <div class="v2-bh-media">
       <img
         src={buildUrl("/images/alikin/visualized/business-ai-workflow.webp")}
         alt="AI-автоматизация бизнес-процессов"
         width="640"
         height="480"
         loading="eager"
-        class="v2-biz-hero-img"
+        class="v2-img-frame"
       />
     </div>
   </div>
 </section>
 
 <style>
-  .v2-biz-hero {
+  .v2-bh-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-12);
     align-items: center;
-    max-width: var(--container-wide);
-    margin: 0 auto;
-    padding: var(--space-20) var(--gutter) var(--space-24);
   }
-  .v2-biz-hero-img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-lg);
-    object-fit: cover;
+  .v2-bh-text {
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+  .v2-bh-media {
+    min-width: 0;
+  }
+  .v2-bh-media img {
     max-height: 440px;
   }
   @media (max-width: 768px) {
-    .v2-biz-hero {
+    .v2-bh-grid {
       grid-template-columns: 1fr;
-      padding: var(--space-12) var(--gutter) var(--space-16);
+    }
+    .v2-bh-media img {
+      max-height: none;
     }
   }
 </style>

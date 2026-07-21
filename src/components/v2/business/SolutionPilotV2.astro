@@ -2,9 +2,9 @@
   <div class="v2-container">
     <h2 class="v2-section-title">Решение и пилот</h2>
     <div class="v2-sp-grid">
-      <div>
+      <div class="v2-sp-col">
         <span class="v2-accent-label">Решение</span>
-        <div class="v2-sp-item v2-sp-first">
+        <div class="v2-sp-item">
           <h3>Архитектура процессов</h3>
           <p>
             Проектируем целевую модель: какие данные, какие потоки, какие роли. Фиксируем метрики
@@ -26,19 +26,31 @@
           </p>
         </div>
       </div>
-      <div>
+      <div class="v2-sp-col">
         <span class="v2-accent-label">Пилот</span>
-        <p class="v2-sp-pilot-text">
+        <p class="v2-sp-lead">
           Ограниченный запуск на реальных данных. Прототип, который даёт измеримый результат, а не
           презентацию.
         </p>
-        <div class="v2-sp-highlight">
-          <h3>Результат пилота</h3>
-          <p>
-            Работающий прототип на ваших данных с конкретными метриками: время обработки, количество
-            ошибок, пропускная способность. Цифры, на основе которых принимается решение о полном
-            внедрении.
-          </p>
+        <div class="v2-sp-criteria">
+          <h4>Что покрывает пилот</h4>
+          <ul>
+            <li>Целевой процесс описан и оцифрован</li>
+            <li>Минимум одна ручная операция автоматизирована</li>
+            <li>Определены метрики для измерения результата</li>
+            <li>Команда обучена работе с системой</li>
+          </ul>
+        </div>
+        <div class="v2-sp-limits">
+          <h4>Ограничения пилота</h4>
+          <ul>
+            <li>Объём: один сквозной процесс, не вся компания</li>
+            <li>Сроки: 4–8 недель от старта до первых метрик</li>
+            <li>
+              Не входит: полная интеграция с legacy-системами, миграция всех данных, полномасштабное
+              внедрение
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -51,41 +63,84 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--space-12);
   }
+  .v2-sp-col {
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
   .v2-sp-item {
     margin-bottom: var(--space-6);
   }
-  .v2-sp-first {
+  .v2-sp-item:first-of-type {
     margin-top: var(--space-6);
   }
   .v2-sp-item h3 {
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     color: var(--color-white);
     margin: 0 0 var(--space-2);
+    font-weight: var(--fw-bold);
   }
-  .v2-sp-item p {
+  .v2-sp-item p,
+  .v2-sp-lead {
+    font-size: var(--text-base);
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
     line-height: var(--leading-normal);
   }
-  .v2-sp-highlight {
+  .v2-sp-lead {
+    margin-top: var(--space-4);
+  }
+  .v2-sp-criteria,
+  .v2-sp-limits {
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-top: var(--space-6);
+  }
+  .v2-sp-criteria {
     background: rgba(37, 99, 235, 0.1);
     border: var(--border-width) solid rgba(37, 99, 235, 0.3);
-    border-radius: var(--radius-lg);
-    padding: var(--space-8);
-    margin-top: var(--space-8);
   }
-  .v2-sp-pilot-text {
-    color: rgba(255, 255, 255, 0.7);
-    margin: var(--space-4) 0 0;
+  .v2-sp-limits {
+    background: rgba(245, 158, 11, 0.08);
+    border: var(--border-width) solid rgba(245, 158, 11, 0.25);
+  }
+  .v2-sp-criteria h4,
+  .v2-sp-limits h4 {
+    font-size: var(--text-base);
+    margin: 0 0 var(--space-3);
+    font-weight: var(--fw-bold);
+  }
+  .v2-sp-criteria h4 {
+    color: var(--color-accent-text);
+  }
+  .v2-sp-limits h4 {
+    color: var(--color-accent-warm);
+  }
+  .v2-sp-criteria ul,
+  .v2-sp-limits ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .v2-sp-criteria li,
+  .v2-sp-limits li {
+    font-size: var(--text-base);
+    padding: var(--space-2) 0;
     line-height: var(--leading-normal);
   }
-  .v2-sp-highlight h3 {
-    color: var(--color-accent-text);
-    margin: 0 0 var(--space-3);
-  }
-  .v2-sp-highlight p {
+  .v2-sp-criteria li {
     color: rgba(255, 255, 255, 0.8);
-    margin: 0;
+  }
+  .v2-sp-limits li {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .v2-sp-criteria li::before {
+    content: "\2713\A0";
+    color: var(--color-accent-warm);
+    font-weight: var(--fw-bold);
+  }
+  .v2-sp-limits li::before {
+    content: "\2014\A0";
+    color: var(--color-accent-warm);
   }
   @media (max-width: 768px) {
     .v2-sp-grid {

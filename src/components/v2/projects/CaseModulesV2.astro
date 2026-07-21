@@ -1,0 +1,51 @@
+<section class="v2-section">
+  <div class="v2-container">
+    <h2 class="v2-section-title">Основные модули</h2>
+    <div class="case-modules-grid">
+      <div class="case-module-card">
+        <h3>Виртуальные лаборатории</h3>
+        <p>
+          Среда для проведения практических занятий с симуляциями и удалённым доступом к
+          оборудованию.
+        </p>
+      </div>
+      <div class="case-module-card">
+        <h3>Управление классами</h3>
+        <p>Система групп, расписаний, назначений и отслеживания прогресса учащихся.</p>
+      </div>
+      <div class="case-module-card">
+        <h3>Проектная среда</h3>
+        <p>Инструменты для организации, выполнения и оценки учебных проектов.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .case-modules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+  .case-module-card {
+    border-left: 3px solid var(--color-accent);
+    padding: 0 0 0 var(--space-6);
+  }
+  .case-module-card h3 {
+    font-size: var(--text-xl);
+    color: var(--color-white);
+    margin: 0 0 var(--space-3);
+    font-weight: var(--fw-semibold);
+  }
+  .case-module-card p {
+    font-size: var(--text-base);
+    color: rgba(255, 255, 255, 0.7);
+    line-height: var(--leading-normal);
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+    .case-modules-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -13,7 +13,7 @@ const projects = await getCollection("projects", (p) => p.data.status === "publi
       решение и наблюдаемый результат.
     </p>
     <div class="v2-project-list">
-      {projects.map((p) => <ProjectCardV2 project={p.data} />)}
+      {projects.map((p, i) => <ProjectCardV2 project={p.data} index={i} />)}
     </div>
   </div>
 </section>

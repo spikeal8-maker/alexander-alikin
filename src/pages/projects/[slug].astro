@@ -1,10 +1,16 @@
 ---
 import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
 import { getCollection } from "astro:content";
-import { buildUrl } from "@config/site";
 import ProjectCaseHeroV2 from "@components/v2/projects/ProjectCaseHeroV2.astro";
-import ProjectCaseFactsV2 from "@components/v2/projects/ProjectCaseFactsV2.astro";
-import DocumentaryEvidenceV2 from "@components/v2/projects/DocumentaryEvidenceV2.astro";
+import CaseContextV2 from "@components/v2/projects/CaseContextV2.astro";
+import CaseProblemV2 from "@components/v2/projects/CaseProblemV2.astro";
+import CaseArchitectureV2 from "@components/v2/projects/CaseArchitectureV2.astro";
+import CaseModulesV2 from "@components/v2/projects/CaseModulesV2.astro";
+import CaseRoleV2 from "@components/v2/projects/CaseRoleV2.astro";
+import CaseResultV2 from "@components/v2/projects/CaseResultV2.astro";
+import CaseLimitationsV2 from "@components/v2/projects/CaseLimitationsV2.astro";
+import CaseMaterialsV2 from "@components/v2/projects/CaseMaterialsV2.astro";
+import CaseCtaV2 from "@components/v2/projects/CaseCtaV2.astro";
 
 export async function getStaticPaths() {
   const ps = await getCollection("projects", (p) => p.data.status === "published");
@@ -25,13 +31,13 @@ const { data } = project;
   currentPath="/projects/"
 >
   <ProjectCaseHeroV2 data={data} />
-  <ProjectCaseFactsV2 data={data} />
-  <DocumentaryEvidenceV2 />
-  <section class="v2-section">
-    <div class="v2-container v2-cta-block">
-      <h2>Похожая задача?</h2>
-      <p>Если вы видите параллели с вашим проектом — обсудим.</p>
-      <a href={buildUrl("/collaboration/")} class="v2-btn v2-btn-accent">Обсудить задачу</a>
-    </div>
-  </section>
+  <CaseContextV2 description={data.description} />
+  <CaseProblemV2 />
+  <CaseArchitectureV2 />
+  <CaseModulesV2 />
+  <CaseRoleV2 role={data.role} />
+  <CaseResultV2 result={data.result} />
+  {data.limitations && <CaseLimitationsV2 limitations={data.limitations} />}
+  <CaseMaterialsV2 />
+  <CaseCtaV2 />
 </BaseLayoutV2>

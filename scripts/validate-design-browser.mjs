@@ -23,6 +23,7 @@ const ROUTES = [
   { name: "one-method", path: `${BASE}/journal/stories/one-method/` },
   { name: "projects-over-theory", path: `${BASE}/journal/thoughts/projects-over-theory/` },
   { name: "contacts", path: `${BASE}/contacts/` },
+  { name: "collaboration", path: `${BASE}/collaboration/` },
 ];
 
 const VIEWPORTS = [
@@ -79,16 +80,41 @@ try {
         const body = document.body;
         const maxScroll = body.scrollWidth;
         const viewW = window.innerWidth;
-        // Larger tolerance for tiny viewports (font metrics differ across platforms)
-        const tolerance = viewW <= 400 ? 25 : 2;
-        return maxScroll > viewW + tolerance;
+        const tolerance = 2;
+        return maxScroll > viewW + tolerance
+          ? { overflow: true, scrollWidth: maxScroll, viewport: viewW }
+          : { overflow: false };
       });
-      if (overflow)
+      if (overflow.overflow) {
+        const offenders = await page.evaluate(() => {
+          const els = document.querySelectorAll("*");
+          const vw = window.innerWidth;
+          const bad = [];
+          for (const el of els) {
+            const r = el.getBoundingClientRect();
+            if (r.right > vw + 2 && r.left < vw) {
+              const tag = el.tagName.toLowerCase();
+              const cls = el.className?.toString?.().slice(0, 60) || "";
+              const id = el.id || "";
+              bad.push({
+                selector: id ? `#${id}` : cls ? `${tag}.${cls.replace(/ /g, ".")}` : tag,
+                left: Math.round(r.left),
+                right: Math.round(r.right),
+                width: Math.round(r.width),
+              });
+            }
+            if (bad.length >= 6) break;
+          }
+          return bad;
+        });
         errors.push(
-          `${route.name} @${vp.name}: horizontal overflow (${await page.evaluate(() => document.body.scrollWidth)} vs ${vp.width})`,
+          `${route.name} @${vp.name}: horizontal overflow (${overflow.scrollWidth} vs ${overflow.viewport})`,
         );
+        for (const o of offenders)
+          errors.push(`  └─ ${o.selector}: left=${o.left} right=${o.right} width=${o.width}`);
+      }
 
-      if (["home", "business", "projects", "izo-asa"].includes(route.name)) {
+      if (["home", "business", "projects", "izo-asa", "collaboration"].includes(route.name)) {
         const designIssues = await checkV2Design(page, route.name, vp.width);
         for (const i of designIssues) errors.push(`${route.name} @${vp.name}: ${i}`);
       }
@@ -119,6 +145,7 @@ try {
       "izo-asa",
       "journal",
       "project-learning",
+      "collaboration",
       "contacts",
     ].includes(r.name),
   );

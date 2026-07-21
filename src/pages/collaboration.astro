@@ -1,61 +1,61 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import ButtonLink from "@components/ui/ButtonLink.astro";
+import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
 import { buildUrl } from "@config/site";
+
+const formats = [
+  {
+    title: "Аудит и стратегия",
+    description: "Диагностика текущего состояния, карта автоматизации, дорожная карта. 2–4 недели.",
+  },
+  {
+    title: "Проектная разработка",
+    description: "Полный цикл: от проектирования до передачи. Фиксированный результат и срок.",
+  },
+  {
+    title: "Техническое лидерство",
+    description:
+      "Временное усиление команды. Архитектура, код-ревью, наставничество разработчиков.",
+  },
+];
 ---
 
-<BaseLayout
-  title="Сотрудничество — Александр Аликин"
-  description="Выберите контекст обращения: бизнес-задача, образовательная программа, партнёрство, выступление или другой вопрос."
+<BaseLayoutV2
+  title="Обсудить задачу — Александр Аликин"
+  description="Выберите формат сотрудничества: аудит, проектная разработка или техническое лидерство."
   currentPath="/collaboration/"
-  breadcrumbs={[{ label: "Сотрудничество" }]}
 >
-  <div class="container container-main">
-    <h1>Сотрудничество</h1>
-    <p class="text-lg muted-text">
-      Выберите контекст обращения. Это поможет быстрее понять вашу задачу и предложить подходящий
-      формат.
-    </p>
-    <div class="card-grid mt-8">
-      <div class="card">
-        <h3>Бизнес-процесс или ИИ-пилот</h3>
-        <p class="card-description">
-          У вас есть ручной или разрозненный процесс, который нужно превратить в систему с измеримым
-          результатом.
-        </p>
-        <ButtonLink href={buildUrl("/business/")} variant="secondary" size="compact"
-          >Подробнее</ButtonLink
-        >
-      </div>
-      <div class="card">
-        <h3>Образовательная программа или лаборатория</h3>
-        <p class="card-description">
-          Вы представляете школу, центр или EdTech-проект и хотите создать инженерную или
-          ИИ-программу.
-        </p>
-        <ButtonLink href={buildUrl("/education/")} variant="secondary" size="compact"
-          >Подробнее</ButtonLink
-        >
-      </div>
-      <div class="card">
-        <h3>Партнёрство по проекту</h3>
-        <p class="card-description">
-          У вас есть идея или проект, где нужна инженерная, педагогическая или предпринимательская
-          экспертиза.
-        </p>
-        <ButtonLink href={buildUrl("/contacts/")} variant="secondary" size="compact"
-          >Связаться</ButtonLink
-        >
-      </div>
-      <div class="card">
-        <h3>Выступление или СМИ</h3>
-        <p class="card-description">
-          Вы организуете мероприятие или готовите материал и хотите пригласить Александра.
-        </p>
-        <ButtonLink href={buildUrl("/press/")} variant="secondary" size="compact"
-          >Пресс-пакет</ButtonLink
-        >
+  <section class="v2-section">
+    <div class="v2-container">
+      <h1 class="v2-page-title">Обсудить задачу</h1>
+      <p class="v2-page-lead">
+        Выберите формат, который лучше всего подходит вашей ситуации. Каждое сотрудничество
+        начинается с разбора контекста и фиксации ожидаемого результата.
+      </p>
+    </div>
+  </section>
+
+  <section class="v2-section v2-section-surface">
+    <div class="v2-container">
+      <h2 class="v2-section-title">Форматы сотрудничества</h2>
+      <div class="v2-formats-grid">
+        {
+          formats.map((f, i) => (
+            <div class="v2-card-surface v2-format-card">
+              <span class="v2-accent-label">{String(i + 1).padStart(2, "0")}</span>
+              <h3 class="v2-format-card-title">{f.title}</h3>
+              <p class="v2-format-card-desc">{f.description}</p>
+            </div>
+          ))
+        }
       </div>
     </div>
-  </div>
-</BaseLayout>
+  </section>
+
+  <section class="v2-section">
+    <div class="v2-container v2-cta-block">
+      <h2>Готовы начать?</h2>
+      <p>Напишите — разберём вашу задачу, оценим объём и предложим первый шаг.</p>
+      <a href={buildUrl("/contacts/")} class="v2-btn v2-btn-accent">Связаться</a>
+    </div>
+  </section>
+</BaseLayoutV2>

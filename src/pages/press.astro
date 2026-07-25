@@ -1,97 +1,75 @@
 ---
-import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
-import "../styles/v2-utility.css";
+
+const formulas = [
+  ["Краткая формула", "Александр Аликин", "Предприниматель-практик и инженер-педагог. Проектирует технологические, ИИ- и образовательные системы, связывая архитектуру решения, обучение людей и ограничения проекта."],
+  ["Метод", "Разобрать, собрать, проверить, объяснить, передать", "Один рабочий цикл применяется к инженерным, образовательным и организационным задачам."],
+  ["Ограничение", "Цифры требуют источника", "Масштабы практики, внешние достижения и результаты внедрения не заявляются без документальной проверки."],
+];
+
+const topics = [
+  ["ИИ и автоматизация", "Где ИИ усиливает качественно поставленную задачу, а где создаёт дополнительный хаос."],
+  ["Инженерное образование", "Проектный результат, роль ошибки, объяснение и защита работающего решения."],
+  ["Архитектура проектов", "Как разделять контекст, ограничения, решение, результат и доказательства."],
+  ["Системы знаний", "Как заметки превращаются в решения и публичные материалы без утечки приватного архива."],
+];
 ---
 
-<BaseLayoutV2
+<BaseLayoutV3
   title="Для СМИ — Александр Аликин"
   description="Безопасные биографические формулы, темы комментариев и маршруты для редакционного запроса."
-  currentPath="/press/"
 >
-  <section class="v2-section">
-    <div class="v2-container v2-utility-hero">
-      <div class="v2-utility-lead">
-        <p class="v2-accent-label">Для СМИ и мероприятий</p>
-        <h1 class="v2-page-title">
-          Комментарий должен опираться на практику и границы компетенции
-        </h1>
-        <p>
-          На этой странице используются только безопасные формулировки. Проекты, роли и показатели,
-          которые ещё требуют доказательств, не превращаются в рекламные биографические заявления.
+  <div class="v3-page">
+    <section class="v3-page-hero v3-page-hero--plain">
+      <div class="v3-page-hero__copy">
+        <p class="v3-kicker">Для СМИ и мероприятий</p>
+        <h1 class="v3-page-hero__title">Комментарий с границами компетенции</h1>
+        <p class="v3-page-hero__lead">
+          Безопасные формулировки для интервью, комментариев и выступлений. Непроверенные роли и показатели не превращаются в рекламную биографию.
         </p>
       </div>
-      <div class="v2-utility-note">
-        <p>
-          Для интервью, комментария или выступления укажите тему, формат, срок и предполагаемую
-          аудиторию. Предметный запрос проходит через страницу контактов.
-        </p>
+      <aside class="v3-page-hero__aside">
+        <strong>Тема, формат, срок, аудитория</strong>
+        <p>Этих четырёх пунктов достаточно, чтобы оценить редакционный запрос.</p>
+      </aside>
+    </section>
+
+    <section class="v3-editorial-section v3-editorial-section--white">
+      <div class="v3-shell v3-numbered">
+        {formulas.map(([label, title, copy], index) => (
+          <article class="v3-numbered__item">
+            <span class="v3-numbered__index">0{index + 1}</span>
+            <div><p class="v3-kicker">{label}</p><h3>{title}</h3><p>{copy}</p></div>
+          </article>
+        ))}
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="v2-section v2-section-surface">
-    <div class="v2-container v2-utility-grid">
-      <article class="v2-utility-card">
-        <span class="v2-accent-label">Краткая формула</span>
-        <h2>Александр Аликин</h2>
-        <p>
-          Предприниматель-практик и инженер-педагог. Проектирует технологические, ИИ- и
-          образовательные системы, связывая архитектуру решения, обучение людей и ограничения
-          проекта.
-        </p>
-      </article>
-      <article class="v2-utility-card">
-        <span class="v2-accent-label">Метод</span>
-        <h2>Разобрать, собрать, проверить, объяснить, передать</h2>
-        <p>
-          Один рабочий цикл применяется к инженерным, образовательным и организационным задачам.
-        </p>
-      </article>
-      <article class="v2-utility-card">
-        <span class="v2-accent-label">Ограничение</span>
-        <h2>Цифры требуют источника</h2>
-        <p>
-          Масштабы образовательной практики, внешние достижения и результаты внедрения не заявляются
-          без отдельной документальной проверки.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <section class="v2-section">
-    <div class="v2-container">
-      <h2 class="v2-section-title">Темы для предметного разговора</h2>
-      <div class="v2-utility-list">
-        <div class="v2-utility-row">
-          <strong>ИИ и автоматизация</strong><p>
-            Где ИИ усиливает качественно поставленную задачу, а где создаёт дополнительный хаос.
-          </p>
+    <section class="v3-editorial-section v3-editorial-section--ink">
+      <div class="v3-shell v3-section-grid">
+        <div class="v3-section-grid__intro">
+          <p class="v3-kicker">Темы разговора</p>
+          <h2>Где есть практический контекст</h2>
         </div>
-        <div class="v2-utility-row">
-          <strong>Инженерное образование</strong><p>
-            Проектный результат, роль ошибки, объяснение и защита работающего решения.
-          </p>
-        </div>
-        <div class="v2-utility-row">
-          <strong>Архитектура проектов</strong><p>
-            Как разделять контекст, ограничения, решение, результат и доказательства.
-          </p>
-        </div>
-        <div class="v2-utility-row">
-          <strong>Системы знаний</strong><p>
-            Как заметки превращаются в решения и публичные материалы без утечки приватного архива.
-          </p>
+        <div class="v3-numbered">
+          {topics.map(([title, copy], index) => (
+            <article class="v3-numbered__item">
+              <span class="v3-numbered__index">0{index + 1}</span>
+              <div><h3>{title}</h3><p>{copy}</p></div>
+            </article>
+          ))}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="v2-section v2-section-surface">
-    <div class="v2-container v2-cta-block v2-cta-block-surface">
-      <h2>Направить редакционный запрос</h2>
-      <p>Укажите тему, формат, дедлайн и ссылку на издание или мероприятие.</p>
-      <a href={buildUrl("/contacts/")} class="v2-btn v2-btn-surface">Открыть контакты</a>
-    </div>
-  </section>
-</BaseLayoutV2>
+    <section class="v3-editorial-section">
+      <div class="v3-shell v3-cta-scene">
+        <p class="v3-kicker">Редакционный запрос</p>
+        <h2>Укажите тему, формат и дедлайн</h2>
+        <p>Добавьте ссылку на издание или мероприятие и предполагаемую аудиторию.</p>
+        <a class="v3-button" href={buildUrl("/contacts/")}>Открыть контакты</a>
+      </div>
+    </section>
+  </div>
+</BaseLayoutV3>

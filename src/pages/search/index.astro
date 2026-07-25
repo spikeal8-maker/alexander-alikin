@@ -1,55 +1,56 @@
 ---
-import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
-import "../../styles/v2-utility.css";
 ---
 
-<BaseLayoutV2
+<BaseLayoutV3
   title="Поиск — Александр Аликин"
   description="Поиск по проектам, материалам, темам и публичным страницам сайта."
-  currentPath="/search/"
 >
-  <section class="v2-section">
-    <div class="v2-container v2-utility-hero">
-      <div class="v2-utility-lead">
-        <p class="v2-accent-label">Поиск</p>
-        <h1 class="v2-page-title">Найти проект, тему или материал</h1>
-        <p>
+  <div class="v3-page">
+    <section class="v3-page-hero v3-page-hero--plain">
+      <div class="v3-page-hero__copy">
+        <p class="v3-kicker">Поиск</p>
+        <h1 class="v3-page-hero__title">Найти проект, тему или материал</h1>
+        <p class="v3-page-hero__lead">
           Поиск работает по публичному индексу сайта. Приватные заметки, черновики и внутренний
           реестр доказательств в результаты не попадают.
         </p>
       </div>
-      <div class="v2-utility-note">
+      <aside class="v3-page-hero__aside">
+        <p class="v3-kicker">Граница</p>
         <p>
           Введите название проекта, тему или ключевое понятие. Без JavaScript остаются доступны
-          меню, журнал и карта основных разделов.
+          навигация, журнал и основные разделы.
         </p>
-      </div>
-    </div>
-  </section>
+      </aside>
+    </section>
 
-  <section class="v2-section v2-section-surface">
-    <div class="v2-container">
-      <label for="search-input" class="v2-accent-label">Запрос</label>
-      <input
-        type="search"
-        id="search-input"
-        class="v2-search-box"
-        placeholder="Например: ИЗО АСА, проектное обучение, автоматизация"
-        autocomplete="off"
-      />
-      <p id="search-status" class="v2-utility-copy" aria-live="polite">Начните вводить запрос.</p>
-      <ul id="search-results" class="v2-search-results"></ul>
-      <noscript>
-        <p class="v2-empty-note">
-          Для интерактивного поиска требуется JavaScript. Перейдите в <a
-            href={buildUrl("/projects/")}>проекты</a
-          > или <a href={buildUrl("/journal/")}>журнал</a>.
+    <section class="v3-search-panel">
+      <div class="v3-shell">
+        <label for="search-input" class="v3-search-label">Запрос</label>
+        <input
+          type="search"
+          id="search-input"
+          class="v3-search-input"
+          placeholder="ИЗО АСА, проектное обучение, автоматизация"
+          autocomplete="off"
+        />
+        <p id="search-status" class="v3-search-status" aria-live="polite">
+          Начните вводить запрос.
         </p>
-      </noscript>
-    </div>
-  </section>
-</BaseLayoutV2>
+        <ul id="search-results" class="v3-search-results"></ul>
+        <noscript>
+          <p class="v3-search-status">
+            Для интерактивного поиска требуется JavaScript. Перейдите в <a
+              href={buildUrl("/projects/")}>проекты</a
+            > или <a href={buildUrl("/journal/")}>журнал</a>.
+          </p>
+        </noscript>
+      </div>
+    </section>
+  </div>
+</BaseLayoutV3>
 
 <script>
   interface SearchItem {
@@ -69,7 +70,7 @@ import "../../styles/v2-utility.css";
     status.textContent = items.length ? `Найдено: ${items.length}` : "Совпадений не найдено.";
     for (const item of items) {
       const li = document.createElement("li");
-      li.className = "v2-search-result";
+      li.className = "v3-search-result";
       const link = document.createElement("a");
       link.href = item.href;
       link.textContent = item.title;

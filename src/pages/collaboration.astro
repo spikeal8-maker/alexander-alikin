@@ -1,120 +1,98 @@
 ---
-import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
 
 const formats = [
-  {
-    title: "Разбор задачи",
-    description:
-      "Короткий предметный разговор: контекст, текущее состояние, желаемое изменение и возможность измерить результат.",
-  },
-  {
-    title: "Проектирование первого этапа",
-    description:
-      "Формулировка границ, данных, ролей, рисков и проверяемого результата. Срок и стоимость появляются только после разбора.",
-  },
-  {
-    title: "Рабочий контур и передача",
-    description:
-      "Создание ограниченного решения, его проверка на реальных условиях, документация и объяснение команде.",
-  },
+  ["Разбор задачи", "Контекст, текущее состояние, желаемое изменение и возможность измерить результат."],
+  ["Проектирование первого этапа", "Границы, данные, роли, риски и проверяемый результат. Срок и стоимость — после разбора."],
+  ["Рабочий контур и передача", "Ограниченное решение, проверка на реальных условиях, документация и объяснение команде."],
+];
+
+const prepare = [
+  "Краткое описание текущей ситуации",
+  "Что должно работать иначе",
+  "Какие данные и люди участвуют",
+  "Что уже пробовали и где возникло ограничение",
+];
+
+const mismatch = [
+  "Нужно обещание результата до диагностики",
+  "Команда не готова участвовать во внедрении",
+  "Требуется массовый шаблонный консалтинг",
+  "Задача лежит вне инженерии, ИИ, процессов или технического образования",
 ];
 ---
 
-<BaseLayoutV2
+<BaseLayoutV3
   title="Обсудить задачу — Александр Аликин"
   description="Предметный разбор бизнес-, технологической или образовательной задачи без неподтверждённых обещаний и шаблонных пакетов."
-  currentPath="/collaboration/"
 >
-  <section class="v2-section">
-    <div class="v2-container v2-collab-hero">
-      <p class="v2-accent-label">Сотрудничество</p>
-      <h1 class="v2-page-title">Сначала понять задачу</h1>
-      <p class="v2-page-lead">
-        Первый разговор нужен не для продажи готового пакета. Его задача — понять, что происходит
-        сейчас, какое изменение действительно нужно и есть ли у него проверяемый первый шаг.
-      </p>
-    </div>
-  </section>
+  <div class="v3-page">
+    <section class="v3-page-hero v3-page-hero--plain">
+      <div class="v3-page-hero__copy">
+        <p class="v3-kicker">Сотрудничество</p>
+        <h1 class="v3-page-hero__title">Сначала понять задачу</h1>
+        <p class="v3-page-hero__lead">
+          Первый разговор нужен не для продажи готового пакета. Его задача — понять, что происходит сейчас, какое изменение действительно нужно и есть ли проверяемый первый шаг.
+        </p>
+      </div>
+      <aside class="v3-page-hero__aside">
+        <strong>Без обещаний до диагностики</strong>
+        <p>Нормальная работа начинается с ограничений, данных и ответственности сторон.</p>
+      </aside>
+    </section>
 
-  <section class="v2-section v2-section-surface">
-    <div class="v2-container">
-      <h2 class="v2-section-title">Как может начаться работа</h2>
-      <div class="v2-formats-grid">
-        {
-          formats.map((f, i) => (
-            <div class="v2-card-surface v2-format-card">
-              <span class="v2-accent-label">{String(i + 1).padStart(2, "0")}</span>
-              <h3 class="v2-format-card-title">{f.title}</h3>
-              <p class="v2-format-card-desc">{f.description}</p>
+    <section class="v3-editorial-section v3-editorial-section--white">
+      <div class="v3-shell v3-section-grid">
+        <div class="v3-section-grid__intro">
+          <p class="v3-kicker">Как начинается работа</p>
+          <h2>От разговора к рабочему контуру</h2>
+          <p>Каждый следующий этап имеет смысл только после результата предыдущего.</p>
+        </div>
+        <div class="v3-numbered">
+          {formats.map(([title, copy], index) => (
+            <article class="v3-numbered__item">
+              <span class="v3-numbered__index">0{index + 1}</span>
+              <div><h3>{title}</h3><p>{copy}</p></div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-editorial-section v3-editorial-section--ink">
+      <div class="v3-shell v3-section-grid">
+        <div class="v3-section-grid__intro">
+          <p class="v3-kicker">До разговора</p>
+          <h2>Что подготовить</h2>
+        </div>
+        <div class="v3-numbered">
+          {prepare.map((item, index) => (
+            <div class="v3-numbered__item">
+              <span class="v3-numbered__index">0{index + 1}</span><p>{item}</p>
             </div>
-          ))
-        }
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="v2-section">
-    <div class="v2-container v2-collab-grid">
-      <div>
-        <h2 class="v2-section-title">Что подготовить</h2>
-        <ul class="v2-collab-list">
-          <li>Краткое описание текущей ситуации</li>
-          <li>Что должно работать иначе</li>
-          <li>Какие данные и люди участвуют в процессе</li>
-          <li>Что уже пробовали и где возникло ограничение</li>
-        </ul>
+    <section class="v3-editorial-section">
+      <div class="v3-shell v3-statement">
+        <blockquote>Иногда лучший результат разбора — понять, что мы не подходим друг другу.</blockquote>
+        <div>
+          <p class="v3-kicker">Когда я не подхожу</p>
+          <ul>{mismatch.map((item) => <li>{item}</li>)}</ul>
+        </div>
       </div>
-      <div>
-        <h2 class="v2-section-title">Когда я не подхожу</h2>
-        <ul class="v2-collab-list">
-          <li>Нужно обещание результата до диагностики</li>
-          <li>Команда не готова участвовать во внедрении</li>
-          <li>Требуется массовый шаблонный консалтинг</li>
-          <li>Задача лежит вне инженерии, ИИ, процессов или технического образования</li>
-        </ul>
+    </section>
+
+    <section class="v3-editorial-section v3-editorial-section--white">
+      <div class="v3-shell v3-cta-scene">
+        <p class="v3-kicker">Контекст вместо брифа</p>
+        <h2>Опишите ситуацию несколькими абзацами</h2>
+        <p>Этого достаточно, чтобы определить, есть ли предмет для разговора и какой первый шаг разумен.</p>
+        <a class="v3-button" href={buildUrl("/contacts/")}>Перейти к контактам</a>
       </div>
-    </div>
-  </section>
-
-  <section class="v2-section v2-section-surface">
-    <div class="v2-container v2-cta-block">
-      <h2>Опишите контекст</h2>
-      <p>
-        Достаточно нескольких абзацев. После этого можно определить, есть ли предмет для разговора.
-      </p>
-      <a href={buildUrl("/contacts/")} class="v2-btn v2-btn-accent">Перейти к контактам</a>
-    </div>
-  </section>
-</BaseLayoutV2>
-
-<style>
-  .v2-collab-hero {
-    max-width: 56rem;
-  }
-  .v2-formats-grid,
-  .v2-collab-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-6);
-  }
-  .v2-collab-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-12);
-  }
-  .v2-collab-list {
-    margin: 0;
-    padding-left: var(--space-5);
-    color: rgba(255, 255, 255, 0.72);
-  }
-  .v2-collab-list li {
-    margin-bottom: var(--space-3);
-    line-height: var(--leading-normal);
-  }
-  @media (max-width: 768px) {
-    .v2-formats-grid,
-    .v2-collab-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
+    </section>
+  </div>
+</BaseLayoutV3>

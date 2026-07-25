@@ -1,66 +1,55 @@
 ---
-import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
-import "../../styles/v2-utility.css";
 
 const focusItems = [
-  {
-    title: "ИЗО АСА",
-    text: "Активная разработка архитектуры образовательной платформы для виртуальных лабораторий, групп и учебных проектов.",
-  },
-  {
-    title: "Редакционная платформа",
-    text: "Сайт, журнал и реестр источников приводятся к единой системе, где факт отделён от авторской интерпретации.",
-  },
-  {
-    title: "Инженерное образование",
-    text: "Развиваются проектные форматы, в которых участник создаёт, проверяет и объясняет работающий результат.",
-  },
+  ["ИЗО АСА", "Активная разработка архитектуры образовательной платформы для виртуальных лабораторий, групп и учебных проектов."],
+  ["Редакционная платформа", "Сайт, журнал и реестр источников приводятся к единой системе, где факт отделён от авторской интерпретации."],
+  ["Инженерное образование", "Развиваются проектные форматы, в которых участник создаёт, проверяет и объясняет работающий результат."],
 ];
 ---
 
-<BaseLayoutV2
-  title="Сейчас — Александр Аликин"
-  description="Публично подтверждённые текущие направления работы."
-  currentPath="/now/"
->
-  <section class="v2-section">
-    <div class="v2-container v2-utility-hero">
-      <div class="v2-utility-lead">
-        <p class="v2-accent-label">Сейчас</p>
-        <h1 class="v2-page-title">Текущий рабочий фокус</h1>
-        <p>
-          Здесь фиксируются только направления, которые подтверждены опубликованными проектами и
-          текущим состоянием репозитория. Страница не используется как поток случайных обновлений.
+<BaseLayoutV3 title="Сейчас — Александр Аликин" description="Публично подтверждённые текущие направления работы.">
+  <div class="v3-page">
+    <section class="v3-page-hero v3-page-hero--plain">
+      <div class="v3-page-hero__copy">
+        <p class="v3-kicker">Сейчас</p>
+        <h1 class="v3-page-hero__title">Текущий рабочий фокус</h1>
+        <p class="v3-page-hero__lead">
+          Здесь фиксируются только направления, подтверждённые опубликованными проектами и текущим состоянием репозитория.
         </p>
       </div>
-      <div class="v2-utility-note">
-        <p>
-          Обновлено: июль 2026. Точные внешние результаты добавляются только вместе с источником.
-        </p>
+      <aside class="v3-page-hero__aside">
+        <strong>Обновлено: июль 2026</strong>
+        <p>Точные внешние результаты добавляются только вместе с проверяемым источником.</p>
+      </aside>
+    </section>
+
+    <section class="v3-editorial-section v3-editorial-section--white">
+      <div class="v3-shell v3-section-grid">
+        <div class="v3-section-grid__intro">
+          <p class="v3-kicker">Три направления</p>
+          <h2>Работа, которая идёт сейчас</h2>
+          <p>Страница не используется как поток случайных обновлений или обещаний будущих запусков.</p>
+        </div>
+        <div class="v3-numbered">
+          {focusItems.map(([title, copy], index) => (
+            <article class="v3-numbered__item">
+              <span class="v3-numbered__index">0{index + 1}</span>
+              <div><h3>{title}</h3><p>{copy}</p></div>
+            </article>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="v2-section v2-section-surface">
-    <div class="v2-container v2-utility-grid">
-      {
-        focusItems.map((item, index) => (
-          <article class="v2-utility-card">
-            <span class="v2-accent-label">{String(index + 1).padStart(2, "0")}</span>
-            <h2>{item.title}</h2>
-            <p>{item.text}</p>
-          </article>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class="v2-section">
-    <div class="v2-container v2-cta-block">
-      <h2>Посмотреть работу в контексте</h2>
-      <p>Статусы, роли и ограничения раскрыты на страницах проектов.</p>
-      <a href={buildUrl("/projects/")} class="v2-btn v2-btn-accent">Открыть проекты</a>
-    </div>
-  </section>
-</BaseLayoutV2>
+    <section class="v3-editorial-section">
+      <div class="v3-shell v3-cta-scene">
+        <p class="v3-kicker">Контекст</p>
+        <h2>Статусы, роли и ограничения — в проектах</h2>
+        <p>Текущий фокус становится понятнее через конкретную архитектуру и границы каждого кейса.</p>
+        <a class="v3-button" href={buildUrl("/projects/")}>Открыть проекты</a>
+      </div>
+    </section>
+  </div>
+</BaseLayoutV3>

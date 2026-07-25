@@ -23,10 +23,24 @@ jobs:
         run: |
           set -o pipefail
           npm install --save-dev eslint@10.8.0 @eslint/js@10.0.1 typescript-eslint@8.65.0 eslint-plugin-astro@3.0.1 2>&1 | tee upgrade.log
-      - run: npm run lint
-      - name: Verify audit
+      - name: Capture lint result
+        id: lint
         shell: bash
-        run: npm audit --json | tee audit.json
+        run: |
+          set +e
+          npm run lint 2>&1 | tee lint.log
+          status=${PIPESTATUS[0]}
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Capture audit result
+        id: audit
+        shell: bash
+        run: |
+          set +e
+          npm audit --json | tee audit.json
+          status=${PIPESTATUS[0]}
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          exit 0
       - uses: actions/upload-artifact@v4
         with:
           name: eslint-v3-lockfile
@@ -34,5 +48,9 @@ jobs:
             package.json
             package-lock.json
             upgrade.log
+            lint.log
             audit.json
           retention-days: 1
+      - name: Preserve verification result
+        if: steps.lint.outputs.status != '0' || steps.audit.outputs.status != '0'
+        run: exit 1

@@ -42,20 +42,21 @@ const nav = [
   }
 
   .v3-header__inner {
-    display: grid;
-    grid-template-columns: minmax(16rem, 1fr) auto minmax(12rem, 1fr);
+    display: flex;
     gap: clamp(1.5rem, 3vw, 3.5rem);
     align-items: center;
     width: min(100%, var(--v3-max));
     min-height: 5.75rem;
     margin: 0 auto;
-    padding-inline: var(--v3-gutter);
+    padding: 1rem var(--v3-gutter);
+    flex-wrap: wrap;
   }
 
   .v3-header__brand {
     display: grid;
     gap: 0.2rem;
-    width: fit-content;
+    min-width: 0;
+    flex: 1 1 16rem;
     text-decoration: none;
   }
 
@@ -77,6 +78,9 @@ const nav = [
     display: flex;
     gap: clamp(1.25rem, 2.2vw, 2.4rem);
     align-items: center;
+    justify-content: center;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
   }
 
   .v3-header__nav a,
@@ -121,10 +125,11 @@ const nav = [
     min-height: 2.9rem;
     padding-inline: 1.15rem;
     align-items: center;
-    justify-self: end;
+    margin-left: auto;
     color: var(--v3-white);
     background: var(--v3-cobalt);
     border: 1px solid var(--v3-cobalt);
+    flex: 0 0 auto;
   }
 
   .v3-header__cta:hover,
@@ -145,7 +150,11 @@ const nav = [
 
   @media (max-width: 980px) {
     .v3-header__inner {
-      grid-template-columns: 1fr auto;
+      flex-wrap: nowrap;
+    }
+
+    .v3-header__brand {
+      flex: 1 1 auto;
     }
 
     .v3-header__nav,
@@ -156,6 +165,7 @@ const nav = [
     .v3-header__mobile {
       position: relative;
       display: block;
+      margin-left: auto;
     }
 
     .v3-header__mobile summary {

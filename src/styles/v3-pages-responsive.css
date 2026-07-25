@@ -46,14 +46,19 @@
 .v3-page h1,
 .v3-page h2,
 .v3-page h3,
+.v3-page strong,
 .v3-page blockquote,
 .v3-page .v3-kicker,
 .v3-page .v3-meta,
+.v3-page dd,
 .v3-page-hero__lead,
 .v3-page-hero__note,
+.v3-page-hero__aside p,
 .v3-numbered p,
 .v3-numbered li,
 .v3-process__item p,
+.v3-statement p,
+.v3-statement li,
 .v3-case-band p,
 .v3-case-band li,
 .v3-cta-scene p {
@@ -61,6 +66,17 @@
 }
 
 @media (max-width: 900px) {
+  .v3-page-hero,
+  .v3-page-hero--plain,
+  .v3-section-grid,
+  .v3-statement,
+  .v3-case-hero,
+  .v3-case-band,
+  .v3-project-card,
+  .v3-project-card:nth-child(even) {
+    grid-template-columns: 1fr;
+  }
+
   .v3-case-hero,
   .v3-page-hero {
     width: 100%;
@@ -71,6 +87,10 @@
   .v3-page-hero__copy,
   .v3-page-hero__aside {
     width: 100%;
+  }
+
+  .v3-project-card:nth-child(even) .v3-project-card__visual {
+    order: 0;
   }
 }
 

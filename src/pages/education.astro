@@ -2,7 +2,7 @@
 import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
 
-const tasks = [
+const tasks: Array<[string, string, string[]]> = [
   [
     "Программы и лаборатории",
     "Проектные форматы по информатике, технологии, робототехнике и применению ИИ.",
@@ -23,7 +23,7 @@ const tasks = [
   ],
 ];
 
-const method = [
+const method: Array<[string, string, string]> = [
   ["01", "Действие", "Участник начинает создавать, а не ждёт готового ответа."],
   ["02", "Ошибка", "Ограничение становится видимым и пригодным для разбора."],
   ["03", "Объяснение", "Нужно понять причину, а не подобрать случайный ответ."],

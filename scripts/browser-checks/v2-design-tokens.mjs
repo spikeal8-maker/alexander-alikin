@@ -23,33 +23,46 @@ export async function checkV2Design(page, name, vpWidth) {
           issues.push(`V3 body font=${bodyStyle.fontFamily} (unstyled)`);
         }
 
-        const heroTitle = document.querySelector(".v3-display");
-        if (!heroTitle) {
-          issues.push("V3 hero title missing");
-        } else if (vpW >= 1024 && parseFloat(getComputedStyle(heroTitle).fontSize) < 64) {
-          issues.push(`V3 hero title too small: ${getComputedStyle(heroTitle).fontSize}`);
-        }
-
-        const primary = document.querySelector(".v3-hero__primary");
-        if (!primary) {
-          issues.push("V3 primary CTA missing");
-        } else {
-          const style = getComputedStyle(primary);
-          if (!style.backgroundColor || style.backgroundColor === "rgba(0, 0, 0, 0)") {
-            issues.push("V3 primary CTA background missing");
-          }
-          if (parseFloat(style.minHeight) < 40)
-            issues.push(`V3 primary CTA min-height=${style.minHeight}`);
-        }
-
-        const portrait = document.querySelector(".v3-hero__portrait img");
-        if (!portrait || portrait.getBoundingClientRect().height < 280) {
-          issues.push("V3 portrait composition missing or too small");
-        }
-
         const header = document.querySelector(".v3-header");
         if (!header || parseFloat(getComputedStyle(header).height) <= 0) {
           issues.push("V3 header missing");
+        }
+
+        if (name === "home") {
+          const heroTitle = document.querySelector(".v3-display");
+          if (!heroTitle) {
+            issues.push("V3 hero title missing");
+          } else if (vpW >= 1024 && parseFloat(getComputedStyle(heroTitle).fontSize) < 64) {
+            issues.push(`V3 hero title too small: ${getComputedStyle(heroTitle).fontSize}`);
+          }
+
+          const primary = document.querySelector(".v3-hero__primary");
+          if (!primary) {
+            issues.push("V3 primary CTA missing");
+          } else {
+            const style = getComputedStyle(primary);
+            if (!style.backgroundColor || style.backgroundColor === "rgba(0, 0, 0, 0)") {
+              issues.push("V3 primary CTA background missing");
+            }
+            if (parseFloat(style.minHeight) < 40) {
+              issues.push(`V3 primary CTA min-height=${style.minHeight}`);
+            }
+          }
+
+          const portrait = document.querySelector(".v3-hero__portrait img");
+          if (!portrait || portrait.getBoundingClientRect().height < 280) {
+            issues.push("V3 portrait composition missing or too small");
+          }
+          return issues;
+        }
+
+        const internalTitle = document.querySelector(".v3-page-hero__title, .v3-case-hero h1");
+        if (internalTitle && vpW >= 1024 && parseFloat(getComputedStyle(internalTitle).fontSize) < 48) {
+          issues.push(`V3 internal title too small: ${getComputedStyle(internalTitle).fontSize}`);
+        }
+        const internalHero = document.querySelector(".v3-page-hero, .v3-case-hero");
+        if (internalTitle && (!internalHero || internalHero.getBoundingClientRect().height < 320)) {
+          issues.push("V3 internal hero missing or too small");
         }
         return issues;
       }

@@ -1,0 +1,70 @@
+.v3-page-hero > *,
+.v3-page-hero__copy,
+.v3-page-hero__aside,
+.v3-section-grid > *,
+.v3-section-grid__intro,
+.v3-numbered,
+.v3-numbered__item,
+.v3-numbered__item > *,
+.v3-process,
+.v3-process__item,
+.v3-statement > *,
+.v3-case-hero > *,
+.v3-case-hero__copy,
+.v3-case-hero__panel,
+.v3-case-band > *,
+.v3-architecture__node,
+.v3-cta-scene {
+  min-width: 0;
+}
+
+.v3-page h1,
+.v3-page h2,
+.v3-page h3,
+.v3-page blockquote,
+.v3-page .v3-kicker,
+.v3-page .v3-meta,
+.v3-page-hero__lead,
+.v3-page-hero__note,
+.v3-numbered p,
+.v3-numbered li,
+.v3-process__item p,
+.v3-case-band p,
+.v3-case-band li,
+.v3-cta-scene p {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .v3-case-hero,
+  .v3-page-hero {
+    width: 100%;
+  }
+
+  .v3-case-hero__copy,
+  .v3-case-hero__panel,
+  .v3-page-hero__copy,
+  .v3-page-hero__aside {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .v3-page-hero__copy,
+  .v3-page-hero__aside,
+  .v3-case-hero__copy,
+  .v3-case-hero__panel {
+    padding-right: var(--v3-gutter);
+    padding-left: var(--v3-gutter);
+  }
+
+  .v3-section-grid__intro h2,
+  .v3-cta-scene h2,
+  .v3-case-band h2 {
+    max-width: 100%;
+  }
+
+  .v3-numbered__item {
+    gap: 1rem;
+  }
+}

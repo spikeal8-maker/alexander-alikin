@@ -57,7 +57,11 @@ export async function checkV2Design(page, name, vpWidth) {
         }
 
         const internalTitle = document.querySelector(".v3-page-hero__title, .v3-case-hero h1");
-        if (internalTitle && vpW >= 1024 && parseFloat(getComputedStyle(internalTitle).fontSize) < 48) {
+        if (
+          internalTitle &&
+          vpW >= 1024 &&
+          parseFloat(getComputedStyle(internalTitle).fontSize) < 48
+        ) {
           issues.push(`V3 internal title too small: ${getComputedStyle(internalTitle).fontSize}`);
         }
         const internalHero = document.querySelector(".v3-page-hero, .v3-case-hero");

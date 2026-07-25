@@ -3,9 +3,18 @@ import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
 
 const formats = [
-  ["Разбор задачи", "Контекст, текущее состояние, желаемое изменение и возможность измерить результат."],
-  ["Проектирование первого этапа", "Границы, данные, роли, риски и проверяемый результат. Срок и стоимость — после разбора."],
-  ["Рабочий контур и передача", "Ограниченное решение, проверка на реальных условиях, документация и объяснение команде."],
+  [
+    "Разбор задачи",
+    "Контекст, текущее состояние, желаемое изменение и возможность измерить результат.",
+  ],
+  [
+    "Проектирование первого этапа",
+    "Границы, данные, роли, риски и проверяемый результат. Срок и стоимость — после разбора.",
+  ],
+  [
+    "Рабочий контур и передача",
+    "Ограниченное решение, проверка на реальных условиях, документация и объяснение команде.",
+  ],
 ];
 
 const prepare = [
@@ -33,7 +42,8 @@ const mismatch = [
         <p class="v3-kicker">Сотрудничество</p>
         <h1 class="v3-page-hero__title">Сначала понять задачу</h1>
         <p class="v3-page-hero__lead">
-          Первый разговор нужен не для продажи готового пакета. Его задача — понять, что происходит сейчас, какое изменение действительно нужно и есть ли проверяемый первый шаг.
+          Первый разговор нужен не для продажи готового пакета. Его задача — понять, что происходит
+          сейчас, какое изменение действительно нужно и есть ли проверяемый первый шаг.
         </p>
       </div>
       <aside class="v3-page-hero__aside">
@@ -50,12 +60,19 @@ const mismatch = [
           <p>Каждый следующий этап имеет смысл только после результата предыдущего.</p>
         </div>
         <div class="v3-numbered">
-          {formats.map(([title, copy], index) => (
-            <article class="v3-numbered__item">
-              <span class="v3-numbered__index">0{index + 1}</span>
-              <div><h3>{title}</h3><p>{copy}</p></div>
-            </article>
-          ))}
+          {
+            formats.map(([title, copy], index) => (
+              <article class="v3-numbered__item">
+                <span class="v3-numbered__index">0{index + 1}</span>
+                <div>
+                  <>
+                    <h3>{title}</h3>
+                    <p>{copy}</p>
+                  </>
+                </div>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -67,18 +84,25 @@ const mismatch = [
           <h2>Что подготовить</h2>
         </div>
         <div class="v3-numbered">
-          {prepare.map((item, index) => (
-            <div class="v3-numbered__item">
-              <span class="v3-numbered__index">0{index + 1}</span><p>{item}</p>
-            </div>
-          ))}
+          {
+            prepare.map((item, index) => (
+              <div class="v3-numbered__item">
+                <>
+                  <span class="v3-numbered__index">0{index + 1}</span>
+                  <p>{item}</p>
+                </>
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>
 
     <section class="v3-editorial-section">
       <div class="v3-shell v3-statement">
-        <blockquote>Иногда лучший результат разбора — понять, что мы не подходим друг другу.</blockquote>
+        <blockquote>
+          Иногда лучший результат разбора — понять, что мы не подходим друг другу.
+        </blockquote>
         <div>
           <p class="v3-kicker">Когда я не подхожу</p>
           <ul>{mismatch.map((item) => <li>{item}</li>)}</ul>
@@ -90,7 +114,10 @@ const mismatch = [
       <div class="v3-shell v3-cta-scene">
         <p class="v3-kicker">Контекст вместо брифа</p>
         <h2>Опишите ситуацию несколькими абзацами</h2>
-        <p>Этого достаточно, чтобы определить, есть ли предмет для разговора и какой первый шаг разумен.</p>
+        <p>
+          Этого достаточно, чтобы определить, есть ли предмет для разговора и какой первый шаг
+          разумен.
+        </p>
         <a class="v3-button" href={buildUrl("/contacts/")}>Перейти к контактам</a>
       </div>
     </section>

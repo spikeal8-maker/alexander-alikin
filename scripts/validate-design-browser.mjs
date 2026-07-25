@@ -148,11 +148,24 @@ try {
   if (!zoomOk) errors.push("Zoom 200%: horizontal overflow detected");
 
   await page.goto(`${SITE}${BASE}/about/`, { waitUntil: "networkidle" });
-  const textZoomOk = await page.evaluate(() => {
+  const textZoom = await page.evaluate(() => {
     document.documentElement.style.fontSize = "200%";
-    return document.body.scrollWidth <= window.innerWidth + 10;
+    return {
+      ok: document.body.scrollWidth <= window.innerWidth + 10,
+      scrollWidth: document.body.scrollWidth,
+      viewportWidth: window.innerWidth,
+    };
   });
-  if (!textZoomOk) errors.push("Text zoom 200%: horizontal overflow");
+  if (!textZoom.ok) {
+    errors.push(
+      `Text zoom 200%: horizontal overflow (${textZoom.scrollWidth} vs ${textZoom.viewportWidth})`,
+    );
+    for (const offender of await findOverflowOffenders(page)) {
+      errors.push(
+        `  └─ ${offender.selector}: width=${offender.width} client=${offender.clientWidth} scroll=${offender.scrollWidth} grid=${offender.grid} text="${offender.text}"`,
+      );
+    }
+  }
 
   try {
     await page.goto(`${SITE}${BASE}/`, { waitUntil: "networkidle" });

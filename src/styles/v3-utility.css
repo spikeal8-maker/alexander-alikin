@@ -1,0 +1,143 @@
+.v3-search-panel {
+  padding-block: clamp(4rem, 8vw, 8rem);
+  background: var(--v3-white);
+}
+
+.v3-search-label {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--v3-cobalt);
+  font-family: var(--v3-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.v3-search-input {
+  width: 100%;
+  padding: 1.25rem 0;
+  color: var(--v3-ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid var(--v3-ink);
+  border-radius: 0;
+  font-family: var(--v3-serif);
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  outline: none;
+}
+
+.v3-search-input:focus {
+  border-color: var(--v3-cobalt);
+}
+
+.v3-search-status {
+  margin: 1.25rem 0 2rem;
+  color: var(--v3-muted);
+  font-size: 0.9rem;
+}
+
+.v3-search-results {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--v3-line);
+  list-style: none;
+}
+
+.v3-search-result {
+  padding-block: 1.75rem;
+  border-bottom: 1px solid var(--v3-line);
+}
+
+.v3-search-result a {
+  font-family: var(--v3-serif);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  text-decoration: none;
+}
+
+.v3-search-result p {
+  max-width: 45rem;
+  margin: 0.75rem 0 0;
+  color: var(--v3-muted);
+  line-height: 1.65;
+}
+
+.v3-legal {
+  width: min(calc(100% - 2 * var(--v3-gutter)), 54rem);
+  margin: 0 auto;
+  padding-block: clamp(4rem, 8vw, 8rem);
+}
+
+.v3-legal h1 {
+  margin: 0 0 2rem;
+  font-family: var(--v3-serif);
+  font-size: clamp(3.5rem, 7vw, 7rem);
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 0.92;
+}
+
+.v3-legal h2 {
+  margin: 3rem 0 1rem;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  letter-spacing: -0.03em;
+}
+
+.v3-legal p,
+.v3-legal li {
+  color: var(--v3-ink-soft);
+  line-height: 1.75;
+}
+
+.v3-legal a {
+  color: var(--v3-cobalt);
+}
+
+.v3-not-found {
+  display: grid;
+  min-height: calc(100vh - 5.75rem);
+  place-items: center;
+  padding: var(--v3-gutter);
+  text-align: center;
+}
+
+.v3-not-found__number {
+  color: var(--v3-cobalt);
+  font-family: var(--v3-serif);
+  font-size: clamp(8rem, 28vw, 25rem);
+  letter-spacing: -0.12em;
+  line-height: 0.7;
+  opacity: 0.16;
+}
+
+.v3-not-found h1 {
+  max-width: 12ch;
+  margin: -2rem auto 1.5rem;
+  font-family: var(--v3-serif);
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.92;
+}
+
+.v3-not-found p {
+  max-width: 36rem;
+  margin: 0 auto 2rem;
+  color: var(--v3-muted);
+  line-height: 1.7;
+}
+
+.v3-inline-links {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 560px) {
+  .v3-search-input,
+  .v3-legal h1,
+  .v3-not-found h1 {
+    overflow-wrap: anywhere;
+  }
+}

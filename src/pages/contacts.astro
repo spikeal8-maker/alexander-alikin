@@ -3,9 +3,24 @@ import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
 
 const channels = [
-  ["Предметный запрос", "Для обсуждения бизнес-процесса, образовательной программы, проектной разработки или технического участия.", buildUrl("/collaboration/"), false],
-  ["GitHub", "Публичная техническая деятельность, исходный код и развитие цифровой платформы сайта.", "https://github.com/spikeal8-maker", true],
-  ["Журнал", "Статьи, истории и тезисы об инженерии, образовании, проектах и системном мышлении.", buildUrl("/journal/"), false],
+  [
+    "Предметный запрос",
+    "Для обсуждения бизнес-процесса, образовательной программы, проектной разработки или технического участия.",
+    buildUrl("/collaboration/"),
+    false,
+  ],
+  [
+    "GitHub",
+    "Публичная техническая деятельность, исходный код и развитие цифровой платформы сайта.",
+    "https://github.com/spikeal8-maker",
+    true,
+  ],
+  [
+    "Журнал",
+    "Статьи, истории и тезисы об инженерии, образовании, проектах и системном мышлении.",
+    buildUrl("/journal/"),
+    false,
+  ],
 ] as const;
 
 const prepare = [
@@ -27,12 +42,16 @@ const prepare = [
         <p class="v3-kicker">Контакты</p>
         <h1 class="v3-page-hero__title">Начать с контекста</h1>
         <p class="v3-page-hero__lead">
-          Самый быстрый путь к предметному разговору — описать задачу, текущую ситуацию и результат, который должен стать наблюдаемым после первого этапа.
+          Самый быстрый путь к предметному разговору — описать задачу, текущую ситуацию и результат,
+          который должен стать наблюдаемым после первого этапа.
         </p>
       </div>
       <aside class="v3-page-hero__aside">
         <strong>Только проверенные каналы</strong>
-        <p>Неподтверждённые Telegram, VK и другие профили не публикуются до фиксации официальной ссылки.</p>
+        <p>
+          Неподтверждённые Telegram, VK и другие профили не публикуются до фиксации официальной
+          ссылки.
+        </p>
       </aside>
     </section>
 
@@ -41,20 +60,30 @@ const prepare = [
         <div class="v3-section-grid__intro">
           <p class="v3-kicker">Маршруты</p>
           <h2>Выберите правильный контекст</h2>
-          <p>Не каждый контакт должен начинаться с личного сообщения. Иногда проект или материал уже содержит ответ.</p>
+          <p>
+            Не каждый контакт должен начинаться с личного сообщения. Иногда проект или материал уже
+            содержит ответ.
+          </p>
         </div>
         <div class="v3-numbered">
-          {channels.map(([title, copy, href, external], index) => (
-            <a
-              class="v3-numbered__item"
-              href={href}
-              target={external ? "_blank" : undefined}
-              rel={external ? "noreferrer" : undefined}
-            >
-              <span class="v3-numbered__index">0{index + 1}</span>
-              <div><h3>{title}</h3><p>{copy}</p></div>
-            </a>
-          ))}
+          {
+            channels.map(([title, copy, href, external], index) => (
+              <a
+                class="v3-numbered__item"
+                href={href}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noreferrer" : undefined}
+              >
+                <span class="v3-numbered__index">0{index + 1}</span>
+                <div>
+                  <>
+                    <h3>{title}</h3>
+                    <p>{copy}</p>
+                  </>
+                </div>
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>

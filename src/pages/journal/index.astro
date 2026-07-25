@@ -11,10 +11,34 @@ const [stories, thoughts, articles, news] = await Promise.all([
 ]);
 
 const categories = [
-  ["01", "Истории", "События, ошибки и изменения подхода, рассказанные через личный опыт.", "/journal/stories/", stories.length],
-  ["02", "Мысли", "Короткие тезисы об инженерии, образовании, системах и ИИ.", "/journal/thoughts/", thoughts.length],
-  ["03", "Статьи", "Развёрнутые материалы с аргументом, структурой и выводами.", "/journal/articles/", articles.length],
-  ["04", "Новости", "Только фактические обновления проектов и публикаций.", "/journal/news/", news.length],
+  [
+    "01",
+    "Истории",
+    "События, ошибки и изменения подхода, рассказанные через личный опыт.",
+    "/journal/stories/",
+    stories.length,
+  ],
+  [
+    "02",
+    "Мысли",
+    "Короткие тезисы об инженерии, образовании, системах и ИИ.",
+    "/journal/thoughts/",
+    thoughts.length,
+  ],
+  [
+    "03",
+    "Статьи",
+    "Развёрнутые материалы с аргументом, структурой и выводами.",
+    "/journal/articles/",
+    articles.length,
+  ],
+  [
+    "04",
+    "Новости",
+    "Только фактические обновления проектов и публикаций.",
+    "/journal/news/",
+    news.length,
+  ],
 ] as const;
 
 const latest = [
@@ -37,36 +61,61 @@ const latest = [
         <p class="v3-kicker">Авторское медиа</p>
         <h1>Журнал практики и решений</h1>
         <p>
-          Материалы о том, как возникают проекты, где ломаются системы, чему учат ошибки и почему хороший результат должен быть объяснимым и воспроизводимым.
+          Материалы о том, как возникают проекты, где ломаются системы, чему учат ошибки и почему
+          хороший результат должен быть объяснимым и воспроизводимым.
         </p>
       </div>
       <aside class="v3-journal-hero__aside">
         <p>
-          Это не новостная лента ради регулярности. Материал выходит, когда есть завершённая мысль, проверяемый факт или полезный разбор.
+          Это не новостная лента ради регулярности. Материал выходит, когда есть завершённая мысль,
+          проверяемый факт или полезный разбор.
         </p>
       </aside>
     </section>
 
     <section class="v3-journal-categories" aria-label="Рубрики журнала">
-      {categories.map(([number, title, description, href, count]) => (
-        <a class="v3-journal-category" href={buildUrl(href)}>
-          <span class="v3-journal-category__meta">{number} · {count}</span>
-          <div><strong>{title}</strong><p>{description}</p></div>
-        </a>
-      ))}
+      {
+        categories.map(([number, title, description, href, count]) => (
+          <a class="v3-journal-category" href={buildUrl(href)}>
+            <span class="v3-journal-category__meta">
+              {number} · {count}
+            </span>
+            <div>
+              <>
+                <strong>{title}</strong>
+                <p>{description}</p>
+              </>
+            </div>
+          </a>
+        ))
+      }
     </section>
 
     <section class="v3-editorial-section v3-editorial-section--white">
       <div class="v3-shell">
         <p class="v3-kicker">Последние материалы</p>
         <div class="v3-journal-list">
-          {latest.map(({ entry, kind, base }) => (
-            <a class="v3-journal-list__item" href={buildUrl(`${base}${entry.data.slug}/`)}>
-              <div class="v3-journal-list__meta"><span>{kind}</span><time>{entry.data.publishedAt.toLocaleDateString("ru")}</time></div>
-              <div><h2>{entry.data.title}</h2><p>{entry.data.description}</p></div>
-              <span class="v3-journal-list__arrow" aria-hidden="true">↗</span>
-            </a>
-          ))}
+          {
+            latest.map(({ entry, kind, base }) => (
+              <a class="v3-journal-list__item" href={buildUrl(`${base}${entry.data.slug}/`)}>
+                <div class="v3-journal-list__meta">
+                  <>
+                    <span>{kind}</span>
+                    <time>{entry.data.publishedAt.toLocaleDateString("ru")}</time>
+                  </>
+                </div>
+                <div>
+                  <>
+                    <h2>{entry.data.title}</h2>
+                    <p>{entry.data.description}</p>
+                  </>
+                </div>
+                <span class="v3-journal-list__arrow" aria-hidden="true">
+                  ↗
+                </span>
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>

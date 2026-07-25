@@ -1,0 +1,38 @@
+name: Prepare ESLint V3 Lockfile
+
+on:
+  pull_request:
+    branches:
+      - agent/integrate-visual-direction-v2-1
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Prepare lint toolchain
+        shell: bash
+        run: |
+          set -o pipefail
+          npm install --save-dev eslint@10.8.0 @eslint/js@10.0.1 typescript-eslint@8.65.0 eslint-plugin-astro@3.0.1 2>&1 | tee upgrade.log
+      - run: npm run lint
+      - name: Verify audit
+        shell: bash
+        run: npm audit --json | tee audit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: eslint-v3-lockfile
+          path: |
+            package.json
+            package-lock.json
+            upgrade.log
+            audit.json
+          retention-days: 1

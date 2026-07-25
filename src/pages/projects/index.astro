@@ -1,12 +1,59 @@
 ---
-import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
-import ProjectGridV2 from "@components/v2/projects/ProjectGridV2.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+import { getCollection } from "astro:content";
+import { buildUrl } from "@config/site";
+
+const projects = await getCollection("projects", (entry) => entry.data.status === "published");
+const sorted = projects.sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 
-<BaseLayoutV2
+<BaseLayoutV3
   title="Проекты — Александр Аликин"
-  description="Продукты, образовательные программы и технические инициативы."
-  currentPath="/projects/"
+  description="Продукты, образовательные программы и технические инициативы с ролью, статусом, результатом и ограничениями."
 >
-  <ProjectGridV2 />
-</BaseLayoutV2>
+  <div class="v3-page">
+    <section class="v3-page-hero v3-page-hero--plain">
+      <div class="v3-page-hero__copy">
+        <p class="v3-kicker">Проекты</p>
+        <h1 class="v3-page-hero__title">Работа в контексте</h1>
+        <p class="v3-page-hero__lead">
+          Не каталог достижений, а карта решений: задача, моя роль, текущее состояние, наблюдаемый результат и то, что пока нельзя утверждать.
+        </p>
+      </div>
+      <aside class="v3-page-hero__aside">
+        <strong>Роль важнее декоративного результата</strong>
+        <p>Каждый кейс показывает не только что сделано, но и на каком основании это можно публиковать.</p>
+      </aside>
+    </section>
+
+    <section class="v3-project-list" aria-label="Список проектов">
+      {sorted.map((project, index) => (
+        <a class="v3-project-card" href={buildUrl(`/projects/${project.data.slug}/`)}>
+          <div class="v3-project-card__visual">
+            <span class="v3-kicker">{project.data.projectStatus === "active" ? "Активная практика" : "Проект"}</span>
+            <strong>0{index + 1}</strong>
+            <span>{project.data.period}</span>
+          </div>
+          <div class="v3-project-card__copy">
+            <p class="v3-kicker">{project.data.role}</p>
+            <h2>{project.data.title}</h2>
+            <p>{project.data.description}</p>
+            <p>{project.data.result}</p>
+            <div class="v3-meta"><span>Открыть кейс ↗</span></div>
+          </div>
+        </a>
+      ))}
+    </section>
+
+    <section class="v3-editorial-section">
+      <div class="v3-shell v3-statement">
+        <blockquote>Ограничение проекта — часть результата, а не сноска мелким шрифтом.</blockquote>
+        <div>
+          <p class="v3-kicker">Принцип публикации</p>
+          <p>Если масштаб, период, состав команды или количественный эффект не подтверждены, они остаются за пределами публичной версии.</p>
+          <a class="v3-link" href={buildUrl("/facts/")}>Факты и источники</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayoutV3>

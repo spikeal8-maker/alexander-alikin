@@ -1,37 +1,21 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import { buildUrl } from "@config/site";
+import JournalListingV2 from "@components/v2/journal/JournalListingV2.astro";
 
-const entries = await getCollection("thoughts", (s) => s.data.status === "published");
+const thoughts = (await getCollection("thoughts", (entry) => entry.data.status === "published"))
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .map((entry) => ({
+    title: entry.data.title,
+    description: entry.data.description,
+    href: `/journal/thoughts/${entry.data.slug}/`,
+    kind: "Мысль",
+    date: entry.data.publishedAt.toLocaleDateString("ru"),
+  }));
 ---
 
-<BaseLayout
-  title="Мысли — Александр Аликин"
-  description="Короткие авторские тезисы о сложных системах, образовании, инженерии и предпринимательстве."
-  currentPath="/journal/"
-  breadcrumbs={[{ label: "Журнал", href: "/journal/" }, { label: "Мысли" }]}
->
-  <div class="container">
-    <div class="route-shell">
-      <h1>Мысли</h1>
-      <p class="description">
-        Короткие авторские идеи, ведущие к проектам, историям и более полным материалам.
-      </p>
-      {
-        entries.map((s) => (
-          <article style="margin-bottom:var(--space-lg);padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);">
-            <a
-              href={buildUrl(`/journal/thoughts/${s.data.slug}/`)}
-              style="font-weight:600;font-size:1.125rem;"
-            >
-              {s.data.title}
-            </a>
-            <p style="color:var(--color-muted);margin-top:var(--space-xs);">{s.data.description}</p>
-          </article>
-        ))
-      }
-      {entries.length === 0 && <p>Мысли появятся после утверждения материалов.</p>}
-    </div>
-  </div>
-</BaseLayout>
+<JournalListingV2
+  title="Мысли"
+  eyebrow="Короткие авторские тезисы"
+  description="Идеи о системах, проектной работе, обучении и ИИ, которые можно проверить через практику."
+  entries={thoughts}
+/>

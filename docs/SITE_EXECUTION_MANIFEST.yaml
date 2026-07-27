@@ -15,21 +15,22 @@ current_state:
   strategy: "done"
   foundation_pr: "merged"
   platform: "done"
-  current_task: "BRAND-RESET-001"
-  current_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/25"
-  current_branch: "agent/brand-reset-v4"
-  current_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/26"
-  current_status: "in_progress"
+  current_task: "RECOVER-VISIBLE-SITE-001"
+  current_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/31"
+  current_branch: "agent/recover-visible-site"
+  current_pr_url: null
+  current_status: "local_pass_pending_ci"
   production_deploy_allowed: false
   next_task_start_allowed: false
   required_before_owner_review:
-    - "brand, architecture, visual and roadmap V4 documents exist"
-    - "ADR-0006 records the direction change"
-    - "private vault content is not exported"
+    - "full visible V3 runtime is selectively restored on current main"
+    - "generated portraits and unsafe claims are absent"
+    - "approved external link allowlist is enforced"
+    - "required routes, responsive layouts and screenshots pass"
     - "npm ci and npm run quality pass"
     - "dependency audit has no high or critical findings"
     - "Draft PR contains factual report"
-    - "CONTENT-EXPORT-001 is not started"
+    - "Draft PR contains factual recovery report"
 
 brand_v4:
   status: "owner_review"

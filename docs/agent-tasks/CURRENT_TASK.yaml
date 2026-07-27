@@ -2,35 +2,36 @@ version: 2
 updated_at: "2026-07-27"
 repository: "spikeal8-maker/alexander-alikin"
 current_task:
-  id: "BRAND-RESET-001"
-  title: "Зафиксировать бренд-платформу и архитектуру V4"
-  status: "in_progress"
-  severity: "product-foundation"
-  issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/25"
-  task_document: "docs/agent-tasks/TASK-BRAND-RESET-V4.md"
+  id: "RECOVER-VISIBLE-SITE-001"
+  title: "Вернуть полный публичный сайт на актуальный main"
+  status: "local_pass_pending_ci"
+  severity: "visible-site-recovery"
+  issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/31"
+  task_document: "docs/agent-tasks/TASK-RECOVER-VISIBLE-SITE-001.md"
   quality_document: "docs/testing/SITE-PLATFORM-QUALITY.md"
   rules_document: "AGENTS.md"
-  branch: "agent/brand-reset-v4"
-  pull_request_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/26"
+  branch: "agent/recover-visible-site"
+  pull_request_url: null
   base_branch: "main"
-  base_commit: "b98cbe97ce9250bdd421233fe114dcc0687a5c0c"
-  execution_mode: "local_git_node24_npm_plus_github_actions"
+  base_commit: "b3f33d2c8f18fb73715cfb93b46623d0199dd1aa"
+  source_v3_commit: "9374e27fd8b83b4928906d180d1e3d8adb9c6b5a"
+  execution_mode: "selective_v3_runtime_port_on_safe_main"
   github_actions_required: true
   production_deploy_allowed: false
   merge_allowed: false
   force_push_allowed: false
   next_task_start_allowed: false
   completion_requires:
-    - "brand platform V4 exists"
-    - "site architecture V4 exists"
-    - "visual contract V4 exists"
-    - "ADR-0006 exists"
-    - "rebrand roadmap is split into independent tasks"
-    - "private vault content is not exported"
-    - "repository quality remains green"
+    - "full visible site is restored"
+    - "required routes respond"
+    - "desktop and mobile layouts pass"
+    - "generated and rejected images are absent"
+    - "only approved external links are present"
+    - "quality, design, media and browser checks pass"
+    - "fresh screenshots exist"
     - "Draft PR contains factual report"
   next_allowed_action:
-    after_pass: "owner review of BRAND-RESET-001 Draft PR"
-    task_after_merge_only: "CONTENT-EXPORT-001"
+    after_pass: "owner review of RECOVER-VISIBLE-SITE-001 Draft PR"
+    task_after_merge_only: null
     issue_after_merge_only: null
-stop_rule: "После BRAND-RESET-001 отчёта остановиться. Merge и CONTENT-EXPORT-001 запрещены до owner review."
+stop_rule: "После Draft PR остановиться. Merge, deploy, DESIGN-V4-001 и CONTENT-EXPORT-001 запрещены."

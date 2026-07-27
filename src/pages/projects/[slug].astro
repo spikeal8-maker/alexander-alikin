@@ -1,53 +1,156 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { getCollection } from "astro:content";
-import StatusBadge from "@components/foundation/StatusBadge.astro";
-import EvidenceBadge from "@components/foundation/EvidenceBadge.astro";
+import { buildUrl } from "@config/site";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects", (p) => p.data.status === "published");
-  return projects.map((p) => ({ params: { slug: p.data.slug } }));
+  const projects = await getCollection("projects", (entry) => entry.data.status === "published");
+  return projects.map((project) => ({ params: { slug: project.data.slug } }));
 }
 
 const { slug } = Astro.params;
-const project = (await getCollection("projects", (p) => p.data.status === "published")).find(
-  (p) => p.data.slug === slug,
-);
+const project = (
+  await getCollection("projects", (entry) => entry.data.status === "published")
+).find((entry) => entry.data.slug === slug);
 if (!project) return Astro.redirect("/404");
-
 const { data } = project;
+const isIzoAsa = data.slug === "izo-asa";
+const statusLabel =
+  data.projectStatus === "active" ? "Активная разработка" : "Опубликованный проект";
+const architecture = isIzoAsa
+  ? [
+      ["01", "Пользовательский сценарий", "Создание и редактирование материала."],
+      [
+        "02",
+        "Интерфейс",
+        "Управление параметрами, результатами и следующими действиями пользователя.",
+      ],
+      [
+        "03",
+        "Интеграции",
+        "Связь генерации, редактора и внешних инструментов в одном рабочем процессе.",
+      ],
+    ]
+  : [
+      ["01", "Действие", "Участник создаёт устройство, программу или систему."],
+      ["02", "Разбор", "Ошибка становится материалом для объяснения и пересборки."],
+      ["03", "Защита", "Понимание проверяется демонстрацией и аргументацией."],
+    ];
+const ledger = isIzoAsa
+  ? [
+      ["Что сформировано", "Концепция продукта и направление пользовательских сценариев."],
+      ["Что проектируется", "Интерфейс, прототип, интеграции и процесс работы с результатом."],
+      [
+        "Что не заявляется",
+        "Завершённость, масштаб, число пользователей и коммерческий результат.",
+      ],
+      [
+        "Следующая проверка",
+        "Рабочие сценарии, ограничения прототипа и границы публичной демонстрации.",
+      ],
+    ]
+  : [
+      ["Что сформировано", "Проектный цикл действия, ошибки, объяснения, доработки и защиты."],
+      ["Что создаётся", "Программы, лаборатории и методические материалы для проектной работы."],
+      [
+        "Что не заявляется",
+        "Число участников, площадки, соревнования и количественные результаты.",
+      ],
+      ["Следующая проверка", "Документальные периоды, состав программ и подтверждённые материалы."],
+    ];
 ---
 
-<BaseLayout
-  title={`${data.title} — Александр Аликин`}
-  description={data.description}
-  currentPath="/projects/"
-  breadcrumbs={[{ label: "Проекты", href: "/projects/" }, { label: data.title }]}
->
-  <div class="container">
-    <div class="route-shell">
-      <div
-        style="display:flex;gap:var(--space-sm);align-items:center;margin-bottom:var(--space-md);flex-wrap:wrap;"
-      >
-        <StatusBadge status={data.status} />
-        <EvidenceBadge level={data.evidenceLevel} />
+<BaseLayoutV3 title={`${data.title} — Александр Аликин`} description={data.description}>
+  <div class="v3-page">
+    <section class="v3-case-hero">
+      <div class="v3-case-hero__copy">
+        <p class="v3-kicker">Проект / {statusLabel}</p>
+        <h1>{data.title}</h1>
+        <p>{data.description}</p>
       </div>
-      <h1>{data.title}</h1>
-      <p class="description">{data.description}</p>
-      <div class="content-body">
-        <p><strong>Роль:</strong> {data.role}</p>
-        <p><strong>Период:</strong> {data.period}</p>
-        <p><strong>Статус проекта:</strong> {data.projectStatus}</p>
-        <p><strong>Результат:</strong> {data.result}</p>
+      <aside class="v3-case-hero__panel">
+        <dl>
+          <div><dt>Роль</dt><dd>{data.role}</dd></div>
+          <div><dt>Период</dt><dd>{data.period}</dd></div>
+          <div><dt>Статус</dt><dd>{statusLabel}</dd></div>
+          <div><dt>Уровень доказательности</dt><dd>Авторское утверждение</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="v3-case-register">
+      <div class="v3-shell">
         {
-          data.limitations && (
-            <p>
-              <em>{data.limitations}</em>
-            </p>
-          )
+          ledger.map(([title, copy], index) => (
+            <article>
+              <span>0{index + 1}</span>
+              <div>
+                <h2>{title}</h2>
+                <p>{copy}</p>
+              </div>
+            </article>
+          ))
         }
-        {project.body && <Fragment set:html={project.body} />}
       </div>
-    </div>
+    </section>
+
+    <section class="v3-editorial-section v3-editorial-section--ink">
+      <div class="v3-shell">
+        <p class="v3-kicker">Архитектура решения</p>
+        <div class="v3-architecture">
+          {
+            architecture.map(([number, title, copy]) => (
+              <article class="v3-architecture__node">
+                <span>{number}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-editorial-section">
+      <div class="v3-shell v3-case-band">
+        <div><p class="v3-kicker">Текущий результат</p><h2>Что можно утверждать сейчас</h2></div>
+        <div><p>{data.result}</p></div>
+      </div>
+    </section>
+
+    <section class="v3-editorial-section v3-editorial-section--white">
+      <div class="v3-shell v3-case-band">
+        <div>
+          <p class="v3-kicker">Ограничения</p><h2>Что не превращаем в рекламное обещание</h2>
+        </div>
+        <div>
+          <p>
+            {
+              data.limitations ||
+                "Количественные показатели и внешние результаты требуют подтверждения."
+            }
+          </p>
+          <a class="v3-link" href={buildUrl("/facts/")}>Проверить источники</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-editorial-section">
+      <div class="v3-shell v3-cta-scene">
+        <p class="v3-kicker">Следующий шаг</p>
+        <h2>
+          {isIzoAsa ? "Открыть ИЗО АСА" : "Обсудить программу или лабораторию"}
+        </h2>
+        <p>Опишите контекст, участников, ограничения и результат, который должен стать видимым.</p>
+        <a
+          class="v3-button"
+          href={isIzoAsa ? "https://izo.alikinas.ru/" : buildUrl("/collaboration/")}
+          target={isIzoAsa ? "_blank" : undefined}
+          rel={isIzoAsa ? "noreferrer" : undefined}
+        >
+          {isIzoAsa ? "Открыть ИЗО АСА" : "Обсудить задачу"}
+        </a>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

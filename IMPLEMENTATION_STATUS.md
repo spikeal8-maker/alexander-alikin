@@ -2,58 +2,54 @@
 
 ## Текущий этап
 
-`BRAND-RESET-001 — in_progress`
-
-Техническая платформа принята в `main` commit
-`96ea8269ff71c79f05defa429f2542a74a03a648`.
-
-Текущая работа:
+`RECOVER-VISIBLE-SITE-001 — local_pass_pending_ci`
 
 ```text
-Issue: https://github.com/spikeal8-maker/alexander-alikin/issues/25
-Branch: agent/brand-reset-v4
-Draft PR: https://github.com/spikeal8-maker/alexander-alikin/pull/26
-Base: main @ 96ea826
+Issue: https://github.com/spikeal8-maker/alexander-alikin/issues/31
+Branch: agent/recover-visible-site
+Draft PR: pending
+Base: main @ b3f33d2
+V3 source: 9374e27
 Production deploy: forbidden
 ```
 
-## Причина перезапуска
+## Цель
 
-Visual V2 и V3 сохранены как исследовательские Draft PR, но не приняты как
-финальная основа. V4 сначала фиксирует бренд, структуру, визуальные правила и
-безопасный контентный процесс, затем реализуется отдельными Issues.
+Вернуть полноценный видимый сайт, используя runtime/UI V3 без прямого merge
+старого PR и без возврата устаревшей dependency или task-state конфигурации.
 
-## Канонический контракт V4
+## Сохраняется из main
 
-- `docs/BRAND_PLATFORM_V4.md`;
-- `docs/SITE_ARCHITECTURE_V4.md`;
-- `docs/VISUAL_CONTRACT_V4.md`;
-- `docs/REBRAND_ROADMAP_V4.md`;
-- `docs/DECISIONS/0006-personal-workshop-v4.md`;
-- `docs/agent-tasks/CURRENT_TASK.yaml`;
-- Issue №25.
+- Node 24.18.0;
+- ESLint 10;
+- актуальный lockfile и security state;
+- V4 brand documents;
+- текущий quality workflow.
 
-## Текущий пользовательский результат
+## Публичные границы
 
-Получить единый утверждаемый фундамент ребрендинга:
+- главная использует утверждённое безопасное позиционирование;
+- допустимы Telegram, RUTUBE и ссылка проекта ИЗО АСА;
+- AI/generated portraits не переносятся;
+- неподтверждённые показатели и результаты не публикуются;
+- CONTENT-EXPORT-001 остаётся приостановленным в Draft PR #30.
 
-```text
-одна центральная роль
-→ доказательства и публичные границы
-→ компактная архитектура сайта
-→ документальное визуальное направление
-→ независимые этапы реализации
-```
+## Проверено локально
 
-## Запрещено на текущем этапе
+- Node `24.18.0`, npm `11.16.0`;
+- `npm ci` — PASS, `0 vulnerabilities`;
+- `npm run quality` — PASS;
+- `npm run design:static` — PASS;
+- `npm run design:browser` — PASS: 25 маршрутов × 5 viewport и 404;
+- `npm run test:media` — PASS: 5 documentary files, 0 generated media;
+- `npm audit --audit-level=high` — PASS, 0 vulnerabilities;
+- `git diff --check` — PASS;
+- no-JS, keyboard focus, 200% zoom/text size и Axe serious/critical проверяются browser gate;
+- свежие evidence screenshots: `docs/screenshots/recover-visible-site-001/`.
 
-- изменение Astro-страниц и CSS;
-- экспорт приватного vault;
-- публикация контактов и неподтверждённых фактов;
-- merge и deploy;
-- начало `CONTENT-EXPORT-001`.
+## Запрещено
 
-## Следующий допустимый шаг
-
-После PASS и Draft PR — owner review `BRAND-RESET-001`. Следующий этап
-`CONTENT-EXPORT-001` разрешён только после принятия и merge.
+- merge;
+- deploy;
+- DESIGN-V4-001;
+- продолжение owner review CONTENT-EXPORT-001.

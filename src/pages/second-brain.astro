@@ -1,20 +1,107 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+import { buildUrl } from "@config/site";
+
+const stages = [
+  ["Наблюдение", "Фиксируется вопрос, ошибка, ограничение или найденная связь."],
+  ["Связь", "Заметка соединяется с проектом, решением, источником или другой идеей."],
+  ["Проверка", "Отделяется личная интерпретация от факта и стратегической гипотезы."],
+  [
+    "Публикация",
+    "Материал выходит только после редакционной проверки и очистки приватного контекста.",
+  ],
+];
+
+const outputs = [
+  [
+    "Проект",
+    "Наблюдения превращаются в архитектурное решение, эксперимент или ограниченный пилот.",
+  ],
+  ["Журнал", "Мысль получает форму статьи, истории или короткого тезиса с понятным контекстом."],
+  [
+    "Реестр доказательств",
+    "Фиксируется, что подтверждено, что является словом автора и что пока нельзя публиковать.",
+  ],
+];
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Как я мыслю — Александр Аликин"
-  description="Метод работы со знаниями: заметки, связи, второй мозг и превращение идей в решения."
-  currentPath="/second-brain/"
-  breadcrumbs={[{ label: "Как я мыслю" }]}
+  description="Публичная часть метода работы со знаниями: от наблюдения и связей до проекта или материала."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Как я мыслю</h1>
-      <p class="description">
-        Метод работы со знаниями: как заметки превращаются в статьи, проекты и кейсы.
-      </p>
-      <p>Описание метода и публичные связи будут опубликованы после утверждения.</p>
-    </div>
+  <div class="v3-page">
+    <section class="v3-page-hero v3-page-hero--plain">
+      <div class="v3-page-hero__copy">
+        <p class="v3-kicker">Как я мыслю</p>
+        <h1 class="v3-page-hero__title">Заметка должна менять решение</h1>
+        <p class="v3-page-hero__lead">
+          Второй мозг — не публичный архив. Это рабочая система, связывающая наблюдения, проекты,
+          источники, ошибки и следующие действия.
+        </p>
+      </div>
+      <aside class="v3-page-hero__aside">
+        <strong>Приватный архив остаётся закрытым</strong>
+        <p>
+          На сайт попадает только безопасная часть, прошедшая проверку публичности и происхождения
+          утверждений.
+        </p>
+      </aside>
+    </section>
+
+    <section class="v3-editorial-section v3-editorial-section--ink">
+      <div class="v3-shell">
+        <p class="v3-kicker">Рабочий цикл</p>
+        <div class="v3-process">
+          {
+            stages.map(([title, copy], index) => (
+              <article class="v3-process__item">
+                <>
+                  <span>0{index + 1}</span>
+                  <strong>{title}</strong>
+                  <p>{copy}</p>
+                </>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-editorial-section v3-editorial-section--white">
+      <div class="v3-shell v3-section-grid">
+        <div class="v3-section-grid__intro">
+          <p class="v3-kicker">Публичный результат</p>
+          <h2>Три формы выхода</h2>
+          <p>
+            Система знаний полезна только тогда, когда становится решением, материалом или
+            проверяемым основанием утверждения.
+          </p>
+        </div>
+        <div class="v3-numbered">
+          {
+            outputs.map(([title, copy], index) => (
+              <article class="v3-numbered__item">
+                <span class="v3-numbered__index">0{index + 1}</span>
+                <div>
+                  <>
+                    <h3>{title}</h3>
+                    <p>{copy}</p>
+                  </>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-editorial-section">
+      <div class="v3-shell v3-cta-scene">
+        <p class="v3-kicker">Публичная часть системы</p>
+        <h2>Идеи — в журнале. Решения — в проектах.</h2>
+        <p>Обе части сохраняют происхождение утверждений и честно обозначают ограничения.</p>
+        <a class="v3-button" href={buildUrl("/journal/")}>Открыть журнал</a>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

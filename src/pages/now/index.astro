@@ -1,32 +1,76 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+import { buildUrl } from "@config/site";
 
-const nowEntries = await getCollection("now", (n) => n.data.status === "published");
+const focusItems = [
+  ["ИЗО АСА", "Развивающийся цифровой продукт для создания и редактирования визуального контента."],
+  [
+    "Системы знаний и ИИ-Александр",
+    "Персональная система знаний, источников и публичных материалов развивается как исследовательский проект.",
+  ],
+  [
+    "Инженерное образование",
+    "Развиваются проектные форматы, в которых участник создаёт, проверяет и объясняет работающий результат.",
+  ],
+];
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Сейчас — Александр Аликин"
-  description="Текущая деятельность, проекты и фокус Александра Аликина."
-  currentPath="/now/"
-  breadcrumbs={[{ label: "Сейчас" }]}
+  description="Публично подтверждённые текущие направления работы."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Сейчас</h1>
-      <p class="description">Чем я занимаюсь прямо сейчас.</p>
-      {
-        nowEntries.map((n) => (
-          <article style="margin-bottom:var(--space-lg);padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);">
-            <h2 style="font-size:1.125rem;">{n.data.title}</h2>
-            <p>{n.data.focus}</p>
-            <div class="content-body">
-              <Fragment set:html={n.body} />
-            </div>
-          </article>
-        ))
-      }
-      {nowEntries.length === 0 && <p>Информация появится после утверждения.</p>}
-    </div>
+  <div class="v3-page">
+    <section class="v3-page-hero v3-page-hero--plain">
+      <div class="v3-page-hero__copy">
+        <p class="v3-kicker">Сейчас</p>
+        <h1 class="v3-page-hero__title">Текущий рабочий фокус</h1>
+        <p class="v3-page-hero__lead">
+          Здесь фиксируются только направления, подтверждённые опубликованными проектами и текущим
+          состоянием репозитория.
+        </p>
+      </div>
+      <aside class="v3-page-hero__aside">
+        <strong>Обновлено: июль 2026</strong>
+        <p>Точные внешние результаты добавляются только вместе с проверяемым источником.</p>
+      </aside>
+    </section>
+
+    <section class="v3-editorial-section v3-editorial-section--white">
+      <div class="v3-shell v3-section-grid">
+        <div class="v3-section-grid__intro">
+          <p class="v3-kicker">Три направления</p>
+          <h2>Работа, которая идёт сейчас</h2>
+          <p>
+            Страница не используется как поток случайных обновлений или обещаний будущих запусков.
+          </p>
+        </div>
+        <div class="v3-numbered">
+          {
+            focusItems.map(([title, copy], index) => (
+              <article class="v3-numbered__item">
+                <span class="v3-numbered__index">0{index + 1}</span>
+                <div>
+                  <>
+                    <h3>{title}</h3>
+                    <p>{copy}</p>
+                  </>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-editorial-section">
+      <div class="v3-shell v3-cta-scene">
+        <p class="v3-kicker">Контекст</p>
+        <h2>Статусы, роли и ограничения — в проектах</h2>
+        <p>
+          Текущий фокус становится понятнее через конкретную архитектуру и границы каждого кейса.
+        </p>
+        <a class="v3-button" href={buildUrl("/projects/")}>Открыть проекты</a>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

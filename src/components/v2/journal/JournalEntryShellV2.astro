@@ -1,0 +1,42 @@
+---
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+import { buildUrl } from "@config/site";
+
+export interface Props {
+  title: string;
+  description: string;
+  kind: string;
+  date?: string;
+  backHref: string;
+  backLabel: string;
+}
+
+const { title, description, kind, date, backHref, backLabel } = Astro.props;
+---
+
+<BaseLayoutV3 title={`${title} — Александр Аликин`} description={description}>
+  <div class="v3-page">
+    <header class="v3-entry-header">
+      <div class="v3-shell v3-entry-header__inner">
+        <div class="v3-entry-meta">
+          <span>{kind}</span>
+          {date && <time>{date}</time>}
+          <span>Авторский материал</span>
+        </div>
+        <h1 class="v3-entry-title">{title}</h1>
+        <p class="v3-entry-lead">{description}</p>
+      </div>
+    </header>
+
+    <section class="v3-entry-reading">
+      <article class="v3-entry-body"><slot /></article>
+    </section>
+
+    <section class="v3-editorial-section">
+      <div class="v3-shell v3-entry-footer">
+        <a class="v3-link" href={buildUrl(backHref)}>← {backLabel}</a>
+        <a class="v3-button" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
+      </div>
+    </section>
+  </div>
+</BaseLayoutV3>

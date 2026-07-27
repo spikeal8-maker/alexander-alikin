@@ -1,0 +1,105 @@
+.v3-journal .v3-kicker,
+.v3-journal__meta,
+.v3-journal__arrow,
+.v3-footer .v3-kicker {
+  color: var(--v3-cobalt-light) !important;
+}
+
+.v3-work__case--ink .v3-work__rail > span,
+.v3-work__case--ink .v3-kicker,
+.v3-work__case--ink .v3-work__facts dt {
+  color: var(--v3-cobalt-light) !important;
+}
+
+.v3-work__case--ink .v3-work__facts {
+  opacity: 1 !important;
+}
+
+.v3-closing .v3-kicker {
+  color: var(--v3-cobalt-light) !important;
+}
+
+.v3-footer__bottom {
+  color: rgba(255, 255, 255, 0.68) !important;
+}
+
+.v3-hero .v3-hero__grid {
+  min-height: clamp(38rem, 72vh, 44rem) !important;
+}
+
+.v3-hero .v3-display__given {
+  font-size: clamp(4.1rem, 6.5vw, 7.2rem) !important;
+}
+
+.v3-hero .v3-display__family {
+  font-size: clamp(4.3rem, 6.8vw, 7.7rem) !important;
+}
+
+.v3-hero .v3-hero__positioning {
+  font-size: clamp(1.7rem, 2.4vw, 2.6rem) !important;
+}
+
+.v3-hero .v3-hero__portrait {
+  min-height: 36rem !important;
+}
+
+@media (max-width: 900px) {
+  .v3-hero .v3-hero__grid {
+    min-height: auto !important;
+  }
+
+  .v3-hero__portrait figcaption {
+    right: var(--v3-gutter) !important;
+    left: var(--v3-gutter);
+    max-width: calc(100% - 2 * var(--v3-gutter));
+  }
+
+  .v3-hero__portrait figcaption span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    text-align: right;
+  }
+}
+
+@media (max-width: 700px) {
+  .v3-journal h3,
+  .v3-work h3,
+  .v3-ledger h3 {
+    hyphens: auto;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 560px) {
+  .v3-hero .v3-display__given {
+    font-size: clamp(3.3rem, 15vw, 4.5rem) !important;
+  }
+
+  .v3-hero .v3-display__family {
+    font-size: clamp(3.6rem, 16vw, 4.9rem) !important;
+  }
+
+  .v3-hero .v3-hero__portrait {
+    min-height: 25rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .v3-footer__grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .v3-footer__statement {
+    grid-column: auto !important;
+  }
+
+  .v3-footer nav a {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .v3-footer__bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

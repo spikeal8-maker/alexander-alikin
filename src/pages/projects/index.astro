@@ -1,45 +1,93 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { getCollection } from "astro:content";
 import { buildUrl } from "@config/site";
 
-const projects = await getCollection("projects", (p) => p.data.status === "published");
+const projects = await getCollection("projects", (entry) => entry.data.status === "published");
+const sorted = projects.sort((a, b) => a.data.title.localeCompare(b.data.title));
+const activeCount = sorted.filter((project) => project.data.projectStatus === "active").length;
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Проекты — Александр Аликин"
-  description="Продукты, проекты и доказательные кейсы Александра Аликина."
-  currentPath="/projects/"
-  breadcrumbs={[{ label: "Проекты" }]}
+  description="Продукты, образовательные программы и технические инициативы с ролью, статусом, результатом и ограничениями."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Проекты</h1>
-      <p class="description">
-        Карта практики: продукты, образовательные программы, исследования и предпринимательские
-        инициативы.
-      </p>
-      {
-        projects.length === 0 ? (
-          <p>Проекты будут опубликованы после утверждения материалов.</p>
-        ) : (
-          <ul style="list-style:none;padding:0;">
-            {projects.map((p) => (
-              <li style="margin-bottom:var(--space-md);padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);">
-                <a
-                  href={buildUrl(`/projects/${p.data.slug}/`)}
-                  style="font-weight:600;font-size:1.125rem;"
-                >
-                  {p.data.title}
-                </a>
-                <p style="color:var(--color-muted);margin-top:var(--space-xs);">
-                  {p.data.description}
-                </p>
-              </li>
-            ))}
-          </ul>
-        )
-      }
-    </div>
+  <div class="v3-page">
+    <section class="v3-page-hero v3-page-hero--plain">
+      <div class="v3-page-hero__copy">
+        <p class="v3-kicker">Проекты</p>
+        <h1 class="v3-page-hero__title">Работа в контексте</h1>
+        <p class="v3-page-hero__lead">
+          Не каталог достижений. Для каждого проекта зафиксированы роль, текущее состояние,
+          наблюдаемый результат и граница того, что пока нельзя утверждать.
+        </p>
+      </div>
+      <aside class="v3-page-hero__aside">
+        <dl class="v3-project-summary">
+          <div><dt>Опубликовано</dt><dd>{sorted.length}</dd></div>
+          <div><dt>Активных</dt><dd>{activeCount}</dd></div>
+          <div><dt>Принцип</dt><dd>ограничение рядом с результатом</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="v3-project-register" aria-label="Реестр проектов">
+      <div class="v3-shell">
+        <div class="v3-project-register__head" aria-hidden="true">
+          <span>Проект</span><span>Роль и статус</span><span>Результат и ограничение</span><span
+          ></span>
+        </div>
+        {
+          sorted.map((project, index) => (
+            <a class="v3-project-register__row" href={buildUrl(`/projects/${project.data.slug}/`)}>
+              <div class="v3-project-register__title">
+                <span>0{index + 1}</span>
+                <div>
+                  <small>{project.data.category === "product" ? "Продукт" : "Практика"}</small>
+                  <h2>{project.data.title}</h2>
+                  <p>{project.data.description}</p>
+                </div>
+              </div>
+              <dl>
+                <div>
+                  <>
+                    <dt>Роль</dt>
+                    <dd>{project.data.role}</dd>
+                  </>
+                </div>
+                <div>
+                  <>
+                    <dt>Статус</dt>
+                    <dd>{project.data.period}</dd>
+                  </>
+                </div>
+              </dl>
+              <div class="v3-project-register__evidence">
+                <strong>Сейчас</strong>
+                <p>{project.data.result}</p>
+                <strong>Ограничение</strong>
+                <p>{project.data.limitations}</p>
+              </div>
+              <span class="v3-project-register__arrow" aria-hidden="true">
+                ↗
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="v3-editorial-section v3-editorial-section--ink">
+      <div class="v3-shell v3-statement">
+        <blockquote>Кейс ценен не масштабом заголовка, а ясностью роли и доказательств.</blockquote>
+        <div>
+          <p class="v3-kicker">Редакционный принцип</p>
+          <p>
+            Неподтверждённые числа, сроки и достижения не превращаются в маркетинговые показатели.
+          </p>
+          <a class="v3-link" href={buildUrl("/facts/")}>Факты и источники</a>
+        </div>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

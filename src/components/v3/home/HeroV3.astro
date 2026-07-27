@@ -1,0 +1,65 @@
+---
+import { buildUrl } from "@config/site";
+import "../../../styles/v3-hero.css";
+import "../../../styles/v3-hero-mobile.css";
+---
+
+<section class="v3-hero">
+  <div class="v3-shell v3-hero__grid">
+    <div class="v3-hero__copy">
+      <div class="v3-hero__identity">
+        <p class="v3-kicker">Предприниматель-практик и инженер-педагог</p>
+        <h1 class="v3-display">
+          <span class="v3-display__given">Александр</span>
+          <span class="v3-display__family">Аликин</span>
+        </h1>
+      </div>
+
+      <div class="v3-hero__body">
+        <p class="v3-hero__positioning">
+          Помогаю превращать ручные процессы и сложные идеи в работающие решения — через
+          диагностику, прототип, проверку результата и передачу способа работы команде.
+        </p>
+        <p class="v3-hero__summary">
+          Работаю на стыке бизнеса, образования и искусственного интеллекта. Развиваю собственные
+          цифровые продукты, инженерные образовательные программы и системы знаний.
+        </p>
+        <p class="v3-hero__trust">
+          Разработчик технологических систем — подтверждающая компетенция, а не отдельная роль.
+        </p>
+        <div class="v3-hero__actions">
+          <a class="v3-hero__primary" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
+          <a class="v3-link" href={buildUrl("/projects/")}>Посмотреть проекты</a>
+        </div>
+      </div>
+    </div>
+
+    <figure class="v3-hero__portrait">
+      <div class="v3-hero__blue" aria-hidden="true"></div>
+      <div class="v3-hero__frame" aria-hidden="true"></div>
+      <picture>
+        <source
+          media="(max-width: 560px)"
+          srcset={buildUrl("/images/alikin/documentary/02-hero-mobile-4x5.webp")}
+        />
+        <img
+          src={buildUrl("/images/alikin/documentary/01-hero-desktop-4x5.webp")}
+          alt="Александр Аликин"
+          width="1600"
+          height="2000"
+          loading="eager"
+        />
+      </picture>
+      <figcaption>
+        <span>Предприниматель-практик</span>
+        <span>Инженер-педагог</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="v3-shell v3-hero__index">
+    <span>01 / Позиция</span>
+    <a href="#selected-work">Следом — проекты ↓</a>
+    <span>2026</span>
+  </div>
+</section>

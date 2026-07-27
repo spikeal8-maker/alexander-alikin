@@ -1,0 +1,263 @@
+---
+import { buildUrl } from "@config/site";
+
+const projects = [
+  {
+    number: "01",
+    eyebrow: "Продукт в разработке",
+    title: "ИЗО АСА",
+    description:
+      "Собственный развивающийся цифровой продукт для создания и редактирования визуального контента.",
+    role: "Автор концепции, продуктовая постановка и разработка прототипа",
+    state: "Активная разработка",
+    result:
+      "Проектируются пользовательские сценарии, интерфейс, интеграции и управляемый процесс создания визуального материала.",
+    limitation:
+      "Масштаб, коммерческий результат и завершённость продукта без доказательств не заявляются.",
+    href: "/projects/izo-asa/",
+    theme: "blue",
+  },
+  {
+    number: "02",
+    eyebrow: "Практика и методика",
+    title: "Инженерное образование",
+    description:
+      "Авторские программы и проектные форматы по информатике, технологии и робототехнике.",
+    role: "Педагог и методист",
+    state: "Действующая практика",
+    result:
+      "Сформирован проектный цикл: действие, ошибка, объяснение, доработка и защита собственного результата.",
+    limitation:
+      "Точные даты, число участников, площадки и количественные результаты не публикуются до проверки.",
+    href: "/projects/engineering-education/",
+    theme: "ink",
+  },
+];
+---
+
+<section id="selected-work" class="v3-work v3-section">
+  <div class="v3-shell">
+    <header class="v3-work__header">
+      <div>
+        <p class="v3-kicker">Проекты</p>
+        <h2>Рабочие системы, а не витрина достижений</h2>
+      </div>
+      <p>
+        Для каждого проекта показаны текущий статус, роль, уже сформулированный результат и границы
+        публичного утверждения.
+      </p>
+    </header>
+
+    <div class="v3-work__list">
+      {
+        projects.map((project) => (
+          <article class:list={["v3-work__case", `v3-work__case--${project.theme}`]}>
+            <div class="v3-work__rail">
+              <span>{project.number}</span>
+              <div class="v3-work__diagram" aria-hidden="true">
+                <>
+                  <i />
+                  <i />
+                  <i />
+                </>
+              </div>
+            </div>
+
+            <div class="v3-work__main">
+              <p class="v3-kicker">{project.eyebrow}</p>
+              <h3>{project.title}</h3>
+              <p class="v3-work__description">{project.description}</p>
+              <a class="v3-link" href={buildUrl(project.href)}>
+                Открыть кейс
+              </a>
+            </div>
+
+            <dl class="v3-work__facts">
+              <div>
+                <dt>Роль</dt>
+                <dd>{project.role}</dd>
+              </div>
+              <div>
+                <dt>Статус</dt>
+                <dd>{project.state}</dd>
+              </div>
+              <div>
+                <dt>Текущий результат</dt>
+                <dd>{project.result}</dd>
+              </div>
+              <div>
+                <dt>Ограничение</dt>
+                <dd>{project.limitation}</dd>
+              </div>
+            </dl>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .v3-work {
+    background: var(--v3-paper);
+    scroll-margin-top: 5rem;
+  }
+
+  .v3-work__header {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.55fr);
+    gap: clamp(2rem, 6vw, 7rem);
+    align-items: end;
+    margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .v3-work__header h2 {
+    max-width: 14ch;
+    margin: 0;
+    font-family: var(--v3-serif);
+    font-size: clamp(3rem, 5.5vw, 6rem);
+    font-weight: 400;
+    letter-spacing: -0.055em;
+    line-height: 0.93;
+  }
+
+  .v3-work__header > p {
+    margin: 0;
+    color: var(--v3-muted);
+    line-height: 1.7;
+  }
+
+  .v3-work__list {
+    border-top: 1px solid var(--v3-line);
+  }
+
+  .v3-work__case {
+    display: grid;
+    grid-template-columns: 7rem minmax(18rem, 0.75fr) minmax(0, 1.25fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    padding-block: clamp(2.5rem, 5vw, 4.5rem);
+    border-bottom: 1px solid var(--v3-line);
+  }
+
+  .v3-work__case--ink {
+    color: var(--v3-white);
+    background: var(--v3-ink);
+    margin-inline: calc(var(--v3-gutter) * -1);
+    padding-inline: var(--v3-gutter);
+    border-bottom-color: var(--v3-line-light);
+  }
+
+  .v3-work__rail {
+    display: grid;
+    align-content: space-between;
+    min-height: 18rem;
+  }
+
+  .v3-work__rail > span {
+    color: var(--v3-cobalt);
+    font-family: var(--v3-serif);
+    font-size: 4.5rem;
+    letter-spacing: -0.08em;
+  }
+
+  .v3-work__diagram {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .v3-work__diagram i {
+    display: block;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.32;
+  }
+
+  .v3-work__diagram i:nth-child(2) {
+    width: 72%;
+  }
+
+  .v3-work__diagram i:nth-child(3) {
+    width: 42%;
+  }
+
+  .v3-work__main h3 {
+    max-width: 11ch;
+    margin: 0.6rem 0 1rem;
+    font-family: var(--v3-serif);
+    font-size: clamp(2.8rem, 5vw, 5.4rem);
+    font-weight: 400;
+    letter-spacing: -0.055em;
+    line-height: 0.92;
+  }
+
+  .v3-work__description {
+    max-width: 34rem;
+    margin: 0 0 1.5rem;
+    color: var(--v3-ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .v3-work__case--ink .v3-work__description {
+    color: var(--v3-white-muted);
+  }
+
+  .v3-work__facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 0;
+    border-top: 1px solid currentColor;
+    border-left: 1px solid currentColor;
+    opacity: 0.88;
+  }
+
+  .v3-work__facts > div {
+    min-width: 0;
+    padding: 1.2rem;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .v3-work__facts dt {
+    color: var(--v3-cobalt);
+    font-family: var(--v3-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .v3-work__facts dd {
+    margin: 0.6rem 0 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 900px) {
+    .v3-work__header,
+    .v3-work__case {
+      grid-template-columns: 1fr;
+    }
+
+    .v3-work__rail {
+      display: flex;
+      min-height: 0;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .v3-work__diagram {
+      width: 8rem;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .v3-work__facts {
+      grid-template-columns: 1fr;
+    }
+
+    .v3-work__case--ink {
+      margin-inline: calc(var(--v3-gutter) * -1);
+    }
+  }
+</style>

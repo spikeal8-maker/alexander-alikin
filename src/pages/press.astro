@@ -1,20 +1,119 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+
+const formulas = [
+  [
+    "Краткая формула",
+    "Александр Аликин",
+    "Предприниматель-практик и инженер-педагог. Занимается проектированием цифровых продуктов и автоматизации, инженерным образованием и сопровождением исследовательских проектов.",
+  ],
+  [
+    "Метод",
+    "Разобрать, собрать, проверить, объяснить, передать",
+    "Один рабочий цикл применяется к инженерным, образовательным и организационным задачам.",
+  ],
+  [
+    "Ограничение",
+    "Цифры требуют источника",
+    "Масштабы практики, внешние достижения и результаты внедрения не заявляются без документальной проверки.",
+  ],
+];
+
+const topics = [
+  [
+    "ИИ и автоматизация",
+    "Где ИИ усиливает качественно поставленную задачу, а где создаёт дополнительный хаос.",
+  ],
+  [
+    "Инженерное образование",
+    "Проектный результат, роль ошибки, объяснение и защита работающего решения.",
+  ],
+  [
+    "Архитектура проектов",
+    "Как разделять контекст, ограничения, решение, результат и доказательства.",
+  ],
+  [
+    "Системы знаний",
+    "Как заметки превращаются в решения и публичные материалы без утечки приватного архива.",
+  ],
+];
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Для СМИ — Александр Аликин"
-  description="Биографии, темы комментариев, фотографии и контакты для СМИ и организаторов мероприятий."
-  currentPath="/press/"
-  breadcrumbs={[{ label: "Для СМИ" }]}
+  description="Безопасные биографические формулы, темы комментариев и маршруты для редакционного запроса."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Для СМИ</h1>
-      <p class="description">
-        Биографии, темы комментариев, фотографии и контакты для журналистов и организаторов.
-      </p>
-      <p>Пресс-пакет будет опубликован после утверждения.</p>
-    </div>
+  <div class="v3-page">
+    <section class="v3-page-hero v3-page-hero--plain">
+      <div class="v3-page-hero__copy">
+        <p class="v3-kicker">Для СМИ и мероприятий</p>
+        <h1 class="v3-page-hero__title">Комментарий с границами компетенции</h1>
+        <p class="v3-page-hero__lead">
+          Безопасные формулировки для интервью, комментариев и выступлений. Непроверенные роли и
+          показатели не превращаются в рекламную биографию.
+        </p>
+      </div>
+      <aside class="v3-page-hero__aside">
+        <strong>Тема, формат, срок, аудитория</strong>
+        <p>Этих четырёх пунктов достаточно, чтобы оценить редакционный запрос.</p>
+      </aside>
+    </section>
+
+    <section class="v3-editorial-section v3-editorial-section--white">
+      <div class="v3-shell v3-numbered">
+        {
+          formulas.map(([label, title, copy], index) => (
+            <article class="v3-numbered__item">
+              <span class="v3-numbered__index">0{index + 1}</span>
+              <div>
+                <>
+                  <p class="v3-kicker">{label}</p>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                </>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="v3-editorial-section v3-editorial-section--ink">
+      <div class="v3-shell v3-section-grid">
+        <div class="v3-section-grid__intro">
+          <p class="v3-kicker">Темы разговора</p>
+          <h2>Где есть практический контекст</h2>
+        </div>
+        <div class="v3-numbered">
+          {
+            topics.map(([title, copy], index) => (
+              <article class="v3-numbered__item">
+                <span class="v3-numbered__index">0{index + 1}</span>
+                <div>
+                  <>
+                    <h3>{title}</h3>
+                    <p>{copy}</p>
+                  </>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-editorial-section">
+      <div class="v3-shell v3-cta-scene">
+        <p class="v3-kicker">Редакционный запрос</p>
+        <h2>Укажите тему, формат и дедлайн</h2>
+        <p>
+          В Telegram достаточно указать, кто обращается, тему, предполагаемый формат и
+          ориентировочную дату.
+        </p>
+        <a class="v3-button" href="https://t.me/spikeal" target="_blank" rel="noreferrer">
+          Telegram — @spikeal
+        </a>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

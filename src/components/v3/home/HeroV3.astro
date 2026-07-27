@@ -5,21 +5,26 @@ import { buildUrl } from "@config/site";
 <section class="v3-hero">
   <div class="v3-shell v3-hero__grid">
     <div class="v3-hero__copy">
-      <p class="v3-kicker">Инженерия · образование · ИИ</p>
-      <h1 class="v3-display">
-        <span class="v3-display__given">Александр</span>
-        <span class="v3-display__family">Аликин</span>
-      </h1>
-      <p class="v3-hero__positioning">
-        Инженерия, педагогика и предпринимательство — не три роли, а один метод работы.
-      </p>
-      <p class="v3-hero__summary">
-        Разбираю сложную систему, собираю работающую конструкцию, проверяю её на практике и передаю
-        людям так, чтобы результат не зависел от одного автора.
-      </p>
-      <div class="v3-hero__actions">
-        <a class="v3-hero__primary" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
-        <a class="v3-link" href={buildUrl("/projects/")}>Смотреть проекты</a>
+      <div class="v3-hero__identity">
+        <p class="v3-kicker">Инженерия · образование · ИИ</p>
+        <h1 class="v3-display">
+          <span class="v3-display__given">Александр</span>
+          <span class="v3-display__family">Аликин</span>
+        </h1>
+      </div>
+
+      <div class="v3-hero__body">
+        <p class="v3-hero__positioning">
+          Инженерия, педагогика и предпринимательство — не три роли, а один метод работы.
+        </p>
+        <p class="v3-hero__summary">
+          Разбираю сложную систему, собираю работающую конструкцию, проверяю её на практике и передаю
+          людям так, чтобы результат не зависел от одного автора.
+        </p>
+        <div class="v3-hero__actions">
+          <a class="v3-hero__primary" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
+          <a class="v3-link" href={buildUrl("/projects/")}>Смотреть проекты</a>
+        </div>
       </div>
     </div>
 
@@ -243,37 +248,112 @@ import { buildUrl } from "@config/site";
     }
   }
 
-  @media (max-width: 560px) {
-    .v3-display__given {
-      font-size: clamp(3.7rem, 17vw, 5rem);
+  @media (max-width: 700px) {
+    .v3-hero__grid {
+      grid-template-areas:
+        "identity"
+        "portrait"
+        "body";
+    }
+
+    .v3-hero__copy {
+      display: contents;
+    }
+
+    .v3-hero__identity {
+      grid-area: identity;
+      padding: 2.5rem 0 1.75rem;
+    }
+
+    .v3-display {
+      display: flex;
+      gap: 0.25rem 0.7rem;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .v3-display__given,
+    .v3-display__family {
+      display: inline;
+      margin: 0;
+      font-family: var(--v3-sans);
+      font-size: clamp(2.8rem, 13vw, 3.7rem);
+      font-style: normal;
+      font-weight: 780;
+      letter-spacing: -0.065em;
+      line-height: 0.92;
     }
 
     .v3-display__family {
-      font-size: clamp(4rem, 18vw, 5.4rem);
-    }
-
-    .v3-hero__positioning {
-      font-size: clamp(1.65rem, 8vw, 2.25rem);
-    }
-
-    .v3-hero__summary {
-      font-size: 1.1rem;
-    }
-
-    .v3-hero__actions {
-      align-items: flex-start;
-      flex-direction: column;
+      color: var(--v3-cobalt);
     }
 
     .v3-hero__portrait {
-      min-height: 28rem;
+      grid-area: portrait;
+      min-height: clamp(19rem, 88vw, 23rem);
+      margin-inline: calc(var(--v3-gutter) * -1);
+    }
+
+    .v3-hero__portrait img {
+      inset: 0 12% 0 0;
+      width: 88%;
+      height: 100%;
+      object-position: 53% 18%;
+      box-shadow: none;
+    }
+
+    .v3-hero__blue {
+      inset: 0 0 0 72%;
+      clip-path: none;
+    }
+
+    .v3-hero__frame {
+      display: none;
+    }
+
+    .v3-hero__portrait figcaption {
+      right: 0.7rem;
+      bottom: 0.7rem;
+      left: auto;
+      max-width: 24%;
+      font-size: 0.5rem;
+      line-height: 1.45;
+      text-align: right;
+    }
+
+    .v3-hero__body {
+      grid-area: body;
+      padding: 1.65rem 0 2.25rem;
+    }
+
+    .v3-hero__positioning {
+      max-width: 21rem;
+      margin: 0 0 1rem;
+      font-size: clamp(1.45rem, 6.5vw, 1.85rem);
+      line-height: 1.08;
+    }
+
+    .v3-hero__summary {
+      max-width: 22rem;
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .v3-hero__actions {
+      gap: 0.9rem 1.2rem;
+      align-items: center;
+      margin-top: 1.5rem;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .v3-hero__primary {
+      min-height: 3.15rem;
+      padding: 0.8rem 1.05rem;
+      font-size: 0.9rem;
     }
 
     .v3-hero__index {
-      grid-template-columns: 1fr auto;
-    }
-
-    .v3-hero__index a {
       display: none;
     }
   }

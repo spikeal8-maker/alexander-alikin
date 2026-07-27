@@ -18,7 +18,7 @@ current_state:
   current_task: "BRAND-RESET-001"
   current_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/25"
   current_branch: "agent/brand-reset-v4"
-  current_pr_url: null
+  current_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/26"
   current_status: "in_progress"
   production_deploy_allowed: false
   next_task_start_allowed: false

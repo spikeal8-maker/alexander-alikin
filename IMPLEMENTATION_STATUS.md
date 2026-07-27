@@ -12,6 +12,7 @@
 ```text
 Issue: https://github.com/spikeal8-maker/alexander-alikin/issues/25
 Branch: agent/brand-reset-v4
+Draft PR: https://github.com/spikeal8-maker/alexander-alikin/pull/26
 Base: main @ 96ea826
 Production deploy: forbidden
 ```

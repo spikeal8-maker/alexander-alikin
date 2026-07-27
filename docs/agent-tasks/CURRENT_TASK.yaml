@@ -11,7 +11,7 @@ current_task:
   quality_document: "docs/testing/SITE-PLATFORM-QUALITY.md"
   rules_document: "AGENTS.md"
   branch: "agent/brand-reset-v4"
-  pull_request_url: null
+  pull_request_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/26"
   base_branch: "main"
   base_commit: "96ea8269ff71c79f05defa429f2542a74a03a648"
   execution_mode: "local_git_node24_npm_plus_github_actions"

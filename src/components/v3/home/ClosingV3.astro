@@ -2,14 +2,27 @@
 import { buildUrl } from "@config/site";
 ---
 
-<section class="v3-closing v3-section">
+<section class="v3-closing">
   <div class="v3-shell v3-closing__grid">
-    <p class="v3-kicker">Предметный разговор</p>
-    <h2>Есть сложный процесс, программа или проект?</h2>
-    <div class="v3-closing__copy">
+    <div class="v3-closing__intro">
+      <p class="v3-kicker">Предметный разговор</p>
+      <h2>Сначала контекст. Потом решение.</h2>
+    </div>
+
+    <div class="v3-closing__question">
+      <strong>Что стоит описать</strong>
+      <ul>
+        <li>что происходит сейчас;</li>
+        <li>где находится ограничение;</li>
+        <li>какой результат можно проверить;</li>
+        <li>что нельзя игнорировать.</li>
+      </ul>
+    </div>
+
+    <div class="v3-closing__action">
       <p>
-        Начнём с контекста: что происходит сейчас, где ограничение, какой результат действительно
-        нужен и что нельзя обещать заранее.
+        Этого достаточно, чтобы понять, есть ли предмет для диагностики, ограниченного пилота или
+        образовательной программы.
       </p>
       <a href={buildUrl("/collaboration/")}>Обсудить задачу <span>↗</span></a>
     </div>
@@ -18,62 +31,87 @@ import { buildUrl } from "@config/site";
 
 <style>
   .v3-closing {
-    background: var(--v3-cobalt);
     color: var(--v3-white);
+    background: var(--v3-ink);
+    border-top: 0.75rem solid var(--v3-cobalt);
   }
 
   .v3-closing__grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(20rem, 0.65fr);
-    column-gap: clamp(2rem, 8vw, 9rem);
-    align-items: end;
-  }
-
-  .v3-closing .v3-kicker {
-    grid-column: 1 / -1;
-    color: rgba(255, 255, 255, 0.7);
+    grid-template-columns: minmax(0, 1.1fr) minmax(15rem, 0.55fr) minmax(18rem, 0.65fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    padding-block: clamp(4rem, 7vw, 7rem);
+    align-items: start;
   }
 
   .v3-closing h2 {
-    max-width: 13ch;
+    max-width: 12ch;
     margin: 0;
     font-family: var(--v3-serif);
-    font-size: clamp(3.5rem, 7vw, 8rem);
+    font-size: clamp(3rem, 5vw, 5.5rem);
     font-weight: 400;
-    letter-spacing: -0.06em;
-    line-height: 0.9;
+    letter-spacing: -0.055em;
+    line-height: 0.94;
   }
 
-  .v3-closing__copy p {
-    margin: 0 0 2rem;
-    color: rgba(255, 255, 255, 0.75);
+  .v3-closing__question strong {
+    font-family: var(--v3-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .v3-closing__question ul {
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .v3-closing__question li {
+    padding-block: 0.7rem;
+    color: var(--v3-white-muted);
+    border-bottom: 1px solid var(--v3-line-light);
+  }
+
+  .v3-closing__action p {
+    margin: 0 0 1.75rem;
+    color: var(--v3-white-muted);
     line-height: 1.7;
   }
 
-  .v3-closing__copy a {
+  .v3-closing__action a {
     display: flex;
     justify-content: space-between;
-    padding: 1.2rem 0;
+    padding: 1.1rem 0;
     color: var(--v3-white);
-    border-top: 1px solid rgba(255, 255, 255, 0.45);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.45);
-    font-size: 0.9rem;
+    border-top: 1px solid var(--v3-line-light);
+    border-bottom: 1px solid var(--v3-line-light);
     font-weight: 750;
     text-decoration: none;
   }
 
-  .v3-closing__copy a:hover,
-  .v3-closing__copy a:focus-visible {
-    color: var(--v3-ink);
+  .v3-closing__action a:hover,
+  .v3-closing__action a:focus-visible {
+    color: var(--v3-cobalt-light);
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 900px) {
+    .v3-closing__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .v3-closing__intro {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 600px) {
     .v3-closing__grid {
       grid-template-columns: 1fr;
     }
 
-    .v3-closing__copy {
-      margin-top: 3rem;
+    .v3-closing__intro {
+      grid-column: auto;
     }
   }
 </style>

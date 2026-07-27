@@ -26,7 +26,14 @@ const nav = [
     <details class="v3-header__mobile">
       <summary><span>Меню</span><span aria-hidden="true">+</span></summary>
       <nav aria-label="Мобильная навигация">
-        {nav.map(([label, href], index) => <a href={buildUrl(href)}><span>0{index + 1}</span>{label}</a>)}
+        {
+          nav.map(([label, href], index) => (
+            <a href={buildUrl(href)}>
+              <span>0{index + 1}</span>
+              {label}
+            </a>
+          ))
+        }
         <a class="v3-header__mobile-cta" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
       </nav>
     </details>

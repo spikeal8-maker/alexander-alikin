@@ -18,7 +18,7 @@ current_state:
   current_task: "CONTENT-EXPORT-001"
   current_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/29"
   current_branch: "agent/content-export-v4"
-  current_pr_url: null
+  current_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/30"
   current_status: "in_progress"
   production_deploy_allowed: false
   next_task_start_allowed: false

@@ -11,7 +11,7 @@ current_task:
   quality_document: "docs/testing/SITE-PLATFORM-QUALITY.md"
   rules_document: "AGENTS.md"
   branch: "agent/content-export-v4"
-  pull_request_url: null
+  pull_request_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/30"
   base_branch: "main"
   base_commit: "b3f33d2c8f18fb73715cfb93b46623d0199dd1aa"
   execution_mode: "local_git_node24_npm_plus_github_actions"

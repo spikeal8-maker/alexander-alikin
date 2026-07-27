@@ -12,7 +12,7 @@
 ```text
 Issue: https://github.com/spikeal8-maker/alexander-alikin/issues/29
 Branch: agent/content-export-v4
-Draft PR: pending
+Draft PR: https://github.com/spikeal8-maker/alexander-alikin/pull/30
 Base: main @ b3f33d2
 Production deploy: forbidden
 ```

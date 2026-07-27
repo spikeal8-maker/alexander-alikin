@@ -5,6 +5,7 @@ import { buildUrl } from "@config/site";
 
 const projects = await getCollection("projects", (entry) => entry.data.status === "published");
 const sorted = projects.sort((a, b) => a.data.title.localeCompare(b.data.title));
+const activeCount = sorted.filter((project) => project.data.projectStatus === "active").length;
 ---
 
 <BaseLayoutV3
@@ -17,52 +18,59 @@ const sorted = projects.sort((a, b) => a.data.title.localeCompare(b.data.title))
         <p class="v3-kicker">Проекты</p>
         <h1 class="v3-page-hero__title">Работа в контексте</h1>
         <p class="v3-page-hero__lead">
-          Не каталог достижений, а карта решений: задача, моя роль, текущее состояние, наблюдаемый
-          результат и то, что пока нельзя утверждать.
+          Не каталог достижений. Для каждого проекта зафиксированы роль, текущее состояние,
+          наблюдаемый результат и граница того, что пока нельзя утверждать.
         </p>
       </div>
       <aside class="v3-page-hero__aside">
-        <strong>Роль важнее декоративного результата</strong>
-        <p>
-          Каждый кейс показывает не только что сделано, но и на каком основании это можно
-          публиковать.
-        </p>
+        <dl class="v3-project-summary">
+          <div><dt>Опубликовано</dt><dd>{sorted.length}</dd></div>
+          <div><dt>Активных</dt><dd>{activeCount}</dd></div>
+          <div><dt>Принцип</dt><dd>ограничение рядом с результатом</dd></div>
+        </dl>
       </aside>
     </section>
 
-    <section class="v3-project-list" aria-label="Список проектов">
-      {
-        sorted.map((project, index) => (
-          <a class="v3-project-card" href={buildUrl(`/projects/${project.data.slug}/`)}>
-            <div class="v3-project-card__visual">
-              <span class="v3-kicker">
-                {project.data.projectStatus === "active" ? "Активная практика" : "Проект"}
-              </span>
-              <strong>0{index + 1}</strong>
-              <span>{project.data.period}</span>
-            </div>
-            <div class="v3-project-card__copy">
-              <p class="v3-kicker">{project.data.role}</p>
-              <h2>{project.data.title}</h2>
-              <p>{project.data.description}</p>
-              <p>{project.data.result}</p>
-              <div class="v3-meta">
-                <span>Открыть кейс ↗</span>
+    <section class="v3-project-register" aria-label="Реестр проектов">
+      <div class="v3-shell">
+        <div class="v3-project-register__head" aria-hidden="true">
+          <span>Проект</span><span>Роль и статус</span><span>Результат и ограничение</span><span></span>
+        </div>
+        {
+          sorted.map((project, index) => (
+            <a class="v3-project-register__row" href={buildUrl(`/projects/${project.data.slug}/`)}>
+              <div class="v3-project-register__title">
+                <span>0{index + 1}</span>
+                <div>
+                  <small>{project.data.category === "product" ? "Продукт" : "Практика"}</small>
+                  <h2>{project.data.title}</h2>
+                  <p>{project.data.description}</p>
+                </div>
               </div>
-            </div>
-          </a>
-        ))
-      }
+              <dl>
+                <div><dt>Роль</dt><dd>{project.data.role}</dd></div>
+                <div><dt>Статус</dt><dd>{project.data.period}</dd></div>
+              </dl>
+              <div class="v3-project-register__evidence">
+                <strong>Сейчас</strong>
+                <p>{project.data.result}</p>
+                <strong>Ограничение</strong>
+                <p>{project.data.limitations}</p>
+              </div>
+              <span class="v3-project-register__arrow" aria-hidden="true">↗</span>
+            </a>
+          ))
+        }
+      </div>
     </section>
 
-    <section class="v3-editorial-section">
+    <section class="v3-editorial-section v3-editorial-section--ink">
       <div class="v3-shell v3-statement">
-        <blockquote>Ограничение проекта — часть результата, а не сноска мелким шрифтом.</blockquote>
+        <blockquote>Кейс ценен не масштабом заголовка, а ясностью роли и доказательств.</blockquote>
         <div>
-          <p class="v3-kicker">Принцип публикации</p>
+          <p class="v3-kicker">Редакционный принцип</p>
           <p>
-            Если масштаб, период, состав команды или количественный эффект не подтверждены, они
-            остаются за пределами публичной версии.
+            Неподтверждённые числа, сроки и достижения не превращаются в маркетинговые показатели.
           </p>
           <a class="v3-link" href={buildUrl("/facts/")}>Факты и источники</a>
         </div>

@@ -1,0 +1,173 @@
+---
+import { buildUrl } from "@config/site";
+
+const records = [
+  {
+    code: "01",
+    label: "Активная разработка",
+    title: "ИЗО АСА",
+    text: "Архитектура ядра и модульная логика сформулированы. Публичная зрелая версия и внешний пилот пока не заявляются.",
+    meta: "Автор архитектуры · проект в разработке",
+    href: "/projects/izo-asa/",
+  },
+  {
+    code: "02",
+    label: "Действующая практика",
+    title: "Инженерное образование",
+    text: "Проектный цикл строится вокруг действия, ошибки, объяснения, доработки и защиты собственного результата.",
+    meta: "Педагог и методист · количественные данные на проверке",
+    href: "/projects/engineering-education/",
+  },
+  {
+    code: "03",
+    label: "Рабочий формат",
+    title: "Разбор → пилот → передача",
+    text: "Сначала фиксируются процесс, ограничения и критерий результата. Затем проверяется ограниченный контур, который можно объяснить команде.",
+    meta: "Без обещаний до диагностики",
+    href: "/business/",
+  },
+  {
+    code: "04",
+    label: "Редакционная система",
+    title: "Факт отделён от позиции",
+    text: "На сайте не публикуются неподтверждённые масштабы, сроки и достижения. Ограничения показываются рядом с результатом.",
+    meta: "Источники · статусы · границы публикации",
+    href: "/facts/",
+  },
+];
+---
+
+<section class="v3-ledger" aria-labelledby="ledger-title">
+  <div class="v3-shell">
+    <header class="v3-ledger__header">
+      <div>
+        <p class="v3-kicker">Рабочее состояние</p>
+        <h2 id="ledger-title">Не обещания. Контуры, которые можно проверить.</h2>
+      </div>
+      <p>
+        Краткая карта того, что уже существует, что находится в разработке и какие утверждения
+        намеренно ограничены.
+      </p>
+    </header>
+
+    <div class="v3-ledger__grid">
+      {
+        records.map((record) => (
+          <a href={buildUrl(record.href)} class="v3-ledger__item">
+            <span class="v3-ledger__code">{record.code}</span>
+            <div>
+              <span class="v3-ledger__label">{record.label}</span>
+              <h3>{record.title}</h3>
+              <p>{record.text}</p>
+              <small>{record.meta}</small>
+            </div>
+            <span class="v3-ledger__arrow" aria-hidden="true">↗</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .v3-ledger {
+    padding-block: clamp(3.5rem, 6vw, 6rem);
+    background: var(--v3-white);
+    border-bottom: 1px solid var(--v3-line);
+  }
+
+  .v3-ledger__header {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.55fr);
+    gap: clamp(2rem, 6vw, 7rem);
+    align-items: end;
+    margin-bottom: 2.5rem;
+  }
+
+  .v3-ledger__header h2 {
+    max-width: 16ch;
+    margin: 0;
+    font-family: var(--v3-serif);
+    font-size: clamp(2.6rem, 4.8vw, 5.2rem);
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    line-height: 0.95;
+  }
+
+  .v3-ledger__header > p {
+    margin: 0;
+    color: var(--v3-muted);
+    line-height: 1.7;
+  }
+
+  .v3-ledger__grid {
+    border-top: 1px solid var(--v3-line);
+  }
+
+  .v3-ledger__item {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+    gap: 1.5rem;
+    align-items: start;
+    padding-block: 1.75rem;
+    color: var(--v3-ink);
+    border-bottom: 1px solid var(--v3-line);
+    text-decoration: none;
+  }
+
+  .v3-ledger__code,
+  .v3-ledger__label,
+  .v3-ledger__item small {
+    font-family: var(--v3-mono);
+    text-transform: uppercase;
+  }
+
+  .v3-ledger__code {
+    color: var(--v3-cobalt);
+    font-size: 1.1rem;
+  }
+
+  .v3-ledger__label,
+  .v3-ledger__item small {
+    color: var(--v3-muted);
+    font-size: 0.64rem;
+    letter-spacing: 0.08em;
+  }
+
+  .v3-ledger__item h3 {
+    margin: 0.45rem 0 0.6rem;
+    font-size: clamp(1.45rem, 2.3vw, 2.2rem);
+    letter-spacing: -0.035em;
+  }
+
+  .v3-ledger__item p {
+    max-width: 58rem;
+    margin: 0 0 0.9rem;
+    color: var(--v3-ink-soft);
+    line-height: 1.65;
+  }
+
+  .v3-ledger__arrow {
+    color: var(--v3-cobalt);
+    font-size: 1.4rem;
+  }
+
+  .v3-ledger__item:hover h3,
+  .v3-ledger__item:focus-visible h3 {
+    color: var(--v3-cobalt);
+  }
+
+  @media (max-width: 760px) {
+    .v3-ledger__header {
+      grid-template-columns: 1fr;
+    }
+
+    .v3-ledger__item {
+      grid-template-columns: 2.5rem minmax(0, 1fr);
+    }
+
+    .v3-ledger__arrow {
+      display: none;
+    }
+  }
+</style>

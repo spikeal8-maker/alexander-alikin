@@ -1,118 +1,134 @@
 ---
-import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
-import "../styles/v2-about.css";
+
+const roles = [
+  ["Инженерная", "Понять устройство, ограничения, данные и архитектуру решения."],
+  ["Педагогическая", "Объяснить принцип и сделать результат воспроизводимым для других людей."],
+  ["Предпринимательская", "Учитывать спрос, ресурсы, команду, риск и последствия решения."],
+];
+
+const arc = [
+  [
+    "Электроника и робототехника",
+    "Работа с устройствами и инженерными проектами сформировала привычку искать причину, проверять конструкцию и объяснять принцип.",
+  ],
+  [
+    "Лига роботов",
+    "Образовательная практика превратилась в систему программ, занятий, оборудования и работы с педагогами. Масштабы публикуются только после документальной проверки.",
+  ],
+  [
+    "Laser Love",
+    "Сервисный бизнес дал опыт помещения, оборудования, команды, CRM, маркетинга и финансовых ограничений. На сайте не публикуются неподтверждённые показатели выручки.",
+  ],
+  [
+    "ИЗО АСА, ИИ и системы знаний",
+    "Текущая работа объединяет образовательный продукт, автоматизацию, персональные системы знаний и редакционный контур с указанием источников.",
+  ],
+];
 ---
 
-<BaseLayoutV2
+<BaseLayoutV3
   title="Обо мне — Александр Аликин"
-  description="Инженер, педагог и предприниматель. Один метод для технологических, образовательных и организационных задач."
-  currentPath="/about/"
+  description="Путь Александра Аликина: электроника, робототехника, образовательные и сервисные бизнесы, ИЗО АСА, ИИ и системы знаний."
 >
-  <section class="v2-section">
-    <div class="v2-container v2-about-hero">
-      <div>
-        <p class="v2-accent-label">Обо мне</p>
-        <h1 class="v2-page-title">Один метод для разных классов задач</h1>
-        <p class="v2-page-lead">
-          Я работаю на пересечении инженерии, педагогики и предпринимательства. Общая логика —
-          разобрать систему, собрать решение, проверить его, объяснить и передать людям.
+  <div class="v3-page">
+    <section class="v3-page-hero">
+      <div class="v3-page-hero__copy">
+        <p class="v3-kicker">Обо мне</p>
+        <h1 class="v3-page-hero__title">От инженерной практики к продуктам и системам</h1>
+        <p class="v3-page-hero__lead">
+          Мой путь проходит через электронику и робототехнику, образовательные программы,
+          собственные бизнесы, ИЗО АСА, ИИ и системы знаний. Общая логика — понять устройство,
+          собрать решение, проверить его и передать людям.
         </p>
-        <p class="v2-about-note">
-          Точные даты отдельных этапов, масштабы практики и роли в некоторых проектах публикуются
-          только после проверки источников.
+        <p class="v3-page-hero__note">
+          Точные даты, масштабы практики и финансовые показатели публикуются только вместе с
+          подтверждающим источником.
         </p>
       </div>
-      <img
-        src={buildUrl("/images/alikin/visualized/about-portrait-relaxed.webp")}
-        alt="Александр Аликин — портрет"
-        width="560"
-        height="700"
-        loading="eager"
-        class="v2-about-img"
-      />
-    </div>
-  </section>
-
-  <section class="v2-section v2-section-surface">
-    <div class="v2-container">
-      <h2 class="v2-section-title">Три ответственности</h2>
-      <div class="v2-role-grid">
-        <article class="v2-card-surface">
-          <span class="v2-accent-label">01</span>
-          <h3>Инженерная</h3>
-          <p>Понять устройство, ограничения, данные и архитектуру решения.</p>
-        </article>
-        <article class="v2-card-surface">
-          <span class="v2-accent-label">02</span>
-          <h3>Педагогическая</h3>
-          <p>Объяснить принцип и сделать результат воспроизводимым для других людей.</p>
-        </article>
-        <article class="v2-card-surface">
-          <span class="v2-accent-label">03</span>
-          <h3>Предпринимательская</h3>
-          <p>Учитывать спрос, ресурсы, команду, риск и последствия принятого решения.</p>
-        </article>
+      <div class="v3-page-hero__media">
+        <img
+          src={buildUrl("/images/alikin/visualized/about-portrait-relaxed.webp")}
+          alt="Александр Аликин — портрет"
+          width="960"
+          height="1200"
+          loading="eager"
+        />
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="v2-section">
-    <div class="v2-container v2-arc-grid">
-      <div>
-        <p class="v2-accent-label">Профессиональная дуга</p>
-        <h2 class="v2-section-title">От устройства к системе</h2>
-      </div>
-      <div class="v2-arc-list">
-        <div>
-          <strong>Техника</strong><p>
-            Работа с устройствами формирует привычку искать причину, а не маскировать симптом.
+    <section class="v3-editorial-section v3-editorial-section--white">
+      <div class="v3-shell v3-section-grid">
+        <div class="v3-section-grid__intro">
+          <p class="v3-kicker">Три ответственности</p>
+          <h2>Не три профессии, а три проверки решения</h2>
+          <p>
+            Каждая роль отвечает на свой вопрос: работает ли конструкция, понятна ли она людям и
+            выдерживает ли реальность.
           </p>
         </div>
-        <div>
-          <strong>Педагогика</strong><p>
-            Решение не передано, пока человек не может объяснить и воспроизвести его сам.
-          </p>
-        </div>
-        <div>
-          <strong>Предпринимательство</strong><p>
-            Технически правильная конструкция должна выдерживать ограничения спроса, ресурсов и
-            команды.
-          </p>
-        </div>
-        <div>
-          <strong>ИИ и системы знаний</strong><p>
-            Инструменты усиливают работу там, где качественно поставлена задача и выстроен контекст.
-          </p>
+        <div class="v3-numbered">
+          {
+            roles.map(([title, copy], index) => (
+              <article class="v3-numbered__item">
+                <span class="v3-numbered__index">0{index + 1}</span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                </div>
+              </article>
+            ))
+          }
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="v2-section v2-section-surface">
-    <div class="v2-container v2-principles-grid">
-      <div>
-        <p class="v2-accent-label">Редакционная политика</p>
-        <h2 class="v2-section-title">Что важно на этом сайте</h2>
+    <section class="v3-editorial-section v3-editorial-section--ink">
+      <div class="v3-shell">
+        <p class="v3-kicker">Профессиональная дуга</p>
+        <div class="v3-process">
+          {
+            arc.map(([title, copy], index) => (
+              <article class="v3-process__item">
+                <span>0{index + 1}</span>
+                <strong>{title}</strong>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
+        </div>
       </div>
-      <ul>
-        <li>Проекты и решения важнее общих титулов.</li>
-        <li>Факт отделяется от интерпретации и стратегической гипотезы.</li>
-        <li>Ограничения проекта публикуются вместе с результатом.</li>
-        <li>Visualized-изображения не выдаются за документальные события.</li>
-        <li>Приватный архив не становится публичным автоматически.</li>
-      </ul>
-    </div>
-  </section>
+    </section>
 
-  <section class="v2-section">
-    <div class="v2-container v2-cta-block">
-      <h2>Посмотреть работу в контексте</h2>
-      <p>Проекты показывают не только результат, но и роль, текущий статус и ограничения.</p>
-      <div class="v2-about-actions">
-        <a href={buildUrl("/projects/")} class="v2-btn v2-btn-outline">Проекты</a>
-        <a href={buildUrl("/collaboration/")} class="v2-btn v2-btn-accent">Обсудить задачу</a>
+    <section class="v3-editorial-section">
+      <div class="v3-shell v3-statement">
+        <blockquote>
+          Факт отдельно. Интерпретация отдельно. Ограничение — рядом с результатом.
+        </blockquote>
+        <div>
+          <p class="v3-kicker">Редакционная политика</p>
+          <p>
+            На сайте проекты важнее титулов, visualized-изображения не выдаются за документальные
+            события, а приватный архив не становится публичным автоматически.
+          </p>
+          <a class="v3-link" href={buildUrl("/facts/")}>Факты и источники</a>
+        </div>
       </div>
-    </div>
-  </section>
-</BaseLayoutV2>
+    </section>
+
+    <section class="v3-editorial-section v3-editorial-section--white">
+      <div class="v3-shell v3-cta-scene">
+        <p class="v3-kicker">Дальше</p>
+        <h2>Посмотреть проекты или перейти к контактам</h2>
+        <p>
+          В кейсах указаны роль, статус и ограничения. На странице контактов — доступные каналы.
+        </p>
+        <div>
+          <a class="v3-button" href={buildUrl("/projects/")}>Открыть проекты</a>
+          <a class="v3-link" href={buildUrl("/contacts/")}>Контакты</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayoutV3>

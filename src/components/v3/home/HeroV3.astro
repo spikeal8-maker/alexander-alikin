@@ -1,0 +1,59 @@
+---
+import { buildUrl } from "@config/site";
+import "../../../styles/v3-hero.css";
+import "../../../styles/v3-hero-mobile.css";
+---
+
+<section class="v3-hero">
+  <div class="v3-shell v3-hero__grid">
+    <div class="v3-hero__copy">
+      <div class="v3-hero__identity">
+        <p class="v3-kicker">Предприниматель-практик · инженер-педагог · ИИ-продукты</p>
+        <h1 class="v3-display">
+          <span class="v3-display__given">Александр</span>
+          <span class="v3-display__family">Аликин</span>
+        </h1>
+      </div>
+
+      <div class="v3-hero__body">
+        <p class="v3-hero__positioning">
+          Помогаю сервисным и образовательным командам превращать ручные процессы и сложные идеи в
+          работающие решения.
+        </p>
+        <p class="v3-hero__summary">
+          Работаю через диагностику, прототип, измерение результата и обучение людей. На сайте —
+          реальные проекты, текущие статусы и ограничения без рекламных преувеличений.
+        </p>
+        <p class="v3-hero__trust">
+          Робототехника и инженерное образование → собственные бизнесы → ИИ и автоматизация.
+        </p>
+        <div class="v3-hero__actions">
+          <a class="v3-hero__primary" href={buildUrl("/contacts/")}>Открыть контакты</a>
+          <a class="v3-link" href={buildUrl("/projects/")}>Посмотреть проекты</a>
+        </div>
+      </div>
+    </div>
+
+    <figure class="v3-hero__portrait">
+      <div class="v3-hero__blue" aria-hidden="true"></div>
+      <div class="v3-hero__frame" aria-hidden="true"></div>
+      <img
+        src={buildUrl("/images/alikin/visualized/hero-main-business.webp")}
+        alt="Александр Аликин"
+        width="960"
+        height="1200"
+        loading="eager"
+      />
+      <figcaption>
+        <span>Предприниматель-практик</span>
+        <span>Инженер-педагог</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="v3-shell v3-hero__index">
+    <span>01 / Позиция</span>
+    <a href="#selected-work">Следом — проекты ↓</a>
+    <span>2026</span>
+  </div>
+</section>

@@ -45,7 +45,7 @@ function routePath(pageFile) {
   if (!p.endsWith("/") && !p.includes(".")) p += "/";
   if (p.endsWith("/404/")) p = "/404.html";
   else if (p === "/rss.xml" || p === "/robots.txt") p = `/${p}`;
-  return p.replace(/\/+/g, "/").replace(/\/\[/g, "/[").replace(/\]\//g, "]/");
+  return p.replace(/\/+/g, "/").replace(/\/\[/g, "/[");
 }
 
 const pagesDir = path.join(root, "src", "pages");
@@ -63,8 +63,7 @@ const pageFiles = findPages(pagesDir);
 const builtRoutes = new Set();
 for (const f of pageFiles) {
   const rel = path.relative(pagesDir, f);
-  let route = "/" + rel.replace(/\\/g, "/");
-  route = routePath("src/pages/" + rel);
+  const route = routePath("src/pages/" + rel);
   builtRoutes.add(route);
 }
 

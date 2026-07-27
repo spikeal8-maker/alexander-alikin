@@ -1,99 +1,102 @@
 ---
-import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
-import "../styles/v2-contacts.css";
 
 const channels = [
-  {
-    num: "01",
-    title: "Предметный запрос",
-    description:
-      "Для обсуждения бизнес-процесса, образовательной программы, проектной разработки или технического участия.",
-    href: buildUrl("/collaboration/"),
-    action: "Подготовить контекст →",
-    external: false,
-  },
-  {
-    num: "02",
-    title: "GitHub",
-    description:
-      "Публичная техническая деятельность, исходный код и развитие цифровой платформы сайта.",
-    href: "https://github.com/spikeal8-maker",
-    action: "Открыть профиль →",
-    external: true,
-  },
-  {
-    num: "03",
-    title: "Журнал",
-    description:
-      "Статьи, истории и короткие тезисы об инженерии, образовании, проектах и системном мышлении.",
-    href: buildUrl("/journal/"),
-    action: "Читать материалы →",
-    external: false,
-  },
+  [
+    "Публичный GitHub",
+    "Исходный код, технические репозитории и развитие цифровой платформы сайта.",
+    "https://github.com/spikeal8-maker",
+    true,
+  ],
+  [
+    "Проекты и кейсы",
+    "ИЗО АСА, инженерное образование, роли, текущие результаты и ограничения.",
+    buildUrl("/projects/"),
+    false,
+  ],
+  [
+    "Деловой запрос",
+    "Подготовить описание бизнес-процесса, образовательной программы или технологического проекта.",
+    buildUrl("/collaboration/"),
+    false,
+  ],
+  [
+    "СМИ и выступления",
+    "Темы комментариев, безопасная биографическая формула и требования к редакционному запросу.",
+    buildUrl("/press/"),
+    false,
+  ],
+] as const;
+
+const prepare = [
+  "какой процесс, продукт или программа требуют изменения",
+  "что сейчас не работает или зависит от ручного усилия",
+  "какие данные, люди и системы уже участвуют",
+  "какой результат первого этапа можно проверить",
+  "какие ограничения нельзя игнорировать",
 ];
 ---
 
-<BaseLayoutV2
+<BaseLayoutV3
   title="Контакты — Александр Аликин"
-  description="Проверенные публичные каналы связи и маршруты для предметного обращения."
-  currentPath="/contacts/"
+  description="Публичные контакты и прямые переходы к проектам, деловому запросу, GitHub и материалам для СМИ."
 >
-  <section class="v2-section">
-    <div class="v2-container v2-contact-hero">
-      <div class="v2-contact-lead">
-        <p class="v2-accent-label">Контакты</p>
-        <h1 class="v2-page-title">Начать с контекста, а не с общего запроса</h1>
-        <p>
-          Самый быстрый путь к предметному разговору — описать задачу, текущую ситуацию и результат,
-          который должен стать наблюдаемым после первого этапа.
+  <div class="v3-page">
+    <section class="v3-page-hero v3-page-hero--plain">
+      <div class="v3-page-hero__copy">
+        <p class="v3-kicker">Контакты</p>
+        <h1 class="v3-page-hero__title">Где связаться и что посмотреть</h1>
+        <p class="v3-page-hero__lead">
+          Москва / онлайн. Для начала можно открыть проекты, посмотреть техническую работу на GitHub
+          или подготовить конкретный запрос по задаче.
         </p>
       </div>
-      <aside class="v2-contact-note">
+      <aside class="v3-page-hero__aside">
+        <strong>Не публикую вымышленные каналы</strong>
         <p>
-          На странице публикуются только проверенные каналы. Неподтверждённые Telegram, VK и другие
-          профили не выводятся до фиксации официальных ссылок владельцем.
+          Точный email или Telegram появятся здесь только после фиксации утверждённого адреса.
+          Сейчас показаны реально доступные публичные маршруты.
         </p>
       </aside>
-    </div>
-  </section>
+    </section>
 
-  <section class="v2-section v2-section-surface">
-    <div class="v2-container">
-      <h2 class="v2-section-title">Доступные маршруты</h2>
-      <div class="v2-contact-grid">
-        {
-          channels.map((channel) => (
-            <a
-              href={channel.href}
-              class="v2-contact-card"
-              target={channel.external ? "_blank" : undefined}
-              rel={channel.external ? "noreferrer" : undefined}
-            >
-              <span class="v2-accent-label">{channel.num}</span>
-              <h2>{channel.title}</h2>
-              <p>{channel.description}</p>
-              <span class="v2-contact-action">{channel.action}</span>
-            </a>
-          ))
-        }
+    <section class="v3-editorial-section v3-editorial-section--white">
+      <div class="v3-shell v3-section-grid">
+        <div class="v3-section-grid__intro">
+          <p class="v3-kicker">Прямые переходы</p>
+          <h2>Не нужно искать их в футере</h2>
+          <p>Каждый пункт ведёт на конкретную страницу или подтверждённый внешний профиль.</p>
+        </div>
+        <div class="v3-numbered">
+          {
+            channels.map(([title, copy, href, external], index) => (
+              <a
+                class="v3-numbered__item"
+                href={href}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noreferrer" : undefined}
+              >
+                <span class="v3-numbered__index">0{index + 1}</span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                </div>
+              </a>
+            ))
+          }
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="v2-section">
-    <div class="v2-container v2-contact-policy">
-      <div>
-        <p class="v2-accent-label">До первого разговора</p>
-        <h2 class="v2-section-title">Что стоит подготовить</h2>
+    <section class="v3-editorial-section">
+      <div class="v3-shell v3-statement">
+        <blockquote>Хороший первый запрос уже содержит границы задачи.</blockquote>
+        <div>
+          <p class="v3-kicker">Что подготовить</p>
+          <ul>{prepare.map((item) => <li>{item}</li>)}</ul>
+        </div>
       </div>
-      <ul>
-        <li>какой процесс, продукт или программа требуют изменения;</li>
-        <li>что сейчас не работает или зависит от ручного усилия;</li>
-        <li>какие данные, люди и системы уже участвуют в задаче;</li>
-        <li>какой результат первого этапа можно проверить;</li>
-        <li>какие ограничения нельзя игнорировать.</li>
-      </ul>
-    </div>
-  </section>
-</BaseLayoutV2>
+    </section>
+  </div>
+</BaseLayoutV3>

@@ -1,148 +1,142 @@
 ---
-import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
+
+const tasks: Array<[string, string, string[]]> = [
+  [
+    "Программы и лаборатории",
+    "Проектные форматы по информатике, технологии, робототехнике и применению ИИ.",
+    [
+      "результат виден в работающем проекте",
+      "ошибка становится частью процесса",
+      "защита показывает глубину понимания",
+    ],
+  ],
+  [
+    "Методическая система",
+    "Аудит программы, структура курса, критерии оценки и подготовка педагогов.",
+    [
+      "понятны роли участника и педагога",
+      "зафиксированы требования к площадке",
+      "учтены безопасность, авторство и данные",
+    ],
+  ],
+];
+
+const method: Array<[string, string, string]> = [
+  ["01", "Действие", "Участник начинает создавать, а не ждёт готового ответа."],
+  ["02", "Ошибка", "Ограничение становится видимым и пригодным для разбора."],
+  ["03", "Объяснение", "Нужно понять причину, а не подобрать случайный ответ."],
+  ["04", "Доработка", "Решение пересобирается осознанно и проверяется снова."],
+  ["05", "Защита", "Результат подтверждается через объяснение и демонстрацию."],
+];
 ---
 
-<BaseLayoutV2
+<BaseLayoutV3
   title="Образованию — Александр Аликин"
   description="Инженерные программы, лаборатории и методические системы, в которых результат создаётся, проверяется и объясняется."
-  currentPath="/education/"
 >
-  <section class="v2-section">
-    <div class="v2-container v2-edu-hero">
-      <div>
-        <p class="v2-accent-label">Образованию</p>
-        <h1 class="v2-page-title">Учиться через действие и защиту результата</h1>
-        <p class="v2-page-lead">
-          Проектирую программы и лаборатории, где участник не воспроизводит готовый ответ, а
-          создаёт, проверяет, дорабатывает и объясняет собственное решение.
+  <div class="v3-page">
+    <section class="v3-page-hero">
+      <div class="v3-page-hero__copy">
+        <p class="v3-kicker">Образованию</p>
+        <h1 class="v3-page-hero__title">Учиться через действие</h1>
+        <p class="v3-page-hero__lead">
+          Проектирую программы и лаборатории, где участник создаёт, проверяет, дорабатывает и
+          объясняет собственное решение.
+        </p>
+        <p class="v3-page-hero__note">
+          Ценность программы — не в количестве тем, а в том, что человек способен сделать и защитить
+          сам.
         </p>
       </div>
-      <img
-        src={buildUrl("/images/alikin/visualized/education-presentation.webp")}
-        alt="Иллюстрация инженерного образования и проектной работы"
-        width="640"
-        height="480"
-        loading="eager"
-        class="v2-img-frame"
-      />
-    </div>
-  </section>
+      <div class="v3-page-hero__media">
+        <img
+          src={buildUrl("/images/alikin/visualized/education-presentation.webp")}
+          alt="Иллюстрация инженерного образования и проектной работы"
+          width="960"
+          height="1200"
+          loading="eager"
+        />
+      </div>
+    </section>
 
-  <section class="v2-section v2-section-surface">
-    <div class="v2-container">
-      <h2 class="v2-section-title">Два типа задач</h2>
-      <div class="v2-edu-grid">
-        <article class="v2-card-surface">
-          <span class="v2-accent-label">01</span>
-          <h3>Программы и лаборатории</h3>
-          <p>Проектные форматы в области информатики, технологии, робототехники и применения ИИ.</p>
-          <ul>
-            <li>результат участника виден в работающем проекте;</li>
-            <li>ошибка становится частью процесса;</li>
-            <li>защита показывает глубину понимания.</li>
-          </ul>
-        </article>
-        <article class="v2-card-surface">
-          <span class="v2-accent-label">02</span>
-          <h3>Методическая система</h3>
+    <section class="v3-editorial-section v3-editorial-section--white">
+      <div class="v3-shell v3-section-grid">
+        <div class="v3-section-grid__intro">
+          <p class="v3-kicker">Два класса задач</p>
+          <h2>Создать среду и сделать её воспроизводимой</h2>
           <p>
-            Аудит программы, структура курса, критерии оценки и подготовка педагогов к
-            воспроизводимой работе.
+            Один слой отвечает за опыт участника, второй — за систему, в которой этот опыт можно
+            повторить.
           </p>
-          <ul>
-            <li>понятна роль педагога и участника;</li>
-            <li>зафиксированы требования к площадке;</li>
-            <li>учтены безопасность, авторство и данные.</li>
-          </ul>
-        </article>
+        </div>
+        <div class="v3-numbered">
+          {
+            tasks.map(([title, copy, items], index) => (
+              <article class="v3-numbered__item">
+                <span class="v3-numbered__index">0{index + 1}</span>
+                <div>
+                  <>
+                    <h3>{title}</h3>
+                    <p>{copy}</p>
+                  </>
+                  <ul>
+                    {items.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))
+          }
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="v2-section">
-    <div class="v2-container">
-      <p class="v2-accent-label">Метод</p>
-      <h2 class="v2-section-title">Действие → ошибка → объяснение → доработка → защита</h2>
-      <div class="v2-method-row">
-        <div><strong>Действие</strong><span>Участник начинает создавать.</span></div>
-        <div><strong>Ошибка</strong><span>Ограничение становится видимым.</span></div>
-        <div><strong>Объяснение</strong><span>Нужно понять причину, а не угадать ответ.</span></div>
-        <div><strong>Доработка</strong><span>Решение пересобирается осознанно.</span></div>
-        <div><strong>Защита</strong><span>Результат проверяется через объяснение.</span></div>
+    <section class="v3-editorial-section v3-editorial-section--ink">
+      <div class="v3-shell">
+        <p class="v3-kicker">Метод</p>
+        <div class="v3-process">
+          {
+            method.map(([number, title, copy]) => (
+              <article class="v3-process__item">
+                <>
+                  <span>{number}</span>
+                  <strong>{title}</strong>
+                  <p>{copy}</p>
+                </>
+              </article>
+            ))
+          }
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="v2-section v2-section-surface">
-    <div class="v2-container v2-evidence-note">
-      <div>
-        <h2 class="v2-section-title">Что подтверждено, а что ещё проверяется</h2>
+    <section class="v3-editorial-section">
+      <div class="v3-shell v3-statement">
+        <blockquote>Результат обучения должен быть виден, объясним и воспроизводим.</blockquote>
+        <div>
+          <p class="v3-kicker">Доказательность</p>
+          <p>
+            Публично используется описание авторской методики и действующей практики. Точные
+            периоды, масштабы и количественные результаты не публикуются до проверки источников.
+          </p>
+          <a class="v3-link" href={buildUrl("/projects/engineering-education/")}>Открыть проект</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-editorial-section v3-editorial-section--white">
+      <div class="v3-shell v3-cta-scene">
+        <p class="v3-kicker">Новая программа</p>
+        <h2>Опишите аудиторию, площадку и результат</h2>
         <p>
-          Публично используется авторская методика и описание действующей практики. Точные периоды,
-          количество участников, подготовленных педагогов и результаты соревнований не публикуются
-          до отдельной проверки источников.
+          Этого достаточно, чтобы понять формат: аудит, лаборатория, программа или подготовка
+          педагогов.
         </p>
+        <a class="v3-button" href={buildUrl("/collaboration/")}>Обсудить программу</a>
       </div>
-      <a href={buildUrl("/projects/engineering-education/")} class="v2-btn v2-btn-outline">
-        Открыть проект
-      </a>
-    </div>
-  </section>
-
-  <section class="v2-section">
-    <div class="v2-container v2-cta-block">
-      <h2>Обсудить программу или лабораторию</h2>
-      <p>Опишите аудиторию, доступное оборудование и результат, который участник должен создать.</p>
-      <a href={buildUrl("/collaboration/")} class="v2-btn v2-btn-accent">Обсудить задачу</a>
-    </div>
-  </section>
-</BaseLayoutV2>
-
-<style>
-  .v2-edu-hero,
-  .v2-edu-grid,
-  .v2-evidence-note {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-10);
-    align-items: center;
-  }
-  .v2-edu-grid article h3 {
-    font-size: var(--text-2xl);
-    margin: var(--space-3) 0;
-  }
-  .v2-edu-grid p,
-  .v2-edu-grid li,
-  .v2-evidence-note p {
-    font-size: var(--text-base);
-    line-height: var(--leading-normal);
-    color: var(--color-text-secondary);
-  }
-  .v2-method-row {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: var(--space-4);
-  }
-  .v2-method-row div {
-    border-top: var(--border-width-thick) solid var(--color-primary);
-    padding-top: var(--space-4);
-  }
-  .v2-method-row strong,
-  .v2-method-row span {
-    display: block;
-  }
-  .v2-method-row span {
-    margin-top: var(--space-2);
-    color: rgba(255, 255, 255, 0.65);
-    line-height: var(--leading-normal);
-  }
-  @media (max-width: 768px) {
-    .v2-edu-hero,
-    .v2-edu-grid,
-    .v2-evidence-note,
-    .v2-method-row {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
+    </section>
+  </div>
+</BaseLayoutV3>

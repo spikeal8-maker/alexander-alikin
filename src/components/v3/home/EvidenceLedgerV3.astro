@@ -1,0 +1,192 @@
+---
+import { buildUrl } from "@config/site";
+
+const records = [
+  {
+    code: "01",
+    label: "Инженерное образование",
+    title: "Робототехника, информатика и проектные программы",
+    text: "Авторские программы и проектные форматы строятся вокруг действия, ошибки, объяснения, доработки и защиты собственного результата.",
+    meta: "Педагог и методист · точные количественные данные на проверке",
+    href: "/projects/engineering-education/",
+  },
+  {
+    code: "02",
+    label: "Предпринимательская практика",
+    title: "Лига роботов и Laser Love",
+    text: "Собственные проекты дали практический опыт площадки, команды, оборудования, CRM, маркетинга и операционных ограничений — без публикации неподтверждённых финансовых цифр.",
+    meta: "Собственные бизнесы · опыт управления и цена решений",
+    href: "/about/",
+  },
+  {
+    code: "03",
+    label: "Продукт в разработке",
+    title: "ИЗО АСА",
+    text: "Образовательная платформа для виртуальных лабораторий, управления группами и учебных проектов. Архитектура ядра сформулирована; зрелая публичная версия пока не заявляется.",
+    meta: "Автор архитектуры и разработчик · активная разработка",
+    href: "/projects/izo-asa/",
+  },
+  {
+    code: "04",
+    label: "Текущий технологический контур",
+    title: "ИИ, автоматизация и системы знаний",
+    text: "Развиваются ограниченные пилоты, редакционная система сайта и публично-приватный контур знаний с обязательным указанием источников и границ утверждения.",
+    meta: "Диагностика · прототип · измерение · передача людям",
+    href: "/second-brain/",
+  },
+];
+---
+
+<section class="v3-ledger" aria-labelledby="ledger-title">
+  <div class="v3-shell">
+    <header class="v3-ledger__header">
+      <div>
+        <p class="v3-kicker">Профессиональная дуга</p>
+        <h2 id="ledger-title">Не набор ролей. Последовательный путь от техники к системам.</h2>
+      </div>
+      <p>
+        Здесь названы реальные направления и проекты. Масштабы, даты и финансовые показатели не
+        превращаются в публичные факты без отдельного подтверждения.
+      </p>
+    </header>
+
+    <div class="v3-ledger__grid">
+      {
+        records.map((record) => (
+          <a href={buildUrl(record.href)} class="v3-ledger__item">
+            <span class="v3-ledger__code">{record.code}</span>
+            <div>
+              <span class="v3-ledger__label">{record.label}</span>
+              <h3>{record.title}</h3>
+              <p>{record.text}</p>
+              <small>{record.meta}</small>
+            </div>
+            <span class="v3-ledger__arrow" aria-hidden="true">
+              ↗
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .v3-ledger {
+    padding-block: clamp(3.5rem, 6vw, 6rem);
+    background: var(--v3-white);
+    border-bottom: 1px solid var(--v3-line);
+  }
+
+  .v3-ledger .v3-shell,
+  .v3-ledger__header,
+  .v3-ledger__header > *,
+  .v3-ledger__grid,
+  .v3-ledger__item,
+  .v3-ledger__item > * {
+    min-width: 0;
+  }
+
+  .v3-ledger__header {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.55fr);
+    gap: clamp(2rem, 6vw, 7rem);
+    align-items: end;
+    margin-bottom: 2.5rem;
+  }
+
+  .v3-ledger__header h2 {
+    max-width: 16ch;
+    margin: 0;
+    font-family: var(--v3-serif);
+    font-size: clamp(2.6rem, 4.8vw, 5.2rem);
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    line-height: 0.95;
+  }
+
+  .v3-ledger__header > p {
+    margin: 0;
+    color: var(--v3-muted);
+    line-height: 1.7;
+  }
+
+  .v3-ledger__grid {
+    border-top: 1px solid var(--v3-line);
+  }
+
+  .v3-ledger__item {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+    gap: 1.5rem;
+    align-items: start;
+    padding-block: 1.75rem;
+    color: var(--v3-ink);
+    border-bottom: 1px solid var(--v3-line);
+    text-decoration: none;
+  }
+
+  .v3-ledger__code,
+  .v3-ledger__label,
+  .v3-ledger__item small {
+    font-family: var(--v3-mono);
+    text-transform: uppercase;
+  }
+
+  .v3-ledger__code {
+    color: var(--v3-cobalt);
+    font-size: 1.1rem;
+  }
+
+  .v3-ledger__label,
+  .v3-ledger__item small {
+    color: var(--v3-muted);
+    font-size: 0.64rem;
+    letter-spacing: 0.08em;
+  }
+
+  .v3-ledger__item h3 {
+    margin: 0.45rem 0 0.6rem;
+    font-size: clamp(1.45rem, 2.3vw, 2.2rem);
+    letter-spacing: -0.035em;
+  }
+
+  .v3-ledger__item p {
+    max-width: 58rem;
+    margin: 0 0 0.9rem;
+    color: var(--v3-ink-soft);
+    line-height: 1.65;
+  }
+
+  .v3-ledger__arrow {
+    color: var(--v3-cobalt);
+    font-size: 1.4rem;
+  }
+
+  .v3-ledger__item:hover h3,
+  .v3-ledger__item:focus-visible h3 {
+    color: var(--v3-cobalt);
+  }
+
+  @media (max-width: 760px) {
+    .v3-ledger__header {
+      width: 100%;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .v3-ledger__header h2,
+    .v3-ledger__header p,
+    .v3-ledger__header .v3-kicker {
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+
+    .v3-ledger__item {
+      grid-template-columns: 2.5rem minmax(0, 1fr);
+    }
+
+    .v3-ledger__arrow {
+      display: none;
+    }
+  }
+</style>

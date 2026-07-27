@@ -1,46 +1,45 @@
 ---
-import BaseLayoutV2 from "@layouts/BaseLayoutV2.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
-import "../../../styles/v2-utility.css";
 ---
 
-<BaseLayoutV2
+<BaseLayoutV3
   title="Видео — Александр Аликин"
   description="Публичные видеоматериалы и правила их редакционной публикации."
-  currentPath="/journal/"
 >
-  <section class="v2-section">
-    <div class="v2-container v2-utility-hero">
-      <div class="v2-utility-lead">
-        <p class="v2-accent-label">Журнал · Видео</p>
-        <h1 class="v2-page-title">Видео публикуется вместе с контекстом</h1>
-        <p>
+  <div class="v3-page">
+    <section class="v3-page-hero v3-page-hero--plain">
+      <div class="v3-page-hero__copy">
+        <p class="v3-kicker">Журнал · Видео</p>
+        <h1 class="v3-page-hero__title">Видео публикуется вместе с контекстом</h1>
+        <p class="v3-page-hero__lead">
           Выступление, демонстрация или интервью полезны только тогда, когда указаны тема, дата,
           площадка и границы того, что материал действительно подтверждает.
         </p>
       </div>
-      <div class="v2-utility-note">
+      <aside class="v3-page-hero__aside">
+        <p class="v3-kicker">Текущее состояние</p>
         <p>
-          В текущей публичной коллекции нет утверждённых видеоматериалов. Страница остаётся честным
-          пустым разделом, а не имитацией наполнения.
+          В публичной коллекции пока нет утверждённых видеоматериалов. Раздел остаётся честно
+          пустым, а не имитирует наполнение.
         </p>
+      </aside>
+    </section>
+
+    <section class="v3-editorial-section v3-editorial-section--white">
+      <div class="v3-shell v3-statement">
+        <blockquote>Пустой раздел лучше материала без происхождения и границ.</blockquote>
+        <div>
+          <p>
+            После утверждения здесь появятся записи выступлений, демонстрации проектов и интервью с
+            точными подписями, датами и источниками.
+          </p>
+          <div class="v3-inline-links">
+            <a class="v3-link" href={buildUrl("/journal/")}>Вернуться в журнал</a>
+            <a class="v3-link" href={buildUrl("/press/")}>Материалы для СМИ</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section class="v2-section v2-section-surface">
-    <div class="v2-container">
-      <p class="v2-empty-note">
-        После утверждения здесь появятся записи выступлений, демонстрации проектов и интервью с
-        точными подписями и источниками.
-      </p>
-    </div>
-  </section>
-
-  <section class="v2-section">
-    <div class="v2-container v2-entry-footer">
-      <a href={buildUrl("/journal/")} class="v2-btn v2-btn-outline">← Вернуться в журнал</a>
-      <a href={buildUrl("/press/")} class="v2-btn v2-btn-accent">Материалы для СМИ</a>
-    </div>
-  </section>
-</BaseLayoutV2>
+    </section>
+  </div>
+</BaseLayoutV3>

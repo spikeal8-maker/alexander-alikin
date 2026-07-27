@@ -1,0 +1,66 @@
+---
+import { buildUrl } from "@config/site";
+import "../../styles/v3-header.css";
+
+const nav = [
+  ["Обо мне", "/about/"],
+  ["Проекты", "/projects/"],
+  ["Бизнесу", "/business/"],
+  ["Образованию", "/education/"],
+  ["Журнал", "/journal/"],
+  ["Контакты", "/contacts/"],
+];
+
+const quickNav = [
+  ["Проекты", "/projects/"],
+  ["Контакты", "/contacts/"],
+  ["Бизнесу", "/business/"],
+  ["Образованию", "/education/"],
+];
+---
+
+<header class="v3-header">
+  <div class="v3-header__inner">
+    <a class="v3-header__brand" href={buildUrl("/")} aria-label="Александр Аликин — главная">
+      <span class="v3-header__name">Александр Аликин</span>
+      <span class="v3-header__descriptor">инженер · педагог · предприниматель</span>
+    </a>
+
+    <nav class="v3-header__nav" aria-label="Основная навигация">
+      {nav.map(([label, href]) => <a href={buildUrl(href)}>{label}</a>)}
+    </nav>
+
+    <a class="v3-header__cta" href={buildUrl("/contacts/")}>Связаться</a>
+
+    <details class="v3-header__mobile">
+      <summary><span>Ещё</span><span aria-hidden="true">+</span></summary>
+      <nav aria-label="Полная мобильная навигация">
+        {
+          nav.map(([label, href], index) => (
+            <a href={buildUrl(href)}>
+              <span>0{index + 1}</span>
+              {label}
+            </a>
+          ))
+        }
+        <a class="v3-header__mobile-cta" href={buildUrl("/contacts/")}>Открыть контакты</a>
+      </nav>
+    </details>
+  </div>
+
+  <nav class="v3-header__quick" aria-label="Быстрые переходы">
+    {quickNav.map(([label, href]) => <a href={buildUrl(href)}>{label}</a>)}
+  </nav>
+</header>
+
+<script>
+  const mobileMenu = document.querySelector(".v3-header__mobile");
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && mobileMenu instanceof HTMLDetailsElement) mobileMenu.open = false;
+  });
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (mobileMenu instanceof HTMLDetailsElement) mobileMenu.open = false;
+    });
+  });
+</script>

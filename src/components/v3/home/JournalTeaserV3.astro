@@ -9,58 +9,48 @@ const [articles, stories, thoughts] = await Promise.all([
 ]);
 
 const entries = [
-  ...articles.map((entry) => ({
-    ...entry,
-    kind: "Статья",
-    href: `/journal/articles/${entry.data.slug}/`,
-  })),
-  ...stories.map((entry) => ({
-    ...entry,
-    kind: "История",
-    href: `/journal/stories/${entry.data.slug}/`,
-  })),
-  ...thoughts.map((entry) => ({
-    ...entry,
-    kind: "Мысль",
-    href: `/journal/thoughts/${entry.data.slug}/`,
-  })),
+  ...articles.map((entry) => ({ ...entry, kind: "Статья", href: `/journal/articles/${entry.data.slug}/` })),
+  ...stories.map((entry) => ({ ...entry, kind: "История", href: `/journal/stories/${entry.data.slug}/` })),
+  ...thoughts.map((entry) => ({ ...entry, kind: "Мысль", href: `/journal/thoughts/${entry.data.slug}/` })),
 ]
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
-  .slice(0, 3);
+  .slice(0, 4);
 ---
 
 <section class="v3-journal v3-section">
-  <div class="v3-shell v3-journal__heading">
-    <div>
-      <p class="v3-kicker">Журнал</p>
-      <h2 class="v3-title">Не новости.<br />Следы работы.</h2>
+  <div class="v3-shell">
+    <header class="v3-journal__heading">
+      <div>
+        <p class="v3-kicker">Журнал</p>
+        <h2>Материалы, которые фиксируют изменение метода</h2>
+      </div>
+      <div>
+        <p>
+          Не поток новостей. Здесь остаются разборы, ошибки, проектные решения и короткие тезисы,
+          которые можно связать с реальной работой.
+        </p>
+        <a class="v3-link" href={buildUrl("/journal/")}>Все материалы</a>
+      </div>
+    </header>
+
+    <div class="v3-journal__list">
+      {
+        entries.map((entry, index) => (
+          <a href={buildUrl(entry.href)}>
+            <span class="v3-journal__index">0{index + 1}</span>
+            <div class="v3-journal__meta">
+              <span>{entry.kind}</span>
+              <time>{entry.data.publishedAt.toLocaleDateString("ru")}</time>
+            </div>
+            <div>
+              <h3>{entry.data.title}</h3>
+              <p>{entry.data.description}</p>
+            </div>
+            <span class="v3-journal__arrow" aria-hidden="true">↗</span>
+          </a>
+        ))
+      }
     </div>
-    <p>
-      Истории, статьи и короткие мысли о том, где ломаются системы, как меняется метод и почему
-      результат должен быть объяснимым.
-    </p>
-  </div>
-
-  <div class="v3-shell v3-journal__list">
-    {
-      entries.map((entry, index) => (
-        <a href={buildUrl(entry.href)}>
-          <span class="v3-journal__index">0{index + 1}</span>
-          <div>
-            <span class="v3-journal__kind">{entry.kind}</span>
-            <h3>{entry.data.title}</h3>
-            <p>{entry.data.description}</p>
-          </div>
-          <span class="v3-journal__arrow" aria-hidden="true">
-            ↗
-          </span>
-        </a>
-      ))
-    }
-  </div>
-
-  <div class="v3-shell v3-journal__all">
-    <a class="v3-link" href={buildUrl("/journal/")}>Открыть журнал</a>
   </div>
 </section>
 
@@ -72,68 +62,79 @@ const entries = [
 
   .v3-journal__heading {
     display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 0.6fr);
-    gap: clamp(2rem, 8vw, 9rem);
+    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.55fr);
+    gap: clamp(2rem, 6vw, 7rem);
     align-items: end;
+    margin-bottom: 3rem;
   }
 
-  .v3-journal__heading > p {
+  .v3-journal__heading h2 {
+    max-width: 15ch;
     margin: 0;
-    color: rgba(255, 255, 255, 0.58);
+    font-family: var(--v3-serif);
+    font-size: clamp(3rem, 5.2vw, 5.8rem);
+    font-weight: 400;
+    letter-spacing: -0.055em;
+    line-height: 0.94;
+  }
+
+  .v3-journal__heading > div:last-child p {
+    margin: 0 0 1.5rem;
+    color: var(--v3-white-muted);
     line-height: 1.7;
   }
 
   .v3-journal__list {
-    margin-top: clamp(4rem, 8vw, 8rem);
     border-top: 1px solid var(--v3-line-light);
   }
 
   .v3-journal__list > a {
     display: grid;
-    grid-template-columns: 5rem minmax(0, 1fr) auto;
-    gap: clamp(1.5rem, 4vw, 4rem);
+    grid-template-columns: 3rem 8rem minmax(0, 1fr) auto;
+    gap: clamp(1rem, 3vw, 3rem);
     align-items: start;
-    padding-block: clamp(2rem, 4vw, 3.5rem);
+    padding-block: 1.8rem;
     color: var(--v3-white);
     border-bottom: 1px solid var(--v3-line-light);
     text-decoration: none;
   }
 
   .v3-journal__index {
-    color: rgba(255, 255, 255, 0.28);
+    color: var(--v3-cobalt-light);
     font-family: var(--v3-serif);
-    font-size: 2.5rem;
-    letter-spacing: -0.05em;
+    font-size: 1.8rem;
   }
 
-  .v3-journal__kind {
-    color: var(--v3-cobalt);
+  .v3-journal__meta {
+    display: grid;
+    gap: 0.5rem;
+    color: var(--v3-white-muted);
     font-family: var(--v3-mono);
-    font-size: 0.67rem;
-    letter-spacing: 0.1em;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
   .v3-journal h3 {
-    max-width: 28ch;
-    margin: 0.75rem 0 0.8rem;
+    max-width: 32ch;
+    margin: 0 0 0.65rem;
     font-family: var(--v3-serif);
-    font-size: clamp(2rem, 4vw, 4rem);
+    font-size: clamp(1.8rem, 3.2vw, 3.2rem);
     font-weight: 400;
-    letter-spacing: -0.045em;
-    line-height: 0.98;
+    letter-spacing: -0.04em;
+    line-height: 1;
   }
 
   .v3-journal__list p {
-    max-width: 45rem;
+    max-width: 50rem;
     margin: 0;
-    color: rgba(255, 255, 255, 0.58);
+    color: var(--v3-white-muted);
     line-height: 1.6;
   }
 
   .v3-journal__arrow {
-    color: var(--v3-cobalt);
-    font-size: 1.6rem;
+    color: var(--v3-cobalt-light);
+    font-size: 1.4rem;
   }
 
   .v3-journal__list > a:hover h3,
@@ -141,19 +142,24 @@ const entries = [
     color: var(--v3-cobalt-light);
   }
 
-  .v3-journal__all {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 2rem;
-  }
-
-  @media (max-width: 700px) {
+  @media (max-width: 760px) {
     .v3-journal__heading {
       grid-template-columns: 1fr;
     }
 
     .v3-journal__list > a {
-      grid-template-columns: 3rem minmax(0, 1fr);
+      grid-template-columns: 2.5rem minmax(0, 1fr);
+    }
+
+    .v3-journal__meta {
+      grid-column: 2;
+      grid-row: 1;
+      grid-template-columns: auto auto;
+      justify-content: start;
+    }
+
+    .v3-journal__list > a > div:nth-of-type(2) {
+      grid-column: 2;
     }
 
     .v3-journal__arrow {

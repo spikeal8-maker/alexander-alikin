@@ -15,21 +15,22 @@ current_state:
   strategy: "done"
   foundation_pr: "merged"
   platform: "done"
-  current_task: "BRAND-RESET-001"
-  current_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/25"
-  current_branch: "agent/brand-reset-v4"
-  current_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/26"
+  current_task: "CONTENT-EXPORT-001"
+  current_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/29"
+  current_branch: "agent/content-export-v4"
+  current_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/30"
   current_status: "in_progress"
   production_deploy_allowed: false
   next_task_start_allowed: false
   required_before_owner_review:
-    - "brand, architecture, visual and roadmap V4 documents exist"
-    - "ADR-0006 records the direction change"
-    - "private vault content is not exported"
+    - "29 private source files are classified without copying the vault"
+    - "only ready_for_public_export content is exported"
+    - "evidence, owner review and media gates are documented"
+    - "pages, CSS, routes and public media are unchanged"
     - "npm ci and npm run quality pass"
     - "dependency audit has no high or critical findings"
     - "Draft PR contains factual report"
-    - "CONTENT-EXPORT-001 is not started"
+    - "Draft PR contains source HEAD, counts and owner decisions"
 
 brand_v4:
   status: "owner_review"

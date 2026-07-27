@@ -7,7 +7,7 @@
 ```text
 Issue: https://github.com/spikeal8-maker/alexander-alikin/issues/31
 Branch: agent/recover-visible-site
-Draft PR: pending
+Draft PR: https://github.com/spikeal8-maker/alexander-alikin/pull/32
 Base: main @ b3f33d2
 V3 source: 9374e27
 Production deploy: forbidden

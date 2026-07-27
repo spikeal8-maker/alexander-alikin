@@ -11,7 +11,7 @@ current_task:
   quality_document: "docs/testing/SITE-PLATFORM-QUALITY.md"
   rules_document: "AGENTS.md"
   branch: "agent/recover-visible-site"
-  pull_request_url: null
+  pull_request_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/32"
   base_branch: "main"
   base_commit: "b3f33d2c8f18fb73715cfb93b46623d0199dd1aa"
   source_v3_commit: "9374e27fd8b83b4928906d180d1e3d8adb9c6b5a"

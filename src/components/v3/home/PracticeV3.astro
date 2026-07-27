@@ -46,20 +46,20 @@ const boundaries = [
       </p>
     </header>
 
-    <div class="v3-practice__matrix" role="table" aria-label="Этапы метода работы">
-      <div class="v3-practice__matrix-head" role="row">
+    <div class="v3-practice__matrix" aria-label="Этапы метода работы">
+      <div class="v3-practice__matrix-head">
         <span>Этап</span><span>Вход</span><span>Работа</span><span>Результат</span>
       </div>
       {
         stages.map((stage) => (
-          <article role="row">
-            <div class="v3-practice__stage" role="cell">
+          <article>
+            <div class="v3-practice__stage">
               <span>{stage.number}</span>
               <h3>{stage.title}</h3>
             </div>
-            <p role="cell">{stage.input}</p>
-            <p role="cell">{stage.action}</p>
-            <p role="cell">{stage.output}</p>
+            <p>{stage.input}</p>
+            <p>{stage.action}</p>
+            <p>{stage.output}</p>
           </article>
         ))
       }
@@ -74,9 +74,7 @@ const boundaries = [
       </div>
       <div class="v3-practice__routes">
         <a href={buildUrl("/business/")}><span>Бизнесу</span><strong>Процессы и пилоты</strong></a>
-        <a href={buildUrl("/education/")}
-          ><span>Образованию</span><strong>Программы и лаборатории</strong></a
-        >
+        <a href={buildUrl("/education/")}><span>Образованию</span><strong>Программы и лаборатории</strong></a>
         <a href={buildUrl("/about/")}><span>Обо мне</span><strong>Происхождение метода</strong></a>
       </div>
     </div>

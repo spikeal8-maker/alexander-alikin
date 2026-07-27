@@ -63,8 +63,7 @@ const pageFiles = findPages(pagesDir);
 const builtRoutes = new Set();
 for (const f of pageFiles) {
   const rel = path.relative(pagesDir, f);
-  let route = "/" + rel.replace(/\\/g, "/");
-  route = routePath("src/pages/" + rel);
+  const route = routePath("src/pages/" + rel);
   builtRoutes.add(route);
 }
 

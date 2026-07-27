@@ -78,6 +78,15 @@ const records = [
     border-bottom: 1px solid var(--v3-line);
   }
 
+  .v3-ledger .v3-shell,
+  .v3-ledger__header,
+  .v3-ledger__header > *,
+  .v3-ledger__grid,
+  .v3-ledger__item,
+  .v3-ledger__item > * {
+    min-width: 0;
+  }
+
   .v3-ledger__header {
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.55fr);
@@ -161,7 +170,15 @@ const records = [
 
   @media (max-width: 760px) {
     .v3-ledger__header {
-      grid-template-columns: 1fr;
+      width: 100%;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .v3-ledger__header h2,
+    .v3-ledger__header p,
+    .v3-ledger__header .v3-kicker {
+      max-width: 100%;
+      overflow-wrap: anywhere;
     }
 
     .v3-ledger__item {

@@ -1,164 +1,211 @@
 ---
 import { buildUrl } from "@config/site";
 
-const modes = [
+const stages = [
   {
     number: "01",
     title: "Разобрать",
-    text: "Диагностика процесса, ограничений и зон потерь. Без обещания автоматизировать всё сразу.",
+    input: "Процесс, данные, ограничения, участники и зона потерь.",
+    action: "Отделяю симптом от причины и фиксирую проверяемый результат первого этапа.",
+    output: "Карта системы, границы задачи и перечень неизвестных.",
   },
   {
     number: "02",
     title: "Проверить",
-    text: "Узкий прототип или программа, которую можно испытать на реальной задаче и объяснить участникам.",
+    input: "Узкий участок, на котором можно безопасно проверить гипотезу.",
+    action: "Собираю прототип, пилот или программу и проверяю на реальном контексте.",
+    output: "Работающий контур, наблюдения, ошибки и решение о следующем шаге.",
   },
   {
     number: "03",
     title: "Передать",
-    text: "Архитектура, документация и обучение — чтобы система продолжала работать без героизма автора.",
+    input: "Подтверждённая конструкция и люди, которые будут с ней работать.",
+    action: "Фиксирую архитектуру, документацию, критерии и объясняю принцип команде.",
+    output: "Система, которая не зависит от постоянного героизма одного автора.",
   },
+];
+
+const boundaries = [
+  "не обещаю результат до диагностики",
+  "не автоматизирую хаос целиком",
+  "не скрываю ограничения проекта",
+  "не выдаю прототип за зрелый продукт",
 ];
 ---
 
 <section class="v3-practice v3-section">
   <div class="v3-shell">
-    <div class="v3-practice__lead">
-      <p class="v3-kicker">Метод</p>
-      <h2 class="v3-title">Не продаю магию.<br />Строю проверяемый переход.</h2>
+    <header class="v3-practice__header">
+      <div>
+        <p class="v3-kicker">Метод работы</p>
+        <h2>Переход, который можно проверить и передать</h2>
+      </div>
       <p>
-        Работа начинается не с выбора технологии, а с понимания системы. Хорошее решение можно
-        проверить, объяснить и передать.
+        Технология появляется после постановки задачи. Каждый этап должен оставлять наблюдаемый
+        результат, а не только презентацию или обещание.
       </p>
-    </div>
+    </header>
 
-    <div class="v3-practice__steps">
+    <div class="v3-practice__matrix" role="table" aria-label="Этапы метода работы">
+      <div class="v3-practice__matrix-head" role="row">
+        <span>Этап</span><span>Вход</span><span>Работа</span><span>Результат</span>
+      </div>
       {
-        modes.map((mode) => (
-          <article>
-            <span>{mode.number}</span>
-            <h3>{mode.title}</h3>
-            <p>{mode.text}</p>
+        stages.map((stage) => (
+          <article role="row">
+            <div class="v3-practice__stage" role="cell">
+              <span>{stage.number}</span>
+              <h3>{stage.title}</h3>
+            </div>
+            <p role="cell">{stage.input}</p>
+            <p role="cell">{stage.action}</p>
+            <p role="cell">{stage.output}</p>
           </article>
         ))
       }
     </div>
 
-    <div class="v3-practice__routes">
-      <a href={buildUrl("/business/")}>
-        <span>Для бизнеса</span>
-        <strong>Процессы, данные и ограниченные пилоты</strong>
-      </a>
-      <a href={buildUrl("/education/")}>
-        <span>Для образования</span>
-        <strong>Программы, лаборатории и методика</strong>
-      </a>
-      <a href={buildUrl("/about/")}>
-        <span>Обо мне</span>
-        <strong>Как сложился этот способ работы</strong>
-      </a>
+    <div class="v3-practice__bottom">
+      <div>
+        <p class="v3-kicker">Границы</p>
+        <ul>
+          {boundaries.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <div class="v3-practice__routes">
+        <a href={buildUrl("/business/")}><span>Бизнесу</span><strong>Процессы и пилоты</strong></a>
+        <a href={buildUrl("/education/")}><span>Образованию</span><strong>Программы и лаборатории</strong></a>
+        <a href={buildUrl("/about/")}><span>Обо мне</span><strong>Происхождение метода</strong></a>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
   .v3-practice {
-    background: var(--v3-paper);
+    background: var(--v3-white);
   }
 
-  .v3-practice__lead {
+  .v3-practice__header {
     display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 0.6fr);
-    column-gap: clamp(2rem, 8vw, 9rem);
+    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.55fr);
+    gap: clamp(2rem, 6vw, 7rem);
     align-items: end;
+    margin-bottom: 3rem;
   }
 
-  .v3-practice__lead .v3-kicker {
-    grid-column: 1 / -1;
+  .v3-practice__header h2 {
+    max-width: 15ch;
+    margin: 0;
+    font-family: var(--v3-serif);
+    font-size: clamp(3rem, 5.2vw, 5.8rem);
+    font-weight: 400;
+    letter-spacing: -0.055em;
+    line-height: 0.94;
   }
 
-  .v3-practice__lead > p:last-child {
+  .v3-practice__header > p {
     margin: 0;
     color: var(--v3-muted);
     line-height: 1.7;
   }
 
-  .v3-practice__steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin-top: clamp(4rem, 8vw, 8rem);
+  .v3-practice__matrix {
     border-top: 1px solid var(--v3-line);
+    border-left: 1px solid var(--v3-line);
+  }
+
+  .v3-practice__matrix-head,
+  .v3-practice__matrix article {
+    display: grid;
+    grid-template-columns: minmax(8rem, 0.55fr) repeat(3, minmax(0, 1fr));
+  }
+
+  .v3-practice__matrix-head span,
+  .v3-practice__matrix article > * {
+    min-width: 0;
+    padding: 1rem 1.2rem;
+    border-right: 1px solid var(--v3-line);
     border-bottom: 1px solid var(--v3-line);
   }
 
-  .v3-practice__steps article {
-    min-height: 23rem;
-    padding: 2rem clamp(1.25rem, 3vw, 3rem) 2.5rem 0;
-    border-right: 1px solid var(--v3-line);
+  .v3-practice__matrix-head {
+    color: var(--v3-muted);
+    font-family: var(--v3-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
-  .v3-practice__steps article + article {
-    padding-left: clamp(1.25rem, 3vw, 3rem);
+  .v3-practice__matrix article > p {
+    margin: 0;
+    color: var(--v3-ink-soft);
+    font-size: 0.9rem;
+    line-height: 1.6;
   }
 
-  .v3-practice__steps article:last-child {
-    border-right: 0;
-  }
-
-  .v3-practice__steps span {
+  .v3-practice__stage span {
     color: var(--v3-cobalt);
-    font-family: var(--v3-serif);
-    font-size: 4.5rem;
-    letter-spacing: -0.07em;
+    font-family: var(--v3-mono);
+    font-size: 0.65rem;
   }
 
-  .v3-practice__steps h3 {
-    margin: 4rem 0 1rem;
+  .v3-practice__stage h3 {
+    margin: 1.5rem 0 0;
     font-family: var(--v3-serif);
-    font-size: 2.3rem;
+    font-size: 2rem;
     font-weight: 400;
     letter-spacing: -0.04em;
   }
 
-  .v3-practice__steps p {
-    margin: 0;
-    color: var(--v3-muted);
-    font-size: 0.96rem;
-    line-height: 1.65;
+  .v3-practice__bottom {
+    display: grid;
+    grid-template-columns: minmax(16rem, 0.65fr) minmax(0, 1.35fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    margin-top: 3rem;
+  }
+
+  .v3-practice__bottom ul {
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .v3-practice__bottom li {
+    padding-block: 0.75rem;
+    color: var(--v3-ink-soft);
+    border-bottom: 1px solid var(--v3-line);
   }
 
   .v3-practice__routes {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1px;
-    margin-top: 1px;
     background: var(--v3-line);
   }
 
   .v3-practice__routes a {
     display: grid;
-    gap: 1.5rem;
-    min-height: 12rem;
-    padding: 1.75rem;
+    min-height: 11rem;
+    padding: 1.4rem;
     color: var(--v3-ink);
-    background: var(--v3-white);
+    background: var(--v3-paper);
     text-decoration: none;
   }
 
   .v3-practice__routes span {
     color: var(--v3-cobalt);
     font-family: var(--v3-mono);
-    font-size: 0.68rem;
+    font-size: 0.64rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
   .v3-practice__routes strong {
     align-self: end;
-    max-width: 18rem;
     font-family: var(--v3-serif);
-    font-size: 1.55rem;
+    font-size: 1.4rem;
     font-weight: 400;
-    letter-spacing: -0.025em;
     line-height: 1.05;
   }
 
@@ -173,31 +220,28 @@ const modes = [
     color: var(--v3-white);
   }
 
-  @media (max-width: 760px) {
-    .v3-practice__lead,
-    .v3-practice__steps,
-    .v3-practice__routes {
+  @media (max-width: 860px) {
+    .v3-practice__header,
+    .v3-practice__bottom {
       grid-template-columns: 1fr;
     }
 
-    .v3-practice__lead > p:last-child {
-      margin-top: 2rem;
+    .v3-practice__matrix-head {
+      display: none;
     }
 
-    .v3-practice__steps article,
-    .v3-practice__steps article + article {
-      min-height: auto;
-      padding: 2rem 0;
-      border-right: 0;
-      border-bottom: 1px solid var(--v3-line);
+    .v3-practice__matrix article {
+      grid-template-columns: 1fr;
     }
 
-    .v3-practice__steps article:last-child {
-      border-bottom: 0;
+    .v3-practice__matrix article > * {
+      padding: 1.2rem;
     }
+  }
 
-    .v3-practice__steps h3 {
-      margin-top: 2rem;
+  @media (max-width: 600px) {
+    .v3-practice__routes {
+      grid-template-columns: 1fr;
     }
   }
 </style>

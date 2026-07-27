@@ -15,18 +15,43 @@ current_state:
   strategy: "done"
   foundation_pr: "merged"
   platform: "done"
-  current_task: "DEPENDENCY-REMEDIATION-001"
-  current_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/27"
-  current_branch: "agent/dependency-remediation-001"
-  current_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/28"
+  current_task: "BRAND-RESET-001"
+  current_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/25"
+  current_branch: "agent/brand-reset-v4"
+  current_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/26"
   current_status: "in_progress"
   production_deploy_allowed: false
   next_task_start_allowed: false
   required_before_owner_review:
-    - "npm audit has no high or critical findings"
+    - "brand, architecture, visual and roadmap V4 documents exist"
+    - "ADR-0006 records the direction change"
+    - "private vault content is not exported"
     - "npm ci and npm run quality pass"
+    - "dependency audit has no high or critical findings"
     - "Draft PR contains factual report"
-    - "site pages and content are unchanged"
+    - "CONTENT-EXPORT-001 is not started"
+
+brand_v4:
+  status: "owner_review"
+  central_role: "Александр Аликин проектирует работающие технологические, образовательные и предпринимательские системы"
+  direction: "современная персональная мастерская и документальное портфолио"
+  primary_navigation:
+    - { label: "Обо мне", path: "/about/" }
+    - { label: "Проекты", path: "/projects/" }
+    - { label: "Практика", path: "/practice/" }
+    - { label: "Журнал", path: "/journal/" }
+    - { label: "Контакты", path: "/contacts/" }
+  primary_cta: { label: "Обсудить задачу", path: "/collaboration/" }
+  media_rules:
+    primary_identity: "real_approved_photography"
+    generated_face_in_hero: false
+    documentary_evidence_required_for_events: true
+  canonical_documents:
+    - "docs/BRAND_PLATFORM_V4.md"
+    - "docs/SITE_ARCHITECTURE_V4.md"
+    - "docs/VISUAL_CONTRACT_V4.md"
+    - "docs/REBRAND_ROADMAP_V4.md"
+    - "docs/DECISIONS/0006-personal-workshop-v4.md"
 
 objective:
   primary: "Создавать качественные предметные разговоры через проверяемую цифровую личность Александра"

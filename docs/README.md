@@ -4,16 +4,20 @@
 
 Начинать работу над интерфейсом, текстами и новыми страницами нужно с этих документов:
 
-1. [Каноническая стратегия сайта](CANONICAL_SITE_STRATEGY.md)
-2. [Модель целевых аудиторий](AUDIENCE_MODEL.md)
-3. [Спецификации всех страниц](PAGE_SPECIFICATIONS.md)
-4. [Blueprint главной страницы](HOMEPAGE_BLUEPRINT.md)
-5. [Пользовательские маршруты и CTA](USER_JOURNEYS_AND_CTA.md)
-6. [Визуальная система](VISUAL_SYSTEM.md)
-7. [План контента и доказательств](CONTENT_AND_EVIDENCE_PLAN.md)
-8. [План реализации](IMPLEMENTATION_ROADMAP.md)
-9. [SEO, аналитика и эксплуатация](SEO_ANALYTICS_AND_OPERATIONS.md)
-10. [Machine-readable execution manifest](SITE_EXECUTION_MANIFEST.yaml)
+1. [Бренд-платформа V4](BRAND_PLATFORM_V4.md)
+2. [Архитектура сайта V4](SITE_ARCHITECTURE_V4.md)
+3. [Визуальный контракт V4](VISUAL_CONTRACT_V4.md)
+4. [Дорожная карта ребрендинга V4](REBRAND_ROADMAP_V4.md)
+5. [Каноническая стратегия сайта](CANONICAL_SITE_STRATEGY.md)
+6. [Модель целевых аудиторий](AUDIENCE_MODEL.md)
+7. [Спецификации всех страниц](PAGE_SPECIFICATIONS.md)
+8. [Blueprint главной страницы](HOMEPAGE_BLUEPRINT.md)
+9. [Пользовательские маршруты и CTA](USER_JOURNEYS_AND_CTA.md)
+10. [Визуальная система foundation](VISUAL_SYSTEM.md)
+11. [План контента и доказательств](CONTENT_AND_EVIDENCE_PLAN.md)
+12. [План реализации foundation](IMPLEMENTATION_ROADMAP.md)
+13. [SEO, аналитика и эксплуатация](SEO_ANALYTICS_AND_OPERATIONS.md)
+14. [Machine-readable execution manifest](SITE_EXECUTION_MANIFEST.yaml)
 
 ## Назначение и работа
 
@@ -60,10 +64,11 @@
 При конфликте между ранним общим документом и канонической продуктовой спецификацией приоритет имеют:
 
 1. принятые ADR;
-2. `CANONICAL_SITE_STRATEGY.md`;
-3. `PAGE_SPECIFICATIONS.md`;
-4. `IMPLEMENTATION_ROADMAP.md`;
-5. `SITE_EXECUTION_MANIFEST.yaml` для статусов, зависимостей и issue URL;
-6. остальные supporting-документы.
+2. документы V4;
+3. `CANONICAL_SITE_STRATEGY.md`;
+4. `PAGE_SPECIFICATIONS.md`;
+5. `IMPLEMENTATION_ROADMAP.md`;
+6. `SITE_EXECUTION_MANIFEST.yaml` для статусов, зависимостей и issue URL;
+7. остальные supporting-документы.
 
 Изменение основной аудитории, позиционирования, главной навигации, основного CTA или визуального направления требует отдельного решения, а не скрытого изменения компонента.

@@ -2,75 +2,58 @@
 
 ## Текущий этап
 
-`SITE-PLATFORM-001 — remediation_required / merge_blocked`
+`BRAND-RESET-001 — in_progress`
 
-Стратегический foundation принят и merged в `main` commit `5feccb8c39364e8d785b0d06691b718f55bdb165`.
+Техническая платформа принята в `main` commit
+`96ea8269ff71c79f05defa429f2542a74a03a648`.
 
 Текущая работа:
 
 ```text
-Issue: https://github.com/spikeal8-maker/alexander-alikin/issues/7
-Branch: agent/site-platform
-Draft PR: https://github.com/spikeal8-maker/alexander-alikin/pull/20
-Audited HEAD: 38829aac7a7782ca3a7fad68fa151001683e8eeb
-Failed Actions run: https://github.com/spikeal8-maker/alexander-alikin/actions/runs/29705514096
+Issue: https://github.com/spikeal8-maker/alexander-alikin/issues/25
+Branch: agent/brand-reset-v4
+Draft PR: https://github.com/spikeal8-maker/alexander-alikin/pull/26
+Base: main @ 96ea826
+Production deploy: forbidden
 ```
 
-## Результат независимого review
+## Причина перезапуска
 
-Локальный отчёт `12/12 PASS` не является exit gate. GitHub Actions на чистом Ubuntu checkout завершился failure на шаге `npm run quality`; dependency audit был skipped.
+Visual V2 и V3 сохранены как исследовательские Draft PR, но не приняты как
+финальная основа. V4 сначала фиксирует бренд, структуру, визуальные правила и
+безопасный контентный процесс, затем реализуется отдельными Issues.
 
-Обнаружены merge-блокеры:
+## Канонический контракт V4
 
-- generated-output test запускается до build и проходит локально только при старом `dist/`;
-- serialized dates не загружаются существующими `z.date()` schemas;
-- negative fixtures проверяются на наличие, а не отклоняются общими schemas;
-- route gate проверяет route files, а не generated dynamic URLs;
-- link gate не проверяет существование targets и anchors;
-- mobile menu изменяет атрибут не на том DOM-элементе и остаётся скрытым;
-- foundation CSS не импортирован в layout;
-- canonical/base-path, RSS и search URLs не доказаны generated tests;
-- robots всегда блокирует crawling, а prelaunch robots указывает на отсутствующий sitemap;
-- GitHub Actions красный.
-
-## Канонический remediation-контракт
-
+- `docs/BRAND_PLATFORM_V4.md`;
+- `docs/SITE_ARCHITECTURE_V4.md`;
+- `docs/VISUAL_CONTRACT_V4.md`;
+- `docs/REBRAND_ROADMAP_V4.md`;
+- `docs/DECISIONS/0006-personal-workshop-v4.md`;
 - `docs/agent-tasks/CURRENT_TASK.yaml`;
-- `docs/agent-tasks/TASK-SITE-PLATFORM-REMEDIATION.md`;
-- `docs/agent-tasks/TASK-SITE-PLATFORM.md`;
-- `docs/testing/SITE-PLATFORM-QUALITY.md`;
-- Issue №7.
+- Issue №25.
 
-## Требуемый пользовательский результат
+## Текущий пользовательский результат
 
-Получить воспроизводимый технический каркас, который проходит из чистого checkout:
+Получить единый утверждаемый фундамент ребрендинга:
 
 ```text
-clean checkout
-→ npm ci
-→ npm run quality
-→ generated published routes существуют
-→ draft/blocked routes отсутствуют
-→ links/canonical/RSS/search/sitemap согласованы
-→ mobile navigation работает
-→ GitHub Actions success
-→ npm audit фактически выполнен
+одна центральная роль
+→ доказательства и публичные границы
+→ компактная архитектура сайта
+→ документальное визуальное направление
+→ независимые этапы реализации
 ```
 
-## Запрещено до remediation PASS
+## Запрещено на текущем этапе
 
-- merge PR №20;
-- перевод PR в Ready for review;
-- начало Issue №8;
-- ослабление Test IDs;
-- `continue-on-error`;
-- отключение CI;
-- production deploy;
-- импорт приватного vault;
-- добавление реального контента или финального дизайна.
+- изменение Astro-страниц и CSS;
+- экспорт приватного vault;
+- публикация контактов и неподтверждённых фактов;
+- merge и deploy;
+- начало `CONTENT-EXPORT-001`.
 
 ## Следующий допустимый шаг
 
-Только выполнение remediation в существующей ветке и Draft PR. После зелёного локального и GitHub Actions gate — owner review PR №20.
-
-`SITE-DESIGN-001 / Issue №8` разрешается только после owner approval и merge PR №20.
+После PASS и Draft PR — owner review `BRAND-RESET-001`. Следующий этап
+`CONTENT-EXPORT-001` разрешён только после принятия и merge.

@@ -2,18 +2,18 @@ version: 2
 updated_at: "2026-07-27"
 repository: "spikeal8-maker/alexander-alikin"
 current_task:
-  id: "DEPENDENCY-REMEDIATION-001"
-  title: "Устранить high-уязвимости quality toolchain"
+  id: "BRAND-RESET-001"
+  title: "Зафиксировать бренд-платформу и архитектуру V4"
   status: "in_progress"
-  severity: "security-blocker"
-  issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/27"
-  task_document: "docs/agent-tasks/TASK-DEPENDENCY-REMEDIATION-001.md"
+  severity: "product-foundation"
+  issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/25"
+  task_document: "docs/agent-tasks/TASK-BRAND-RESET-V4.md"
   quality_document: "docs/testing/SITE-PLATFORM-QUALITY.md"
   rules_document: "AGENTS.md"
-  branch: "agent/dependency-remediation-001"
-  pull_request_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/28"
+  branch: "agent/brand-reset-v4"
+  pull_request_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/26"
   base_branch: "main"
-  base_commit: "96ea8269ff71c79f05defa429f2542a74a03a648"
+  base_commit: "b98cbe97ce9250bdd421233fe114dcc0687a5c0c"
   execution_mode: "local_git_node24_npm_plus_github_actions"
   github_actions_required: true
   production_deploy_allowed: false
@@ -21,14 +21,16 @@ current_task:
   force_push_allowed: false
   next_task_start_allowed: false
   completion_requires:
-    - "npm ci passes in clean GitHub checkout"
-    - "npm run quality passes"
-    - "npm audit --audit-level=high passes"
-    - "no high or critical vulnerabilities"
-    - "no site or content changes"
+    - "brand platform V4 exists"
+    - "site architecture V4 exists"
+    - "visual contract V4 exists"
+    - "ADR-0006 exists"
+    - "rebrand roadmap is split into independent tasks"
+    - "private vault content is not exported"
+    - "repository quality remains green"
     - "Draft PR contains factual report"
   next_allowed_action:
-    after_pass: "owner review of dependency remediation Draft PR"
-    task_after_merge_only: "BRAND-RESET-001"
-    issue_after_merge_only: "https://github.com/spikeal8-maker/alexander-alikin/issues/25"
-stop_rule: "После dependency remediation отчёта остановиться. Merge и следующие V4-задачи запрещены до owner review."
+    after_pass: "owner review of BRAND-RESET-001 Draft PR"
+    task_after_merge_only: "CONTENT-EXPORT-001"
+    issue_after_merge_only: null
+stop_rule: "После BRAND-RESET-001 отчёта остановиться. Merge и CONTENT-EXPORT-001 запрещены до owner review."

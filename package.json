@@ -13,6 +13,7 @@
     "lint": "eslint \"src/**/*.{astro,ts}\" \"scripts/**/*.{ts,mjs}\"",
     "typecheck": "astro check",
     "test:content": "tsx scripts/validate-content.ts",
+    "test:content-export-v4": "node scripts/validate-content-export-v4.mjs",
     "test:source-routes": "node scripts/validate-source-routes.mjs",
     "test:secrets": "node scripts/validate-secrets.mjs",
     "test:generated-routes": "node scripts/validate-generated-routes.mjs",
@@ -21,7 +22,7 @@
     "test:dist": "node scripts/validate-dist.mjs",
     "test:a11y": "node scripts/validate-a11y.mjs",
     "test:file-size": "node scripts/validate-file-size.mjs",
-    "quality": "npm run clean && npm run format:check && npm run lint && npm run typecheck && npm run test:content && npm run test:source-routes && npm run test:secrets && npm run build && npm run test:generated-routes && npm run test:links && npm run test:leaks && npm run test:dist && npm run test:a11y && npm run test:file-size"
+    "quality": "npm run clean && npm run format:check && npm run lint && npm run typecheck && npm run test:content && npm run test:content-export-v4 && npm run test:source-routes && npm run test:secrets && npm run build && npm run test:generated-routes && npm run test:links && npm run test:leaks && npm run test:dist && npm run test:a11y && npm run test:file-size"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

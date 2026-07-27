@@ -1,0 +1,481 @@
+version: 1
+task: "CONTENT-EXPORT-001"
+updatedAt: "2026-07-27"
+source:
+  repository: "spikeal8-maker/alexander-alikin-vault"
+  pullRequest: 6
+  head: "566eeb8266a8983f068443fe3c40693846ddcbbb"
+exportPolicy: "Only ready_for_public_export sources may have an exported target."
+summary:
+  total: 29
+  ready_for_public_export: 0
+  owner_review: 20
+  fact_check: 6
+  blocked: 3
+  private_only: 0
+  exported: 0
+items:
+  - id: "package-manifest"
+    sourcePath: "site-content-v1/00-content-manifest.md"
+    publicTarget: "docs/content-v4/SOURCE_TRACEABILITY.md"
+    contentType: "governance"
+    title: "Манифест наполнения сайта"
+    publicationStatus: "owner_review"
+    evidenceStatus: "governance_only"
+    ownerApproval: "pending"
+    containsPersonalData: false
+    containsThirdPartyData: false
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Owner approval of the package is absent."]
+    sourceReferences: ["private-pr6:site-content-v1/00-content-manifest.md"]
+  - id: "public-export-map"
+    sourcePath: "site-content-v1/export/PUBLIC_EXPORT_MAP.md"
+    publicTarget: "docs/content-v4/SOURCE_TRACEABILITY.md"
+    contentType: "governance"
+    title: "Карта экспорта"
+    publicationStatus: "blocked"
+    evidenceStatus: "governance_only"
+    ownerApproval: "not_applicable"
+    containsPersonalData: false
+    containsThirdPartyData: false
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Service document is not publishable content."]
+    sourceReferences: ["private-pr6:site-content-v1/export/PUBLIC_EXPORT_MAP.md"]
+  - id: "proof-register"
+    sourcePath: "site-content-v1/facts/PROOF_REGISTER.md"
+    publicTarget: "src/content/facts/"
+    contentType: "evidence"
+    title: "Реестр фактов и доказательств"
+    publicationStatus: "fact_check"
+    evidenceStatus: "requires_sources"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: true
+    mediaRightsStatus: "pending"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Roles, periods, organizations, results, metrics and permissions need evidence."]
+    sourceReferences: ["private-pr6:site-content-v1/facts/PROOF_REGISTER.md"]
+  - id: "article-ai-pilot"
+    sourcePath: "site-content-v1/journal/articles/01-how-to-select-ai-pilot.md"
+    publicTarget: "src/content/articles/how-to-select-ai-pilot.md"
+    contentType: "article"
+    title: "Как выбрать первый ИИ-пилот"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: false
+    containsThirdPartyData: false
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Owner editorial approval is absent."]
+    sourceReferences: ["private-pr6:site-content-v1/journal/articles/01-how-to-select-ai-pilot.md"]
+  - id: "article-project-learning"
+    sourcePath: "site-content-v1/journal/articles/02-project-learning.md"
+    publicTarget: "src/content/articles/project-learning.md"
+    contentType: "article"
+    title: "Проектное обучение: результат виден в объяснении"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: false
+    containsThirdPartyData: false
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Owner editorial approval is absent."]
+    sourceReferences: ["private-pr6:site-content-v1/journal/articles/02-project-learning.md"]
+  - id: "article-automation-chaos"
+    sourcePath: "site-content-v1/journal/articles/03-automation-chaos.md"
+    publicTarget: "src/content/articles/automation-chaos.md"
+    contentType: "article"
+    title: "Автоматизировать хаос — значит получить более быстрый хаос"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: false
+    containsThirdPartyData: false
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Owner editorial approval is absent."]
+    sourceReferences: ["private-pr6:site-content-v1/journal/articles/03-automation-chaos.md"]
+  - id: "story-one-method"
+    sourcePath: "site-content-v1/journal/stories/01-one-method.md"
+    publicTarget: "src/content/stories/one-method.md"
+    contentType: "story"
+    title: "Один способ действия в технике, педагогике, бизнесе и ИИ"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: false
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Owner approval of autobiographical framing is absent."]
+    sourceReferences: ["private-pr6:site-content-v1/journal/stories/01-one-method.md"]
+  - id: "story-children-and-robots"
+    sourcePath: "site-content-v1/journal/stories/02-children-and-robots.md"
+    publicTarget: "src/content/stories/children-and-robots.md"
+    contentType: "story"
+    title: "Чему меня научили дети, создававшие роботов"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: false
+    containsThirdPartyData: true
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Owner approval and third-party anonymization review are absent."]
+    sourceReferences: ["private-pr6:site-content-v1/journal/stories/02-children-and-robots.md"]
+  - id: "story-growth-is-not-health"
+    sourcePath: "site-content-v1/journal/stories/03-growth-is-not-health.md"
+    publicTarget: "src/content/stories/growth-is-not-health.md"
+    contentType: "story"
+    title: "Рост выручки ещё не означает здоровый бизнес"
+    publicationStatus: "fact_check"
+    evidenceStatus: "requires_sources"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: false
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Business periods and claims need safe evidence-backed wording."]
+    sourceReferences: ["private-pr6:site-content-v1/journal/stories/03-growth-is-not-health.md"]
+  - id: "story-vault-not-public"
+    sourcePath: "site-content-v1/journal/stories/04-why-vault-is-not-public.md"
+    publicTarget: "src/content/stories/why-vault-is-not-public.md"
+    contentType: "story"
+    title: "Почему второй мозг нельзя просто опубликовать"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: false
+    containsThirdPartyData: false
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Owner editorial approval is absent."]
+    sourceReferences: ["private-pr6:site-content-v1/journal/stories/04-why-vault-is-not-public.md"]
+  - id: "thoughts-launch-set"
+    sourcePath: "site-content-v1/journal/thoughts/launch-set.md"
+    publicTarget: "src/content/thoughts/"
+    contentType: "thoughts"
+    title: "Короткие мысли — launch set"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: false
+    containsThirdPartyData: false
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Each thought needs owner selection and editorial approval."]
+    sourceReferences: ["private-pr6:site-content-v1/journal/thoughts/launch-set.md"]
+  - id: "media-map"
+    sourcePath: "site-content-v1/media/MEDIA_MAP.md"
+    publicTarget: "docs/content-v4/MEDIA_REQUIREMENTS.md"
+    contentType: "media-governance"
+    title: "Карта медиа по страницам"
+    publicationStatus: "blocked"
+    evidenceStatus: "governance_only"
+    ownerApproval: "not_applicable"
+    containsPersonalData: false
+    containsThirdPartyData: true
+    mediaRightsStatus: "pending"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["No approved media inventory or rights records exist."]
+    sourceReferences: ["private-pr6:site-content-v1/media/MEDIA_MAP.md"]
+  - id: "photo-requirements"
+    sourcePath: "site-content-v1/media/PHOTO_REQUIREMENTS.md"
+    publicTarget: "docs/content-v4/MEDIA_REQUIREMENTS.md"
+    contentType: "media-governance"
+    title: "Фотографии для сайта"
+    publicationStatus: "blocked"
+    evidenceStatus: "governance_only"
+    ownerApproval: "not_applicable"
+    containsPersonalData: true
+    containsThirdPartyData: true
+    mediaRightsStatus: "pending"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["No source photos, authorship records or model releases were supplied."]
+    sourceReferences: ["private-pr6:site-content-v1/media/PHOTO_REQUIREMENTS.md"]
+  - id: "page-about"
+    sourcePath: "site-content-v1/pages/about.md"
+    publicTarget: "src/content/profile/main.json"
+    contentType: "identity"
+    title: "Обо мне"
+    publicationStatus: "fact_check"
+    evidenceStatus: "requires_sources"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: true
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Identity, location, roles, organizations and periods need owner confirmation and sources."]
+    sourceReferences: ["private-pr6:site-content-v1/pages/about.md"]
+  - id: "page-business"
+    sourcePath: "site-content-v1/pages/business.md"
+    publicTarget: "src/content/profile/business.json"
+    contentType: "practice"
+    title: "ИИ и автоматизация для реальных процессов"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: false
+    containsThirdPartyData: false
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Owner approval of offer and CTA wording is absent."]
+    sourceReferences: ["private-pr6:site-content-v1/pages/business.md"]
+  - id: "page-collaboration"
+    sourcePath: "site-content-v1/pages/collaboration.md"
+    publicTarget: "src/content/profile/collaboration.json"
+    contentType: "contact"
+    title: "Сотрудничество"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: false
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Telegram identity and public contact intent need explicit owner approval."]
+    sourceReferences: ["private-pr6:site-content-v1/pages/collaboration.md"]
+  - id: "page-contacts"
+    sourcePath: "site-content-v1/pages/contacts.md"
+    publicTarget: "src/content/profile/contacts.json"
+    contentType: "contact"
+    title: "Контакты"
+    publicationStatus: "owner_review"
+    evidenceStatus: "identity_unverified"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: true
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["All 12 URLs respond, but ownership, purpose and spikeal/spikea identity are not approved; public email and YouTube URL are absent."]
+    sourceReferences: ["private-pr6:site-content-v1/pages/contacts.md"]
+  - id: "page-education"
+    sourcePath: "site-content-v1/pages/education.md"
+    publicTarget: "src/content/profile/education.json"
+    contentType: "practice"
+    title: "Инженерное образование, робототехника и ИИ"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: false
+    containsThirdPartyData: true
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Owner approval of offer wording and review of third-party references are absent."]
+    sourceReferences: ["private-pr6:site-content-v1/pages/education.md"]
+  - id: "page-home"
+    sourcePath: "site-content-v1/pages/home.md"
+    publicTarget: "src/content/profile/home.json"
+    contentType: "identity"
+    title: "Александр Аликин — главная"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: false
+    mediaRightsStatus: "pending"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Positioning, claims, CTAs and real portrait need owner approval."]
+    sourceReferences: ["private-pr6:site-content-v1/pages/home.md"]
+  - id: "page-now"
+    sourcePath: "site-content-v1/pages/now.md"
+    publicTarget: "src/content/now/current.md"
+    contentType: "now"
+    title: "Сейчас"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: false
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Current activities and collaboration intent need owner approval."]
+    sourceReferences: ["private-pr6:site-content-v1/pages/now.md"]
+  - id: "page-press"
+    sourcePath: "site-content-v1/pages/press.md"
+    publicTarget: "src/content/profile/press.json"
+    contentType: "identity"
+    title: "Для СМИ и организаторов"
+    publicationStatus: "fact_check"
+    evidenceStatus: "requires_sources"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: true
+    mediaRightsStatus: "pending"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Biography, roles, periods, portraits, talks, awards and press email need evidence and approval."]
+    sourceReferences: ["private-pr6:site-content-v1/pages/press.md"]
+  - id: "page-projects-index"
+    sourcePath: "site-content-v1/pages/projects-index.md"
+    publicTarget: "src/content/projects/"
+    contentType: "projects-index"
+    title: "Проекты"
+    publicationStatus: "owner_review"
+    evidenceStatus: "mixed"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: false
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Project list, naming and current/retrospective states need owner approval."]
+    sourceReferences: ["private-pr6:site-content-v1/pages/projects-index.md"]
+  - id: "project-ai-automation"
+    sourcePath: "site-content-v1/projects/ai-automation.md"
+    publicTarget: "src/content/projects/ai-automation.md"
+    contentType: "project"
+    title: "ИИ и автоматизация процессов"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: true
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Owner approval is absent; client examples require separate permission."]
+    sourceReferences: ["private-pr6:site-content-v1/projects/ai-automation.md"]
+  - id: "project-engineering-education"
+    sourcePath: "site-content-v1/projects/engineering-education.md"
+    publicTarget: "src/content/projects/engineering-education.md"
+    contentType: "project"
+    title: "Инженерное образование и робототехника"
+    publicationStatus: "owner_review"
+    evidenceStatus: "requires_sources"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: true
+    mediaRightsStatus: "pending"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Roles, programs, results and media need sources, permissions and owner approval."]
+    sourceReferences: ["private-pr6:site-content-v1/projects/engineering-education.md"]
+  - id: "project-izo-asa"
+    sourcePath: "site-content-v1/projects/izo-asa.md"
+    publicTarget: "src/content/projects/izo-asa.md"
+    contentType: "project"
+    title: "ИЗО АСА"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: false
+    mediaRightsStatus: "pending"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Product scope, role, live URL and selected interface evidence need owner approval."]
+    sourceReferences: ["private-pr6:site-content-v1/projects/izo-asa.md"]
+  - id: "project-laser-love"
+    sourcePath: "site-content-v1/projects/laser-love.md"
+    publicTarget: "src/content/projects/laser-love.md"
+    contentType: "project"
+    title: "Laser Love"
+    publicationStatus: "fact_check"
+    evidenceStatus: "requires_sources"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: true
+    mediaRightsStatus: "pending"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Period, ownership, finances, team and exit cannot be published without safe evidence and approval."]
+    sourceReferences: ["private-pr6:site-content-v1/projects/laser-love.md"]
+  - id: "project-league-robots"
+    sourcePath: "site-content-v1/projects/league-robots.md"
+    publicTarget: "src/content/projects/league-robots.md"
+    contentType: "project"
+    title: "Лига роботов"
+    publicationStatus: "fact_check"
+    evidenceStatus: "requires_sources"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: true
+    mediaRightsStatus: "pending"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Period, learners, finances, team, competition results and sale need safe evidence and permissions."]
+    sourceReferences: ["private-pr6:site-content-v1/projects/league-robots.md"]
+  - id: "project-research"
+    sourcePath: "site-content-v1/projects/research-projects.md"
+    publicTarget: "src/content/projects/research-projects.md"
+    contentType: "project"
+    title: "Научно-исследовательские проекты"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: true
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Owner approval and third-party privacy review are absent."]
+    sourceReferences: ["private-pr6:site-content-v1/projects/research-projects.md"]
+  - id: "project-second-brain"
+    sourcePath: "site-content-v1/projects/second-brain.md"
+    publicTarget: "src/content/projects/second-brain.md"
+    contentType: "project"
+    title: "Второй мозг и ИИ-Александр"
+    publicationStatus: "owner_review"
+    evidenceStatus: "author_statement"
+    ownerApproval: "pending"
+    containsPersonalData: true
+    containsThirdPartyData: true
+    mediaRightsStatus: "not_applicable"
+    externalLinksChecked: true
+    lastVerifiedAt: "2026-07-27"
+    reviewAt: "2026-08-10"
+    blockers: ["Public boundary, product state and examples need owner approval; raw vault remains private."]
+    sourceReferences: ["private-pr6:site-content-v1/projects/second-brain.md"]

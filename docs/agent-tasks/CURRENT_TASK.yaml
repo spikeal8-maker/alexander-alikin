@@ -2,18 +2,18 @@ version: 2
 updated_at: "2026-07-27"
 repository: "spikeal8-maker/alexander-alikin"
 current_task:
-  id: "BRAND-RESET-001"
-  title: "Зафиксировать бренд-платформу и архитектуру V4"
+  id: "CONTENT-EXPORT-001"
+  title: "Подготовить проверенный публичный контент V4"
   status: "in_progress"
-  severity: "product-foundation"
-  issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/25"
-  task_document: "docs/agent-tasks/TASK-BRAND-RESET-V4.md"
+  severity: "content-governance"
+  issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/29"
+  task_document: "docs/agent-tasks/TASK-CONTENT-EXPORT-V4.md"
   quality_document: "docs/testing/SITE-PLATFORM-QUALITY.md"
   rules_document: "AGENTS.md"
-  branch: "agent/brand-reset-v4"
-  pull_request_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/26"
+  branch: "agent/content-export-v4"
+  pull_request_url: null
   base_branch: "main"
-  base_commit: "b98cbe97ce9250bdd421233fe114dcc0687a5c0c"
+  base_commit: "b3f33d2c8f18fb73715cfb93b46623d0199dd1aa"
   execution_mode: "local_git_node24_npm_plus_github_actions"
   github_actions_required: true
   production_deploy_allowed: false
@@ -21,16 +21,16 @@ current_task:
   force_push_allowed: false
   next_task_start_allowed: false
   completion_requires:
-    - "brand platform V4 exists"
-    - "site architecture V4 exists"
-    - "visual contract V4 exists"
-    - "ADR-0006 exists"
-    - "rebrand roadmap is split into independent tasks"
-    - "private vault content is not exported"
+    - "exactly 29 allowed private source files are classified"
+    - "only ready_for_public_export content is exported"
+    - "public content manifest and source traceability exist"
+    - "owner review, evidence and media gates exist"
+    - "private vault files are not copied"
+    - "pages, CSS, routes and public media are unchanged"
     - "repository quality remains green"
     - "Draft PR contains factual report"
   next_allowed_action:
-    after_pass: "owner review of BRAND-RESET-001 Draft PR"
-    task_after_merge_only: "CONTENT-EXPORT-001"
+    after_pass: "owner review of CONTENT-EXPORT-001 Draft PR"
+    task_after_merge_only: "DESIGN-V4-001"
     issue_after_merge_only: null
-stop_rule: "После BRAND-RESET-001 отчёта остановиться. Merge и CONTENT-EXPORT-001 запрещены до owner review."
+stop_rule: "После CONTENT-EXPORT-001 Draft PR остановиться. Ready, merge, DESIGN-V4-001, страницы и deploy запрещены."

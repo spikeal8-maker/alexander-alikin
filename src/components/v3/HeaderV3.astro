@@ -8,6 +8,14 @@ const nav = [
   ["Бизнесу", "/business/"],
   ["Образованию", "/education/"],
   ["Журнал", "/journal/"],
+  ["Контакты", "/contacts/"],
+];
+
+const quickNav = [
+  ["Проекты", "/projects/"],
+  ["Контакты", "/contacts/"],
+  ["Бизнесу", "/business/"],
+  ["Образованию", "/education/"],
 ];
 ---
 
@@ -22,11 +30,11 @@ const nav = [
       {nav.map(([label, href]) => <a href={buildUrl(href)}>{label}</a>)}
     </nav>
 
-    <a class="v3-header__cta" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
+    <a class="v3-header__cta" href={buildUrl("/contacts/")}>Связаться</a>
 
     <details class="v3-header__mobile">
-      <summary><span>Меню</span><span aria-hidden="true">+</span></summary>
-      <nav aria-label="Мобильная навигация">
+      <summary><span>Ещё</span><span aria-hidden="true">+</span></summary>
+      <nav aria-label="Полная мобильная навигация">
         {
           nav.map(([label, href], index) => (
             <a href={buildUrl(href)}>
@@ -35,10 +43,14 @@ const nav = [
             </a>
           ))
         }
-        <a class="v3-header__mobile-cta" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
+        <a class="v3-header__mobile-cta" href={buildUrl("/contacts/")}>Открыть контакты</a>
       </nav>
     </details>
   </div>
+
+  <nav class="v3-header__quick" aria-label="Быстрые переходы">
+    {quickNav.map(([label, href]) => <a href={buildUrl(href)}>{label}</a>)}
+  </nav>
 </header>
 
 <script>

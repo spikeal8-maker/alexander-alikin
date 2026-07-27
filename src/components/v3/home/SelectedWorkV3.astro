@@ -55,7 +55,11 @@ const projects = [
             <div class="v3-work__rail">
               <span>{project.number}</span>
               <div class="v3-work__diagram" aria-hidden="true">
-                <i></i><i></i><i></i>
+                <>
+                  <i />
+                  <i />
+                  <i />
+                </>
               </div>
             </div>
 
@@ -63,7 +67,9 @@ const projects = [
               <p class="v3-kicker">{project.eyebrow}</p>
               <h3>{project.title}</h3>
               <p class="v3-work__description">{project.description}</p>
-              <a class="v3-link" href={buildUrl(project.href)}>Открыть кейс</a>
+              <a class="v3-link" href={buildUrl(project.href)}>
+                Открыть кейс
+              </a>
             </div>
 
             <dl class="v3-work__facts">

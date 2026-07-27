@@ -34,7 +34,8 @@ const activeCount = sorted.filter((project) => project.data.projectStatus === "a
     <section class="v3-project-register" aria-label="Реестр проектов">
       <div class="v3-shell">
         <div class="v3-project-register__head" aria-hidden="true">
-          <span>Проект</span><span>Роль и статус</span><span>Результат и ограничение</span><span></span>
+          <span>Проект</span><span>Роль и статус</span><span>Результат и ограничение</span><span
+          ></span>
         </div>
         {
           sorted.map((project, index) => (
@@ -48,8 +49,18 @@ const activeCount = sorted.filter((project) => project.data.projectStatus === "a
                 </div>
               </div>
               <dl>
-                <div><dt>Роль</dt><dd>{project.data.role}</dd></div>
-                <div><dt>Статус</dt><dd>{project.data.period}</dd></div>
+                <div>
+                  <>
+                    <dt>Роль</dt>
+                    <dd>{project.data.role}</dd>
+                  </>
+                </div>
+                <div>
+                  <>
+                    <dt>Статус</dt>
+                    <dd>{project.data.period}</dd>
+                  </>
+                </div>
               </dl>
               <div class="v3-project-register__evidence">
                 <strong>Сейчас</strong>
@@ -57,7 +68,9 @@ const activeCount = sorted.filter((project) => project.data.projectStatus === "a
                 <strong>Ограничение</strong>
                 <p>{project.data.limitations}</p>
               </div>
-              <span class="v3-project-register__arrow" aria-hidden="true">↗</span>
+              <span class="v3-project-register__arrow" aria-hidden="true">
+                ↗
+              </span>
             </a>
           ))
         }

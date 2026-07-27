@@ -13,7 +13,7 @@ current_task:
   branch: "agent/brand-reset-v4"
   pull_request_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/26"
   base_branch: "main"
-  base_commit: "96ea8269ff71c79f05defa429f2542a74a03a648"
+  base_commit: "b98cbe97ce9250bdd421233fe114dcc0687a5c0c"
   execution_mode: "local_git_node24_npm_plus_github_actions"
   github_actions_required: true
   production_deploy_allowed: false

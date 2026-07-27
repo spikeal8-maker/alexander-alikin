@@ -5,6 +5,16 @@
   color: var(--v3-cobalt-light) !important;
 }
 
+.v3-work__case--ink .v3-work__rail > span,
+.v3-work__case--ink .v3-kicker,
+.v3-work__case--ink .v3-work__facts dt {
+  color: var(--v3-cobalt-light) !important;
+}
+
+.v3-work__case--ink .v3-work__facts {
+  opacity: 1 !important;
+}
+
 .v3-closing .v3-kicker {
   color: var(--v3-cobalt-light) !important;
 }

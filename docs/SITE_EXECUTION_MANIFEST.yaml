@@ -1,5 +1,5 @@
-version: 3
-updated_at: "2026-07-20"
+version: 4
+updated_at: "2026-07-27"
 
 project:
   id: "alexander-alikin-personal-platform"
@@ -14,19 +14,19 @@ project:
 current_state:
   strategy: "done"
   foundation_pr: "merged"
-  current_task: "SITE-PLATFORM-001"
-  current_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/7"
-  current_branch: "agent/site-platform"
-  current_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/20"
-  current_status: "ready"
+  platform: "done"
+  current_task: "DEPENDENCY-REMEDIATION-001"
+  current_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/27"
+  current_branch: "agent/dependency-remediation-001"
+  current_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/28"
+  current_status: "in_progress"
   production_deploy_allowed: false
   next_task_start_allowed: false
   required_before_owner_review:
-    - "all site-platform Test IDs pass"
+    - "npm audit has no high or critical findings"
     - "npm ci and npm run quality pass"
-    - "dependency audit has no high or critical findings"
     - "Draft PR contains factual report"
-    - "SITE-DESIGN-001 is not started"
+    - "site pages and content are unchanged"
 
 objective:
   primary: "Создавать качественные предметные разговоры через проверяемую цифровую личность Александра"
@@ -62,10 +62,18 @@ navigation:
 routes:
   - { path: "/", audience: "all_new_visitors", primary_cta: "Обсудить задачу" }
   - { path: "/about/", audience: "identity_search", primary_cta: "Посмотреть проекты" }
-  - { path: "/projects/", audience: "proof_and_partnership", primary_cta: "Открыть релевантный проект" }
+  - {
+      path: "/projects/",
+      audience: "proof_and_partnership",
+      primary_cta: "Открыть релевантный проект",
+    }
   - { path: "/projects/[slug]/", audience: "proof_and_partnership", dynamic: true }
   - { path: "/business/", audience: "business_owner", primary_cta: "Описать процесс для разбора" }
-  - { path: "/education/", audience: "education_leader", primary_cta: "Обсудить программу или лабораторию" }
+  - {
+      path: "/education/",
+      audience: "education_leader",
+      primary_cta: "Обсудить программу или лабораторию",
+    }
   - { path: "/journal/", audience: "reader", primary_cta: "Читать связанный материал" }
   - { path: "/journal/stories/", audience: "reader" }
   - { path: "/journal/stories/[slug]/", audience: "reader", dynamic: true }
@@ -78,7 +86,11 @@ routes:
   - { path: "/journal/video/", audience: "reader" }
   - { path: "/now/", audience: "identity_search" }
   - { path: "/facts/", audience: "identity_search" }
-  - { path: "/press/", audience: "press_and_events", primary_cta: "Запросить комментарий или выступление" }
+  - {
+      path: "/press/",
+      audience: "press_and_events",
+      primary_cta: "Запросить комментарий или выступление",
+    }
   - { path: "/second-brain/", audience: "reader" }
   - { path: "/collaboration/", audience: "all_qualified_contacts" }
   - { path: "/contacts/", audience: "all_visitors" }
@@ -177,7 +189,15 @@ implementation_tasks:
     repository: "spikeal8-maker/alexander-alikin-vault"
     status: "blocked"
     depends_on: ["vault-foundation", "vault-media", "vault-evidence", "vault-biographies"]
-    blocks: ["SITE-HOME-001", "SITE-IDENTITY-001", "SITE-BUSINESS-001", "SITE-EDUCATION-001", "SITE-PROJECTS-001", "SITE-JOURNAL-001"]
+    blocks:
+      [
+        "SITE-HOME-001",
+        "SITE-IDENTITY-001",
+        "SITE-BUSINESS-001",
+        "SITE-EDUCATION-001",
+        "SITE-PROJECTS-001",
+        "SITE-JOURNAL-001",
+      ]
   - id: "SITE-PLATFORM-001"
     issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/7"
     branch: "agent/site-platform"
@@ -243,7 +263,13 @@ implementation_tasks:
     issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/17"
     branch: "agent/site-launch"
     status: "blocked"
-    depends_on: ["SITE-CONTACT-001", "public_issue_2_photos", "public_issue_3_cases", "public_issue_4_pages_domain"]
+    depends_on:
+      [
+        "SITE-CONTACT-001",
+        "public_issue_2_photos",
+        "public_issue_3_cases",
+        "public_issue_4_pages_domain",
+      ]
     blocks: []
 
 quality_command: "npm run quality"

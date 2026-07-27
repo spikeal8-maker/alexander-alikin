@@ -60,11 +60,24 @@
   line-height: 1.62;
 }
 
+.v3-hero__trust {
+  max-width: 40rem;
+  margin: 1.2rem 0 0;
+  padding-top: 1rem;
+  color: var(--v3-muted);
+  border-top: 1px solid var(--v3-line);
+  font-family: var(--v3-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
 .v3-hero__actions {
   display: flex;
   gap: 2rem;
   align-items: center;
-  margin-top: 2.6rem;
+  margin-top: 2.2rem;
 }
 
 .v3-hero__primary {

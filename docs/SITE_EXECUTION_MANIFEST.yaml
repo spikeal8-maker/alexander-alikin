@@ -18,7 +18,7 @@ current_state:
   current_task: "DEPENDENCY-REMEDIATION-001"
   current_issue_url: "https://github.com/spikeal8-maker/alexander-alikin/issues/27"
   current_branch: "agent/dependency-remediation-001"
-  current_pr_url: null
+  current_pr_url: "https://github.com/spikeal8-maker/alexander-alikin/pull/28"
   current_status: "in_progress"
   production_deploy_allowed: false
   next_task_start_allowed: false

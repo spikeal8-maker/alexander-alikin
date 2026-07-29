@@ -9,125 +9,106 @@ const roles = [
 ];
 
 const arc = [
-  [
-    "Электроника и робототехника",
-    "Работа с устройствами и инженерными проектами сформировала привычку искать причину, проверять конструкцию и объяснять принцип.",
-  ],
-  [
-    "Лига роботов",
-    "Ретроспективный проект в сфере инженерного образования. Роль, период, показатели и обстоятельства завершения остаются на фактчеке.",
-  ],
-  [
-    "Laser Love",
-    "Ретроспективный сервисный проект остаётся в каталоге без неподтверждённых сведений о роли, периоде, команде и финансовых результатах.",
-  ],
-  [
-    "ИЗО АСА, ИИ и системы знаний",
-    "Текущая работа объединяет образовательный продукт, автоматизацию, персональные системы знаний и редакционный контур с указанием источников.",
-  ],
+  ["Электроника и робототехника", "Привычка искать причину, проверять конструкцию и объяснять принцип."],
+  ["Лига роботов", "Ретроспективный проект в сфере инженерного образования. Детали остаются на фактчеке."],
+  ["Laser Love", "Ретроспективный сервисный проект без неподтверждённых сведений о роли и результатах."],
+  ["ИЗО АСА, ИИ и системы знаний", "Текущая работа: продукты, автоматизация и редакционный контур с источниками."],
 ];
 ---
 
 <BaseLayoutV3
   title="Обо мне — Александр Аликин"
-  description="Путь Александра Аликина: инженерная практика, образовательные и ретроспективные проекты, ИЗО АСА, ИИ и системы знаний."
+  description="Инженерная практика, образование, предпринимательский опыт, цифровые продукты и системы знаний."
 >
-  <div class="v3-page">
-    <section class="v3-page-hero">
-      <div class="v3-page-hero__copy">
-        <p class="v3-kicker">Обо мне</p>
-        <h1 class="v3-page-hero__title">От инженерной практики к продуктам и системам</h1>
-        <p class="v3-page-hero__lead">
-          Мой путь проходит через электронику и робототехнику, образовательные программы,
-          ретроспективные проекты, ИЗО АСА, ИИ и системы знаний. Общая логика — понять устройство,
-          собрать решение, проверить его и передать людям.
-        </p>
-        <p class="v3-page-hero__note">
-          Точные даты, масштабы практики и финансовые показатели публикуются только вместе с
-          подтверждающим источником.
-        </p>
-      </div>
-      <div class="v3-page-hero__media">
-        <img
-          src={buildUrl("/images/alikin/documentary/04-about-portrait-4x5.webp")}
-          alt="Александр Аликин — портрет"
-          width="1200"
-          height="1500"
-          loading="eager"
-        />
-      </div>
-    </section>
-
-    <section class="v3-editorial-section v3-editorial-section--white">
-      <div class="v3-shell v3-section-grid">
-        <div class="v3-section-grid__intro">
-          <p class="v3-kicker">Три ответственности</p>
-          <h2>Не три профессии, а три проверки решения</h2>
-          <p>
-            Каждая роль отвечает на свой вопрос: работает ли конструкция, понятна ли она людям и
-            выдерживает ли реальность.
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Обо мне</p>
+          <h1>Собираю системы, которые можно проверить и передать.</h1>
+          <p class="gp-hero__lead">
+            Я Александр Аликин — предприниматель-практик и инженер-педагог. Работаю на стыке
+            цифровых продуктов, образования, автоматизации и систем знаний.
+          </p>
+          <p class="gp-hero__note">
+            Точные даты, масштабы практики и количественные результаты публикуются только вместе с
+            подтверждающим источником.
           </p>
         </div>
-        <div class="v3-numbered">
-          {
-            roles.map(([title, copy], index) => (
-              <article class="v3-numbered__item">
-                <span class="v3-numbered__index">0{index + 1}</span>
-                <div>
-                  <h3>{title}</h3>
-                  <p>{copy}</p>
-                </div>
-              </article>
-            ))
-          }
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Рабочая логика</span>
+          <div class="gp-flow">
+            <span>Понять устройство</span>
+            <span>Собрать решение</span>
+            <span>Проверить результат</span>
+            <span>Передать способ работы</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Три ответственности</p></div>
+          <div>
+            <h2>Не три профессии, а три проверки одного решения.</h2>
+            <p>Работает ли конструкция, понятна ли она людям и выдерживает ли реальность.</p>
+          </div>
+        </div>
+        <div class="gp-card-grid">
+          {roles.map(([title, copy], index) => (
+            <article class="gp-card">
+              <span class="gp-card__index">0{index + 1}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
 
-    <section class="v3-editorial-section v3-editorial-section--ink">
-      <div class="v3-shell">
-        <p class="v3-kicker">Профессиональная дуга</p>
-        <div class="v3-process">
-          {
-            arc.map(([title, copy], index) => (
-              <article class="v3-process__item">
-                <span>0{index + 1}</span>
-                <strong>{title}</strong>
-                <p>{copy}</p>
-              </article>
-            ))
-          }
+    <section class="gp-section gp-section--sand">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Профессиональная дуга</p></div>
+          <div><h2>Опыт менялся. Способ действия остался.</h2></div>
+        </div>
+        <div class="gp-list">
+          {arc.map(([title, copy], index) => (
+            <article class="gp-list__row">
+              <span>0{index + 1}</span>
+              <div><h3>{title}</h3></div>
+              <div><p>{copy}</p></div>
+              <span class="gp-list__arrow" aria-hidden="true">—</span>
+            </article>
+          ))}
         </div>
       </div>
     </section>
 
-    <section class="v3-editorial-section">
-      <div class="v3-shell v3-statement">
-        <blockquote>
-          Факт отдельно. Интерпретация отдельно. Ограничение — рядом с результатом.
-        </blockquote>
-        <div>
-          <p class="v3-kicker">Редакционная политика</p>
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap gp-split">
+        <blockquote class="gp-quote">Факт отдельно. Интерпретация отдельно. Ограничение — рядом.</blockquote>
+        <div class="gp-split__copy">
+          <p class="gn-eyebrow">Редакционная политика</p>
           <p>
-            На сайте проекты важнее титулов, реальные изображения не подменяются сгенерированными, а
-            приватный архив не становится публичным автоматически.
+            Проекты важнее титулов, приватный архив не становится публичным автоматически, а
+            неподтверждённые показатели не превращаются в рекламные обещания.
           </p>
-          <a class="v3-link" href={buildUrl("/facts/")}>Факты и источники</a>
+          <a class="gn-text-link" href={buildUrl("/facts/")}>Факты и источники <span>→</span></a>
         </div>
       </div>
     </section>
 
-    <section class="v3-editorial-section v3-editorial-section--white">
-      <div class="v3-shell v3-cta-scene">
-        <p class="v3-kicker">Дальше</p>
-        <h2>Посмотреть проекты или перейти к контактам</h2>
-        <p>
-          В кейсах указаны роль, статус и ограничения. На странице контактов — доступные каналы.
-        </p>
+    <section class="gp-section">
+      <div class="gn-wrap gp-cta">
         <div>
-          <a class="v3-button" href={buildUrl("/projects/")}>Открыть проекты</a>
-          <a class="v3-link" href={buildUrl("/contacts/")}>Контакты</a>
+          <p class="gn-eyebrow">Дальше</p>
+          <h2>Посмотрите проекты или опишите задачу.</h2>
+          <p>В кейсах указаны роль, состояние, результат и ограничения.</p>
         </div>
+        <a class="gn-button gn-button--light" href={buildUrl("/projects/")}>Открыть проекты</a>
       </div>
     </section>
   </div>

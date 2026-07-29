@@ -10,66 +10,59 @@ const focusItems = [
   ],
   [
     "Инженерное образование",
-    "Развиваются проектные форматы, в которых участник создаёт, проверяет и объясняет работающий результат.",
+    "Проектные форматы, в которых участник создаёт, проверяет и объясняет работающий результат.",
   ],
 ];
 ---
 
-<BaseLayoutV3
-  title="Сейчас — Александр Аликин"
-  description="Публично подтверждённые текущие направления работы."
->
-  <div class="v3-page">
-    <section class="v3-page-hero v3-page-hero--plain">
-      <div class="v3-page-hero__copy">
-        <p class="v3-kicker">Сейчас</p>
-        <h1 class="v3-page-hero__title">Текущий рабочий фокус</h1>
-        <p class="v3-page-hero__lead">
-          Здесь фиксируются только направления, подтверждённые опубликованными проектами и текущим
-          состоянием репозитория.
-        </p>
-      </div>
-      <aside class="v3-page-hero__aside">
-        <strong>Обновлено: июль 2026</strong>
-        <p>Точные внешние результаты добавляются только вместе с проверяемым источником.</p>
-      </aside>
-    </section>
-
-    <section class="v3-editorial-section v3-editorial-section--white">
-      <div class="v3-shell v3-section-grid">
-        <div class="v3-section-grid__intro">
-          <p class="v3-kicker">Три направления</p>
-          <h2>Работа, которая идёт сейчас</h2>
-          <p>
-            Страница не используется как поток случайных обновлений или обещаний будущих запусков.
+<BaseLayoutV3 title="Сейчас — Александр Аликин" description="Текущие направления работы и исследовательский фокус.">
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Сейчас</p>
+          <h1>Текущий рабочий фокус.</h1>
+          <p class="gp-hero__lead">
+            Здесь фиксируются только активные направления, подтверждённые опубликованными проектами
+            и текущим состоянием работы.
           </p>
         </div>
-        <div class="v3-numbered">
-          {
-            focusItems.map(([title, copy], index) => (
-              <article class="v3-numbered__item">
-                <span class="v3-numbered__index">0{index + 1}</span>
-                <div>
-                  <>
-                    <h3>{title}</h3>
-                    <p>{copy}</p>
-                  </>
-                </div>
-              </article>
-            ))
-          }
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Обновлено</span>
+          <p>Июль 2026. Следующая обязательная проверка — не позднее 31 августа 2026 года.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Три направления</p></div>
+          <div>
+            <h2>Работа, которая идёт сейчас.</h2>
+            <p>Без потока случайных обновлений и обещаний будущих запусков.</p>
+          </div>
+        </div>
+        <div class="gp-card-grid">
+          {focusItems.map(([title, copy], index) => (
+            <article class="gp-card">
+              <span class="gp-card__index">0{index + 1}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
 
-    <section class="v3-editorial-section">
-      <div class="v3-shell v3-cta-scene">
-        <p class="v3-kicker">Контекст</p>
-        <h2>Статусы, роли и ограничения — в проектах</h2>
-        <p>
-          Текущий фокус становится понятнее через конкретную архитектуру и границы каждого кейса.
-        </p>
-        <a class="v3-button" href={buildUrl("/projects/")}>Открыть проекты</a>
+    <section class="gp-section">
+      <div class="gn-wrap gp-cta">
+        <div>
+          <p class="gn-eyebrow">Контекст</p>
+          <h2>Статусы, роли и ограничения — в проектах.</h2>
+          <p>Текущий фокус становится понятнее через архитектуру и границы каждого кейса.</p>
+        </div>
+        <a class="gn-button gn-button--light" href={buildUrl("/projects/")}>Открыть проекты</a>
       </div>
     </section>
   </div>

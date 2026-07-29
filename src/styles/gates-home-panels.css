@@ -5,7 +5,7 @@
   min-height: 27rem;
   place-content: center;
   gap: 0.8rem;
-  background: #dce8ff;
+  background: var(--gn-project-visual);
   border-radius: 0.9rem;
 }
 
@@ -13,7 +13,7 @@
   display: block;
   min-width: 13rem;
   padding: 0.8rem 1rem;
-  background: #fff;
+  background: var(--gn-white);
   border: 1px solid rgba(17, 17, 17, 0.14);
   border-radius: 999px;
   font-size: 0.8rem;
@@ -36,13 +36,13 @@
   align-items: center;
   justify-content: center;
   gap: 0.7rem;
-  background: #111;
+  background: var(--gn-black);
   border-radius: 0.85rem;
 }
 
 .gn-project-card__flow span {
   padding: 0.55rem 0.7rem;
-  color: #fff;
+  color: var(--gn-white);
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 999px;
   font-size: 0.65rem;
@@ -87,7 +87,7 @@
   width: 1.2rem;
   height: 1.2rem;
   background: var(--gn-blue);
-  border: 0.28rem solid #fff;
+  border: 0.28rem solid var(--gn-white);
   border-radius: 50%;
 }
 
@@ -173,7 +173,7 @@
   display: flex;
   min-height: 36rem;
   padding: clamp(2rem, 4vw, 4rem);
-  color: #fff;
+  color: var(--gn-white);
   background: var(--gn-blue-dark);
   border-radius: 1.25rem;
   flex-direction: column;

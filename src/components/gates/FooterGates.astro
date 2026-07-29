@@ -1,0 +1,49 @@
+---
+import { buildUrl } from "@config/site";
+
+const primary = [
+  ["Проекты", "/projects/"],
+  ["Практика", "/business/"],
+  ["Образование", "/education/"],
+  ["Журнал", "/journal/"],
+];
+
+const secondary = [
+  ["Обо мне", "/about/"],
+  ["Сейчас", "/now/"],
+  ["Факты", "/facts/"],
+  ["Контакты", "/contacts/"],
+];
+---
+
+<footer class="gn-footer">
+  <div class="gn-wrap gn-footer__lead">
+    <div>
+      <p class="gn-eyebrow">Есть сложная задача?</p>
+      <h2>Разберём процесс и найдём проверяемый следующий шаг.</h2>
+    </div>
+    <a class="gn-button gn-button--light" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
+  </div>
+
+  <div class="gn-wrap gn-footer__grid">
+    <a class="gn-footer__brand" href={buildUrl("/")}>Александр Аликин<span aria-hidden="true">•</span></a>
+
+    <nav aria-label="Основные разделы">
+      {primary.map(([label, href]) => <a href={buildUrl(href)}>{label}</a>)}
+    </nav>
+
+    <nav aria-label="Дополнительные разделы">
+      {secondary.map(([label, href]) => <a href={buildUrl(href)}>{label}</a>)}
+    </nav>
+
+    <div class="gn-footer__contacts">
+      <a href="https://t.me/spikeal" rel="me">Telegram</a>
+      <a href="https://rutube.ru/channel/2420333/">RUTUBE</a>
+    </div>
+  </div>
+
+  <div class="gn-wrap gn-footer__bottom">
+    <span>© {new Date().getFullYear()} Александр Аликин</span>
+    <a href={buildUrl("/privacy/")}>Конфиденциальность</a>
+  </div>
+</footer>

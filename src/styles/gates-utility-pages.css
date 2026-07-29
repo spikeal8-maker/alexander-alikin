@@ -1,0 +1,117 @@
+.gs-search {
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+  background: var(--gn-surface);
+}
+
+.gs-search__inner {
+  max-width: 64rem;
+}
+
+.gs-search label {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: var(--gn-blue);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gs-search input {
+  width: 100%;
+  padding: 1.15rem 0;
+  color: var(--gn-ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid var(--gn-ink);
+  border-radius: 0;
+  font: inherit;
+  font-size: clamp(1.5rem, 3vw, 2.8rem);
+  letter-spacing: -0.035em;
+  outline: 0;
+}
+
+.gs-search input:focus {
+  border-color: var(--gn-blue);
+}
+
+.gs-search__status {
+  margin: 1rem 0 2.5rem;
+  color: var(--gn-muted);
+  font-size: 0.82rem;
+}
+
+.gs-search__results {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--gn-line);
+  list-style: none;
+}
+
+.gs-search__result {
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--gn-line);
+}
+
+.gs-search__result a {
+  color: var(--gn-ink);
+  font-size: clamp(1.25rem, 2.5vw, 2.2rem);
+  font-weight: 680;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
+
+.gs-search__result a:hover,
+.gs-search__result a:focus-visible {
+  color: var(--gn-blue);
+}
+
+.gs-search__result p {
+  max-width: 46rem;
+  margin: 0.6rem 0 0;
+  color: var(--gn-muted);
+  line-height: 1.55;
+}
+
+.gu-404 {
+  display: grid;
+  min-height: 72vh;
+  padding-block: 5rem;
+  place-items: center;
+  background: var(--gn-bg);
+}
+
+.gu-404__inner {
+  width: min(100% - 2.5rem, 74rem);
+}
+
+.gu-404__number {
+  color: var(--gn-blue);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.gu-404 h1 {
+  max-width: 58rem;
+  margin: 2rem 0 1.5rem;
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  font-weight: 670;
+  letter-spacing: -0.075em;
+  line-height: 0.9;
+}
+
+.gu-404 p {
+  max-width: 44rem;
+  color: var(--gn-muted);
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+.gu-404 nav {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}

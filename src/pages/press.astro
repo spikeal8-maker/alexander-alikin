@@ -5,7 +5,7 @@ const formulas = [
   [
     "Краткая формула",
     "Александр Аликин",
-    "Предприниматель-практик и инженер-педагог. Занимается проектированием цифровых продуктов и автоматизации, инженерным образованием и сопровождением исследовательских проектов.",
+    "Предприниматель-практик и инженер-педагог. Проектирует цифровые продукты и автоматизацию, занимается инженерным образованием и сопровождением исследовательских проектов.",
   ],
   [
     "Метод",
@@ -20,99 +20,84 @@ const formulas = [
 ];
 
 const topics = [
-  [
-    "ИИ и автоматизация",
-    "Где ИИ усиливает качественно поставленную задачу, а где создаёт дополнительный хаос.",
-  ],
-  [
-    "Инженерное образование",
-    "Проектный результат, роль ошибки, объяснение и защита работающего решения.",
-  ],
-  [
-    "Архитектура проектов",
-    "Как разделять контекст, ограничения, решение, результат и доказательства.",
-  ],
-  [
-    "Системы знаний",
-    "Как заметки превращаются в решения и публичные материалы без утечки приватного архива.",
-  ],
+  ["ИИ и автоматизация", "Где ИИ усиливает качественно поставленную задачу, а где создаёт новый хаос."],
+  ["Инженерное образование", "Проектный результат, роль ошибки, объяснение и защита работающего решения."],
+  ["Архитектура проектов", "Как разделять контекст, ограничения, решение, результат и доказательства."],
+  ["Системы знаний", "Как заметки превращаются в решения без утечки приватного архива."],
 ];
 ---
 
 <BaseLayoutV3
   title="Для СМИ — Александр Аликин"
-  description="Безопасные биографические формулы, темы комментариев и маршруты для редакционного запроса."
+  description="Безопасные биографические формулы, темы комментариев и маршрут редакционного запроса."
 >
-  <div class="v3-page">
-    <section class="v3-page-hero v3-page-hero--plain">
-      <div class="v3-page-hero__copy">
-        <p class="v3-kicker">Для СМИ и мероприятий</p>
-        <h1 class="v3-page-hero__title">Комментарий с границами компетенции</h1>
-        <p class="v3-page-hero__lead">
-          Безопасные формулировки для интервью, комментариев и выступлений. Непроверенные роли и
-          показатели не превращаются в рекламную биографию.
-        </p>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Для СМИ и мероприятий</p>
+          <h1>Комментарий с ясными границами компетенции.</h1>
+          <p class="gp-hero__lead">
+            Безопасные формулировки для интервью, комментариев и выступлений. Непроверенные роли и
+            показатели не превращаются в рекламную биографию.
+          </p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Для запроса достаточно</span>
+          <div class="gp-flow">
+            <span>Кто обращается</span>
+            <span>Тема</span>
+            <span>Формат</span>
+            <span>Ориентировочная дата</span>
+          </div>
+        </aside>
       </div>
-      <aside class="v3-page-hero__aside">
-        <strong>Тема, формат, срок, аудитория</strong>
-        <p>Этих четырёх пунктов достаточно, чтобы оценить редакционный запрос.</p>
-      </aside>
     </section>
 
-    <section class="v3-editorial-section v3-editorial-section--white">
-      <div class="v3-shell v3-numbered">
-        {
-          formulas.map(([label, title, copy], index) => (
-            <article class="v3-numbered__item">
-              <span class="v3-numbered__index">0{index + 1}</span>
-              <div>
-                <>
-                  <p class="v3-kicker">{label}</p>
-                  <h3>{title}</h3>
-                  <p>{copy}</p>
-                </>
-              </div>
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Формулировки</p></div>
+          <div><h2>Готовые безопасные основы для представления.</h2></div>
+        </div>
+        <div class="gp-card-grid">
+          {formulas.map(([label, title, copy], index) => (
+            <article class="gp-card">
+              <span class="gp-card__index">0{index + 1} · {label}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
             </article>
-          ))
-        }
-      </div>
-    </section>
-
-    <section class="v3-editorial-section v3-editorial-section--ink">
-      <div class="v3-shell v3-section-grid">
-        <div class="v3-section-grid__intro">
-          <p class="v3-kicker">Темы разговора</p>
-          <h2>Где есть практический контекст</h2>
-        </div>
-        <div class="v3-numbered">
-          {
-            topics.map(([title, copy], index) => (
-              <article class="v3-numbered__item">
-                <span class="v3-numbered__index">0{index + 1}</span>
-                <div>
-                  <>
-                    <h3>{title}</h3>
-                    <p>{copy}</p>
-                  </>
-                </div>
-              </article>
-            ))
-          }
+          ))}
         </div>
       </div>
     </section>
 
-    <section class="v3-editorial-section">
-      <div class="v3-shell v3-cta-scene">
-        <p class="v3-kicker">Редакционный запрос</p>
-        <h2>Укажите тему, формат и дедлайн</h2>
-        <p>
-          В Telegram достаточно указать, кто обращается, тему, предполагаемый формат и
-          ориентировочную дату.
-        </p>
-        <a class="v3-button" href="https://t.me/spikeal" target="_blank" rel="noreferrer">
-          Telegram — @spikeal
-        </a>
+    <section class="gp-section gp-section--blue">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Темы разговора</p></div>
+          <div><h2>Где есть практический контекст.</h2></div>
+        </div>
+        <div class="gp-card-grid gp-card-grid--two">
+          {topics.map(([title, copy], index) => (
+            <article class="gp-card gp-card--dark">
+              <span class="gp-card__index">0{index + 1}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section">
+      <div class="gn-wrap gp-cta">
+        <div>
+          <p class="gn-eyebrow">Редакционный запрос</p>
+          <h2>Укажите тему, формат и дату.</h2>
+          <p>Telegram временно используется как единый канал для СМИ и предложений о выступлениях.</p>
+        </div>
+        <a class="gn-button gn-button--light" href="https://t.me/spikeal" target="_blank" rel="noreferrer">Telegram — @spikeal</a>
       </div>
     </section>
   </div>

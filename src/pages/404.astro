@@ -7,18 +7,18 @@ import { buildUrl } from "@config/site";
   title="Страница не найдена — Александр Аликин"
   description="Запрошенная страница не существует."
 >
-  <section class="v3-not-found">
-    <div>
-      <div class="v3-not-found__number" aria-hidden="true">404</div>
-      <h1>Такой страницы нет</h1>
+  <section class="gu-404">
+    <div class="gu-404__inner">
+      <span class="gu-404__number">Ошибка 404</span>
+      <h1>Такой страницы нет.</h1>
       <p>
         Адрес мог измениться, материал мог остаться черновиком или ссылка была введена с ошибкой.
         Приватные и неподтверждённые страницы намеренно не публикуются.
       </p>
-      <nav class="v3-inline-links" aria-label="Куда перейти">
-        <a class="v3-button" href={buildUrl("/")}>На главную</a>
-        <a class="v3-link" href={buildUrl("/projects/")}>Проекты</a>
-        <a class="v3-link" href={buildUrl("/search/")}>Поиск</a>
+      <nav aria-label="Куда перейти">
+        <a class="gn-button" href={buildUrl("/")}>На главную</a>
+        <a class="gn-text-link" href={buildUrl("/projects/")}>Проекты <span>→</span></a>
+        <a class="gn-text-link" href={buildUrl("/search/")}>Поиск <span>→</span></a>
       </nav>
     </div>
   </section>

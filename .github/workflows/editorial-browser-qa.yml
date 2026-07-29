@@ -33,26 +33,25 @@ jobs:
           done
           cat /tmp/alikin-astro.log
           exit 1
-      - run: npm run design:browser
-      - name: Record successful browser gate
+      - name: Run and record browser gate
         run: |
+          set +e
+          npm run design:browser > /tmp/editorial-browser.log 2>&1
+          status=$?
+          set -e
           mkdir -p docs/testing
-          cat > docs/testing/EDITORIAL_SITE_V4_BROWSER_PASS.md <<'EOF'
-          # Editorial site V4 browser gate
-
-          Status: PASS
-
-          - 25 routes × 5 viewports;
-          - dedicated 404 checks;
-          - horizontal overflow diagnostics;
-          - broken image checks;
-          - no-JS routes;
-          - keyboard focus;
-          - 200% zoom and text size;
-          - Axe serious/critical scan.
-          EOF
+          {
+            echo '# Editorial site V4 browser gate'
+            echo
+            if [ "$status" -eq 0 ]; then echo 'Status: PASS'; else echo 'Status: FAIL'; fi
+            echo
+            echo '```text'
+            cat /tmp/editorial-browser.log
+            echo '```'
+          } > docs/testing/EDITORIAL_SITE_V4_BROWSER_REPORT.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/testing/EDITORIAL_SITE_V4_BROWSER_PASS.md
+          git add docs/testing/EDITORIAL_SITE_V4_BROWSER_REPORT.md
           git commit -m "test: record editorial browser gate [skip browser qa]"
           git push origin HEAD:agent/recover-visible-site
+          exit "$status"

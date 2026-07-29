@@ -1,7 +1,7 @@
 ---
 import { site, buildUrl } from "@config/site";
-import HeaderV3 from "@components/v3/HeaderV3.astro";
-import FooterV3 from "@components/v3/FooterV3.astro";
+import HeaderGates from "@components/gates/HeaderGates.astro";
+import FooterGates from "@components/gates/FooterGates.astro";
 import "../styles/tokens-v3.css";
 import "../styles/v3-home-fixes.css";
 import "../styles/v3-pages.css";
@@ -10,6 +10,10 @@ import "../styles/v3-project-density.css";
 import "../styles/v3-pages-responsive.css";
 import "../styles/v3-journal.css";
 import "../styles/v3-utility.css";
+import "../styles/gates-global.css";
+import "../styles/gates-home.css";
+import "../styles/gates-home-panels.css";
+import "../styles/gates-home-responsive.css";
 
 interface Props {
   title: string;
@@ -31,29 +35,29 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href={buildUrl("/favicon.svg")} />
   </head>
   <body>
-    <a class="v3-skip skip-link" href="#main-content"> Перейти к содержимому </a>
-    <HeaderV3 />
+    <a class="gn-skip" href="#main-content">Перейти к содержимому</a>
+    <HeaderGates />
     <main id="main-content"><slot /></main>
-    <FooterV3 />
+    <FooterGates />
   </body>
 </html>
 
 <style>
-  .v3-skip {
+  .gn-skip {
     position: fixed;
     top: 0;
     left: 1rem;
     z-index: 100;
     padding: 0.8rem 1rem;
-    color: var(--v3-white);
-    background: var(--v3-cobalt);
+    color: #fff;
+    background: var(--gn-blue);
     font-size: 0.8rem;
     font-weight: 700;
     text-decoration: none;
     transform: translateY(-120%);
   }
 
-  .v3-skip:focus {
+  .gn-skip:focus {
     transform: translateY(0);
   }
 </style>

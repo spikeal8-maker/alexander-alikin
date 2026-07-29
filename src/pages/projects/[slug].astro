@@ -15,21 +15,12 @@ const project = (
 if (!project) return Astro.redirect("/404");
 const { data } = project;
 const isIzoAsa = data.slug === "izo-asa";
-const statusLabel =
-  data.projectStatus === "active" ? "Активная разработка" : "Опубликованный проект";
+const statusLabel = data.projectStatus === "active" ? "Активная разработка" : "Опубликованный проект";
 const architecture = isIzoAsa
   ? [
       ["01", "Пользовательский сценарий", "Создание и редактирование материала."],
-      [
-        "02",
-        "Интерфейс",
-        "Управление параметрами, результатами и следующими действиями пользователя.",
-      ],
-      [
-        "03",
-        "Интеграции",
-        "Связь генерации, редактора и внешних инструментов в одном рабочем процессе.",
-      ],
+      ["02", "Интерфейс", "Управление параметрами, результатами и следующими действиями."],
+      ["03", "Интеграции", "Связь генерации, редактора и внешних инструментов."],
     ]
   : [
       ["01", "Действие", "Участник создаёт устройство, программу или систему."],
@@ -40,115 +31,102 @@ const ledger = isIzoAsa
   ? [
       ["Что сформировано", "Концепция продукта и направление пользовательских сценариев."],
       ["Что проектируется", "Интерфейс, прототип, интеграции и процесс работы с результатом."],
-      [
-        "Что не заявляется",
-        "Завершённость, масштаб, число пользователей и коммерческий результат.",
-      ],
-      [
-        "Следующая проверка",
-        "Рабочие сценарии, ограничения прототипа и границы публичной демонстрации.",
-      ],
+      ["Что не заявляется", "Завершённость, масштаб, число пользователей и коммерческий результат."],
+      ["Следующая проверка", "Рабочие сценарии, ограничения прототипа и границы демонстрации."],
     ]
   : [
       ["Что сформировано", "Проектный цикл действия, ошибки, объяснения, доработки и защиты."],
       ["Что создаётся", "Программы, лаборатории и методические материалы для проектной работы."],
-      [
-        "Что не заявляется",
-        "Число участников, площадки, соревнования и количественные результаты.",
-      ],
+      ["Что не заявляется", "Число участников, площадки, соревнования и количественные результаты."],
       ["Следующая проверка", "Документальные периоды, состав программ и подтверждённые материалы."],
     ];
 ---
 
 <BaseLayoutV3 title={`${data.title} — Александр Аликин`} description={data.description}>
-  <div class="v3-page">
-    <section class="v3-case-hero">
-      <div class="v3-case-hero__copy">
-        <p class="v3-kicker">Проект / {statusLabel}</p>
-        <h1>{data.title}</h1>
-        <p>{data.description}</p>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Проект · {statusLabel}</p>
+          <h1>{data.title}</h1>
+          <p class="gp-hero__lead">{data.description}</p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Контекст проекта</span>
+          <dl>
+            <div><dt>Роль</dt><dd>{data.role}</dd></div>
+            <div><dt>Период</dt><dd>{data.period}</dd></div>
+            <div><dt>Статус</dt><dd>{statusLabel}</dd></div>
+            <div><dt>Источник</dt><dd>Авторское утверждение</dd></div>
+          </dl>
+        </aside>
       </div>
-      <aside class="v3-case-hero__panel">
-        <dl>
-          <div><dt>Роль</dt><dd>{data.role}</dd></div>
-          <div><dt>Период</dt><dd>{data.period}</dd></div>
-          <div><dt>Статус</dt><dd>{statusLabel}</dd></div>
-          <div><dt>Уровень доказательности</dt><dd>Авторское утверждение</dd></div>
-        </dl>
-      </aside>
     </section>
 
-    <section class="v3-case-register">
-      <div class="v3-shell">
-        {
-          ledger.map(([title, copy], index) => (
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Карта доказательности</p></div>
+          <div><h2>Что сформировано, что проверяется и где проходит граница.</h2></div>
+        </div>
+        <div class="gp-ledger">
+          {ledger.map(([title, copy], index) => (
             <article>
               <span>0{index + 1}</span>
-              <div>
-                <h2>{title}</h2>
-                <p>{copy}</p>
-              </div>
+              <h2>{title}</h2>
+              <p>{copy}</p>
             </article>
-          ))
-        }
-      </div>
-    </section>
-
-    <section class="v3-editorial-section v3-editorial-section--ink">
-      <div class="v3-shell">
-        <p class="v3-kicker">Архитектура решения</p>
-        <div class="v3-architecture">
-          {
-            architecture.map(([number, title, copy]) => (
-              <article class="v3-architecture__node">
-                <span>{number}</span>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </article>
-            ))
-          }
+          ))}
         </div>
       </div>
     </section>
 
-    <section class="v3-editorial-section">
-      <div class="v3-shell v3-case-band">
-        <div><p class="v3-kicker">Текущий результат</p><h2>Что можно утверждать сейчас</h2></div>
-        <div><p>{data.result}</p></div>
+    <section class="gp-section gp-section--blue">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Архитектура решения</p></div>
+          <div><h2>Три связанных слоя вместо набора разрозненных функций.</h2></div>
+        </div>
+        <div class="gp-card-grid">
+          {architecture.map(([number, title, copy]) => (
+            <article class="gp-card gp-card--dark">
+              <span class="gp-card__index">{number}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
 
-    <section class="v3-editorial-section v3-editorial-section--white">
-      <div class="v3-shell v3-case-band">
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap gp-case-band">
+        <div><p class="gn-eyebrow">Текущий результат</p><h2>Что можно утверждать сейчас</h2></div>
+        <p>{data.result}</p>
+      </div>
+      <div class="gn-wrap gp-case-band">
+        <div><p class="gn-eyebrow">Ограничения</p><h2>Что не превращаем в обещание</h2></div>
         <div>
-          <p class="v3-kicker">Ограничения</p><h2>Что не превращаем в рекламное обещание</h2>
-        </div>
-        <div>
-          <p>
-            {
-              data.limitations ||
-                "Количественные показатели и внешние результаты требуют подтверждения."
-            }
-          </p>
-          <a class="v3-link" href={buildUrl("/facts/")}>Проверить источники</a>
+          <p>{data.limitations || "Количественные показатели и внешние результаты требуют подтверждения."}</p>
+          <a class="gn-text-link" href={buildUrl("/facts/")}>Проверить источники <span>→</span></a>
         </div>
       </div>
     </section>
 
-    <section class="v3-editorial-section">
-      <div class="v3-shell v3-cta-scene">
-        <p class="v3-kicker">Следующий шаг</p>
-        <h2>
-          {isIzoAsa ? "Открыть ИЗО АСА" : "Обсудить программу или лабораторию"}
-        </h2>
-        <p>Опишите контекст, участников, ограничения и результат, который должен стать видимым.</p>
+    <section class="gp-section">
+      <div class="gn-wrap gp-cta">
+        <div>
+          <p class="gn-eyebrow">Следующий шаг</p>
+          <h2>{isIzoAsa ? "Открыть ИЗО АСА" : "Обсудить программу или лабораторию"}</h2>
+          <p>Опишите контекст, участников, ограничения и результат, который должен стать видимым.</p>
+        </div>
         <a
-          class="v3-button"
+          class="gn-button gn-button--light"
           href={isIzoAsa ? "https://izo.alikinas.ru/" : buildUrl("/collaboration/")}
           target={isIzoAsa ? "_blank" : undefined}
           rel={isIzoAsa ? "noreferrer" : undefined}
         >
-          {isIzoAsa ? "Открыть ИЗО АСА" : "Обсудить задачу"}
+          {isIzoAsa ? "Открыть продукт" : "Обсудить задачу"}
         </a>
       </div>
     </section>

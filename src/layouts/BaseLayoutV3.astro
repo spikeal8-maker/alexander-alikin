@@ -37,7 +37,7 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href={buildUrl("/favicon.svg")} />
   </head>
   <body>
-    <a class="gn-skip" href="#main-content">Перейти к содержимому</a>
+    <a class="gn-skip skip-link" href="#main-content">Перейти к содержимому</a>
     <HeaderGates />
     <main id="main-content"><slot /></main>
     <FooterGates />

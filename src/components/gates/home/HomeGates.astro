@@ -1,0 +1,201 @@
+---
+import { buildUrl } from "@config/site";
+
+const focus = [
+  { number: "01", title: "Цифровые продукты", text: "От идеи и сценариев до прототипа, интеграций и проверки." },
+  { number: "02", title: "Инженерное образование", text: "Программы, лаборатории и проектная работа, где результат можно объяснить." },
+  { number: "03", title: "ИИ и автоматизация", text: "Ограниченные пилоты, базы знаний и процессы с человеческим контролем." },
+  { number: "04", title: "Системы знаний", text: "Источники, решения и материалы с понятным происхождением." },
+];
+
+const journal = [
+  ["Статья", "Первый ИИ-пилот: как выбрать процесс, а не инструмент", "/journal/articles/"],
+  ["История", "Ошибка как карта системы", "/journal/stories/"],
+  ["Наблюдение", "Автоматизировать хаос — значит получить более быстрый хаос", "/journal/thoughts/"],
+];
+---
+
+<div class="gn-home">
+  <section class="gn-hero">
+    <div class="gn-wrap gn-hero__grid">
+      <div class="gn-hero__copy">
+        <p class="gn-eyebrow">Предприниматель-практик · инженер-педагог</p>
+        <h1>Сложные идеи — в работающие системы.</h1>
+        <p class="gn-hero__intro">
+          Я Александр Аликин. Проектирую цифровые продукты, образовательные программы и
+          автоматизацию: от диагностики задачи до прототипа, проверки и передачи способа работы
+          команде.
+        </p>
+        <div class="gn-hero__actions">
+          <a class="gn-button" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
+          <a class="gn-text-link" href={buildUrl("/projects/")}>Смотреть проекты <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <aside class="gn-now" aria-label="Текущий фокус">
+        <div class="gn-now__head">
+          <span>Сейчас</span>
+          <span>07 / 2026</span>
+        </div>
+        <p>Разрабатываю ИЗО АСА и систему знаний, исследую объяснимые ИИ-пилоты и продолжаю образовательную практику.</p>
+        <a href={buildUrl("/now/")}>Что в работе сейчас <span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="gn-focus" aria-labelledby="focus-title">
+    <div class="gn-wrap">
+      <div class="gn-section-head">
+        <p class="gn-eyebrow">Направления</p>
+        <h2 id="focus-title">Работа на стыке технологии, образования и бизнеса</h2>
+      </div>
+      <div class="gn-focus__grid">
+        {focus.map((item) => (
+          <article class="gn-focus__item">
+            <span>{item.number}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="gn-feature" aria-labelledby="feature-title">
+    <div class="gn-wrap gn-feature__grid">
+      <div class="gn-feature__copy">
+        <p class="gn-eyebrow">Главный проект</p>
+        <h2 id="feature-title">ИЗО АСА</h2>
+        <p class="gn-feature__lead">Цифровой продукт для создания и редактирования визуального контента.</p>
+        <p>
+          Концепция, пользовательские сценарии, интерфейс, прототип, интеграции и тестирование —
+          один связный продуктовый цикл.
+        </p>
+        <div class="gn-feature__links">
+          <a class="gn-button gn-button--dark" href={buildUrl("/projects/izo-asa/")}>О проекте</a>
+          <a class="gn-text-link" href="https://izo.alikinas.ru/">Открыть ИЗО АСА <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <div class="gn-product" aria-label="Схематичное представление интерфейса ИЗО АСА">
+        <div class="gn-product__top">
+          <span>ИЗО АСА</span>
+          <span>Редактор</span>
+        </div>
+        <div class="gn-product__workspace">
+          <div class="gn-product__tools" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="gn-product__canvas">
+            <div class="gn-product__shape gn-product__shape--one"></div>
+            <div class="gn-product__shape gn-product__shape--two"></div>
+            <div class="gn-product__shape gn-product__shape--three"></div>
+          </div>
+          <div class="gn-product__panel">
+            <span>Композиция</span>
+            <span>Стиль</span>
+            <span>Экспорт</span>
+          </div>
+        </div>
+        <div class="gn-product__status">
+          <span>Развивающийся продукт</span>
+          <span>Прототип → проверка</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gn-projects" aria-labelledby="projects-title">
+    <div class="gn-wrap">
+      <div class="gn-section-head gn-section-head--row">
+        <div>
+          <p class="gn-eyebrow">Избранная работа</p>
+          <h2 id="projects-title">Проекты и практика</h2>
+        </div>
+        <a class="gn-text-link" href={buildUrl("/projects/")}>Все проекты <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="gn-projects__grid">
+        <a class="gn-project-card gn-project-card--education" href={buildUrl("/projects/engineering-education/")}>
+          <span class="gn-project-card__meta">Образование</span>
+          <div class="gn-project-card__visual" aria-hidden="true">
+            <span>вопрос</span><span>гипотеза</span><span>эксперимент</span><span>объяснение</span>
+          </div>
+          <h3>Инженерное образование и робототехника</h3>
+          <p>Программы и проектная работа, где понимание видно по способности объяснить решение и ошибку.</p>
+        </a>
+
+        <a class="gn-project-card gn-project-card--automation" href={buildUrl("/business/")}>
+          <span class="gn-project-card__meta">Практика</span>
+          <div class="gn-project-card__flow" aria-hidden="true">
+            <span>Процесс</span><i></i><span>Пилот</span><i></i><span>Контроль</span>
+          </div>
+          <h3>ИИ и автоматизация процессов</h3>
+          <p>Диагностика ручной работы, ограниченные прототипы, базы знаний и безопасный возврат процесса под контроль.</p>
+        </a>
+
+        <a class="gn-project-card gn-project-card--knowledge" href={buildUrl("/second-brain/")}>
+          <span class="gn-project-card__meta">Как я мыслю</span>
+          <div class="gn-project-card__nodes" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <h3>Второй мозг и ИИ-Александр</h3>
+          <p>Персональная система знаний, источников и публичных материалов с редакционным шлюзом.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="gn-method" aria-labelledby="method-title">
+    <div class="gn-wrap gn-method__grid">
+      <div>
+        <p class="gn-eyebrow">Метод</p>
+        <h2 id="method-title">Понять систему. Найти потерю. Собрать ограниченный прототип. Проверить. Передать.</h2>
+      </div>
+      <div class="gn-method__steps" aria-label="Этапы работы">
+        <div><span>1</span><p>Описать реальный процесс и ограничения.</p></div>
+        <div><span>2</span><p>Выбрать проверяемый участок вместо большой абстрактной идеи.</p></div>
+        <div><span>3</span><p>Собрать прототип с понятным ручным сценарием на случай сбоя.</p></div>
+        <div><span>4</span><p>Передать команде не только решение, но и способ работы с ним.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gn-journal" aria-labelledby="journal-title">
+    <div class="gn-wrap">
+      <div class="gn-section-head gn-section-head--row">
+        <div>
+          <p class="gn-eyebrow">Журнал</p>
+          <h2 id="journal-title">Что я проверяю, замечаю и объясняю</h2>
+        </div>
+        <a class="gn-text-link" href={buildUrl("/journal/")}>Открыть журнал <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="gn-journal__grid">
+        <a class="gn-journal__featured" href={buildUrl("/journal/articles/")}>
+          <span>Главный материал</span>
+          <h3>Первый ИИ-пилот нужно выбирать по процессу, а не по названию технологии.</h3>
+          <p>У хорошего пилота есть владелец, ограниченный сценарий, проверяемый результат и безопасный способ продолжить работу вручную.</p>
+          <b>Читать статью →</b>
+        </a>
+
+        <div class="gn-journal__list">
+          {journal.map(([type, title, href]) => (
+            <a href={buildUrl(href)}>
+              <span>{type}</span>
+              <h3>{title}</h3>
+              <i aria-hidden="true">↗</i>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gn-belief">
+    <div class="gn-wrap">
+      <p>Работающая система — это не демонстрация технологии. Это решение, которое можно проверить, объяснить и безопасно передать другому человеку.</p>
+      <a class="gn-text-link" href={buildUrl("/about/")}>Обо мне <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</div>

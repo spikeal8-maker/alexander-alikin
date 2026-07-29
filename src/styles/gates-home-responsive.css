@@ -1,0 +1,205 @@
+@media (max-width: 1080px) {
+  .gn-hero__grid,
+  .gn-feature__grid,
+  .gn-method__grid,
+  .gn-journal__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gn-now {
+    max-width: 34rem;
+  }
+
+  .gn-focus__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gn-focus__item:nth-child(2) {
+    border-right: 0;
+  }
+
+  .gn-focus__item:nth-child(n + 3) {
+    border-top: 1px solid var(--gn-line);
+  }
+
+  .gn-feature__copy {
+    max-width: 44rem;
+  }
+
+  .gn-product {
+    max-width: 56rem;
+  }
+
+  .gn-method__steps {
+    max-width: 48rem;
+  }
+}
+
+@media (max-width: 820px) {
+  .gn-hero {
+    padding-block: 3.5rem 4.5rem;
+  }
+
+  .gn-hero h1 {
+    font-size: clamp(3.4rem, 12vw, 5.8rem);
+  }
+
+  .gn-projects__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gn-project-card:first-child {
+    grid-row: auto;
+    min-height: 38rem;
+  }
+
+  .gn-project-card__visual {
+    min-height: 18rem;
+  }
+
+  .gn-feature__grid {
+    gap: 4rem;
+  }
+
+  .gn-product__workspace {
+    min-height: 20rem;
+  }
+
+  .gn-section-head h2,
+  .gn-feature h2,
+  .gn-method h2,
+  .gn-belief p {
+    max-width: 44rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .gn-hero__grid {
+    gap: 3rem;
+  }
+
+  .gn-hero h1 {
+    font-size: clamp(3.1rem, 15vw, 4.8rem);
+    letter-spacing: -0.065em;
+  }
+
+  .gn-hero__intro {
+    margin-top: 1.5rem;
+    font-size: 1.02rem;
+  }
+
+  .gn-hero__actions,
+  .gn-feature__links {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .gn-button {
+    width: 100%;
+  }
+
+  .gn-now {
+    padding: 1.25rem;
+  }
+
+  .gn-focus__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gn-focus__item,
+  .gn-focus__item + .gn-focus__item {
+    min-height: 0;
+    padding: 1.5rem 0 2rem;
+    border-right: 0;
+    border-top: 1px solid var(--gn-line);
+  }
+
+  .gn-focus__item:first-child {
+    border-top: 0;
+  }
+
+  .gn-focus__item h3 {
+    margin-top: 2.4rem;
+  }
+
+  .gn-feature {
+    padding-block: 4.5rem;
+  }
+
+  .gn-product {
+    border-radius: 0.9rem;
+    transform: none;
+  }
+
+  .gn-product__workspace {
+    grid-template-columns: 2.7rem 1fr;
+    min-height: 18rem;
+  }
+
+  .gn-product__panel {
+    display: none;
+  }
+
+  .gn-product__shape--one {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .gn-product__shape--two {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .gn-project-card,
+  .gn-project-card:first-child {
+    min-height: 0;
+    padding: 1.4rem;
+  }
+
+  .gn-project-card__visual {
+    min-height: 15rem;
+    padding: 1rem;
+  }
+
+  .gn-project-card__visual span {
+    min-width: 10rem;
+  }
+
+  .gn-project-card__flow,
+  .gn-project-card__nodes {
+    margin-top: 2.5rem;
+  }
+
+  .gn-method__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gn-journal__featured {
+    min-height: 29rem;
+    padding: 1.6rem;
+  }
+
+  .gn-journal__featured h3 {
+    margin-top: auto;
+  }
+
+  .gn-journal__list a {
+    grid-template-columns: 1fr auto;
+  }
+
+  .gn-journal__list span {
+    grid-column: 1 / -1;
+  }
+
+  .gn-belief p {
+    font-size: clamp(2.25rem, 11vw, 3.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gn-button,
+  .gn-project-card,
+  .gn-text-link span {
+    transition: none;
+  }
+}

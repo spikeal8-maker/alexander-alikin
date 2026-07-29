@@ -21,29 +21,29 @@ const { title, description, eyebrow, entries } = Astro.props;
 ---
 
 <BaseLayoutV3 title={`${title} — Александр Аликин`} description={description}>
-  <div class="v3-page">
-    <section class="v3-journal-hero">
-      <div class="v3-journal-hero__copy">
-        <p class="v3-kicker">{eyebrow}</p>
-        <h1>{title}</h1>
-        <p>{description}</p>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">{eyebrow}</p>
+          <h1>{title}</h1>
+          <p class="gp-hero__lead">{description}</p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Публикация</span>
+          <p>Авторские тезисы отделяются от подтверждённых фактов и проектных доказательств.</p>
+        </aside>
       </div>
-      <aside class="v3-journal-hero__aside">
-        <p>
-          Материалы публикуются после редакционной проверки. Авторские тезисы отделяются от
-          подтверждённых фактов и проектных доказательств.
-        </p>
-      </aside>
     </section>
 
-    <section class="v3-editorial-section v3-editorial-section--white">
-      <div class="v3-shell">
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
         {
           entries.length > 0 ? (
-            <div class="v3-journal-list">
+            <div class="gp-journal-list">
               {entries.map((entry) => (
-                <a href={buildUrl(entry.href)} class="v3-journal-list__item">
-                  <div class="v3-journal-list__meta">
+                <a class="gp-journal-item" href={buildUrl(entry.href)}>
+                  <div class="gp-journal-item__meta">
                     <span>{entry.kind}</span>
                     {entry.date && <time>{entry.date}</time>}
                   </div>
@@ -51,9 +51,7 @@ const { title, description, eyebrow, entries } = Astro.props;
                     <h2>{entry.title}</h2>
                     <p>{entry.description}</p>
                   </div>
-                  <span class="v3-journal-list__arrow" aria-hidden="true">
-                    ↗
-                  </span>
+                  <span aria-hidden="true">↗</span>
                 </a>
               ))}
             </div>
@@ -64,10 +62,16 @@ const { title, description, eyebrow, entries } = Astro.props;
       </div>
     </section>
 
-    <section class="v3-editorial-section">
-      <div class="v3-shell v3-entry-footer">
-        <a class="v3-link" href={buildUrl("/journal/")}>Все рубрики</a>
-        <a class="v3-button" href={buildUrl("/rss.xml")}>RSS журнала</a>
+    <section class="gp-section gp-section--sand">
+      <div class="gn-wrap gp-cta">
+        <div>
+          <p class="gn-eyebrow">Навигация</p>
+          <h2>Вернуться ко всем форматам журнала.</h2>
+        </div>
+        <div class="gn-hero__actions">
+          <a class="gn-button gn-button--light" href={buildUrl("/journal/")}>Все рубрики</a>
+          <a class="gn-text-link" href={buildUrl("/rss.xml")}>RSS <span>→</span></a>
+        </div>
       </div>
     </section>
   </div>

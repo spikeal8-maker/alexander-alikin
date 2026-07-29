@@ -10,82 +10,72 @@ const activeCount = sorted.filter((project) => project.data.projectStatus === "a
 
 <BaseLayoutV3
   title="Проекты — Александр Аликин"
-  description="Продукты, образовательные программы и технические инициативы с ролью, статусом, результатом и ограничениями."
+  description="Цифровые продукты, инженерное образование и технические инициативы с ролью, статусом и ограничениями."
 >
-  <div class="v3-page">
-    <section class="v3-page-hero v3-page-hero--plain">
-      <div class="v3-page-hero__copy">
-        <p class="v3-kicker">Проекты</p>
-        <h1 class="v3-page-hero__title">Работа в контексте</h1>
-        <p class="v3-page-hero__lead">
-          Не каталог достижений. Для каждого проекта зафиксированы роль, текущее состояние,
-          наблюдаемый результат и граница того, что пока нельзя утверждать.
-        </p>
-      </div>
-      <aside class="v3-page-hero__aside">
-        <dl class="v3-project-summary">
-          <div><dt>Опубликовано</dt><dd>{sorted.length}</dd></div>
-          <div><dt>Активных</dt><dd>{activeCount}</dd></div>
-          <div><dt>Принцип</dt><dd>ограничение рядом с результатом</dd></div>
-        </dl>
-      </aside>
-    </section>
-
-    <section class="v3-project-register" aria-label="Реестр проектов">
-      <div class="v3-shell">
-        <div class="v3-project-register__head" aria-hidden="true">
-          <span>Проект</span><span>Роль и статус</span><span>Результат и ограничение</span><span
-          ></span>
-        </div>
-        {
-          sorted.map((project, index) => (
-            <a class="v3-project-register__row" href={buildUrl(`/projects/${project.data.slug}/`)}>
-              <div class="v3-project-register__title">
-                <span>0{index + 1}</span>
-                <div>
-                  <small>{project.data.category === "product" ? "Продукт" : "Практика"}</small>
-                  <h2>{project.data.title}</h2>
-                  <p>{project.data.description}</p>
-                </div>
-              </div>
-              <dl>
-                <div>
-                  <>
-                    <dt>Роль</dt>
-                    <dd>{project.data.role}</dd>
-                  </>
-                </div>
-                <div>
-                  <>
-                    <dt>Статус</dt>
-                    <dd>{project.data.period}</dd>
-                  </>
-                </div>
-              </dl>
-              <div class="v3-project-register__evidence">
-                <strong>Сейчас</strong>
-                <p>{project.data.result}</p>
-                <strong>Ограничение</strong>
-                <p>{project.data.limitations}</p>
-              </div>
-              <span class="v3-project-register__arrow" aria-hidden="true">
-                ↗
-              </span>
-            </a>
-          ))
-        }
-      </div>
-    </section>
-
-    <section class="v3-editorial-section v3-editorial-section--ink">
-      <div class="v3-shell v3-statement">
-        <blockquote>Кейс ценен не масштабом заголовка, а ясностью роли и доказательств.</blockquote>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
         <div>
-          <p class="v3-kicker">Редакционный принцип</p>
-          <p>
-            Неподтверждённые числа, сроки и достижения не превращаются в маркетинговые показатели.
+          <p class="gn-eyebrow">Проекты</p>
+          <h1>Работа показана через контекст, роль и текущий результат.</h1>
+          <p class="gp-hero__lead">
+            Это не каталог достижений. Каждый проект описывает, что создаётся сейчас, за что отвечаю
+            я и какие утверждения пока нельзя делать.
           </p>
-          <a class="v3-link" href={buildUrl("/facts/")}>Факты и источники</a>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Реестр</span>
+          <dl>
+            <div><dt>Опубликовано</dt><dd>{sorted.length}</dd></div>
+            <div><dt>Активных</dt><dd>{activeCount}</dd></div>
+            <div><dt>Принцип</dt><dd>ограничение рядом с результатом</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Избранная работа</p></div>
+          <div>
+            <h2>Продукты и практика.</h2>
+            <p>Активные и опубликованные направления без неподтверждённых показателей и рекламных обещаний.</p>
+          </div>
+        </div>
+        <div class="gp-project-grid">
+          {sorted.map((project, index) => (
+            <a class="gp-project-card" href={buildUrl(`/projects/${project.data.slug}/`)}>
+              <div class="gp-project-card__meta">
+                <span>0{index + 1} · {project.data.category === "product" ? "Продукт" : "Практика"}</span>
+                <span>{project.data.projectStatus === "active" ? "В работе" : "Опубликован"}</span>
+              </div>
+              <h2>{project.data.title}</h2>
+              <p>{project.data.description}</p>
+              <div class="gp-project-card__result">
+                <span>Роль</span>
+                <p>{project.data.role}</p>
+              </div>
+              <div class="gp-project-card__result">
+                <span>Сейчас</span>
+                <p>{project.data.result}</p>
+              </div>
+              <div class="gp-project-card__footer">
+                <span>{project.data.period}</span><span>Открыть →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--sand">
+      <div class="gn-wrap gp-split">
+        <blockquote class="gp-quote">Кейс ценен не масштабом заголовка, а ясностью роли и доказательств.</blockquote>
+        <div class="gp-split__copy">
+          <p class="gn-eyebrow">Редакционный принцип</p>
+          <p>Неподтверждённые числа, сроки и достижения не превращаются в маркетинговые показатели.</p>
+          <a class="gn-text-link" href={buildUrl("/facts/")}>Факты и источники <span>→</span></a>
         </div>
       </div>
     </section>

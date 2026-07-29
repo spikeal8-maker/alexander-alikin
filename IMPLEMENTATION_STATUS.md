@@ -2,54 +2,60 @@
 
 ## Текущий этап
 
-`RECOVER-VISIBLE-SITE-001 — local_pass_pending_ci`
+`RECOVER-VISIBLE-SITE-001 — editorial_home_ready_for_owner_review`
 
 ```text
 Issue: https://github.com/spikeal8-maker/alexander-alikin/issues/31
 Branch: agent/recover-visible-site
 Draft PR: https://github.com/spikeal8-maker/alexander-alikin/pull/32
 Base: main @ b3f33d2
-V3 source: 9374e27
+Current verified head: 8d313e39e9f82ea32faa5e6a5d72646b1042d38b
 Production deploy: forbidden
 ```
 
-## Цель
+## Реализовано
 
-Вернуть полноценный видимый сайт, используя runtime/UI V3 без прямого merge
-старого PR и без возврата устаревшей dependency или task-state конфигурации.
+- полный набор публичных маршрутов восстановлен;
+- старая V3-композиция главной больше не используется;
+- пересвеченный портрет удалён из главной;
+- созданы новые общие header и footer;
+- создана новая главная на основе оригинальных Astro-компонентов и CSS;
+- ориентир — информационная архитектура и редакционный ритм Gates Notes;
+- чужие логотипы, тексты, изображения, исходный код и фирменная графика не копировались.
 
-## Сохраняется из main
+## Структура главной
 
-- Node 24.18.0;
-- ESLint 10;
-- актуальный lockfile и security state;
-- V4 brand documents;
-- текущий quality workflow.
+- позиционирование и основной CTA;
+- блок «Сейчас»;
+- четыре направления работы;
+- главный проект ИЗО АСА;
+- избранные проекты;
+- метод работы;
+- журнал;
+- финальный тезис и контактный CTA.
 
 ## Публичные границы
 
-- главная использует утверждённое безопасное позиционирование;
 - допустимы Telegram, RUTUBE и ссылка проекта ИЗО АСА;
-- AI/generated portraits не переносятся;
+- AI/generated portraits не используются;
 - неподтверждённые показатели и результаты не публикуются;
 - CONTENT-EXPORT-001 остаётся приостановленным в Draft PR #30.
 
-## Проверено локально
+## Скриншоты
 
-- Node `24.18.0`, npm `11.16.0`;
-- `npm ci` — PASS, `0 vulnerabilities`;
+- `docs/screenshots/gates-notes-adaptation/home-desktop.png`;
+- `docs/screenshots/gates-notes-adaptation/home-mobile.png`.
+
+## Проверено
+
+- Node `24.18.0`;
+- `npm ci` — PASS;
 - `npm run quality` — PASS;
-- `npm run design:static` — PASS;
-- `npm run design:browser` — PASS: 25 маршрутов × 5 viewport и 404;
-- `npm run test:media` — PASS: 5 documentary files, 0 generated media;
-- `npm audit --audit-level=high` — PASS, 0 vulnerabilities;
-- `git diff --check` — PASS;
-- no-JS, keyboard focus, 200% zoom/text size и Axe serious/critical проверяются browser gate;
-- свежие evidence screenshots: `docs/screenshots/recover-visible-site-001/`.
+- GitHub Actions Quality run `30479609211` — PASS;
+- 0 vulnerabilities.
 
-## Запрещено
+## Не выполнено
 
-- merge;
-- deploy;
-- DESIGN-V4-001;
-- продолжение owner review CONTENT-EXPORT-001.
+- внутренние страницы ещё сохраняют восстановленные V3-композиции и требуют унификации после проверки главной;
+- merge не выполнялся;
+- deploy не выполнялся.

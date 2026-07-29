@@ -7,42 +7,35 @@ import { buildUrl } from "@config/site";
   title="Видео — Александр Аликин"
   description="Публичные видеоматериалы и правила их редакционной публикации."
 >
-  <div class="v3-page">
-    <section class="v3-page-hero v3-page-hero--plain">
-      <div class="v3-page-hero__copy">
-        <p class="v3-kicker">Журнал · Видео</p>
-        <h1 class="v3-page-hero__title">Видео публикуется вместе с контекстом</h1>
-        <p class="v3-page-hero__lead">
-          Выступление, демонстрация или интервью полезны только тогда, когда указаны тема, дата,
-          площадка и границы того, что материал действительно подтверждает.
-        </p>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Журнал · Видео</p>
+          <h1>Видео публикуется вместе с контекстом.</h1>
+          <p class="gp-hero__lead">
+            Выступление, демонстрация или интервью полезны, когда указаны тема, дата, площадка и
+            границы того, что материал действительно подтверждает.
+          </p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Текущее состояние</span>
+          <p>Утверждён внешний архив RUTUBE. Старые материалы могут не отражать текущее позиционирование.</p>
+        </aside>
       </div>
-      <aside class="v3-page-hero__aside">
-        <p class="v3-kicker">Текущее состояние</p>
-        <p>
-          Утверждён внешний видеоархив RUTUBE. Старые материалы могут не отражать текущее
-          позиционирование сайта.
-        </p>
-      </aside>
     </section>
 
-    <section class="v3-editorial-section v3-editorial-section--white">
-      <div class="v3-shell v3-statement">
-        <blockquote>Видео полезно, когда рядом понятны тема, дата и контекст.</blockquote>
-        <div>
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap gp-split">
+        <blockquote class="gp-quote">Видео полезно, когда рядом понятны тема, дата и контекст.</blockquote>
+        <div class="gp-split__copy">
           <p>
             Архив содержит видео, занятия и материалы проектов разных лет. Он не является основным
             контактным каналом и не подтверждает текущий статус каждого старого материала.
           </p>
-          <div class="v3-inline-links">
-            <a class="v3-link" href={buildUrl("/journal/")}>Вернуться в журнал</a>
-            <a class="v3-link" href={buildUrl("/press/")}>Материалы для СМИ</a>
-            <a
-              class="v3-link"
-              href="https://rutube.ru/channel/2420333/"
-              target="_blank"
-              rel="noreferrer">Открыть RUTUBE</a
-            >
+          <div class="gn-hero__actions">
+            <a class="gn-button" href="https://rutube.ru/channel/2420333/" target="_blank" rel="noreferrer">Открыть RUTUBE</a>
+            <a class="gn-text-link" href={buildUrl("/journal/")}>Вернуться в журнал <span>→</span></a>
           </div>
         </div>
       </div>

@@ -48,7 +48,9 @@
   border-radius: 1.2rem;
   flex-direction: column;
   text-decoration: none;
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .gp-project-card:hover,

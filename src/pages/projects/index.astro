@@ -40,41 +40,57 @@ const activeCount = sorted.filter((project) => project.data.projectStatus === "a
           <div><p class="gn-eyebrow">Избранная работа</p></div>
           <div>
             <h2>Продукты и практика.</h2>
-            <p>Активные и опубликованные направления без неподтверждённых показателей и рекламных обещаний.</p>
+            <p>
+              Активные и опубликованные направления без неподтверждённых показателей и рекламных
+              обещаний.
+            </p>
           </div>
         </div>
         <div class="gp-project-grid">
-          {sorted.map((project, index) => (
-            <a class="gp-project-card" href={buildUrl(`/projects/${project.data.slug}/`)}>
-              <div class="gp-project-card__meta">
-                <span>0{index + 1} · {project.data.category === "product" ? "Продукт" : "Практика"}</span>
-                <span>{project.data.projectStatus === "active" ? "В работе" : "Опубликован"}</span>
-              </div>
-              <h2>{project.data.title}</h2>
-              <p>{project.data.description}</p>
-              <div class="gp-project-card__result">
-                <span>Роль</span>
-                <p>{project.data.role}</p>
-              </div>
-              <div class="gp-project-card__result">
-                <span>Сейчас</span>
-                <p>{project.data.result}</p>
-              </div>
-              <div class="gp-project-card__footer">
-                <span>{project.data.period}</span><span>Открыть →</span>
-              </div>
-            </a>
-          ))}
+          {
+            sorted.map((project, index) => (
+              <a class="gp-project-card" href={buildUrl(`/projects/${project.data.slug}/`)}>
+                <div class="gp-project-card__meta">
+                  <span>
+                    0{index + 1} · {project.data.category === "product" ? "Продукт" : "Практика"}
+                  </span>
+                  <span>
+                    {project.data.projectStatus === "active" ? "В работе" : "Опубликован"}
+                  </span>
+                </div>
+                <h2>{project.data.title}</h2>
+                <p>{project.data.description}</p>
+                <div class="gp-project-card__result">
+                  <span>Роль</span>
+                  <p>{project.data.role}</p>
+                </div>
+                <div class="gp-project-card__result">
+                  <span>Сейчас</span>
+                  <p>{project.data.result}</p>
+                </div>
+                <div class="gp-project-card__footer">
+                  <>
+                    <span>{project.data.period}</span>
+                    <span>Открыть →</span>
+                  </>
+                </div>
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>
 
     <section class="gp-section gp-section--sand">
       <div class="gn-wrap gp-split">
-        <blockquote class="gp-quote">Кейс ценен не масштабом заголовка, а ясностью роли и доказательств.</blockquote>
+        <blockquote class="gp-quote">
+          Кейс ценен не масштабом заголовка, а ясностью роли и доказательств.
+        </blockquote>
         <div class="gp-split__copy">
           <p class="gn-eyebrow">Редакционный принцип</p>
-          <p>Неподтверждённые числа, сроки и достижения не превращаются в маркетинговые показатели.</p>
+          <p>
+            Неподтверждённые числа, сроки и достижения не превращаются в маркетинговые показатели.
+          </p>
           <a class="gn-text-link" href={buildUrl("/facts/")}>Факты и источники <span>→</span></a>
         </div>
       </div>

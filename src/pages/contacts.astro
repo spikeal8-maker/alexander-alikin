@@ -70,19 +70,21 @@ const prepare = [
           </div>
         </div>
         <div class="gp-channel-grid">
-          {channels.map(([title, copy, href, external], index) => (
-            <a
-              class="gp-channel"
-              href={href}
-              target={external ? "_blank" : undefined}
-              rel={external ? "noreferrer" : undefined}
-            >
-              <span>0{index + 1}</span>
-              <h2>{title}</h2>
-              <p>{copy}</p>
-              <span>{external ? "Открыть ↗" : "Продолжить →"}</span>
-            </a>
-          ))}
+          {
+            channels.map(([title, copy, href, external], index) => (
+              <a
+                class="gp-channel"
+                href={href}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noreferrer" : undefined}
+              >
+                <span>0{index + 1}</span>
+                <h2>{title}</h2>
+                <p>{copy}</p>
+                <span>{external ? "Открыть ↗" : "Продолжить →"}</span>
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>

@@ -15,7 +15,8 @@ const project = (
 if (!project) return Astro.redirect("/404");
 const { data } = project;
 const isIzoAsa = data.slug === "izo-asa";
-const statusLabel = data.projectStatus === "active" ? "Активная разработка" : "Опубликованный проект";
+const statusLabel =
+  data.projectStatus === "active" ? "Активная разработка" : "Опубликованный проект";
 const architecture = isIzoAsa
   ? [
       ["01", "Пользовательский сценарий", "Создание и редактирование материала."],
@@ -31,13 +32,19 @@ const ledger = isIzoAsa
   ? [
       ["Что сформировано", "Концепция продукта и направление пользовательских сценариев."],
       ["Что проектируется", "Интерфейс, прототип, интеграции и процесс работы с результатом."],
-      ["Что не заявляется", "Завершённость, масштаб, число пользователей и коммерческий результат."],
+      [
+        "Что не заявляется",
+        "Завершённость, масштаб, число пользователей и коммерческий результат.",
+      ],
       ["Следующая проверка", "Рабочие сценарии, ограничения прототипа и границы демонстрации."],
     ]
   : [
       ["Что сформировано", "Проектный цикл действия, ошибки, объяснения, доработки и защиты."],
       ["Что создаётся", "Программы, лаборатории и методические материалы для проектной работы."],
-      ["Что не заявляется", "Число участников, площадки, соревнования и количественные результаты."],
+      [
+        "Что не заявляется",
+        "Число участников, площадки, соревнования и количественные результаты.",
+      ],
       ["Следующая проверка", "Документальные периоды, состав программ и подтверждённые материалы."],
     ];
 ---
@@ -70,13 +77,15 @@ const ledger = isIzoAsa
           <div><h2>Что сформировано, что проверяется и где проходит граница.</h2></div>
         </div>
         <div class="gp-ledger">
-          {ledger.map(([title, copy], index) => (
-            <article>
-              <span>0{index + 1}</span>
-              <h2>{title}</h2>
-              <p>{copy}</p>
-            </article>
-          ))}
+          {
+            ledger.map(([title, copy], index) => (
+              <article>
+                <span>0{index + 1}</span>
+                <h2>{title}</h2>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -88,13 +97,15 @@ const ledger = isIzoAsa
           <div><h2>Три связанных слоя вместо набора разрозненных функций.</h2></div>
         </div>
         <div class="gp-card-grid">
-          {architecture.map(([number, title, copy]) => (
-            <article class="gp-card gp-card--dark">
-              <span class="gp-card__index">{number}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
+          {
+            architecture.map(([number, title, copy]) => (
+              <article class="gp-card gp-card--dark">
+                <span class="gp-card__index">{number}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -107,7 +118,12 @@ const ledger = isIzoAsa
       <div class="gn-wrap gp-case-band">
         <div><p class="gn-eyebrow">Ограничения</p><h2>Что не превращаем в обещание</h2></div>
         <div>
-          <p>{data.limitations || "Количественные показатели и внешние результаты требуют подтверждения."}</p>
+          <p>
+            {
+              data.limitations ||
+                "Количественные показатели и внешние результаты требуют подтверждения."
+            }
+          </p>
           <a class="gn-text-link" href={buildUrl("/facts/")}>Проверить источники <span>→</span></a>
         </div>
       </div>
@@ -118,7 +134,9 @@ const ledger = isIzoAsa
         <div>
           <p class="gn-eyebrow">Следующий шаг</p>
           <h2>{isIzoAsa ? "Открыть ИЗО АСА" : "Обсудить программу или лабораторию"}</h2>
-          <p>Опишите контекст, участников, ограничения и результат, который должен стать видимым.</p>
+          <p>
+            Опишите контекст, участников, ограничения и результат, который должен стать видимым.
+          </p>
         </div>
         <a
           class="gn-button gn-button--light"

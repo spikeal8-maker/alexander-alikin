@@ -3,14 +3,27 @@ import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
 
 const signals = [
-  ["Процесс существует только в головах", "Передача между людьми держится на памяти, чатах и ручных напоминаниях."],
-  ["Данные не образуют картину", "Таблицы, сервисы и отчёты не показывают, где именно возникает потеря."],
-  ["Рост усиливает хаос", "Новая нагрузка требует другой конструкции процесса, а не ещё одного героического сотрудника."],
+  [
+    "Процесс существует только в головах",
+    "Передача между людьми держится на памяти, чатах и ручных напоминаниях.",
+  ],
+  [
+    "Данные не образуют картину",
+    "Таблицы, сервисы и отчёты не показывают, где именно возникает потеря.",
+  ],
+  [
+    "Рост усиливает хаос",
+    "Новая нагрузка требует другой конструкции процесса, а не ещё одного героического сотрудника.",
+  ],
 ];
 
 const stages = [
   ["01", "Разобрать", "Контекст, ограничения, роли, данные и реальная цена проблемы."],
-  ["02", "Нарисовать", "Карта процесса: что движется, где возникает задержка и что можно измерить."],
+  [
+    "02",
+    "Нарисовать",
+    "Карта процесса: что движется, где возникает задержка и что можно измерить.",
+  ],
   ["03", "Ограничить", "Первый этап с понятными границами вместо автоматизации всего сразу."],
   ["04", "Проверить", "Рабочий прототип на реальных условиях и наблюдаемый результат."],
   ["05", "Передать", "Документация, обучение команды и понятные ограничения системы."],
@@ -33,7 +46,8 @@ const stages = [
           </p>
           <div class="gn-hero__actions">
             <a class="gn-button" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
-            <a class="gn-text-link" href={buildUrl("/projects/")}>Смотреть проекты <span>→</span></a>
+            <a class="gn-text-link" href={buildUrl("/projects/")}>Смотреть проекты <span>→</span></a
+            >
           </div>
         </div>
         <aside class="gp-panel">
@@ -54,17 +68,22 @@ const stages = [
           <div><p class="gn-eyebrow">Когда обращаться</p></div>
           <div>
             <h2>Проблема уже стоит дороже предметного разбора.</h2>
-            <p>Задача начинается не с покупки ИИ, а с понимания того, что перестало выдерживать реальность.</p>
+            <p>
+              Задача начинается не с покупки ИИ, а с понимания того, что перестало выдерживать
+              реальность.
+            </p>
           </div>
         </div>
         <div class="gp-card-grid">
-          {signals.map(([title, copy], index) => (
-            <article class="gp-card">
-              <span class="gp-card__index">0{index + 1}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
+          {
+            signals.map(([title, copy], index) => (
+              <article class="gp-card">
+                <span class="gp-card__index">0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -76,27 +95,33 @@ const stages = [
           <div><h2>От диагностики к решению, которое не зависит от одного человека.</h2></div>
         </div>
         <div class="gp-steps">
-          {stages.map(([number, title, copy]) => (
-            <article class="gp-step">
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
+          {
+            stages.map(([number, title, copy]) => (
+              <article class="gp-step">
+                <span>{number}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
 
     <section class="gp-section gp-section--white">
       <div class="gn-wrap gp-split">
-        <blockquote class="gp-quote">Не внедрение ради внедрения. Сначала — проверяемый участок.</blockquote>
+        <blockquote class="gp-quote">
+          Не внедрение ради внедрения. Сначала — проверяемый участок.
+        </blockquote>
         <div class="gp-split__copy">
           <p class="gn-eyebrow">Пример практики</p>
           <p>
             В ИЗО АСА продукт собирается как связная система сценариев, интерфейса, интеграций и
             тестирования — без обещаний масштаба до проверки работающей версии.
           </p>
-          <a class="gn-text-link" href={buildUrl("/projects/izo-asa/")}>Открыть проект <span>→</span></a>
+          <a class="gn-text-link" href={buildUrl("/projects/izo-asa/")}
+            >Открыть проект <span>→</span></a
+          >
         </div>
       </div>
     </section>

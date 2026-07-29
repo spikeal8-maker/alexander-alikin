@@ -3,9 +3,18 @@ import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
 
 const formats = [
-  ["Разбор задачи", "Контекст, текущее состояние, желаемое изменение и возможность измерить результат."],
-  ["Проектирование первого этапа", "Границы, данные, роли, риски и проверяемый результат. Срок и стоимость — после разбора."],
-  ["Рабочий контур и передача", "Ограниченное решение, проверка на реальных условиях, документация и объяснение команде."],
+  [
+    "Разбор задачи",
+    "Контекст, текущее состояние, желаемое изменение и возможность измерить результат.",
+  ],
+  [
+    "Проектирование первого этапа",
+    "Границы, данные, роли, риски и проверяемый результат. Срок и стоимость — после разбора.",
+  ],
+  [
+    "Рабочий контур и передача",
+    "Ограниченное решение, проверка на реальных условиях, документация и объяснение команде.",
+  ],
 ];
 
 const prepare = [
@@ -55,13 +64,15 @@ const mismatch = [
           </div>
         </div>
         <div class="gp-card-grid">
-          {formats.map(([title, copy], index) => (
-            <article class="gp-card">
-              <span class="gp-card__index">0{index + 1}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
+          {
+            formats.map(([title, copy], index) => (
+              <article class="gp-card">
+                <span class="gp-card__index">0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -73,14 +84,22 @@ const mismatch = [
           <h2 class="gp-quote">Четыре пункта вместо длинного брифа.</h2>
         </div>
         <ol class="gp-bullets">
-          {prepare.map((item, index) => <li>0{index + 1} — {item}</li>)}
+          {
+            prepare.map((item, index) => (
+              <li>
+                0{index + 1} — {item}
+              </li>
+            ))
+          }
         </ol>
       </div>
     </section>
 
     <section class="gp-section gp-section--white">
       <div class="gn-wrap gp-split">
-        <blockquote class="gp-quote">Иногда лучший результат разбора — понять, что мы не подходим друг другу.</blockquote>
+        <blockquote class="gp-quote">
+          Иногда лучший результат разбора — понять, что мы не подходим друг другу.
+        </blockquote>
         <div class="gp-split__copy">
           <p class="gn-eyebrow">Когда я не подхожу</p>
           <ul class="gp-bullets">{mismatch.map((item) => <li>{item}</li>)}</ul>

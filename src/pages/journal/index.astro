@@ -11,9 +11,27 @@ const collections = await Promise.all([
 ]);
 const [stories, thoughts, articles, news] = collections;
 const categories = [
-  ["01", "Истории", "Личный опыт, ошибки и изменения подхода.", "/journal/stories/", stories.length],
-  ["02", "Мысли", "Короткие тезисы об инженерии, системах и ИИ.", "/journal/thoughts/", thoughts.length],
-  ["03", "Статьи", "Развёрнутые материалы с аргументом и выводами.", "/journal/articles/", articles.length],
+  [
+    "01",
+    "Истории",
+    "Личный опыт, ошибки и изменения подхода.",
+    "/journal/stories/",
+    stories.length,
+  ],
+  [
+    "02",
+    "Мысли",
+    "Короткие тезисы об инженерии, системах и ИИ.",
+    "/journal/thoughts/",
+    thoughts.length,
+  ],
+  [
+    "03",
+    "Статьи",
+    "Развёрнутые материалы с аргументом и выводами.",
+    "/journal/articles/",
+    articles.length,
+  ],
   ["04", "Новости", "Фактические обновления проектов и публикаций.", "/journal/news/", news.length],
 ] as const;
 const latest = [
@@ -26,50 +44,95 @@ const latest = [
   .slice(0, 6);
 ---
 
-<BaseLayoutV3 title="Журнал — Александр Аликин" description="Истории, мысли, статьи и обновления о проектах, инженерии, образовании и системах.">
+<BaseLayoutV3
+  title="Журнал — Александр Аликин"
+  description="Истории, мысли, статьи и обновления о проектах, инженерии, образовании и системах."
+>
   <div class="gp-page">
     <section class="gp-hero">
       <div class="gn-wrap gp-hero__grid">
         <div>
           <p class="gn-eyebrow">Авторское медиа</p>
           <h1>Журнал практики, ошибок и решений.</h1>
-          <p class="gp-hero__lead">Материалы о том, как возникают проекты, где ломаются системы и почему результат должен быть объяснимым.</p>
+          <p class="gp-hero__lead">
+            Материалы о том, как возникают проекты, где ломаются системы и почему результат должен
+            быть объяснимым.
+          </p>
         </div>
         <aside class="gp-panel">
           <span class="gp-panel__label">Редакционный принцип</span>
-          <p>Материал выходит, когда есть завершённая мысль, проверяемый факт или полезный разбор.</p>
+          <p>
+            Материал выходит, когда есть завершённая мысль, проверяемый факт или полезный разбор.
+          </p>
         </aside>
       </div>
     </section>
 
     <section class="gp-section gp-section--white">
       <div class="gn-wrap">
-        <div class="gp-section-head"><div><p class="gn-eyebrow">Рубрики</p></div><div><h2>Четыре формата для разной глубины чтения.</h2></div></div>
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Рубрики</p></div><div>
+            <h2>Четыре формата для разной глубины чтения.</h2>
+          </div>
+        </div>
         <div class="gp-category-grid">
-          {categories.map(([number, title, description, href, count]) => (
-            <a class="gp-category" href={buildUrl(href)}><span>{number} · {count}</span><strong>{title}</strong><p>{description}</p></a>
-          ))}
+          {
+            categories.map(([number, title, description, href, count]) => (
+              <a class="gp-category" href={buildUrl(href)}>
+                <>
+                  <span>
+                    {number} · {count}
+                  </span>
+                  <strong>{title}</strong>
+                  <p>{description}</p>
+                </>
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>
 
     <section class="gp-section">
       <div class="gn-wrap">
-        <div class="gp-section-head"><div><p class="gn-eyebrow">Последние материалы</p></div><div><h2>Что я проверяю и объясняю сейчас.</h2></div></div>
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Последние материалы</p></div><div>
+            <h2>Что я проверяю и объясняю сейчас.</h2>
+          </div>
+        </div>
         <div class="gp-journal-list">
-          {latest.map(({ entry, kind, base }) => (
-            <a class="gp-journal-item" href={buildUrl(`${base}${entry.data.slug}/`)}>
-              <div class="gp-journal-item__meta"><span>{kind}</span><time>{entry.data.publishedAt.toLocaleDateString("ru")}</time></div>
-              <div><h2>{entry.data.title}</h2><p>{entry.data.description}</p></div><span aria-hidden="true">↗</span>
-            </a>
-          ))}
+          {
+            latest.map(({ entry, kind, base }) => (
+              <a class="gp-journal-item" href={buildUrl(`${base}${entry.data.slug}/`)}>
+                <div class="gp-journal-item__meta">
+                  <>
+                    <span>{kind}</span>
+                    <time>{entry.data.publishedAt.toLocaleDateString("ru")}</time>
+                  </>
+                </div>
+                <>
+                  <div>
+                    <>
+                      <h2>{entry.data.title}</h2>
+                      <p>{entry.data.description}</p>
+                    </>
+                  </div>
+                  <span aria-hidden="true">↗</span>
+                </>
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>
 
     <section class="gp-section gp-section--sand">
       <div class="gn-wrap gp-cta">
-        <div><p class="gn-eyebrow">Без рекламных писем</p><h2>Следить через RSS.</h2><p>Только опубликованные материалы и фактические обновления.</p></div>
+        <div>
+          <p class="gn-eyebrow">Без рекламных писем</p><h2>Следить через RSS.</h2><p>
+            Только опубликованные материалы и фактические обновления.
+          </p>
+        </div>
         <a class="gn-button gn-button--light" href={buildUrl("/rss.xml")}>Открыть RSS</a>
       </div>
     </section>

@@ -6,12 +6,20 @@ const tasks = [
   [
     "Программы и лаборатории",
     "Проектные форматы по информатике, технологии, робототехнике и применению ИИ.",
-    ["результат виден в работающем проекте", "ошибка становится частью процесса", "защита показывает глубину понимания"],
+    [
+      "результат виден в работающем проекте",
+      "ошибка становится частью процесса",
+      "защита показывает глубину понимания",
+    ],
   ],
   [
     "Методическая система",
     "Аудит программы, структура курса, критерии оценки и подготовка педагогов.",
-    ["понятны роли участника и педагога", "зафиксированы требования к площадке", "учтены безопасность, авторство и данные"],
+    [
+      "понятны роли участника и педагога",
+      "зафиксированы требования к площадке",
+      "учтены безопасность, авторство и данные",
+    ],
   ],
 ];
 
@@ -40,7 +48,9 @@ const method = [
           </p>
           <div class="gn-hero__actions">
             <a class="gn-button" href={buildUrl("/collaboration/")}>Обсудить программу</a>
-            <a class="gn-text-link" href={buildUrl("/projects/engineering-education/")}>Открыть проект <span>→</span></a>
+            <a class="gn-text-link" href={buildUrl("/projects/engineering-education/")}
+              >Открыть проект <span>→</span></a
+            >
           </div>
         </div>
         <aside class="gp-panel">
@@ -61,18 +71,27 @@ const method = [
           <div><p class="gn-eyebrow">Два класса задач</p></div>
           <div>
             <h2>Создать среду и сделать её воспроизводимой.</h2>
-            <p>Один слой отвечает за опыт участника, второй — за систему, в которой этот опыт можно повторить.</p>
+            <p>
+              Один слой отвечает за опыт участника, второй — за систему, в которой этот опыт можно
+              повторить.
+            </p>
           </div>
         </div>
         <div class="gp-card-grid gp-card-grid--two">
-          {tasks.map(([title, copy, items], index) => (
-            <article class="gp-card">
-              <span class="gp-card__index">0{index + 1}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-              <ul>{items.map((item) => <li>{item}</li>)}</ul>
-            </article>
-          ))}
+          {
+            tasks.map(([title, copy, items], index) => (
+              <article class="gp-card">
+                <span class="gp-card__index">0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+                <ul>
+                  {items.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -84,25 +103,30 @@ const method = [
           <div><h2>От действия к защите собственного решения.</h2></div>
         </div>
         <div class="gp-steps">
-          {method.map(([number, title, copy]) => (
-            <article class="gp-step">
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
+          {
+            method.map(([number, title, copy]) => (
+              <article class="gp-step">
+                <span>{number}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
 
     <section class="gp-section gp-section--white">
       <div class="gn-wrap gp-split">
-        <blockquote class="gp-quote">Результат обучения должен быть виден, объясним и воспроизводим.</blockquote>
+        <blockquote class="gp-quote">
+          Результат обучения должен быть виден, объясним и воспроизводим.
+        </blockquote>
         <div class="gp-split__copy">
           <p class="gn-eyebrow">Доказательность</p>
           <p>
             Публично используется описание авторской методики и действующей практики. Точные
-            периоды, площадки и количественные результаты добавляются только после проверки источников.
+            периоды, площадки и количественные результаты добавляются только после проверки
+            источников.
           </p>
           <a class="gn-text-link" href={buildUrl("/facts/")}>Факты и источники <span>→</span></a>
         </div>
@@ -114,9 +138,14 @@ const method = [
         <div>
           <p class="gn-eyebrow">Новая программа</p>
           <h2>Опишите аудиторию, площадку и результат.</h2>
-          <p>Этого достаточно, чтобы выбрать формат: аудит, лаборатория, программа или подготовка педагогов.</p>
+          <p>
+            Этого достаточно, чтобы выбрать формат: аудит, лаборатория, программа или подготовка
+            педагогов.
+          </p>
         </div>
-        <a class="gn-button gn-button--light" href={buildUrl("/collaboration/")}>Обсудить программу</a>
+        <a class="gn-button gn-button--light" href={buildUrl("/collaboration/")}
+          >Обсудить программу</a
+        >
       </div>
     </section>
   </div>

@@ -9,10 +9,22 @@ const roles = [
 ];
 
 const arc = [
-  ["Электроника и робототехника", "Привычка искать причину, проверять конструкцию и объяснять принцип."],
-  ["Лига роботов", "Ретроспективный проект в сфере инженерного образования. Детали остаются на фактчеке."],
-  ["Laser Love", "Ретроспективный сервисный проект без неподтверждённых сведений о роли и результатах."],
-  ["ИЗО АСА, ИИ и системы знаний", "Текущая работа: продукты, автоматизация и редакционный контур с источниками."],
+  [
+    "Электроника и робототехника",
+    "Привычка искать причину, проверять конструкцию и объяснять принцип.",
+  ],
+  [
+    "Лига роботов",
+    "Ретроспективный проект в сфере инженерного образования. Детали остаются на фактчеке.",
+  ],
+  [
+    "Laser Love",
+    "Ретроспективный сервисный проект без неподтверждённых сведений о роли и результатах.",
+  ],
+  [
+    "ИЗО АСА, ИИ и системы знаний",
+    "Текущая работа: продукты, автоматизация и редакционный контур с источниками.",
+  ],
 ];
 ---
 
@@ -57,13 +69,15 @@ const arc = [
           </div>
         </div>
         <div class="gp-card-grid">
-          {roles.map(([title, copy], index) => (
-            <article class="gp-card">
-              <span class="gp-card__index">0{index + 1}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
+          {
+            roles.map(([title, copy], index) => (
+              <article class="gp-card">
+                <span class="gp-card__index">0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -75,21 +89,31 @@ const arc = [
           <div><h2>Опыт менялся. Способ действия остался.</h2></div>
         </div>
         <div class="gp-list">
-          {arc.map(([title, copy], index) => (
-            <article class="gp-list__row">
-              <span>0{index + 1}</span>
-              <div><h3>{title}</h3></div>
-              <div><p>{copy}</p></div>
-              <span class="gp-list__arrow" aria-hidden="true">—</span>
-            </article>
-          ))}
+          {
+            arc.map(([title, copy], index) => (
+              <article class="gp-list__row">
+                <span>0{index + 1}</span>
+                <div>
+                  <h3>{title}</h3>
+                </div>
+                <div>
+                  <p>{copy}</p>
+                </div>
+                <span class="gp-list__arrow" aria-hidden="true">
+                  —
+                </span>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
 
     <section class="gp-section gp-section--white">
       <div class="gn-wrap gp-split">
-        <blockquote class="gp-quote">Факт отдельно. Интерпретация отдельно. Ограничение — рядом.</blockquote>
+        <blockquote class="gp-quote">
+          Факт отдельно. Интерпретация отдельно. Ограничение — рядом.
+        </blockquote>
         <div class="gp-split__copy">
           <p class="gn-eyebrow">Редакционная политика</p>
           <p>

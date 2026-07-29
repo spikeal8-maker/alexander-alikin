@@ -7,41 +7,39 @@ import { buildUrl } from "@config/site";
   title="Поиск — Александр Аликин"
   description="Поиск по проектам, материалам, темам и публичным страницам сайта."
 >
-  <div class="v3-page">
-    <section class="v3-page-hero v3-page-hero--plain">
-      <div class="v3-page-hero__copy">
-        <p class="v3-kicker">Поиск</p>
-        <h1 class="v3-page-hero__title">Найти проект, тему или материал</h1>
-        <p class="v3-page-hero__lead">
-          Поиск работает по публичному индексу сайта. Приватные заметки, черновики и внутренний
-          реестр доказательств в результаты не попадают.
-        </p>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Поиск</p>
+          <h1>Найти проект, тему или материал.</h1>
+          <p class="gp-hero__lead">
+            Поиск работает только по публичному индексу. Приватные заметки, черновики и внутренние
+            реестры в результаты не попадают.
+          </p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Граница</span>
+          <p>Без JavaScript остаются доступны навигация, проекты, журнал и основные страницы.</p>
+        </aside>
       </div>
-      <aside class="v3-page-hero__aside">
-        <p class="v3-kicker">Граница</p>
-        <p>
-          Введите название проекта, тему или ключевое понятие. Без JavaScript остаются доступны
-          навигация, журнал и основные разделы.
-        </p>
-      </aside>
     </section>
 
-    <section class="v3-search-panel">
-      <div class="v3-shell">
-        <label for="search-input" class="v3-search-label">Запрос</label>
+    <section class="gs-search">
+      <div class="gn-wrap gs-search__inner">
+        <label for="search-input">Запрос</label>
         <input
           type="search"
           id="search-input"
-          class="v3-search-input"
           placeholder="ИЗО АСА, проектное обучение, автоматизация"
           autocomplete="off"
         />
-        <p id="search-status" class="v3-search-status" aria-live="polite">
+        <p id="search-status" class="gs-search__status" aria-live="polite">
           Начните вводить запрос.
         </p>
-        <ul id="search-results" class="v3-search-results"></ul>
+        <ul id="search-results" class="gs-search__results"></ul>
         <noscript>
-          <p class="v3-search-status">
+          <p class="gs-search__status">
             Для интерактивного поиска требуется JavaScript. Перейдите в <a
               href={buildUrl("/projects/")}>проекты</a
             > или <a href={buildUrl("/journal/")}>журнал</a>.
@@ -70,7 +68,7 @@ import { buildUrl } from "@config/site";
     status.textContent = items.length ? `Найдено: ${items.length}` : "Совпадений не найдено.";
     for (const item of items) {
       const li = document.createElement("li");
-      li.className = "v3-search-result";
+      li.className = "gs-search__result";
       const link = document.createElement("a");
       link.href = item.href;
       link.textContent = item.title;

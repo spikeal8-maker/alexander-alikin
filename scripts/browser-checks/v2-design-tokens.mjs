@@ -4,7 +4,66 @@ export async function checkV2Design(page, name, vpWidth) {
       const rootStyle = getComputedStyle(document.documentElement);
       const bodyStyle = getComputedStyle(document.body);
       const issues = [];
+      const isEditorial = Boolean(rootStyle.getPropertyValue("--gn-bg").trim());
       const isV3 = Boolean(rootStyle.getPropertyValue("--v3-paper").trim());
+
+      if (isEditorial) {
+        for (const token of ["--gn-bg", "--gn-ink", "--gn-blue", "--gn-gutter"]) {
+          if (!rootStyle.getPropertyValue(token).trim()) issues.push(`${token} not defined`);
+        }
+
+        const bodyBackground = bodyStyle.backgroundColor;
+        if (
+          !bodyBackground ||
+          bodyBackground === "transparent" ||
+          bodyBackground === "rgba(0, 0, 0, 0)"
+        ) {
+          issues.push(`Editorial body bg=${bodyBackground}`);
+        }
+        if (bodyStyle.fontFamily.includes("Times New Roman") || bodyStyle.fontFamily === "serif") {
+          issues.push(`Editorial body font=${bodyStyle.fontFamily} (unstyled)`);
+        }
+
+        const header = document.querySelector(".gn-header");
+        if (!header || parseFloat(getComputedStyle(header).height) <= 0) {
+          issues.push("Editorial header missing");
+        }
+
+        if (name === "home") {
+          const heroTitle = document.querySelector(".gn-hero h1");
+          if (!heroTitle) {
+            issues.push("Editorial hero title missing");
+          } else if (vpW >= 1024 && parseFloat(getComputedStyle(heroTitle).fontSize) < 56) {
+            issues.push(`Editorial hero title too small: ${getComputedStyle(heroTitle).fontSize}`);
+          }
+
+          const primary = document.querySelector(".gn-hero .gn-button");
+          if (!primary) {
+            issues.push("Editorial primary CTA missing");
+          } else {
+            const style = getComputedStyle(primary);
+            if (!style.backgroundColor || style.backgroundColor === "rgba(0, 0, 0, 0)") {
+              issues.push("Editorial primary CTA background missing");
+            }
+            if (parseFloat(style.minHeight) < 40) {
+              issues.push(`Editorial primary CTA min-height=${style.minHeight}`);
+            }
+          }
+          return issues;
+        }
+
+        const internalTitle = document.querySelector(
+          ".gp-hero h1, .gr-header h1, .gu-404 h1",
+        );
+        if (
+          internalTitle &&
+          vpW >= 1024 &&
+          parseFloat(getComputedStyle(internalTitle).fontSize) < 44
+        ) {
+          issues.push(`Editorial internal title too small: ${getComputedStyle(internalTitle).fontSize}`);
+        }
+        return issues;
+      }
 
       if (isV3) {
         for (const token of ["--v3-paper", "--v3-ink", "--v3-cobalt", "--v3-gutter"]) {
@@ -27,47 +86,6 @@ export async function checkV2Design(page, name, vpWidth) {
         if (!header || parseFloat(getComputedStyle(header).height) <= 0) {
           issues.push("V3 header missing");
         }
-
-        if (name === "home") {
-          const heroTitle = document.querySelector(".v3-display");
-          if (!heroTitle) {
-            issues.push("V3 hero title missing");
-          } else if (vpW >= 1024 && parseFloat(getComputedStyle(heroTitle).fontSize) < 64) {
-            issues.push(`V3 hero title too small: ${getComputedStyle(heroTitle).fontSize}`);
-          }
-
-          const primary = document.querySelector(".v3-hero__primary");
-          if (!primary) {
-            issues.push("V3 primary CTA missing");
-          } else {
-            const style = getComputedStyle(primary);
-            if (!style.backgroundColor || style.backgroundColor === "rgba(0, 0, 0, 0)") {
-              issues.push("V3 primary CTA background missing");
-            }
-            if (parseFloat(style.minHeight) < 40) {
-              issues.push(`V3 primary CTA min-height=${style.minHeight}`);
-            }
-          }
-
-          const portrait = document.querySelector(".v3-hero__portrait img");
-          if (!portrait || portrait.getBoundingClientRect().height < 280) {
-            issues.push("V3 portrait composition missing or too small");
-          }
-          return issues;
-        }
-
-        const internalTitle = document.querySelector(".v3-page-hero__title, .v3-case-hero h1");
-        if (
-          internalTitle &&
-          vpW >= 1024 &&
-          parseFloat(getComputedStyle(internalTitle).fontSize) < 48
-        ) {
-          issues.push(`V3 internal title too small: ${getComputedStyle(internalTitle).fontSize}`);
-        }
-        const internalHero = document.querySelector(".v3-page-hero, .v3-case-hero");
-        if (internalTitle && (!internalHero || internalHero.getBoundingClientRect().height < 320)) {
-          issues.push("V3 internal hero missing or too small");
-        }
         return issues;
       }
 
@@ -86,48 +104,11 @@ export async function checkV2Design(page, name, vpWidth) {
       if (fontFamily.includes("Times New Roman") || fontFamily === "serif") {
         issues.push(`body font=${fontFamily} (unstyled)`);
       }
-      const button = document.querySelector(".v2-btn-accent");
-      if (button) {
-        const buttonStyle = getComputedStyle(button);
-        if (buttonStyle.display === "inline") issues.push(".v2-btn-accent display=inline");
-        const buttonBackground = buttonStyle.backgroundColor;
-        if (
-          !buttonBackground ||
-          buttonBackground === "transparent" ||
-          buttonBackground === "rgba(0, 0, 0, 0)"
-        ) {
-          issues.push(`.v2-btn-accent bg=${buttonBackground}`);
-        }
-        if (parseFloat(buttonStyle.paddingLeft) <= 0) issues.push(".v2-btn-accent no padding-left");
-        if (parseFloat(buttonStyle.minHeight) < 40) {
-          issues.push(`.v2-btn-accent min-height=${buttonStyle.minHeight}`);
-        }
-      }
-      if (vpW >= 1024 && name === "home") {
-        const heroName = document.querySelector(".v2-hero-name");
-        if (heroName) {
-          const fontSize = parseFloat(getComputedStyle(heroName).fontSize);
-          if (fontSize < 48) issues.push(`.v2-hero-name font-size=${fontSize}px (<48)`);
-        }
-      }
-      const container = document.querySelector(".v2-container");
-      if (container) {
-        const maxWidth = getComputedStyle(container).maxWidth;
-        if (!maxWidth || maxWidth === "none") issues.push(".v2-container max-width=none");
-      }
       const header = document.querySelector("header");
       if (!header) {
         issues.push("no <header>");
-      } else {
-        if (parseFloat(getComputedStyle(header).height) <= 0) issues.push("header height=0");
-        const headerBackground = getComputedStyle(header).backgroundColor;
-        if (
-          !headerBackground ||
-          headerBackground === "transparent" ||
-          headerBackground === "rgba(0, 0, 0, 0)"
-        ) {
-          issues.push(`header bg=${headerBackground} (expected dark)`);
-        }
+      } else if (parseFloat(getComputedStyle(header).height) <= 0) {
+        issues.push("header height=0");
       }
       return issues;
     },

@@ -122,7 +122,10 @@ body {
   font-size: 0.9rem;
   font-weight: 760;
   text-decoration: none;
-  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
 }
 
 .gn-button:hover,

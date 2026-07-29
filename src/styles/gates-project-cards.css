@@ -16,7 +16,9 @@
   border: 1px solid var(--gn-line);
   border-radius: 1.2rem;
   text-decoration: none;
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .gn-project-card:hover,

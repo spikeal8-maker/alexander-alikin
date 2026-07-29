@@ -15,27 +15,27 @@ const { title, description, kind, date, backHref, backLabel } = Astro.props;
 ---
 
 <BaseLayoutV3 title={`${title} — Александр Аликин`} description={description}>
-  <div class="v3-page">
-    <header class="v3-entry-header">
-      <div class="v3-shell v3-entry-header__inner">
-        <div class="v3-entry-meta">
+  <div class="gp-page">
+    <header class="gr-header">
+      <div class="gn-wrap gr-header__inner">
+        <div class="gr-meta">
           <span>{kind}</span>
           {date && <time>{date}</time>}
           <span>Авторский материал</span>
         </div>
-        <h1 class="v3-entry-title">{title}</h1>
-        <p class="v3-entry-lead">{description}</p>
+        <h1>{title}</h1>
+        <p class="gr-header__lead">{description}</p>
       </div>
     </header>
 
-    <section class="v3-entry-reading">
-      <article class="v3-entry-body"><slot /></article>
+    <section class="gr-reading">
+      <article class="gr-body"><slot /></article>
     </section>
 
-    <section class="v3-editorial-section">
-      <div class="v3-shell v3-entry-footer">
-        <a class="v3-link" href={buildUrl(backHref)}>← {backLabel}</a>
-        <a class="v3-button" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
+    <section class="gr-footer">
+      <div class="gn-wrap gr-footer__inner">
+        <a class="gn-text-link" href={buildUrl(backHref)}>← {backLabel}</a>
+        <a class="gn-button" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
       </div>
     </section>
   </div>

@@ -9,7 +9,7 @@ Issue: https://github.com/spikeal8-maker/alexander-alikin/issues/31
 Branch: agent/recover-visible-site
 Draft PR: https://github.com/spikeal8-maker/alexander-alikin/pull/32
 Base: main @ b3f33d2
-Verified implementation head: fcc2a393ece19031931601917f7675c3e8ead595
+Verified implementation head: df33f6426b14b0575604925a622821c6e8e2e3f0
 Production deploy: forbidden
 ```
 
@@ -40,7 +40,7 @@ Production deploy: forbidden
 
 ## Проверено
 
-- GitHub Actions Quality run `30489562697` — PASS;
+- GitHub Actions Quality run `30489667493` — PASS;
 - `npm run quality` — PASS;
 - `npm run design:static` — PASS;
 - `npm run test:media` — PASS;

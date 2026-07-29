@@ -52,7 +52,7 @@
 
   .gn-menu nav .gn-menu__contact {
     margin-top: 1rem;
-    color: #fff;
+    color: var(--gn-white);
     background: var(--gn-blue);
     border: 0;
     border-radius: 999px;

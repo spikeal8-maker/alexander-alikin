@@ -124,7 +124,7 @@
 
 .gn-feature {
   padding-block: clamp(5.5rem, 10vw, 10rem);
-  color: #fff;
+  color: var(--gn-white);
   background: var(--gn-blue);
 }
 
@@ -160,7 +160,7 @@
 }
 
 .gn-feature .gn-text-link {
-  color: #fff;
+  color: var(--gn-white);
 }
 
 .gn-feature .gn-text-link span {
@@ -170,7 +170,7 @@
 .gn-product {
   overflow: hidden;
   color: var(--gn-ink);
-  background: #f5f3ec;
+  background: var(--gn-product-surface);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 1.4rem;
   box-shadow: 0 2.5rem 6rem rgba(0, 0, 0, 0.2);
@@ -199,7 +199,7 @@
   padding: 1rem 0.75rem;
   align-content: start;
   gap: 0.7rem;
-  background: #fff;
+  background: var(--gn-white);
 }
 
 .gn-product__tools {
@@ -226,7 +226,11 @@
 .gn-product__canvas {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #d6e2ff, #f3e2bd);
+  background: linear-gradient(
+    135deg,
+    var(--gn-product-canvas-blue),
+    var(--gn-product-canvas-sand)
+  );
 }
 
 .gn-product__shape {
@@ -257,6 +261,6 @@
   left: 43%;
   width: 6rem;
   height: 6rem;
-  background: #fff;
+  background: var(--gn-white);
   box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.16);
 }

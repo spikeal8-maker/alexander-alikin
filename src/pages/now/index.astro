@@ -15,7 +15,10 @@ const focusItems = [
 ];
 ---
 
-<BaseLayoutV3 title="Сейчас — Александр Аликин" description="Текущие направления работы и исследовательский фокус.">
+<BaseLayoutV3
+  title="Сейчас — Александр Аликин"
+  description="Текущие направления работы и исследовательский фокус."
+>
   <div class="gp-page">
     <section class="gp-hero">
       <div class="gn-wrap gp-hero__grid">
@@ -44,13 +47,15 @@ const focusItems = [
           </div>
         </div>
         <div class="gp-card-grid">
-          {focusItems.map(([title, copy], index) => (
-            <article class="gp-card">
-              <span class="gp-card__index">0{index + 1}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
+          {
+            focusItems.map(([title, copy], index) => (
+              <article class="gp-card">
+                <span class="gp-card__index">0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>

@@ -20,9 +20,18 @@ const formulas = [
 ];
 
 const topics = [
-  ["ИИ и автоматизация", "Где ИИ усиливает качественно поставленную задачу, а где создаёт новый хаос."],
-  ["Инженерное образование", "Проектный результат, роль ошибки, объяснение и защита работающего решения."],
-  ["Архитектура проектов", "Как разделять контекст, ограничения, решение, результат и доказательства."],
+  [
+    "ИИ и автоматизация",
+    "Где ИИ усиливает качественно поставленную задачу, а где создаёт новый хаос.",
+  ],
+  [
+    "Инженерное образование",
+    "Проектный результат, роль ошибки, объяснение и защита работающего решения.",
+  ],
+  [
+    "Архитектура проектов",
+    "Как разделять контекст, ограничения, решение, результат и доказательства.",
+  ],
   ["Системы знаний", "Как заметки превращаются в решения без утечки приватного архива."],
 ];
 ---
@@ -61,13 +70,17 @@ const topics = [
           <div><h2>Готовые безопасные основы для представления.</h2></div>
         </div>
         <div class="gp-card-grid">
-          {formulas.map(([label, title, copy], index) => (
-            <article class="gp-card">
-              <span class="gp-card__index">0{index + 1} · {label}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
+          {
+            formulas.map(([label, title, copy], index) => (
+              <article class="gp-card">
+                <span class="gp-card__index">
+                  0{index + 1} · {label}
+                </span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -79,13 +92,15 @@ const topics = [
           <div><h2>Где есть практический контекст.</h2></div>
         </div>
         <div class="gp-card-grid gp-card-grid--two">
-          {topics.map(([title, copy], index) => (
-            <article class="gp-card gp-card--dark">
-              <span class="gp-card__index">0{index + 1}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
+          {
+            topics.map(([title, copy], index) => (
+              <article class="gp-card gp-card--dark">
+                <span class="gp-card__index">0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -95,9 +110,16 @@ const topics = [
         <div>
           <p class="gn-eyebrow">Редакционный запрос</p>
           <h2>Укажите тему, формат и дату.</h2>
-          <p>Telegram временно используется как единый канал для СМИ и предложений о выступлениях.</p>
+          <p>
+            Telegram временно используется как единый канал для СМИ и предложений о выступлениях.
+          </p>
         </div>
-        <a class="gn-button gn-button--light" href="https://t.me/spikeal" target="_blank" rel="noreferrer">Telegram — @spikeal</a>
+        <a
+          class="gn-button gn-button--light"
+          href="https://t.me/spikeal"
+          target="_blank"
+          rel="noreferrer">Telegram — @spikeal</a
+        >
       </div>
     </section>
   </div>

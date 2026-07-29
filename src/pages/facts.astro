@@ -3,9 +3,15 @@ import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
 
 const sourceTypes = [
-  ["Авторское утверждение", "Позиция, метод или описание собственной роли с понятным происхождением."],
+  [
+    "Авторское утверждение",
+    "Позиция, метод или описание собственной роли с понятным происхождением.",
+  ],
   ["Публичный источник", "Внешняя страница, публикация или репозиторий, который можно проверить."],
-  ["Документальная проверка", "Утверждение связано с документом, журналом, выгрузкой или первичным доказательством."],
+  [
+    "Документальная проверка",
+    "Утверждение связано с документом, журналом, выгрузкой или первичным доказательством.",
+  ],
 ];
 
 const blocked = [
@@ -28,8 +34,8 @@ const blocked = [
           <p class="gn-eyebrow">Факты и источники</p>
           <h1>Доверие начинается с происхождения утверждения.</h1>
           <p class="gp-hero__lead">
-            Проверяемые факты, слова автора, редакционные связки и стратегические гипотезы учитываются
-            отдельно.
+            Проверяемые факты, слова автора, редакционные связки и стратегические гипотезы
+            учитываются отдельно.
           </p>
         </div>
         <aside class="gp-panel">
@@ -46,13 +52,15 @@ const blocked = [
           <div><h2>Что считается основанием утверждения.</h2></div>
         </div>
         <div class="gp-card-grid">
-          {sourceTypes.map(([title, copy], index) => (
-            <article class="gp-card">
-              <span class="gp-card__index">0{index + 1}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
+          {
+            sourceTypes.map(([title, copy], index) => (
+              <article class="gp-card">
+                <span class="gp-card__index">0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -64,14 +72,22 @@ const blocked = [
           <h2 class="gp-quote">Что намеренно не публикуется.</h2>
         </div>
         <ol class="gp-bullets">
-          {blocked.map((item, index) => <li>0{index + 1} — {item}</li>)}
+          {
+            blocked.map((item, index) => (
+              <li>
+                0{index + 1} — {item}
+              </li>
+            ))
+          }
         </ol>
       </div>
     </section>
 
     <section class="gp-section gp-section--sand">
       <div class="gn-wrap gp-split">
-        <blockquote class="gp-quote">Приватный документ не становится публичным только потому, что он существует.</blockquote>
+        <blockquote class="gp-quote">
+          Приватный документ не становится публичным только потому, что он существует.
+        </blockquote>
         <div class="gp-split__copy">
           <p>Персональные данные и закрытый архив проходят отдельную проверку публичности.</p>
           <a class="gn-text-link" href={buildUrl("/projects/")}>Проверить проекты <span>→</span></a>

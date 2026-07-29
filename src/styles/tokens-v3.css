@@ -18,6 +18,22 @@
   --v3-section: clamp(5rem, 10vw, 10rem);
   --v3-radius: 0.35rem;
   --v3-shadow: 0 2rem 6rem rgba(17, 19, 24, 0.14);
+
+  --gn-bg: #f7f6f1;
+  --gn-surface: #ffffff;
+  --gn-ink: #111111;
+  --gn-muted: #62625e;
+  --gn-line: #d8d7d0;
+  --gn-blue: #1257d6;
+  --gn-blue-dark: #0a347e;
+  --gn-green: #b7f06b;
+  --gn-sand: #e9dfcc;
+  --gn-white: #ffffff;
+  --gn-black: #111111;
+  --gn-product-surface: #f5f3ec;
+  --gn-product-canvas-blue: #d6e2ff;
+  --gn-product-canvas-sand: #f3e2bd;
+  --gn-project-visual: #dce8ff;
 }
 
 * {

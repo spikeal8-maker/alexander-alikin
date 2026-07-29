@@ -10,20 +10,20 @@ const channels = [
     true,
   ],
   [
-    "RUTUBE — видео, занятия и архив проектов",
-    "Видеоархив содержит материалы разных лет; старые записи могут не отражать текущее позиционирование.",
+    "RUTUBE",
+    "Видео, занятия и архив проектов разных лет. Старые материалы могут не отражать текущее позиционирование.",
     "https://rutube.ru/channel/2420333/",
     true,
   ],
   [
-    "Открыть ИЗО АСА",
-    "Внешняя ссылка развивающегося проекта без утверждений о масштабе или коммерческом результате.",
+    "ИЗО АСА",
+    "Внешняя ссылка развивающегося продукта без утверждений о масштабе или коммерческом результате.",
     "https://izo.alikinas.ru/",
     true,
   ],
   [
     "Подготовить запрос",
-    "Формат первого сообщения для проекта, комментария СМИ или предложения о выступлении.",
+    "Короткий формат первого сообщения для проекта, комментария СМИ или предложения о выступлении.",
     buildUrl("/collaboration/"),
     false,
   ],
@@ -40,61 +40,59 @@ const prepare = [
 
 <BaseLayoutV3
   title="Контакты — Александр Аликин"
-  description="Публичные контакты и прямые переходы к проектам, деловому запросу, GitHub и материалам для СМИ."
+  description="Telegram, видеоархив, ИЗО АСА и формат первого профессионального обращения."
 >
-  <div class="v3-page">
-    <section class="v3-page-hero v3-page-hero--plain">
-      <div class="v3-page-hero__copy">
-        <p class="v3-kicker">Контакты</p>
-        <h1 class="v3-page-hero__title">Где связаться и что посмотреть</h1>
-        <p class="v3-page-hero__lead">
-          Основной публичный канал — Telegram @spikeal. Здесь также собраны утверждённый видеоархив,
-          ссылка проекта ИЗО АСА и формат первого сообщения.
-        </p>
-      </div>
-      <aside class="v3-page-hero__aside">
-        <strong>Только утверждённые адреса</strong>
-        <p>
-          Публичные email и YouTube пока не утверждены. Телефон и неподтверждённые социальные
-          профили не публикуются.
-        </p>
-      </aside>
-    </section>
-
-    <section class="v3-editorial-section v3-editorial-section--white">
-      <div class="v3-shell v3-section-grid">
-        <div class="v3-section-grid__intro">
-          <p class="v3-kicker">Прямые переходы</p>
-          <h2>Не нужно искать их в футере</h2>
-          <p>Каждый пункт ведёт на конкретную страницу или подтверждённый внешний профиль.</p>
-        </div>
-        <div class="v3-numbered">
-          {
-            channels.map(([title, copy, href, external], index) => (
-              <a
-                class="v3-numbered__item"
-                href={href}
-                target={external ? "_blank" : undefined}
-                rel={external ? "noreferrer" : undefined}
-              >
-                <span class="v3-numbered__index">0{index + 1}</span>
-                <div>
-                  <h3>{title}</h3>
-                  <p>{copy}</p>
-                </div>
-              </a>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="v3-editorial-section">
-      <div class="v3-shell v3-statement">
-        <blockquote>Хороший первый запрос уже содержит границы задачи.</blockquote>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
         <div>
-          <p class="v3-kicker">Что подготовить</p>
-          <ul>{prepare.map((item) => <li>{item}</li>)}</ul>
+          <p class="gn-eyebrow">Контакты</p>
+          <h1>Связаться напрямую. Без формы и лишних посредников.</h1>
+          <p class="gp-hero__lead">
+            Основной публичный канал — Telegram @spikeal. Здесь также собраны видеоархив, ссылка
+            проекта ИЗО АСА и короткий формат первого сообщения.
+          </p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Публичные границы</span>
+          <p>Телефон, неподтверждённые профили, публичный email и YouTube сейчас не публикуются.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Прямые переходы</p></div>
+          <div>
+            <h2>Четыре понятных действия.</h2>
+            <p>Каждый пункт ведёт на конкретную страницу или подтверждённый внешний профиль.</p>
+          </div>
+        </div>
+        <div class="gp-channel-grid">
+          {channels.map(([title, copy, href, external], index) => (
+            <a
+              class="gp-channel"
+              href={href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noreferrer" : undefined}
+            >
+              <span>0{index + 1}</span>
+              <h2>{title}</h2>
+              <p>{copy}</p>
+              <span>{external ? "Открыть ↗" : "Продолжить →"}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--sand">
+      <div class="gn-wrap gp-split">
+        <blockquote class="gp-quote">Хороший первый запрос уже содержит границы задачи.</blockquote>
+        <div class="gp-split__copy">
+          <p class="gn-eyebrow">Что написать</p>
+          <ul class="gp-bullets">{prepare.map((item) => <li>{item}</li>)}</ul>
         </div>
       </div>
     </section>

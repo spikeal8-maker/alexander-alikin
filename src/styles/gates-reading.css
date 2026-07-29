@@ -1,0 +1,142 @@
+.gr-header {
+  padding-block: clamp(4.5rem, 9vw, 8rem) clamp(3rem, 6vw, 5rem);
+  background: var(--gn-bg);
+  border-bottom: 1px solid var(--gn-line);
+}
+
+.gr-header__inner {
+  max-width: 72rem;
+}
+
+.gr-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  color: var(--gn-blue);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gr-header h1 {
+  margin: 0;
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 670;
+  letter-spacing: -0.07em;
+  line-height: 0.92;
+}
+
+.gr-header__lead {
+  max-width: 50rem;
+  margin: 2rem 0 0;
+  color: var(--gn-muted);
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  line-height: 1.6;
+}
+
+.gr-reading {
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+  background: var(--gn-surface);
+}
+
+.gr-body {
+  width: min(100% - 2.5rem, 48rem);
+  margin-inline: auto;
+  color: var(--gn-ink);
+  font-size: clamp(1.05rem, 1.35vw, 1.18rem);
+  line-height: 1.78;
+}
+
+.gr-body > :first-child {
+  margin-top: 0;
+}
+
+.gr-body h2,
+.gr-body h3 {
+  margin: 3.2rem 0 1rem;
+  font-weight: 680;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+.gr-body h2 {
+  font-size: clamp(1.9rem, 3.4vw, 3.2rem);
+}
+
+.gr-body h3 {
+  font-size: clamp(1.4rem, 2.4vw, 2.15rem);
+}
+
+.gr-body p,
+.gr-body ul,
+.gr-body ol,
+.gr-body blockquote {
+  margin-block: 1.4rem;
+}
+
+.gr-body a {
+  color: var(--gn-blue);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.gr-body blockquote {
+  margin-inline: 0;
+  padding: 1.5rem 0 1.5rem 1.5rem;
+  border-left: 0.3rem solid var(--gn-green);
+  font-size: 1.25em;
+  font-weight: 620;
+  line-height: 1.45;
+}
+
+.gr-body code {
+  padding: 0.15rem 0.35rem;
+  background: var(--gn-bg);
+  border: 1px solid var(--gn-line);
+  border-radius: 0.3rem;
+  font-size: 0.9em;
+}
+
+.gr-body pre {
+  overflow-x: auto;
+  padding: 1.4rem;
+  color: #fff;
+  background: #111;
+  border-radius: 0.8rem;
+}
+
+.gr-body pre code {
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.gr-footer {
+  padding-block: 3rem 5rem;
+  background: var(--gn-bg);
+}
+
+.gr-footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--gn-line);
+}
+
+@media (max-width: 620px) {
+  .gr-meta {
+    flex-wrap: wrap;
+  }
+
+  .gr-header h1 {
+    font-size: clamp(2.7rem, 13vw, 4.6rem);
+  }
+
+  .gr-footer__inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

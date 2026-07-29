@@ -1,0 +1,35 @@
+name: Format recover branch
+
+on:
+  push:
+    branches:
+      - agent/recover-visible-site
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    if: ${{ !contains(github.event.head_commit.message, '[skip format]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/recover-visible-site
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.18.0
+          cache: npm
+      - run: npm ci
+      - run: npm run format:write
+      - name: Commit formatting
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src scripts
+          if git diff --cached --quiet; then
+            echo "No formatting changes"
+          else
+            git commit -m "style: apply prettier [skip format]"
+            git push origin HEAD:agent/recover-visible-site
+          fi

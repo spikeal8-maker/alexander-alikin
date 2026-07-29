@@ -1,0 +1,61 @@
+name: Capture homepage preview
+
+on:
+  push:
+    branches:
+      - agent/recover-visible-site
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    if: ${{ !contains(github.event.head_commit.message, '[skip capture]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/recover-visible-site
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.18.0
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Start site
+        run: |
+          npm run dev -- --host 127.0.0.1 > /tmp/alikin-astro.log 2>&1 &
+          for i in {1..60}; do
+            if curl -fsS http://127.0.0.1:4321/alexander-alikin/ > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/alikin-astro.log
+          exit 1
+      - name: Capture desktop and mobile
+        run: |
+          mkdir -p docs/screenshots/gates-notes-adaptation
+          node --input-type=module <<'EOF'
+          import { chromium } from '@playwright/test';
+          const browser = await chromium.launch({ headless: true });
+          const page = await browser.newPage();
+          await page.setViewportSize({ width: 1440, height: 900 });
+          await page.goto('http://127.0.0.1:4321/alexander-alikin/', { waitUntil: 'networkidle' });
+          await page.screenshot({ path: 'docs/screenshots/gates-notes-adaptation/home-desktop.png', fullPage: true });
+          await page.setViewportSize({ width: 390, height: 844 });
+          await page.goto('http://127.0.0.1:4321/alexander-alikin/', { waitUntil: 'networkidle' });
+          await page.screenshot({ path: 'docs/screenshots/gates-notes-adaptation/home-mobile.png', fullPage: true });
+          await browser.close();
+          EOF
+      - name: Commit screenshots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/screenshots/gates-notes-adaptation
+          if git diff --cached --quiet; then
+            echo "No screenshot changes"
+          else
+            git commit -m "docs: capture redesigned homepage [skip capture]"
+            git push origin HEAD:agent/recover-visible-site
+          fi

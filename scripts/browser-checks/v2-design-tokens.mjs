@@ -52,15 +52,15 @@ export async function checkV2Design(page, name, vpWidth) {
           return issues;
         }
 
-        const internalTitle = document.querySelector(
-          ".gp-hero h1, .gr-header h1, .gu-404 h1",
-        );
+        const internalTitle = document.querySelector(".gp-hero h1, .gr-header h1, .gu-404 h1");
         if (
           internalTitle &&
           vpW >= 1024 &&
           parseFloat(getComputedStyle(internalTitle).fontSize) < 44
         ) {
-          issues.push(`Editorial internal title too small: ${getComputedStyle(internalTitle).fontSize}`);
+          issues.push(
+            `Editorial internal title too small: ${getComputedStyle(internalTitle).fontSize}`,
+          );
         }
         return issues;
       }

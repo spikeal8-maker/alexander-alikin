@@ -16,6 +16,17 @@ export default [
     },
   },
   {
+    files: ["scripts/browser-checks/**/*.mjs", "scripts/validate-design-browser.mjs"],
+    languageOptions: {
+      globals: {
+        document: "readonly",
+        getComputedStyle: "readonly",
+        setTimeout: "readonly",
+        window: "readonly",
+      },
+    },
+  },
+  {
     rules: {
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
       "@typescript-eslint/no-explicit-any": "off",

@@ -1,32 +1,152 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
+
+const tasks: Array<[string, string, string[]]> = [
+  [
+    "Программы и лаборатории",
+    "Проектные форматы по информатике, технологии, робототехнике и применению ИИ.",
+    [
+      "результат виден в работающем проекте",
+      "ошибка становится частью процесса",
+      "защита показывает глубину понимания",
+    ],
+  ],
+  [
+    "Методическая система",
+    "Аудит программы, структура курса, критерии оценки и подготовка педагогов.",
+    [
+      "понятны роли участника и педагога",
+      "зафиксированы требования к площадке",
+      "учтены безопасность, авторство и данные",
+    ],
+  ],
+];
+
+const method = [
+  ["01", "Действие", "Участник начинает создавать, а не ждёт готового ответа."],
+  ["02", "Ошибка", "Ограничение становится видимым и пригодным для разбора."],
+  ["03", "Объяснение", "Нужно понять причину, а не подобрать случайный ответ."],
+  ["04", "Доработка", "Решение пересобирается осознанно и проверяется снова."],
+  ["05", "Защита", "Результат подтверждается объяснением и демонстрацией."],
+];
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Образованию — Александр Аликин"
-  description="Проектирую инженерные и ИИ-программы, лаборатории и методические системы с воспроизводимым результатом."
-  currentPath="/education/"
-  breadcrumbs={[{ label: "Образованию" }]}
+  description="Инженерные программы, лаборатории и методические системы, в которых результат создаётся, проверяется и объясняется."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Образованию</h1>
-      <p class="description">
-        Проектирую инженерные и ИИ-программы, лаборатории и методические системы, в которых ученик
-        создаёт и защищает работающий результат, а педагог получает воспроизводимый процесс.
-      </p>
-      <p>
-        Форматы сотрудничества, методика и образовательные проекты будут опубликованы после
-        утверждения материалов.
-      </p>
-      <p style="margin-top:var(--space-lg);">
-        <a
-          href={buildUrl("/collaboration/")}
-          style="display:inline-block;padding:var(--space-md) var(--space-xl);background:var(--color-primary);color:var(--color-surface);text-decoration:none;border-radius:var(--radius);font-weight:600;"
-          >Обсудить программу или лабораторию</a
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Образованию</p>
+          <h1>Понимание видно по тому, как человек объясняет ошибку.</h1>
+          <p class="gp-hero__lead">
+            Проектирую программы и лаборатории, где участник создаёт, проверяет, дорабатывает и
+            объясняет собственное решение.
+          </p>
+          <div class="gn-hero__actions">
+            <a class="gn-button" href={buildUrl("/collaboration/")}>Обсудить программу</a>
+            <a class="gn-text-link" href={buildUrl("/projects/engineering-education/")}
+              >Открыть проект <span>→</span></a
+            >
+          </div>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Проектный цикл</span>
+          <div class="gp-flow">
+            <span>Создать</span>
+            <span>Столкнуться с ошибкой</span>
+            <span>Найти причину</span>
+            <span>Объяснить решение</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Два класса задач</p></div>
+          <div>
+            <h2>Создать среду и сделать её воспроизводимой.</h2>
+            <p>
+              Один слой отвечает за опыт участника, второй — за систему, в которой этот опыт можно
+              повторить.
+            </p>
+          </div>
+        </div>
+        <div class="gp-card-grid gp-card-grid--two">
+          {
+            tasks.map(([title, copy, items], index) => (
+              <article class="gp-card">
+                <span class="gp-card__index">0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+                <ul>
+                  {items.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--green">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Метод</p></div>
+          <div><h2>От действия к защите собственного решения.</h2></div>
+        </div>
+        <div class="gp-steps">
+          {
+            method.map(([number, title, copy]) => (
+              <article class="gp-step">
+                <span>{number}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap gp-split">
+        <blockquote class="gp-quote">
+          Результат обучения должен быть виден, объясним и воспроизводим.
+        </blockquote>
+        <div class="gp-split__copy">
+          <p class="gn-eyebrow">Доказательность</p>
+          <p>
+            Публично используется описание авторской методики и действующей практики. Точные
+            периоды, площадки и количественные результаты добавляются только после проверки
+            источников.
+          </p>
+          <a class="gn-text-link" href={buildUrl("/facts/")}>Факты и источники <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section">
+      <div class="gn-wrap gp-cta">
+        <div>
+          <p class="gn-eyebrow">Новая программа</p>
+          <h2>Опишите аудиторию, площадку и результат.</h2>
+          <p>
+            Этого достаточно, чтобы выбрать формат: аудит, лаборатория, программа или подготовка
+            педагогов.
+          </p>
+        </div>
+        <a class="gn-button gn-button--light" href={buildUrl("/collaboration/")}
+          >Обсудить программу</a
         >
-      </p>
-    </div>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

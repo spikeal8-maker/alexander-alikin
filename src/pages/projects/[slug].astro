@@ -1,53 +1,152 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { getCollection } from "astro:content";
-import StatusBadge from "@components/foundation/StatusBadge.astro";
-import EvidenceBadge from "@components/foundation/EvidenceBadge.astro";
+import { buildUrl } from "@config/site";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects", (p) => p.data.status === "published");
-  return projects.map((p) => ({ params: { slug: p.data.slug } }));
+  const projects = await getCollection("projects", (entry) => entry.data.status === "published");
+  return projects.map((project) => ({ params: { slug: project.data.slug } }));
 }
 
 const { slug } = Astro.params;
-const project = (await getCollection("projects", (p) => p.data.status === "published")).find(
-  (p) => p.data.slug === slug,
-);
+const project = (
+  await getCollection("projects", (entry) => entry.data.status === "published")
+).find((entry) => entry.data.slug === slug);
 if (!project) return Astro.redirect("/404");
-
 const { data } = project;
+const isIzoAsa = data.slug === "izo-asa";
+const statusLabel =
+  data.projectStatus === "active" ? "Активная разработка" : "Опубликованный проект";
+const architecture = isIzoAsa
+  ? [
+      ["01", "Пользовательский сценарий", "Создание и редактирование материала."],
+      ["02", "Интерфейс", "Управление параметрами, результатами и следующими действиями."],
+      ["03", "Интеграции", "Связь генерации, редактора и внешних инструментов."],
+    ]
+  : [
+      ["01", "Действие", "Участник создаёт устройство, программу или систему."],
+      ["02", "Разбор", "Ошибка становится материалом для объяснения и пересборки."],
+      ["03", "Защита", "Понимание проверяется демонстрацией и аргументацией."],
+    ];
+const ledger = isIzoAsa
+  ? [
+      ["Что сформировано", "Концепция продукта и направление пользовательских сценариев."],
+      ["Что проектируется", "Интерфейс, прототип, интеграции и процесс работы с результатом."],
+      [
+        "Что не заявляется",
+        "Завершённость, масштаб, число пользователей и коммерческий результат.",
+      ],
+      ["Следующая проверка", "Рабочие сценарии, ограничения прототипа и границы демонстрации."],
+    ]
+  : [
+      ["Что сформировано", "Проектный цикл действия, ошибки, объяснения, доработки и защиты."],
+      ["Что создаётся", "Программы, лаборатории и методические материалы для проектной работы."],
+      [
+        "Что не заявляется",
+        "Число участников, площадки, соревнования и количественные результаты.",
+      ],
+      ["Следующая проверка", "Документальные периоды, состав программ и подтверждённые материалы."],
+    ];
 ---
 
-<BaseLayout
-  title={`${data.title} — Александр Аликин`}
-  description={data.description}
-  currentPath="/projects/"
-  breadcrumbs={[{ label: "Проекты", href: "/projects/" }, { label: data.title }]}
->
-  <div class="container">
-    <div class="route-shell">
-      <div
-        style="display:flex;gap:var(--space-sm);align-items:center;margin-bottom:var(--space-md);flex-wrap:wrap;"
-      >
-        <StatusBadge status={data.status} />
-        <EvidenceBadge level={data.evidenceLevel} />
+<BaseLayoutV3 title={`${data.title} — Александр Аликин`} description={data.description}>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Проект · {statusLabel}</p>
+          <h1>{data.title}</h1>
+          <p class="gp-hero__lead">{data.description}</p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Контекст проекта</span>
+          <dl>
+            <div><dt>Роль</dt><dd>{data.role}</dd></div>
+            <div><dt>Период</dt><dd>{data.period}</dd></div>
+            <div><dt>Статус</dt><dd>{statusLabel}</dd></div>
+            <div><dt>Источник</dt><dd>Авторское утверждение</dd></div>
+          </dl>
+        </aside>
       </div>
-      <h1>{data.title}</h1>
-      <p class="description">{data.description}</p>
-      <div class="content-body">
-        <p><strong>Роль:</strong> {data.role}</p>
-        <p><strong>Период:</strong> {data.period}</p>
-        <p><strong>Статус проекта:</strong> {data.projectStatus}</p>
-        <p><strong>Результат:</strong> {data.result}</p>
-        {
-          data.limitations && (
-            <p>
-              <em>{data.limitations}</em>
-            </p>
-          )
-        }
-        {project.body && <Fragment set:html={project.body} />}
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Карта доказательности</p></div>
+          <div><h2>Что сформировано, что проверяется и где проходит граница.</h2></div>
+        </div>
+        <div class="gp-ledger">
+          {
+            ledger.map(([title, copy], index) => (
+              <article>
+                <span>0{index + 1}</span>
+                <h2>{title}</h2>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
+        </div>
       </div>
-    </div>
+    </section>
+
+    <section class="gp-section gp-section--blue">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Архитектура решения</p></div>
+          <div><h2>Три связанных слоя вместо набора разрозненных функций.</h2></div>
+        </div>
+        <div class="gp-card-grid">
+          {
+            architecture.map(([number, title, copy]) => (
+              <article class="gp-card gp-card--dark">
+                <span class="gp-card__index">{number}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap gp-case-band">
+        <div><p class="gn-eyebrow">Текущий результат</p><h2>Что можно утверждать сейчас</h2></div>
+        <p>{data.result}</p>
+      </div>
+      <div class="gn-wrap gp-case-band">
+        <div><p class="gn-eyebrow">Ограничения</p><h2>Что не превращаем в обещание</h2></div>
+        <div>
+          <p>
+            {
+              data.limitations ||
+                "Количественные показатели и внешние результаты требуют подтверждения."
+            }
+          </p>
+          <a class="gn-text-link" href={buildUrl("/facts/")}>Проверить источники <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section">
+      <div class="gn-wrap gp-cta">
+        <div>
+          <p class="gn-eyebrow">Следующий шаг</p>
+          <h2>{isIzoAsa ? "Открыть ИЗО АСА" : "Обсудить программу или лабораторию"}</h2>
+          <p>
+            Опишите контекст, участников, ограничения и результат, который должен стать видимым.
+          </p>
+        </div>
+        <a
+          class="gn-button gn-button--light"
+          href={isIzoAsa ? "https://izo.alikinas.ru/" : buildUrl("/collaboration/")}
+          target={isIzoAsa ? "_blank" : undefined}
+          rel={isIzoAsa ? "noreferrer" : undefined}
+        >
+          {isIzoAsa ? "Открыть продукт" : "Обсудить задачу"}
+        </a>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

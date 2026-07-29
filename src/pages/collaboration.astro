@@ -1,57 +1,121 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
+
+const formats = [
+  [
+    "Разбор задачи",
+    "Контекст, текущее состояние, желаемое изменение и возможность измерить результат.",
+  ],
+  [
+    "Проектирование первого этапа",
+    "Границы, данные, роли, риски и проверяемый результат. Срок и стоимость — после разбора.",
+  ],
+  [
+    "Рабочий контур и передача",
+    "Ограниченное решение, проверка на реальных условиях, документация и объяснение команде.",
+  ],
+];
+
+const prepare = [
+  "Краткое описание текущей ситуации",
+  "Что должно работать иначе",
+  "Какие данные и люди участвуют",
+  "Что уже пробовали и где возникло ограничение",
+];
+
+const mismatch = [
+  "Нужно обещание результата до диагностики",
+  "Команда не готова участвовать во внедрении",
+  "Требуется массовый шаблонный консалтинг",
+  "Задача лежит вне инженерии, ИИ, процессов или технического образования",
+];
 ---
 
-<BaseLayout
-  title="Сотрудничество — Александр Аликин"
-  description="Выберите контекст: бизнес-задача, образовательная программа, партнёрство, выступление или другой вопрос."
-  currentPath="/collaboration/"
-  breadcrumbs={[{ label: "Сотрудничество" }]}
+<BaseLayoutV3
+  title="Обсудить задачу — Александр Аликин"
+  description="Предметный разбор бизнес-, технологической или образовательной задачи без шаблонных пакетов и обещаний до диагностики."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Сотрудничество</h1>
-      <p class="description">
-        Выберите контекст обращения. Это поможет мне быстрее понять вашу задачу.
-      </p>
-      <ul style="list-style:none;padding:0;margin-top:var(--space-xl);">
-        <li style="margin-bottom:var(--space-md);">
-          <a
-            href={buildUrl("/business/")}
-            style="display:block;padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;font-weight:600;"
-            >Бизнес-процесс или ИИ-пилот</a
-          >
-        </li>
-        <li style="margin-bottom:var(--space-md);">
-          <a
-            href={buildUrl("/education/")}
-            style="display:block;padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;font-weight:600;"
-            >Образовательная программа или лаборатория</a
-          >
-        </li>
-        <li style="margin-bottom:var(--space-md);">
-          <a
-            href={buildUrl("/contacts/")}
-            style="display:block;padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;font-weight:600;"
-            >Партнёрство по проекту</a
-          >
-        </li>
-        <li style="margin-bottom:var(--space-md);">
-          <a
-            href={buildUrl("/press/")}
-            style="display:block;padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;font-weight:600;"
-            >Выступление или СМИ</a
-          >
-        </li>
-        <li style="margin-bottom:var(--space-md);">
-          <a
-            href={buildUrl("/contacts/")}
-            style="display:block;padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;font-weight:600;"
-            >Другой предметный вопрос</a
-          >
-        </li>
-      </ul>
-    </div>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Сотрудничество</p>
+          <h1>Первый разговор нужен, чтобы понять задачу.</h1>
+          <p class="gp-hero__lead">
+            Разбираем, что происходит сейчас, какое изменение действительно нужно и существует ли
+            проверяемый первый шаг.
+          </p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Принцип</span>
+          <p>Без обещаний результата, срока и стоимости до диагностики реального процесса.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Как начинается работа</p></div>
+          <div>
+            <h2>От разговора к рабочему контуру.</h2>
+            <p>Каждый следующий этап имеет смысл только после результата предыдущего.</p>
+          </div>
+        </div>
+        <div class="gp-card-grid">
+          {
+            formats.map(([title, copy], index) => (
+              <article class="gp-card">
+                <span class="gp-card__index">0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--sand">
+      <div class="gn-wrap gp-split">
+        <div>
+          <p class="gn-eyebrow">До разговора</p>
+          <h2 class="gp-quote">Четыре пункта вместо длинного брифа.</h2>
+        </div>
+        <ol class="gp-bullets">
+          {
+            prepare.map((item, index) => (
+              <li>
+                0{index + 1} — {item}
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap gp-split">
+        <blockquote class="gp-quote">
+          Иногда лучший результат разбора — понять, что мы не подходим друг другу.
+        </blockquote>
+        <div class="gp-split__copy">
+          <p class="gn-eyebrow">Когда я не подхожу</p>
+          <ul class="gp-bullets">{mismatch.map((item) => <li>{item}</li>)}</ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section">
+      <div class="gn-wrap gp-cta">
+        <div>
+          <p class="gn-eyebrow">Контекст вместо брифа</p>
+          <h2>Опишите ситуацию несколькими абзацами.</h2>
+          <p>Этого достаточно, чтобы определить предмет разговора и разумный первый шаг.</p>
+        </div>
+        <a class="gn-button gn-button--light" href={buildUrl("/contacts/")}>Перейти к контактам</a>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

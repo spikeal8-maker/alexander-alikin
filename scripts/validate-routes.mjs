@@ -45,7 +45,7 @@ function routePath(pageFile) {
   if (!p.endsWith("/") && !p.includes(".")) p += "/";
   if (p.endsWith("/404/")) p = "/404.html";
   else if (p === "/rss.xml" || p === "/robots.txt") p = `/${p}`;
-  return p.replace(/\/+/g, "/").replace(/\/\[/g, "/[").replace(/\]\//g, "]/");
+  return p.replace(/\/+/g, "/").replace(/\/\[/g, "/[");
 }
 
 const pagesDir = path.join(root, "src", "pages");

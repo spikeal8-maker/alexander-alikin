@@ -1,63 +1,108 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+import { buildUrl } from "@config/site";
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Поиск — Александр Аликин"
-  description="Поиск по проектам, темам, материалам и годам."
-  currentPath="/search/"
-  breadcrumbs={[{ label: "Поиск" }]}
+  description="Поиск по проектам, материалам, темам и публичным страницам сайта."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Поиск</h1>
-      <p class="description">Поиск по проектам, темам, материалам и годам.</p>
-      <noscript>
-        <p>
-          Для поиска включите JavaScript. Без JavaScript доступна навигация через меню и карту
-          сайта.
-        </p>
-      </noscript>
-      <div id="search-app" style="margin-top:var(--space-lg);">
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Поиск</p>
+          <h1>Найти проект, тему или материал.</h1>
+          <p class="gp-hero__lead">
+            Поиск работает только по публичному индексу. Приватные заметки, черновики и внутренние
+            реестры в результаты не попадают.
+          </p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Граница</span>
+          <p>Без JavaScript остаются доступны навигация, проекты, журнал и основные страницы.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gs-search">
+      <div class="gn-wrap gs-search__inner">
+        <label for="search-input">Запрос</label>
         <input
           type="search"
           id="search-input"
-          placeholder="Введите запрос..."
-          style="width:100%;padding:var(--space-md);font-size:1rem;border:1px solid var(--color-border);border-radius:var(--radius);"
+          placeholder="ИЗО АСА, проектное обучение, автоматизация"
+          autocomplete="off"
         />
-        <ul id="search-results" style="list-style:none;padding:0;margin-top:var(--space-md);"></ul>
+        <p id="search-status" class="gs-search__status" aria-live="polite">
+          Начните вводить запрос.
+        </p>
+        <ul id="search-results" class="gs-search__results"></ul>
+        <noscript>
+          <p class="gs-search__status">
+            Для интерактивного поиска требуется JavaScript. Перейдите в <a
+              href={buildUrl("/projects/")}>проекты</a
+            > или <a href={buildUrl("/journal/")}>журнал</a>.
+          </p>
+        </noscript>
       </div>
-    </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>
 
 <script>
-  const input = document.getElementById("search-input") as HTMLInputElement;
-  const results = document.getElementById("search-results") as HTMLUListElement;
-  let idx: { title: string; description: string; href: string }[] = [];
+  interface SearchItem {
+    title: string;
+    description: string;
+    href: string;
+  }
+
+  const input = document.getElementById("search-input") as HTMLInputElement | null;
+  const results = document.getElementById("search-results") as HTMLUListElement | null;
+  const status = document.getElementById("search-status");
+  let index: SearchItem[] = [];
+
+  const renderResults = (items: SearchItem[]) => {
+    if (!results || !status) return;
+    results.replaceChildren();
+    status.textContent = items.length ? `Найдено: ${items.length}` : "Совпадений не найдено.";
+    for (const item of items) {
+      const li = document.createElement("li");
+      li.className = "gs-search__result";
+      const link = document.createElement("a");
+      link.href = item.href;
+      link.textContent = item.title;
+      const description = document.createElement("p");
+      description.textContent = item.description;
+      li.append(link, description);
+      results.append(li);
+    }
+  };
 
   fetch(`${import.meta.env.BASE_URL}search-index.json`)
-    .then((r) => r.json())
-    .then((data) => {
-      idx = data;
+    .then((response) => response.json())
+    .then((data: SearchItem[]) => {
+      index = data;
+    })
+    .catch(() => {
+      if (status) status.textContent = "Индекс поиска временно недоступен.";
     });
 
   input?.addEventListener("input", () => {
-    const q = input.value.toLowerCase().trim();
-    results.innerHTML = "";
-    if (!q || !idx.length) return;
-    idx
-      .filter(
-        (item) =>
-          item.title.toLowerCase().includes(q) || item.description.toLowerCase().includes(q),
-      )
-      .slice(0, 20)
-      .forEach((item) => {
-        const li = document.createElement("li");
-        li.style.cssText =
-          "margin-bottom:var(--space-md);padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);";
-        li.innerHTML = `<a href="${item.href}" style="font-weight:600;">${item.title}</a><p style="color:var(--color-muted);margin-top:var(--space-xs);">${item.description}</p>`;
-        results.appendChild(li);
-      });
+    const query = input.value.toLowerCase().trim();
+    if (!query) {
+      results?.replaceChildren();
+      if (status) status.textContent = "Начните вводить запрос.";
+      return;
+    }
+    renderResults(
+      index
+        .filter(
+          (item) =>
+            item.title.toLowerCase().includes(query) ||
+            item.description.toLowerCase().includes(query),
+        )
+        .slice(0, 20),
+    );
   });
 </script>

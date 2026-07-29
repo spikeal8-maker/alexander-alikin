@@ -1,20 +1,98 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+import { buildUrl } from "@config/site";
+
+const sourceTypes = [
+  [
+    "Авторское утверждение",
+    "Позиция, метод или описание собственной роли с понятным происхождением.",
+  ],
+  ["Публичный источник", "Внешняя страница, публикация или репозиторий, который можно проверить."],
+  [
+    "Документальная проверка",
+    "Утверждение связано с документом, журналом, выгрузкой или первичным доказательством.",
+  ],
+];
+
+const blocked = [
+  "точные количества учеников и подготовленных педагогов",
+  "поступления, соревнования и достижения третьих лиц",
+  "масштаб внедрения и количество пользователей ИЗО АСА",
+  "коммерческие сроки и гарантированные результаты",
+  "биографические даты без проверенного источника",
+];
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Факты и источники — Александр Аликин"
-  description="Проверяемые факты, утверждения и источники с уровнем доказательности."
-  currentPath="/facts/"
-  breadcrumbs={[{ label: "Факты и источники" }]}
+  description="Как сайт отделяет проверяемые факты, авторские утверждения и неподтверждённые гипотезы."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Факты и источники</h1>
-      <p class="description">
-        Проверяемые утверждения с периодом, источником и уровнем доказательности.
-      </p>
-      <p>Реестр фактов будет опубликован после утверждения.</p>
-    </div>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Факты и источники</p>
+          <h1>Доверие начинается с происхождения утверждения.</h1>
+          <p class="gp-hero__lead">
+            Проверяемые факты, слова автора, редакционные связки и стратегические гипотезы
+            учитываются отдельно.
+          </p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Правило</span>
+          <p>Число без источника не становится фактом, даже если выглядит убедительно.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Три уровня</p></div>
+          <div><h2>Что считается основанием утверждения.</h2></div>
+        </div>
+        <div class="gp-card-grid">
+          {
+            sourceTypes.map(([title, copy], index) => (
+              <article class="gp-card">
+                <span class="gp-card__index">0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--blue">
+      <div class="gn-wrap gp-split">
+        <div>
+          <p class="gn-eyebrow">Заблокировано</p>
+          <h2 class="gp-quote">Что намеренно не публикуется.</h2>
+        </div>
+        <ol class="gp-bullets">
+          {
+            blocked.map((item, index) => (
+              <li>
+                0{index + 1} — {item}
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--sand">
+      <div class="gn-wrap gp-split">
+        <blockquote class="gp-quote">
+          Приватный документ не становится публичным только потому, что он существует.
+        </blockquote>
+        <div class="gp-split__copy">
+          <p>Персональные данные и закрытый архив проходят отдельную проверку публичности.</p>
+          <a class="gn-text-link" href={buildUrl("/projects/")}>Проверить проекты <span>→</span></a>
+        </div>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

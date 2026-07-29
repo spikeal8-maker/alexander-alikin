@@ -1,20 +1,25 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Страница не найдена — Александр Аликин"
-  description="Запрошенная страница не существует. Воспользуйтесь навигацией или поиском."
+  description="Запрошенная страница не существует."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>404</h1>
-      <p class="description">Страница не найдена.</p>
+  <section class="gu-404">
+    <div class="gu-404__inner">
+      <span class="gu-404__number">Ошибка 404</span>
+      <h1>Такой страницы нет.</h1>
       <p>
-        Запрошенный адрес не существует. Воспользуйтесь <a href={buildUrl("/search/")}>поиском</a> или
-        перейдите на <a href={buildUrl("/")}>главную</a>.
+        Адрес мог измениться, материал мог остаться черновиком или ссылка была введена с ошибкой.
+        Приватные и неподтверждённые страницы намеренно не публикуются.
       </p>
+      <nav aria-label="Куда перейти">
+        <a class="gn-button" href={buildUrl("/")}>На главную</a>
+        <a class="gn-text-link" href={buildUrl("/projects/")}>Проекты <span>→</span></a>
+        <a class="gn-text-link" href={buildUrl("/search/")}>Поиск <span>→</span></a>
+      </nav>
     </div>
-  </div>
-</BaseLayout>
+  </section>
+</BaseLayoutV3>

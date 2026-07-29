@@ -1,20 +1,21 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import JournalListingV2 from "@components/v2/journal/JournalListingV2.astro";
+
+const articles = (await getCollection("articles", (entry) => entry.data.status === "published"))
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .map((entry) => ({
+    title: entry.data.title,
+    description: entry.data.description,
+    href: `/journal/articles/${entry.data.slug}/`,
+    kind: "Статья",
+    date: entry.data.publishedAt.toLocaleDateString("ru"),
+  }));
 ---
 
-<BaseLayout
-  title="Статьи — Александр Аликин"
-  description="Системные материалы с аргументом, структурой, источниками и следующим смысловым маршрутом."
-  currentPath="/journal/"
-  breadcrumbs={[{ label: "Журнал", href: "/journal/" }, { label: "Статьи" }]}
->
-  <div class="container">
-    <div class="route-shell">
-      <h1>Статьи</h1>
-      <p class="description">
-        Системные материалы с аргументацией, источниками и смысловыми связями.
-      </p>
-      <p>Статьи будут опубликованы после утверждения материалов.</p>
-    </div>
-  </div>
-</BaseLayout>
+<JournalListingV2
+  title="Статьи"
+  eyebrow="Развёрнутые материалы"
+  description="Системные тексты, где тезис проходит через аргумент, структуру, ограничения и практический вывод."
+  entries={articles}
+/>

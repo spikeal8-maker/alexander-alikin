@@ -1,0 +1,42 @@
+---
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+import { buildUrl } from "@config/site";
+
+export interface Props {
+  title: string;
+  description: string;
+  kind: string;
+  date?: string;
+  backHref: string;
+  backLabel: string;
+}
+
+const { title, description, kind, date, backHref, backLabel } = Astro.props;
+---
+
+<BaseLayoutV3 title={`${title} — Александр Аликин`} description={description}>
+  <div class="gp-page">
+    <header class="gr-header">
+      <div class="gn-wrap gr-header__inner">
+        <div class="gr-meta">
+          <span>{kind}</span>
+          {date && <time>{date}</time>}
+          <span>Авторский материал</span>
+        </div>
+        <h1>{title}</h1>
+        <p class="gr-header__lead">{description}</p>
+      </div>
+    </header>
+
+    <section class="gr-reading">
+      <article class="gr-body"><slot /></article>
+    </section>
+
+    <section class="gr-footer">
+      <div class="gn-wrap gr-footer__inner">
+        <a class="gn-text-link" href={buildUrl(backHref)}>← {backLabel}</a>
+        <a class="gn-button" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
+      </div>
+    </section>
+  </div>
+</BaseLayoutV3>

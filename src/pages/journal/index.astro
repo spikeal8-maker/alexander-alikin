@@ -1,62 +1,140 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+import { getCollection } from "astro:content";
 import { buildUrl } from "@config/site";
+
+const collections = await Promise.all([
+  getCollection("stories", (entry) => entry.data.status === "published"),
+  getCollection("thoughts", (entry) => entry.data.status === "published"),
+  getCollection("articles", (entry) => entry.data.status === "published"),
+  getCollection("news", (entry) => entry.data.status === "published"),
+]);
+const [stories, thoughts, articles, news] = collections;
+const categories = [
+  [
+    "01",
+    "Истории",
+    "Личный опыт, ошибки и изменения подхода.",
+    "/journal/stories/",
+    stories.length,
+  ],
+  [
+    "02",
+    "Мысли",
+    "Короткие тезисы об инженерии, системах и ИИ.",
+    "/journal/thoughts/",
+    thoughts.length,
+  ],
+  [
+    "03",
+    "Статьи",
+    "Развёрнутые материалы с аргументом и выводами.",
+    "/journal/articles/",
+    articles.length,
+  ],
+  ["04", "Новости", "Фактические обновления проектов и публикаций.", "/journal/news/", news.length],
+] as const;
+const latest = [
+  ...stories.map((entry) => ({ entry, kind: "История", base: "/journal/stories/" })),
+  ...thoughts.map((entry) => ({ entry, kind: "Мысль", base: "/journal/thoughts/" })),
+  ...articles.map((entry) => ({ entry, kind: "Статья", base: "/journal/articles/" })),
+  ...news.map((entry) => ({ entry, kind: "Новость", base: "/journal/news/" })),
+]
+  .sort((a, b) => b.entry.data.publishedAt.getTime() - a.entry.data.publishedAt.getTime())
+  .slice(0, 6);
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Журнал — Александр Аликин"
-  description="Мысли, истории, статьи, новости и видео. Авторское медиа о сложных системах, образовании и инженерии."
-  currentPath="/journal/"
-  breadcrumbs={[{ label: "Журнал" }]}
+  description="Истории, мысли, статьи и обновления о проектах, инженерии, образовании и системах."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Журнал</h1>
-      <p class="description">Авторское медиа: истории, мысли, статьи, разборы, новости и видео.</p>
-      <nav aria-label="Рубрики журнала">
-        <ul
-          style="list-style:none;display:flex;flex-wrap:wrap;gap:var(--space-md);padding:0;margin-top:var(--space-lg);"
-        >
-          <li>
-            <a
-              href={buildUrl("/journal/stories/")}
-              style="padding:var(--space-sm) var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;display:inline-block;"
-              >Истории</a
-            >
-          </li>
-          <li>
-            <a
-              href={buildUrl("/journal/thoughts/")}
-              style="padding:var(--space-sm) var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;display:inline-block;"
-              >Мысли</a
-            >
-          </li>
-          <li>
-            <a
-              href={buildUrl("/journal/articles/")}
-              style="padding:var(--space-sm) var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;display:inline-block;"
-              >Статьи</a
-            >
-          </li>
-          <li>
-            <a
-              href={buildUrl("/journal/news/")}
-              style="padding:var(--space-sm) var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;display:inline-block;"
-              >Новости</a
-            >
-          </li>
-          <li>
-            <a
-              href={buildUrl("/journal/video/")}
-              style="padding:var(--space-sm) var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);text-decoration:none;display:inline-block;"
-              >Видео</a
-            >
-          </li>
-        </ul>
-      </nav>
-      <p style="margin-top:var(--space-xl);">
-        Материалы будут публиковаться после утверждения контента.
-      </p>
-    </div>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Авторское медиа</p>
+          <h1>Журнал практики, ошибок и решений.</h1>
+          <p class="gp-hero__lead">
+            Материалы о том, как возникают проекты, где ломаются системы и почему результат должен
+            быть объяснимым.
+          </p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Редакционный принцип</span>
+          <p>
+            Материал выходит, когда есть завершённая мысль, проверяемый факт или полезный разбор.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Рубрики</p></div><div>
+            <h2>Четыре формата для разной глубины чтения.</h2>
+          </div>
+        </div>
+        <div class="gp-category-grid">
+          {
+            categories.map(([number, title, description, href, count]) => (
+              <a class="gp-category" href={buildUrl(href)}>
+                <>
+                  <span>
+                    {number} · {count}
+                  </span>
+                  <strong>{title}</strong>
+                  <p>{description}</p>
+                </>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Последние материалы</p></div><div>
+            <h2>Что я проверяю и объясняю сейчас.</h2>
+          </div>
+        </div>
+        <div class="gp-journal-list">
+          {
+            latest.map(({ entry, kind, base }) => (
+              <a class="gp-journal-item" href={buildUrl(`${base}${entry.data.slug}/`)}>
+                <div class="gp-journal-item__meta">
+                  <>
+                    <span>{kind}</span>
+                    <time>{entry.data.publishedAt.toLocaleDateString("ru")}</time>
+                  </>
+                </div>
+                <>
+                  <div>
+                    <>
+                      <h2>{entry.data.title}</h2>
+                      <p>{entry.data.description}</p>
+                    </>
+                  </div>
+                  <span aria-hidden="true">↗</span>
+                </>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--sand">
+      <div class="gn-wrap gp-cta">
+        <div>
+          <p class="gn-eyebrow">Без рекламных писем</p><h2>Следить через RSS.</h2><p>
+            Только опубликованные материалы и фактические обновления.
+          </p>
+        </div>
+        <a class="gn-button gn-button--light" href={buildUrl("/rss.xml")}>Открыть RSS</a>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

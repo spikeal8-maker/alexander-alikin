@@ -1,29 +1,102 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+import { buildUrl } from "@config/site";
+
+const channels = [
+  [
+    "Telegram — @spikeal",
+    "Основной канал для деловых и профессиональных обращений. Конкретный срок ответа не обещается.",
+    "https://t.me/spikeal",
+    true,
+  ],
+  [
+    "RUTUBE",
+    "Видео, занятия и архив проектов разных лет. Старые материалы могут не отражать текущее позиционирование.",
+    "https://rutube.ru/channel/2420333/",
+    true,
+  ],
+  [
+    "ИЗО АСА",
+    "Внешняя ссылка развивающегося продукта без утверждений о масштабе или коммерческом результате.",
+    "https://izo.alikinas.ru/",
+    true,
+  ],
+  [
+    "Подготовить запрос",
+    "Короткий формат первого сообщения для проекта, комментария СМИ или предложения о выступлении.",
+    buildUrl("/collaboration/"),
+    false,
+  ],
+] as const;
+
+const prepare = [
+  "какой процесс, продукт или программа требуют изменения",
+  "что сейчас не работает или зависит от ручного усилия",
+  "какие данные, люди и системы уже участвуют",
+  "какой результат первого этапа можно проверить",
+  "какие ограничения нельзя игнорировать",
+];
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Контакты — Александр Аликин"
-  description="Официальные каналы связи: Telegram, GitHub, VK, RUTUBE и другие площадки."
-  currentPath="/contacts/"
-  breadcrumbs={[{ label: "Контакты" }]}
+  description="Telegram, видеоархив, ИЗО АСА и формат первого профессионального обращения."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Контакты</h1>
-      <p class="description">Официальные каналы связи.</p>
-      <ul style="list-style:none;padding:0;margin-top:var(--space-lg);">
-        <li style="margin-bottom:var(--space-md);">
-          <strong>Telegram</strong> — основной прямой контакт
-        </li>
-        <li style="margin-bottom:var(--space-md);">
-          <strong>GitHub</strong> — <a href="https://github.com/spikeal8-maker">spikeal8-maker</a>
-        </li>
-        <li style="margin-bottom:var(--space-md);"><strong>VK</strong> — профиль и архив</li>
-      </ul>
-      <p style="margin-top:var(--space-lg);">
-        Полный список каналов с описанием назначения каждого будет опубликован после утверждения.
-      </p>
-    </div>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Контакты</p>
+          <h1>Связаться напрямую. Без формы и лишних посредников.</h1>
+          <p class="gp-hero__lead">
+            Основной публичный канал — Telegram @spikeal. Здесь также собраны видеоархив, ссылка
+            проекта ИЗО АСА и короткий формат первого сообщения.
+          </p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Публичные границы</span>
+          <p>Телефон, неподтверждённые профили, публичный email и YouTube сейчас не публикуются.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Прямые переходы</p></div>
+          <div>
+            <h2>Четыре понятных действия.</h2>
+            <p>Каждый пункт ведёт на конкретную страницу или подтверждённый внешний профиль.</p>
+          </div>
+        </div>
+        <div class="gp-channel-grid">
+          {
+            channels.map(([title, copy, href, external], index) => (
+              <a
+                class="gp-channel"
+                href={href}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noreferrer" : undefined}
+              >
+                <span>0{index + 1}</span>
+                <h2>{title}</h2>
+                <p>{copy}</p>
+                <span>{external ? "Открыть ↗" : "Продолжить →"}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--sand">
+      <div class="gn-wrap gp-split">
+        <blockquote class="gp-quote">Хороший первый запрос уже содержит границы задачи.</blockquote>
+        <div class="gp-split__copy">
+          <p class="gn-eyebrow">Что написать</p>
+          <ul class="gp-bullets">{prepare.map((item) => <li>{item}</li>)}</ul>
+        </div>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

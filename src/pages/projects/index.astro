@@ -1,45 +1,99 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { getCollection } from "astro:content";
 import { buildUrl } from "@config/site";
 
-const projects = await getCollection("projects", (p) => p.data.status === "published");
+const projects = await getCollection("projects", (entry) => entry.data.status === "published");
+const sorted = projects.sort((a, b) => a.data.title.localeCompare(b.data.title));
+const activeCount = sorted.filter((project) => project.data.projectStatus === "active").length;
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Проекты — Александр Аликин"
-  description="Продукты, проекты и доказательные кейсы Александра Аликина."
-  currentPath="/projects/"
-  breadcrumbs={[{ label: "Проекты" }]}
+  description="Цифровые продукты, инженерное образование и технические инициативы с ролью, статусом и ограничениями."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Проекты</h1>
-      <p class="description">
-        Карта практики: продукты, образовательные программы, исследования и предпринимательские
-        инициативы.
-      </p>
-      {
-        projects.length === 0 ? (
-          <p>Проекты будут опубликованы после утверждения материалов.</p>
-        ) : (
-          <ul style="list-style:none;padding:0;">
-            {projects.map((p) => (
-              <li style="margin-bottom:var(--space-md);padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);">
-                <a
-                  href={buildUrl(`/projects/${p.data.slug}/`)}
-                  style="font-weight:600;font-size:1.125rem;"
-                >
-                  {p.data.title}
-                </a>
-                <p style="color:var(--color-muted);margin-top:var(--space-xs);">
-                  {p.data.description}
-                </p>
-              </li>
-            ))}
-          </ul>
-        )
-      }
-    </div>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Проекты</p>
+          <h1>Работа показана через контекст, роль и текущий результат.</h1>
+          <p class="gp-hero__lead">
+            Это не каталог достижений. Каждый проект описывает, что создаётся сейчас, за что отвечаю
+            я и какие утверждения пока нельзя делать.
+          </p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Реестр</span>
+          <dl>
+            <div><dt>Опубликовано</dt><dd>{sorted.length}</dd></div>
+            <div><dt>Активных</dt><dd>{activeCount}</dd></div>
+            <div><dt>Принцип</dt><dd>ограничение рядом с результатом</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Избранная работа</p></div>
+          <div>
+            <h2>Продукты и практика.</h2>
+            <p>
+              Активные и опубликованные направления без неподтверждённых показателей и рекламных
+              обещаний.
+            </p>
+          </div>
+        </div>
+        <div class="gp-project-grid">
+          {
+            sorted.map((project, index) => (
+              <a class="gp-project-card" href={buildUrl(`/projects/${project.data.slug}/`)}>
+                <div class="gp-project-card__meta">
+                  <span>
+                    0{index + 1} · {project.data.category === "product" ? "Продукт" : "Практика"}
+                  </span>
+                  <span>
+                    {project.data.projectStatus === "active" ? "В работе" : "Опубликован"}
+                  </span>
+                </div>
+                <h2>{project.data.title}</h2>
+                <p>{project.data.description}</p>
+                <div class="gp-project-card__result">
+                  <span>Роль</span>
+                  <p>{project.data.role}</p>
+                </div>
+                <div class="gp-project-card__result">
+                  <span>Сейчас</span>
+                  <p>{project.data.result}</p>
+                </div>
+                <div class="gp-project-card__footer">
+                  <>
+                    <span>{project.data.period}</span>
+                    <span>Открыть →</span>
+                  </>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--sand">
+      <div class="gn-wrap gp-split">
+        <blockquote class="gp-quote">
+          Кейс ценен не масштабом заголовка, а ясностью роли и доказательств.
+        </blockquote>
+        <div class="gp-split__copy">
+          <p class="gn-eyebrow">Редакционный принцип</p>
+          <p>
+            Неподтверждённые числа, сроки и достижения не превращаются в маркетинговые показатели.
+          </p>
+          <a class="gn-text-link" href={buildUrl("/facts/")}>Факты и источники <span>→</span></a>
+        </div>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

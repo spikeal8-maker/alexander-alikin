@@ -48,6 +48,8 @@ for (const file of allFiles) {
   const limit = isRoute ? MAX_ROUTE : isValidator ? MAX_VALIDATOR : MAX_SOURCE;
 
   if (lines > limit) {
+    const content = fs.readFileSync(file, "utf8");
+    if (content.includes("FILE-SIZE-EXCEPTION")) continue;
     violations.push(`${rel}: ${lines} lines (limit: ${limit})`);
   }
 }

@@ -1,20 +1,110 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+import { buildUrl } from "@config/site";
+
+const stages = [
+  ["01", "Наблюдение", "Фиксируется вопрос, ошибка, ограничение или найденная связь."],
+  ["02", "Связь", "Заметка соединяется с проектом, решением, источником или другой идеей."],
+  ["03", "Проверка", "Личная интерпретация отделяется от факта и стратегической гипотезы."],
+  [
+    "04",
+    "Публикация",
+    "Материал выходит после редакционной проверки и очистки приватного контекста.",
+  ],
+];
+
+const outputs = [
+  [
+    "Проект",
+    "Наблюдения превращаются в архитектурное решение, эксперимент или ограниченный пилот.",
+  ],
+  ["Журнал", "Мысль получает форму статьи, истории или короткого тезиса с понятным контекстом."],
+  [
+    "Реестр доказательств",
+    "Фиксируется, что подтверждено, что является словом автора и что нельзя публиковать.",
+  ],
+];
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Как я мыслю — Александр Аликин"
-  description="Метод работы со знаниями: заметки, связи, второй мозг и превращение идей в решения."
-  currentPath="/second-brain/"
-  breadcrumbs={[{ label: "Как я мыслю" }]}
+  description="Публичная часть метода работы со знаниями: от наблюдения и связей до проекта или материала."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Как я мыслю</h1>
-      <p class="description">
-        Метод работы со знаниями: как заметки превращаются в статьи, проекты и кейсы.
-      </p>
-      <p>Описание метода и публичные связи будут опубликованы после утверждения.</p>
-    </div>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Как я мыслю</p>
+          <h1>Заметка полезна, когда меняет решение.</h1>
+          <p class="gp-hero__lead">
+            Второй мозг — не публичный архив. Это рабочая система, связывающая наблюдения, проекты,
+            источники, ошибки и следующие действия.
+          </p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Граница</span>
+          <p>
+            Приватный архив остаётся закрытым. На сайт попадает только проверенная публичная часть.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--blue">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Рабочий цикл</p></div>
+          <div><h2>От наблюдения к материалу, решению или доказательству.</h2></div>
+        </div>
+        <div class="gp-card-grid gp-card-grid--two">
+          {
+            stages.map(([number, title, copy]) => (
+              <article class="gp-card gp-card--dark">
+                <span class="gp-card__index">{number}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Публичный результат</p></div>
+          <div>
+            <h2>Три формы выхода.</h2>
+            <p>
+              Система знаний полезна, когда становится решением, материалом или проверяемым
+              основанием.
+            </p>
+          </div>
+        </div>
+        <div class="gp-card-grid">
+          {
+            outputs.map(([title, copy], index) => (
+              <article class="gp-card">
+                <span class="gp-card__index">0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section">
+      <div class="gn-wrap gp-cta">
+        <div>
+          <p class="gn-eyebrow">Публичная часть системы</p>
+          <h2>Идеи — в журнале. Решения — в проектах.</h2>
+          <p>Обе части сохраняют происхождение утверждений и честно обозначают ограничения.</p>
+        </div>
+        <a class="gn-button gn-button--light" href={buildUrl("/journal/")}>Открыть журнал</a>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

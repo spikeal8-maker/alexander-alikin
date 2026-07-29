@@ -1,18 +1,56 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+import { buildUrl } from "@config/site";
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Видео — Александр Аликин"
-  description="Видеоматериалы: выступления, демонстрации проектов, интервью и записи лекций."
-  currentPath="/journal/"
-  breadcrumbs={[{ label: "Журнал", href: "/journal/" }, { label: "Видео" }]}
+  description="Публичные видеоматериалы и правила их редакционной публикации."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Видео</h1>
-      <p class="description">Выступления, демонстрации проектов, интервью и записи лекций.</p>
-      <p>Видеоматериалы будут опубликованы после утверждения.</p>
-    </div>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Журнал · Видео</p>
+          <h1>Видео публикуется вместе с контекстом.</h1>
+          <p class="gp-hero__lead">
+            Выступление, демонстрация или интервью полезны, когда указаны тема, дата, площадка и
+            границы того, что материал действительно подтверждает.
+          </p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Текущее состояние</span>
+          <p>
+            Утверждён внешний архив RUTUBE. Старые материалы могут не отражать текущее
+            позиционирование.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap gp-split">
+        <blockquote class="gp-quote">
+          Видео полезно, когда рядом понятны тема, дата и контекст.
+        </blockquote>
+        <div class="gp-split__copy">
+          <p>
+            Архив содержит видео, занятия и материалы проектов разных лет. Он не является основным
+            контактным каналом и не подтверждает текущий статус каждого старого материала.
+          </p>
+          <div class="gn-hero__actions">
+            <a
+              class="gn-button"
+              href="https://rutube.ru/channel/2420333/"
+              target="_blank"
+              rel="noreferrer">Открыть RUTUBE</a
+            >
+            <a class="gn-text-link" href={buildUrl("/journal/")}
+              >Вернуться в журнал <span>→</span></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

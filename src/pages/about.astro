@@ -1,25 +1,139 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+import { buildUrl } from "@config/site";
+
+const roles = [
+  ["Инженерная", "Понять устройство, ограничения, данные и архитектуру решения."],
+  ["Педагогическая", "Объяснить принцип и сделать результат воспроизводимым для других людей."],
+  ["Предпринимательская", "Учитывать спрос, ресурсы, команду, риск и последствия решения."],
+];
+
+const arc = [
+  [
+    "Электроника и робототехника",
+    "Привычка искать причину, проверять конструкцию и объяснять принцип.",
+  ],
+  [
+    "Лига роботов",
+    "Ретроспективный проект в сфере инженерного образования. Детали остаются на фактчеке.",
+  ],
+  [
+    "Laser Love",
+    "Ретроспективный сервисный проект без неподтверждённых сведений о роли и результатах.",
+  ],
+  [
+    "ИЗО АСА, ИИ и системы знаний",
+    "Текущая работа: продукты, автоматизация и редакционный контур с источниками.",
+  ],
+];
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Обо мне — Александр Аликин"
-  description="Каноническая биография, профессиональный путь, принципы и проекты Александра Аликина."
-  currentPath="/about/"
-  breadcrumbs={[{ label: "Обо мне" }]}
+  description="Инженерная практика, образование, предпринимательский опыт, цифровые продукты и системы знаний."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Обо мне</h1>
-      <p class="description">
-        Александр Аликин — предприниматель-практик и инженер-педагог. Проектирую и запускаю
-        технологические, ИИ- и образовательные системы. Разбираю сложные задачи, собираю работающие
-        конструкции, проверяю их практикой и объясняю людям, как ими пользоваться.
-      </p>
-      <p>
-        Полная биография, временная линия и подтверждённые факты будут опубликованы после
-        утверждения материалов.
-      </p>
-    </div>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Обо мне</p>
+          <h1>Собираю системы, которые можно проверить и передать.</h1>
+          <p class="gp-hero__lead">
+            Я Александр Аликин — предприниматель-практик и инженер-педагог. Работаю на стыке
+            цифровых продуктов, образования, автоматизации и систем знаний.
+          </p>
+          <p class="gp-hero__note">
+            Точные даты, масштабы практики и количественные результаты публикуются только вместе с
+            подтверждающим источником.
+          </p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Рабочая логика</span>
+          <div class="gp-flow">
+            <span>Понять устройство</span>
+            <span>Собрать решение</span>
+            <span>Проверить результат</span>
+            <span>Передать способ работы</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Три ответственности</p></div>
+          <div>
+            <h2>Не три профессии, а три проверки одного решения.</h2>
+            <p>Работает ли конструкция, понятна ли она людям и выдерживает ли реальность.</p>
+          </div>
+        </div>
+        <div class="gp-card-grid">
+          {
+            roles.map(([title, copy], index) => (
+              <article class="gp-card">
+                <span class="gp-card__index">0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--sand">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Профессиональная дуга</p></div>
+          <div><h2>Опыт менялся. Способ действия остался.</h2></div>
+        </div>
+        <div class="gp-list">
+          {
+            arc.map(([title, copy], index) => (
+              <article class="gp-list__row">
+                <span>0{index + 1}</span>
+                <div>
+                  <h3>{title}</h3>
+                </div>
+                <div>
+                  <p>{copy}</p>
+                </div>
+                <span class="gp-list__arrow" aria-hidden="true">
+                  —
+                </span>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap gp-split">
+        <blockquote class="gp-quote">
+          Факт отдельно. Интерпретация отдельно. Ограничение — рядом.
+        </blockquote>
+        <div class="gp-split__copy">
+          <p class="gn-eyebrow">Редакционная политика</p>
+          <p>
+            Проекты важнее титулов, приватный архив не становится публичным автоматически, а
+            неподтверждённые показатели не превращаются в рекламные обещания.
+          </p>
+          <a class="gn-text-link" href={buildUrl("/facts/")}>Факты и источники <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section">
+      <div class="gn-wrap gp-cta">
+        <div>
+          <p class="gn-eyebrow">Дальше</p>
+          <h2>Посмотрите проекты или опишите задачу.</h2>
+          <p>В кейсах указаны роль, состояние, результат и ограничения.</p>
+        </div>
+        <a class="gn-button gn-button--light" href={buildUrl("/projects/")}>Открыть проекты</a>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

@@ -17,4 +17,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run quality
+      - run: npm run design:static
+      - run: npm run test:media
       - run: npm audit --audit-level=high

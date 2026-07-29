@@ -1,32 +1,74 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+import { buildUrl } from "@config/site";
 
-const nowEntries = await getCollection("now", (n) => n.data.status === "published");
+const focusItems = [
+  ["ИЗО АСА", "Развивающийся цифровой продукт для создания и редактирования визуального контента."],
+  [
+    "Системы знаний и ИИ-Александр",
+    "Персональная система знаний, источников и публичных материалов развивается как исследовательский проект.",
+  ],
+  [
+    "Инженерное образование",
+    "Проектные форматы, в которых участник создаёт, проверяет и объясняет работающий результат.",
+  ],
+];
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Сейчас — Александр Аликин"
-  description="Текущая деятельность, проекты и фокус Александра Аликина."
-  currentPath="/now/"
-  breadcrumbs={[{ label: "Сейчас" }]}
+  description="Текущие направления работы и исследовательский фокус."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Сейчас</h1>
-      <p class="description">Чем я занимаюсь прямо сейчас.</p>
-      {
-        nowEntries.map((n) => (
-          <article style="margin-bottom:var(--space-lg);padding:var(--space-md);border:1px solid var(--color-border);border-radius:var(--radius);">
-            <h2 style="font-size:1.125rem;">{n.data.title}</h2>
-            <p>{n.data.focus}</p>
-            <div class="content-body">
-              <Fragment set:html={n.body} />
-            </div>
-          </article>
-        ))
-      }
-      {nowEntries.length === 0 && <p>Информация появится после утверждения.</p>}
-    </div>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Сейчас</p>
+          <h1>Текущий рабочий фокус.</h1>
+          <p class="gp-hero__lead">
+            Здесь фиксируются только активные направления, подтверждённые опубликованными проектами
+            и текущим состоянием работы.
+          </p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Обновлено</span>
+          <p>Июль 2026. Следующая обязательная проверка — не позднее 31 августа 2026 года.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Три направления</p></div>
+          <div>
+            <h2>Работа, которая идёт сейчас.</h2>
+            <p>Без потока случайных обновлений и обещаний будущих запусков.</p>
+          </div>
+        </div>
+        <div class="gp-card-grid">
+          {
+            focusItems.map(([title, copy], index) => (
+              <article class="gp-card">
+                <span class="gp-card__index">0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section">
+      <div class="gn-wrap gp-cta">
+        <div>
+          <p class="gn-eyebrow">Контекст</p>
+          <h2>Статусы, роли и ограничения — в проектах.</h2>
+          <p>Текущий фокус становится понятнее через архитектуру и границы каждого кейса.</p>
+        </div>
+        <a class="gn-button gn-button--light" href={buildUrl("/projects/")}>Открыть проекты</a>
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

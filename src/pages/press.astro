@@ -1,20 +1,126 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+
+const formulas = [
+  [
+    "Краткая формула",
+    "Александр Аликин",
+    "Предприниматель-практик и инженер-педагог. Проектирует цифровые продукты и автоматизацию, занимается инженерным образованием и сопровождением исследовательских проектов.",
+  ],
+  [
+    "Метод",
+    "Разобрать, собрать, проверить, объяснить, передать",
+    "Один рабочий цикл применяется к инженерным, образовательным и организационным задачам.",
+  ],
+  [
+    "Ограничение",
+    "Цифры требуют источника",
+    "Масштабы практики, внешние достижения и результаты внедрения не заявляются без документальной проверки.",
+  ],
+];
+
+const topics = [
+  [
+    "ИИ и автоматизация",
+    "Где ИИ усиливает качественно поставленную задачу, а где создаёт новый хаос.",
+  ],
+  [
+    "Инженерное образование",
+    "Проектный результат, роль ошибки, объяснение и защита работающего решения.",
+  ],
+  [
+    "Архитектура проектов",
+    "Как разделять контекст, ограничения, решение, результат и доказательства.",
+  ],
+  ["Системы знаний", "Как заметки превращаются в решения без утечки приватного архива."],
+];
 ---
 
-<BaseLayout
+<BaseLayoutV3
   title="Для СМИ — Александр Аликин"
-  description="Биографии, темы комментариев, фотографии и контакты для СМИ и организаторов мероприятий."
-  currentPath="/press/"
-  breadcrumbs={[{ label: "Для СМИ" }]}
+  description="Безопасные биографические формулы, темы комментариев и маршрут редакционного запроса."
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>Для СМИ</h1>
-      <p class="description">
-        Биографии, темы комментариев, фотографии и контакты для журналистов и организаторов.
-      </p>
-      <p>Пресс-пакет будет опубликован после утверждения.</p>
-    </div>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">Для СМИ и мероприятий</p>
+          <h1>Комментарий с ясными границами компетенции.</h1>
+          <p class="gp-hero__lead">
+            Безопасные формулировки для интервью, комментариев и выступлений. Непроверенные роли и
+            показатели не превращаются в рекламную биографию.
+          </p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Для запроса достаточно</span>
+          <div class="gp-flow">
+            <span>Кто обращается</span>
+            <span>Тема</span>
+            <span>Формат</span>
+            <span>Ориентировочная дата</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Формулировки</p></div>
+          <div><h2>Готовые безопасные основы для представления.</h2></div>
+        </div>
+        <div class="gp-card-grid">
+          {
+            formulas.map(([label, title, copy], index) => (
+              <article class="gp-card">
+                <span class="gp-card__index">
+                  0{index + 1} · {label}
+                </span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--blue">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Темы разговора</p></div>
+          <div><h2>Где есть практический контекст.</h2></div>
+        </div>
+        <div class="gp-card-grid gp-card-grid--two">
+          {
+            topics.map(([title, copy], index) => (
+              <article class="gp-card gp-card--dark">
+                <span class="gp-card__index">0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section">
+      <div class="gn-wrap gp-cta">
+        <div>
+          <p class="gn-eyebrow">Редакционный запрос</p>
+          <h2>Укажите тему, формат и дату.</h2>
+          <p>
+            Telegram временно используется как единый канал для СМИ и предложений о выступлениях.
+          </p>
+        </div>
+        <a
+          class="gn-button gn-button--light"
+          href="https://t.me/spikeal"
+          target="_blank"
+          rel="noreferrer">Telegram — @spikeal</a
+        >
+      </div>
+    </section>
   </div>
-</BaseLayout>
+</BaseLayoutV3>

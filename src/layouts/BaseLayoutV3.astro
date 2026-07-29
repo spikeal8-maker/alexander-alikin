@@ -1,0 +1,73 @@
+---
+import { site, buildUrl } from "@config/site";
+import HeaderGates from "@components/gates/HeaderGates.astro";
+import FooterGates from "@components/gates/FooterGates.astro";
+import "../styles/tokens-v3.css";
+import "../styles/v3-home-fixes.css";
+import "../styles/v3-pages.css";
+import "../styles/v3-projects.css";
+import "../styles/v3-project-density.css";
+import "../styles/v3-pages-responsive.css";
+import "../styles/v3-journal.css";
+import "../styles/v3-utility.css";
+import "../styles/gates-global.css";
+import "../styles/gates-global-responsive.css";
+import "../styles/gates-home.css";
+import "../styles/gates-project-cards.css";
+import "../styles/gates-home-panels.css";
+import "../styles/gates-home-responsive.css";
+import "../styles/gates-pages.css";
+import "../styles/gates-page-components.css";
+import "../styles/gates-pages-content.css";
+import "../styles/gates-channels.css";
+import "../styles/gates-pages-responsive.css";
+import "../styles/gates-reading.css";
+import "../styles/gates-utility-pages.css";
+import "../styles/gates-accessibility-fixes.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {site.prelaunch && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={new URL(Astro.url.pathname, site.url).href} />
+    <link rel="icon" type="image/svg+xml" href={buildUrl("/favicon.svg")} />
+  </head>
+  <body>
+    <a class="gn-skip skip-link" href="#main-content">Перейти к содержимому</a>
+    <HeaderGates />
+    <main id="main-content"><slot /></main>
+    <FooterGates />
+  </body>
+</html>
+
+<style>
+  .gn-skip {
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.8rem 1rem;
+    color: var(--gn-white);
+    background: var(--gn-blue);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    transform: translateY(-120%);
+  }
+
+  .gn-skip:focus {
+    transform: translateY(0);
+  }
+</style>

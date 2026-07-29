@@ -1,34 +1,25 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
+import { getEntry, getCollection, render } from "astro:content";
+import JournalEntryShellV2 from "@components/v2/journal/JournalEntryShellV2.astro";
 
 export async function getStaticPaths() {
-  const entries = await getCollection("articles", (s) => s.data.status === "published");
-  return entries.map((s) => ({ params: { slug: s.data.slug } }));
+  const entries = await getCollection("articles", (entry) => entry.data.status === "published");
+  return entries.map((entry) => ({ params: { slug: entry.data.slug } }));
 }
 
 const { slug } = Astro.params;
-const entry = (await getCollection("articles", (s) => s.data.status === "published")).find(
-  (s) => s.data.slug === slug,
-);
-if (!entry) return Astro.redirect("/404");
+const entry = await getEntry("articles", slug);
+if (!entry || entry.data.status !== "published") return Astro.redirect("/404");
+const { Content } = await render(entry);
 ---
 
-<BaseLayout
-  title={`${entry.data.title} — Александр Аликин`}
+<JournalEntryShellV2
+  title={entry.data.title}
   description={entry.data.description}
-  currentPath="/journal/"
-  breadcrumbs={[
-    { label: "Журнал", href: "/journal/" },
-    { label: "Статьи", href: "/journal/articles/" },
-    { label: entry.data.title },
-  ]}
+  kind="Статья"
+  date={entry.data.publishedAt.toLocaleDateString("ru")}
+  backHref="/journal/articles/"
+  backLabel="Все статьи"
 >
-  <div class="container">
-    <div class="route-shell">
-      <h1>{entry.data.title}</h1>
-      <p class="description">{entry.data.description}</p>
-      <div class="content-body"><Fragment set:html={entry.body} /></div>
-    </div>
-  </div>
-</BaseLayout>
+  <Content />
+</JournalEntryShellV2>

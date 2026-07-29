@@ -1,0 +1,78 @@
+---
+import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
+import { buildUrl } from "@config/site";
+
+export interface JournalListEntry {
+  title: string;
+  description: string;
+  href: string;
+  kind: string;
+  date?: string;
+}
+
+export interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  entries: JournalListEntry[];
+}
+
+const { title, description, eyebrow, entries } = Astro.props;
+---
+
+<BaseLayoutV3 title={`${title} — Александр Аликин`} description={description}>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
+        <div>
+          <p class="gn-eyebrow">{eyebrow}</p>
+          <h1>{title}</h1>
+          <p class="gp-hero__lead">{description}</p>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Публикация</span>
+          <p>Авторские тезисы отделяются от подтверждённых фактов и проектных доказательств.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        {
+          entries.length > 0 ? (
+            <div class="gp-journal-list">
+              {entries.map((entry) => (
+                <a class="gp-journal-item" href={buildUrl(entry.href)}>
+                  <div class="gp-journal-item__meta">
+                    <span>{entry.kind}</span>
+                    {entry.date && <time>{entry.date}</time>}
+                  </div>
+                  <div>
+                    <h2>{entry.title}</h2>
+                    <p>{entry.description}</p>
+                  </div>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p>В этой рубрике пока нет опубликованных материалов.</p>
+          )
+        }
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--sand">
+      <div class="gn-wrap gp-cta">
+        <div>
+          <p class="gn-eyebrow">Навигация</p>
+          <h2>Вернуться ко всем форматам журнала.</h2>
+        </div>
+        <div class="gn-hero__actions">
+          <a class="gn-button gn-button--light" href={buildUrl("/journal/")}>Все рубрики</a>
+          <a class="gn-text-link" href={buildUrl("/rss.xml")}>RSS <span>→</span></a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayoutV3>

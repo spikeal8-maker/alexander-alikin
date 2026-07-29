@@ -1,0 +1,48 @@
+---
+import { buildUrl } from "@config/site";
+
+const nav = [
+  ["Работа", "/business/"],
+  ["Проекты", "/projects/"],
+  ["Обо мне", "/about/"],
+  ["Журнал", "/journal/"],
+];
+---
+
+<header class="gn-header">
+  <div class="gn-wrap gn-header__inner">
+    <a class="gn-brand" href={buildUrl("/")} aria-label="Александр Аликин — главная">
+      <span class="gn-brand__name">Александр Аликин</span>
+      <span class="gn-brand__dot" aria-hidden="true"></span>
+    </a>
+
+    <nav class="gn-header__nav" aria-label="Основная навигация">
+      {nav.map(([label, href]) => <a href={buildUrl(href)}>{label}</a>)}
+    </nav>
+
+    <a class="gn-header__contact" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
+
+    <details class="gn-menu">
+      <summary aria-label="Открыть меню">
+        <span>Меню</span>
+        <span aria-hidden="true">+</span>
+      </summary>
+      <nav aria-label="Мобильная навигация">
+        {nav.map(([label, href]) => <a href={buildUrl(href)}>{label}</a>)}
+        <a class="gn-menu__contact" href={buildUrl("/collaboration/")}>Обсудить задачу</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<script>
+  const menu = document.querySelector(".gn-menu");
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menu instanceof HTMLDetailsElement) menu.open = false;
+  });
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (menu instanceof HTMLDetailsElement) menu.open = false;
+    });
+  });
+</script>

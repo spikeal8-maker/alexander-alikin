@@ -3,18 +3,9 @@ import BaseLayoutV3 from "@layouts/BaseLayoutV3.astro";
 import { buildUrl } from "@config/site";
 
 const sourceTypes = [
-  [
-    "Авторское утверждение",
-    "Позиция, метод или описание собственной роли. Публикуется с явным пониманием происхождения.",
-  ],
-  [
-    "Публичный источник",
-    "Внешняя страница, публикация, репозиторий или другой доступный материал, который можно проверить.",
-  ],
-  [
-    "Документальная проверка",
-    "Утверждение связано с документом, журналом, выгрузкой или иным первичным доказательством.",
-  ],
+  ["Авторское утверждение", "Позиция, метод или описание собственной роли с понятным происхождением."],
+  ["Публичный источник", "Внешняя страница, публикация или репозиторий, который можно проверить."],
+  ["Документальная проверка", "Утверждение связано с документом, журналом, выгрузкой или первичным доказательством."],
 ];
 
 const blocked = [
@@ -28,83 +19,62 @@ const blocked = [
 
 <BaseLayoutV3
   title="Факты и источники — Александр Аликин"
-  description="Как сайт отделяет проверяемые факты, авторские утверждения и стратегические рекомендации."
+  description="Как сайт отделяет проверяемые факты, авторские утверждения и неподтверждённые гипотезы."
 >
-  <div class="v3-page">
-    <section class="v3-page-hero v3-page-hero--plain">
-      <div class="v3-page-hero__copy">
-        <p class="v3-kicker">Факты и источники</p>
-        <h1 class="v3-page-hero__title">Доверие начинается с происхождения</h1>
-        <p class="v3-page-hero__lead">
-          Проверяемые факты, слова автора, редакционные связки, стратегические рекомендации и
-          гипотезы учитываются отдельно.
-        </p>
-      </div>
-      <aside class="v3-page-hero__aside">
-        <strong>Число без источника не становится фактом</strong>
-        <p>
-          Неподтверждённые сроки, масштабы и достижения остаются во внутреннем реестре, но не
-          выходят в публичный текст.
-        </p>
-      </aside>
-    </section>
-
-    <section class="v3-editorial-section v3-editorial-section--white">
-      <div class="v3-shell v3-section-grid">
-        <div class="v3-section-grid__intro">
-          <p class="v3-kicker">Три уровня</p>
-          <h2>Что считается основанием утверждения</h2>
-        </div>
-        <div class="v3-numbered">
-          {
-            sourceTypes.map(([title, copy], index) => (
-              <article class="v3-numbered__item">
-                <span class="v3-numbered__index">0{index + 1}</span>
-                <div>
-                  <>
-                    <h3>{title}</h3>
-                    <p>{copy}</p>
-                  </>
-                </div>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="v3-editorial-section v3-editorial-section--ink">
-      <div class="v3-shell v3-section-grid">
-        <div class="v3-section-grid__intro">
-          <p class="v3-kicker">Заблокировано</p>
-          <h2>Что намеренно не публикуется</h2>
-        </div>
-        <div class="v3-numbered">
-          {
-            blocked.map((item, index) => (
-              <div class="v3-numbered__item">
-                <>
-                  <span class="v3-numbered__index">0{index + 1}</span>
-                  <p>{item}</p>
-                </>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="v3-editorial-section">
-      <div class="v3-shell v3-statement">
-        <blockquote>
-          Приватный документ не становится публичным только потому, что он существует.
-        </blockquote>
+  <div class="gp-page">
+    <section class="gp-hero">
+      <div class="gn-wrap gp-hero__grid">
         <div>
-          <p>
-            Внутренняя редакционная система хранится в репозитории. Персональные данные и закрытый
-            архив проходят отдельную проверку публичности.
+          <p class="gn-eyebrow">Факты и источники</p>
+          <h1>Доверие начинается с происхождения утверждения.</h1>
+          <p class="gp-hero__lead">
+            Проверяемые факты, слова автора, редакционные связки и стратегические гипотезы учитываются
+            отдельно.
           </p>
-          <a class="v3-link" href={buildUrl("/projects/")}>Проверить проекты</a>
+        </div>
+        <aside class="gp-panel">
+          <span class="gp-panel__label">Правило</span>
+          <p>Число без источника не становится фактом, даже если выглядит убедительно.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--white">
+      <div class="gn-wrap">
+        <div class="gp-section-head">
+          <div><p class="gn-eyebrow">Три уровня</p></div>
+          <div><h2>Что считается основанием утверждения.</h2></div>
+        </div>
+        <div class="gp-card-grid">
+          {sourceTypes.map(([title, copy], index) => (
+            <article class="gp-card">
+              <span class="gp-card__index">0{index + 1}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--blue">
+      <div class="gn-wrap gp-split">
+        <div>
+          <p class="gn-eyebrow">Заблокировано</p>
+          <h2 class="gp-quote">Что намеренно не публикуется.</h2>
+        </div>
+        <ol class="gp-bullets">
+          {blocked.map((item, index) => <li>0{index + 1} — {item}</li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section class="gp-section gp-section--sand">
+      <div class="gn-wrap gp-split">
+        <blockquote class="gp-quote">Приватный документ не становится публичным только потому, что он существует.</blockquote>
+        <div class="gp-split__copy">
+          <p>Персональные данные и закрытый архив проходят отдельную проверку публичности.</p>
+          <a class="gn-text-link" href={buildUrl("/projects/")}>Проверить проекты <span>→</span></a>
         </div>
       </div>
     </section>

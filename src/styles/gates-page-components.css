@@ -17,9 +17,9 @@
 }
 
 .gp-card--dark {
-  color: #fff;
-  background: #111;
-  border-color: #111;
+  color: var(--gn-white);
+  background: var(--gn-black);
+  border-color: var(--gn-black);
 }
 
 .gp-card__index {
@@ -185,7 +185,7 @@
   padding: clamp(3rem, 6vw, 5.5rem);
   align-items: end;
   justify-content: space-between;
-  color: #fff;
+  color: var(--gn-white);
   background: var(--gn-blue);
   border-radius: 1.3rem;
 }

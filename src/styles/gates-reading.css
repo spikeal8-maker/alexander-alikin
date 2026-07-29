@@ -101,8 +101,8 @@
 .gr-body pre {
   overflow-x: auto;
   padding: 1.4rem;
-  color: #fff;
-  background: #111;
+  color: var(--gn-white);
+  background: var(--gn-black);
   border-radius: 0.8rem;
 }
 

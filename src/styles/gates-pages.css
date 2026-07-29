@@ -132,7 +132,7 @@
 }
 
 .gp-section--blue {
-  color: #fff;
+  color: var(--gn-white);
   background: var(--gn-blue-dark);
 }
 
